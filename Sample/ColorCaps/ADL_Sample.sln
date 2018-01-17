@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ADL_Sample", "ADL_Sample.vcxproj", "{17F4FDF3-3DE4-4689-84CD-F57EDF17F0E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17F4FDF3-3DE4-4689-84CD-F57EDF17F0E7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17F4FDF3-3DE4-4689-84CD-F57EDF17F0E7}.Debug|Win32.Build.0 = Debug|Win32
+		{17F4FDF3-3DE4-4689-84CD-F57EDF17F0E7}.Release|Win32.ActiveCfg = Release|Win32
+		{17F4FDF3-3DE4-4689-84CD-F57EDF17F0E7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+EndGlobal

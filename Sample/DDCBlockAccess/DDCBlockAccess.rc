@@ -1,0 +1,198 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DDCBlockAccess_DIALOG DIALOGEX 0, 0, 221, 299
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "DDCBlockAccess ADL Sample"
+FONT 10, "Courier New", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "Exit",IDOK,150,119,55,16
+    LTEXT           "VCPCode:",IDC_STATIC,11,81,33,8
+    LTEXT           "Maximum:",IDC_STATIC,11,101,36,8
+    LTEXT           "Current:",IDC_STATIC,129,101,33,8
+    LTEXT           "EDID (Hex)",IDC_STATIC,13,144,63,8
+    EDITTEXT        IDC_EDIT_CURRENT,167,99,38,12,ES_MULTILINE | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MAX,64,99,35,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_RAWEDID,7,154,115,138,ES_MULTILINE | ES_UPPERCASE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Set",IDC_BUTTON_SET,80,119,55,16
+    PUSHBUTTON      "Get",IDC_BUTTON_GET,11,119,55,16
+    COMBOBOX        IDC_COMBO_VCPCODE,64,79,141,58,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Display Index:",IDC_STATIC,11,50,56,10
+    COMBOBOX        IDC_COMBO_DISPLAYINDEX,71,48,28,41,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "MCCS",IDC_STATIC,7,68,207,70
+    LTEXT           "Adapter Index:",IDC_STATIC,11,12,56,10
+    COMBOBOX        IDC_COMBO_DRIVERINDEX,71,11,28,41,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_ANAME,71,30,143,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Adapter Name:",IDC_STATIC,11,31,56,10
+    EDITTEXT        IDC_EDIT_DNAME,104,11,110,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_MONNAME,104,48,110,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_EDIT_TEXTEDID,129,154,76,138,ES_MULTILINE | ES_UPPERCASE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "EDID (Text)",IDC_STATIC,133,144,63,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,3
+ PRODUCTVERSION 1,0,0,3
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "AMD"
+            VALUE "FileDescription", "ADL Sample for DDC access calls"
+            VALUE "FileVersion", "1.0.0.3"
+            VALUE "InternalName", "DDCBlockAccess.exe"
+            VALUE "LegalCopyright", "(c) AMD.  All rights reserved."
+            VALUE "OriginalFilename", "DDCBlockAccess.exe"
+            VALUE "ProductName", "DDCBlockAccess.exe"
+            VALUE "ProductVersion", "1.0.0.3"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DDCBlockAccess_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 214
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 292
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (Canada) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENC)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_CAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\DDCBlockAccess.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""     // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\AMD.ico"
+#endif    // English (Canada) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\DDCBlockAccess.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"     // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
