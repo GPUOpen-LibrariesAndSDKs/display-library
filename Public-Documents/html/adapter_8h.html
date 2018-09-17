@@ -216,6 +216,18 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EDIDAPI.html#g090a0e4473f29346861c8e2c430a93e7">ADL_Workstation_GlobalEDIDPersistence_Set</a> (int iCurState)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set the EDID Persistence state of the system.  <a href="group__EDIDAPI.html#g090a0e4473f29346861c8e2c430a93e7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#gc73ded301ab687cdeda9890c2d79ab26">ADL2_FPS_Caps</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpSupported, int *lpVersion)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve FPS Global Setting Capability.  <a href="group__FPS.html#gc73ded301ab687cdeda9890c2d79ab26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#gf83a0c46e40bce6f978405aa2151c60f">ADL2_FPS_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLFPSSettingsOutput.html">ADLFPSSettingsOutput</a> *lpFPSSettings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve FPS Global Settings.  <a href="group__FPS.html#gf83a0c46e40bce6f978405aa2151c60f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g59f639dacb6d2c3e4cdb7461099adce0">ADL2_FPS_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLFPSSettingsInput.html">ADLFPSSettingsInput</a> lpFPSSettings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to update FPS Global Settings.  <a href="group__FPS.html#g59f639dacb6d2c3e4cdb7461099adce0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g50871fc5d04bbed131a1542ad85ca2c4">ADL2_FPS_Settings_Reset</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to reset FPS Global Settings.  <a href="group__FPS.html#g50871fc5d04bbed131a1542ad85ca2c4"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#a0fff076b956185fc24e1ac1268057f1">ADL2_Adapter_ClockInfo_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="structADLClockInfo.html">ADLClockInfo</a> *lpClockInfo)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve clock information for an adapter.  <a href="#a0fff076b956185fc24e1ac1268057f1"></a><br></td></tr>
@@ -237,12 +249,21 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#8cb8799e1cfc6d15132d42921e1545d0">ADL2_Adapter_Graphic_Core_Info_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="structADLGraphicCoreInfo.html">ADLGraphicCoreInfo</a> *pGraphicCoreInfo)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve Graphic Core Info.  <a href="#8cb8799e1cfc6d15132d42921e1545d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#a990ac2a732af842584fb07863c6514e">ADL2_Adapter_PMLog_Support_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLPMLogSupportInfo.html">ADLPMLogSupportInfo</a> *pPMLogSupportInfo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve power management logging support.  <a href="#a990ac2a732af842584fb07863c6514e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#27be2ed9fe8873c0a6fb32f53b46af68">ADL2_Adapter_PMLog_Start</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLPMLogStartInput.html">ADLPMLogStartInput</a> *pPMLogStartInput, <a class="el" href="struct__ADLPMLogStartOutput.html">ADLPMLogStartOutput</a> *pPMLogStartOutput, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> hDevice)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to start power management logging.  <a href="#27be2ed9fe8873c0a6fb32f53b46af68"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#0f58c3227fcec7addb8ec7acd72dfda8">ADL2_Adapter_PMLog_Stop</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> hDevice)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to stop power management logging.  <a href="#0f58c3227fcec7addb8ec7acd72dfda8"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. 
 <p>
 Contains all graphics-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms.<p>
-Copyright (c) 2008 - 2009 Advanced Micro Devices, Inc. THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE. This file contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders.<p>
+Copyright (c) 2008 - 2018 Advanced Micro Devices, Inc. THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE. This file contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders.<p>
 Copyright (c) 2008 - 2009 Advanced Micro Devices, Inc. THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE. This file contains all graphics-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions found in this file can be used as a reference when creating specific function pointers to be used by the appropriate runtime dynamic library loaders. <hr><h2>Define Documentation</h2>
 <a class="anchor" name="24a14773b8978b7ef0fb45451fcc495e"></a><!-- doxytag: member="adapter.h::ADL_EXTERNC" ref="24a14773b8978b7ef0fb45451fcc495e" args="" -->
 <div class="memitem">
@@ -579,6 +600,158 @@ This function implements a call to retrieve Graphic Core Info. <dl class="user" 
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>pGraphicCoreInfo</em>&nbsp;</td><td>The pointer to Graphic Core Info </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="a990ac2a732af842584fb07863c6514e"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_PMLog_Support_Get" ref="a990ac2a732af842584fb07863c6514e" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogSupportInfo *pPMLogSupportInfo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_PMLog_Support_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLPMLogSupportInfo.html">ADLPMLogSupportInfo</a> *&nbsp;</td>
+          <td class="paramname"> <em>pPMLogSupportInfo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve power management logging support. 
+<p>
+This function implements a call to retrieve power management logging support. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows Vista and Windows 7; 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>pPMLogSupportInfo</em>&nbsp;</td><td>The pointer to PMLog support info. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="27be2ed9fe8873c0a6fb32f53b46af68"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_PMLog_Start" ref="27be2ed9fe8873c0a6fb32f53b46af68" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogStartInput *pPMLogStartInput, ADLPMLogStartOutput *pPMLogStartOutput, ADL_D3DKMT_HANDLE hDevice)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_PMLog_Start           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLPMLogStartInput.html">ADLPMLogStartInput</a> *&nbsp;</td>
+          <td class="paramname"> <em>pPMLogStartInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLPMLogStartOutput.html">ADLPMLogStartOutput</a> *&nbsp;</td>
+          <td class="paramname"> <em>pPMLogStartOutput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>hDevice</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to start power management logging. 
+<p>
+This function implements a call to start power management logging. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows Vista and Windows 7; 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>pPMLogStartInput</em>&nbsp;</td><td>The pointer to ADLPMLogStartInput describing which sensors to log </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>ADLPMLogStartOutput</em>&nbsp;</td><td>The pointer to ADLPMLogStartOutput, returning an address where log data is stored </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>hDevice</em>&nbsp;</td><td>The D3D device handle associate with the logging session. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="0f58c3227fcec7addb8ec7acd72dfda8"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_PMLog_Stop" ref="0f58c3227fcec7addb8ec7acd72dfda8" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE hDevice)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_PMLog_Stop           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>hDevice</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to stop power management logging. 
+<p>
+This function implements a call to stop power management logging. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows Vista and Windows 7; 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>hDevice</em>&nbsp;</td><td>The D3D device handle associate with the logging session. </td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>

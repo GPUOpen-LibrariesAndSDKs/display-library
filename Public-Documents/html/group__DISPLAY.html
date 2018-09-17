@@ -155,6 +155,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAY.html#g1a445dc7d7f0af97c6b71f9106f060d0">ADL_Display_PixelFormat_Get</a> (int iAdapterIndex, int iDisplayIndex, int *lpPixelFormat)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the current display pixel format. <b>HDMI</b> <b>only</b>.  <a href="#g1a445dc7d7f0af97c6b71f9106f060d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAY.html#g41fc0c150bc0b418a1552558469be872">ADL2_Display_PixelFormatDefault_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDisplayIndex, int *lpDefPixelFormat)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the current display pixel format. <b>HDMI</b> <b>only</b>.  <a href="#g41fc0c150bc0b418a1552558469be872"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAY.html#g8fa563c3b2b841feb48350747f606341">ADL2_Display_PixelFormat_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDisplayIndex, int iPixelFormat)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set the current display pixel format. <b>HDMI</b> <b>only</b>.  <a href="#g8fa563c3b2b841feb48350747f606341"></a><br></td></tr>
@@ -2777,6 +2780,60 @@ This function retrieves the current display pixel format. <dl class="user" compa
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g41fc0c150bc0b418a1552558469be872"></a><!-- doxytag: member="display.h::ADL2_Display_PixelFormatDefault_Get" ref="g41fc0c150bc0b418a1552558469be872" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpDefPixelFormat)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Display_PixelFormatDefault_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iDisplayIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpDefPixelFormat</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the current display pixel format. <b>HDMI</b> <b>only</b>. 
+<p>
+This function retrieves the current display pixel format. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iDisplayIndex</em>&nbsp;</td><td>The desired display index. It can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpDefPixelFormat</em>&nbsp;</td><td>The pointer to the default pixel format. <a class="el" href="group__define__pixel__formats.html">Pixel Formats values</a> </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div><p>

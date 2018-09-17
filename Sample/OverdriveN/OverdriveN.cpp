@@ -32,17 +32,23 @@ typedef int ( *ADL_ADAPTER_NUMBEROFADAPTERS_GET ) ( int* );
 typedef int ( *ADL_ADAPTER_ADAPTERINFO_GET ) ( LPAdapterInfo, int );
 typedef int ( *ADL_ADAPTERX2_CAPS) (int, int*);
 typedef int ( *ADL2_OVERDRIVE_CAPS) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int * iSupported, int * iEnabled, int * iVersion);
-typedef int ( *ADL2_OVERDRIVEN_CAPABILITIES_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNCapabilities*);
-typedef int ( *ADL2_OVERDRIVEN_SYSTEMCLOCKS_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevels*);
-typedef int ( *ADL2_OVERDRIVEN_SYSTEMCLOCKS_SET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevels*);
-typedef int ( *ADL2_OVERDRIVEN_MEMORYCLOCKS_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevels*);
-typedef int ( *ADL2_OVERDRIVEN_MEMORYCLOCKS_SET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevels*);
+typedef int ( *ADL2_OVERDRIVEN_CAPABILITIESX2_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNCapabilitiesX2*);
 typedef int ( *ADL2_OVERDRIVEN_PERFORMANCESTATUS_GET) (ADL_CONTEXT_HANDLE, int, ADLODNPerformanceStatus*);
 typedef int ( *ADL2_OVERDRIVEN_FANCONTROL_GET) (ADL_CONTEXT_HANDLE, int, ADLODNFanControl*);
 typedef int ( *ADL2_OVERDRIVEN_FANCONTROL_SET) (ADL_CONTEXT_HANDLE, int, ADLODNFanControl*);
 typedef int ( *ADL2_OVERDRIVEN_POWERLIMIT_GET) (ADL_CONTEXT_HANDLE, int, ADLODNPowerLimitSetting*);
 typedef int ( *ADL2_OVERDRIVEN_POWERLIMIT_SET) (ADL_CONTEXT_HANDLE, int, ADLODNPowerLimitSetting*);
 typedef int ( *ADL2_OVERDRIVEN_TEMPERATURE_GET) (ADL_CONTEXT_HANDLE, int, int, int*);
+typedef int ( *ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevelsX2*);
+typedef int ( *ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_SET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevelsX2*);
+typedef int ( *ADL2_OVERDRIVEN_MEMORYCLOCKSX2_GET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevelsX2*);
+typedef int ( *ADL2_OVERDRIVEN_MEMORYCLOCKSX2_SET)	(ADL_CONTEXT_HANDLE, int, ADLODNPerformanceLevelsX2*);
+
+typedef int (*ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupport, int *lpCurrentValue, int *lpDefaultValue, int *lpNumberLevels, int **lppLevelList);
+typedef int (*ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_SET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int currentValue);
+typedef int (*ADL2_OVERDRIVEN_ZERORPMFAN_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupport, int *lpCurrentValue, int *lpDefaultValue);
+typedef int (*ADL2_OVERDRIVEN_ZERORPMFAN_SET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int currentValue);
+
 HINSTANCE hDLL;
 
 ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
@@ -51,18 +57,23 @@ ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get = NULL;
 ADL_ADAPTER_ADAPTERINFO_GET      ADL_Adapter_AdapterInfo_Get = NULL;
 ADL_ADAPTERX2_CAPS ADL_AdapterX2_Caps = NULL;
 ADL2_ADAPTER_ACTIVE_GET				ADL2_Adapter_Active_Get=NULL;
-ADL2_OVERDRIVEN_CAPABILITIES_GET ADL2_OverdriveN_Capabilities_Get = NULL;
-ADL2_OVERDRIVEN_SYSTEMCLOCKS_GET ADL2_OverdriveN_SystemClocks_Get = NULL;
-ADL2_OVERDRIVEN_SYSTEMCLOCKS_SET ADL2_OverdriveN_SystemClocks_Set = NULL;
+ADL2_OVERDRIVEN_CAPABILITIESX2_GET ADL2_OverdriveN_CapabilitiesX2_Get = NULL;
+ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_GET ADL2_OverdriveN_SystemClocksX2_Get = NULL;
+ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_SET ADL2_OverdriveN_SystemClocksX2_Set = NULL;
 ADL2_OVERDRIVEN_PERFORMANCESTATUS_GET ADL2_OverdriveN_PerformanceStatus_Get = NULL;
 ADL2_OVERDRIVEN_FANCONTROL_GET ADL2_OverdriveN_FanControl_Get =NULL;
 ADL2_OVERDRIVEN_FANCONTROL_SET ADL2_OverdriveN_FanControl_Set=NULL;
 ADL2_OVERDRIVEN_POWERLIMIT_GET ADL2_OverdriveN_PowerLimit_Get =NULL;
 ADL2_OVERDRIVEN_POWERLIMIT_SET ADL2_OverdriveN_PowerLimit_Set=NULL;
-ADL2_OVERDRIVEN_MEMORYCLOCKS_GET ADL2_OverdriveN_MemoryClocks_Get = NULL;
-ADL2_OVERDRIVEN_MEMORYCLOCKS_GET ADL2_OverdriveN_MemoryClocks_Set = NULL;
+ADL2_OVERDRIVEN_MEMORYCLOCKSX2_GET ADL2_OverdriveN_MemoryClocksX2_Get = NULL;
+ADL2_OVERDRIVEN_MEMORYCLOCKSX2_SET ADL2_OverdriveN_MemoryClocksX2_Set = NULL;
 ADL2_OVERDRIVE_CAPS ADL2_Overdrive_Caps = NULL;
 ADL2_OVERDRIVEN_TEMPERATURE_GET ADL2_OverdriveN_Temperature_Get = NULL;
+
+ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_GET ADL2_OverdriveN_MemoryTimingLevel_Get = NULL;
+ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_SET ADL2_OverdriveN_MemoryTimingLevel_Set = NULL;
+ADL2_OVERDRIVEN_ZERORPMFAN_GET ADL2_OverdriveN_ZeroRPMFan_Get = NULL;
+ADL2_OVERDRIVEN_ZERORPMFAN_SET ADL2_OverdriveN_ZeroRPMFan_Set = NULL;
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -109,11 +120,11 @@ int initializeADL()
 	ADL_Adapter_AdapterInfo_Get = (ADL_ADAPTER_ADAPTERINFO_GET) GetProcAddress(hDLL,"ADL_Adapter_AdapterInfo_Get");
 	ADL_AdapterX2_Caps = (ADL_ADAPTERX2_CAPS) GetProcAddress( hDLL, "ADL_AdapterX2_Caps");
 	ADL2_Adapter_Active_Get = (ADL2_ADAPTER_ACTIVE_GET)GetProcAddress(hDLL, "ADL2_Adapter_Active_Get");
-	ADL2_OverdriveN_Capabilities_Get = (ADL2_OVERDRIVEN_CAPABILITIES_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_Capabilities_Get");
-	ADL2_OverdriveN_SystemClocks_Get = (ADL2_OVERDRIVEN_SYSTEMCLOCKS_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_SystemClocks_Get");
-	ADL2_OverdriveN_SystemClocks_Set = (ADL2_OVERDRIVEN_SYSTEMCLOCKS_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_SystemClocks_Set");
-	ADL2_OverdriveN_MemoryClocks_Get = (ADL2_OVERDRIVEN_MEMORYCLOCKS_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_MemoryClocks_Get");
-	ADL2_OverdriveN_MemoryClocks_Set = (ADL2_OVERDRIVEN_MEMORYCLOCKS_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_MemoryClocks_Set");
+	ADL2_OverdriveN_CapabilitiesX2_Get = (ADL2_OVERDRIVEN_CAPABILITIESX2_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_CapabilitiesX2_Get");
+	ADL2_OverdriveN_SystemClocksX2_Get = (ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_SystemClocksX2_Get");
+	ADL2_OverdriveN_SystemClocksX2_Set = (ADL2_OVERDRIVEN_SYSTEMCLOCKSX2_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_SystemClocksX2_Set");
+	ADL2_OverdriveN_MemoryClocksX2_Get = (ADL2_OVERDRIVEN_MEMORYCLOCKSX2_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_MemoryClocksX2_Get");
+	ADL2_OverdriveN_MemoryClocksX2_Set = (ADL2_OVERDRIVEN_MEMORYCLOCKSX2_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_MemoryClocksX2_Set");
 	ADL2_OverdriveN_PerformanceStatus_Get = (ADL2_OVERDRIVEN_PERFORMANCESTATUS_GET) GetProcAddress (hDLL,"ADL2_OverdriveN_PerformanceStatus_Get");
 	ADL2_OverdriveN_FanControl_Get = (ADL2_OVERDRIVEN_FANCONTROL_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_FanControl_Get");
 	ADL2_OverdriveN_FanControl_Set = (ADL2_OVERDRIVEN_FANCONTROL_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_FanControl_Set");
@@ -121,21 +132,32 @@ int initializeADL()
 	ADL2_OverdriveN_PowerLimit_Set = (ADL2_OVERDRIVEN_POWERLIMIT_SET) GetProcAddress (hDLL, "ADL2_OverdriveN_PowerLimit_Set");
 	ADL2_OverdriveN_Temperature_Get = (ADL2_OVERDRIVEN_TEMPERATURE_GET) GetProcAddress (hDLL, "ADL2_OverdriveN_Temperature_Get");
 	ADL2_Overdrive_Caps = (ADL2_OVERDRIVE_CAPS) GetProcAddress (hDLL, "ADL2_Overdrive_Caps");
+
+    ADL2_OverdriveN_MemoryTimingLevel_Get = (ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_GET)GetProcAddress(hDLL, "ADL2_OverdriveN_MemoryTimingLevel_Get");
+    ADL2_OverdriveN_MemoryTimingLevel_Set = (ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_SET)GetProcAddress(hDLL, "ADL2_OverdriveN_MemoryTimingLevel_Set");
+    ADL2_OverdriveN_ZeroRPMFan_Get = (ADL2_OVERDRIVEN_ZERORPMFAN_GET)GetProcAddress(hDLL, "ADL2_OverdriveN_ZeroRPMFan_Get");
+    ADL2_OverdriveN_ZeroRPMFan_Set = (ADL2_OVERDRIVEN_ZERORPMFAN_SET)GetProcAddress(hDLL, "ADL2_OverdriveN_ZeroRPMFan_Set");
+
+
 	if ( NULL == ADL_Main_Control_Create ||
 		 NULL == ADL_Main_Control_Destroy ||
 		 NULL == ADL_Adapter_NumberOfAdapters_Get||
 		 NULL == ADL_Adapter_AdapterInfo_Get ||
 		 NULL == ADL_AdapterX2_Caps ||
 		NULL == ADL2_Adapter_Active_Get ||
-		NULL == ADL2_OverdriveN_Capabilities_Get || 
-		NULL == ADL2_OverdriveN_SystemClocks_Get ||
-		NULL == ADL2_OverdriveN_SystemClocks_Set ||
-		NULL == ADL2_OverdriveN_MemoryClocks_Get ||
-		NULL == ADL2_OverdriveN_MemoryClocks_Set ||
+		NULL == ADL2_OverdriveN_CapabilitiesX2_Get || 
+		NULL == ADL2_OverdriveN_SystemClocksX2_Get ||
+		NULL == ADL2_OverdriveN_SystemClocksX2_Set ||
+		NULL == ADL2_OverdriveN_MemoryClocksX2_Get ||
+		NULL == ADL2_OverdriveN_MemoryClocksX2_Set ||
 		NULL == ADL2_OverdriveN_PerformanceStatus_Get ||
 		NULL == ADL2_OverdriveN_FanControl_Get ||
 		NULL == ADL2_OverdriveN_FanControl_Set ||
-		NULL == ADL2_Overdrive_Caps
+		NULL == ADL2_Overdrive_Caps ||
+        NULL == ADL2_OverdriveN_MemoryTimingLevel_Get ||
+        NULL == ADL2_OverdriveN_MemoryTimingLevel_Set ||
+        NULL == ADL2_OverdriveN_ZeroRPMFan_Get ||
+        NULL == ADL2_OverdriveN_ZeroRPMFan_Set
 		)
 	{
 		PRINTF("Failed to get ADL function pointers\n");
@@ -176,44 +198,51 @@ int printODNSCLKParameters()
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+					PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 				}
 				else
 				{
 					//performance levels info
-					ADLODNPerformanceLevels *odPerformanceLevels;
+					ADLODNPerformanceLevelsX2 *odPerformanceLevels;
 
-					int size = sizeof(ADLODNPerformanceLevels) + sizeof(ADLODNPerformanceLevel)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
+					int size = sizeof(ADLODNPerformanceLevelsX2) + sizeof(ADLODNPerformanceLevelX2)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
 					void* performanceLevelsBuffer = new char[size];
 					memset(performanceLevelsBuffer, 0, size);
-					odPerformanceLevels = (ADLODNPerformanceLevels*)performanceLevelsBuffer;
+					odPerformanceLevels = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer;
 					odPerformanceLevels->iSize = size;
+					//odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Default;
 					odPerformanceLevels->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 					//get GPU clocks
-					if (ADL_OK != ADL2_OverdriveN_SystemClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
-						PRINTF("ADL2_OverdriveN_GPUClocks_Get is failed\n");
+						PRINTF("ADL2_OverdriveN_SystemClocksX2_Get is failed\n");
 
 					}
 
 					PRINTF("--------------------------------------------\n");					
-					PRINTF(" ADL2_OverdriveN_GPUClocks_Get Data\n");
+					PRINTF(" ADL2_OverdriveN_SystemClocksX2_Get Data\n");
 					PRINTF("--------------------------------------------\n");					
 					PRINTF("Number of Levels : %d \n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);
 					PRINTF("Clocks: Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,overdriveCapabilities.sEngineClockRange.iMin,overdriveCapabilities.sEngineClockRange.iMax, overdriveCapabilities.sEngineClockRange.iStep);
 					PRINTF("Voltage: Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,overdriveCapabilities.svddcRange.iMin,overdriveCapabilities.svddcRange.iMax, overdriveCapabilities.svddcRange.iStep);
+					
 					for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
 					{
-						PRINTF("odPerformanceLevels->aLevels[%d].iClock : %d\n" , i, odPerformanceLevels->aLevels[i].iClock);
-						PRINTF("odPerformanceLevels->aLevels[%d].iEnabled : %d\n", i, odPerformanceLevels->aLevels[i].iEnabled);
-						PRINTF("odPerformanceLevels->aLevels[%d].iVddc : %d\n\n", i, odPerformanceLevels->aLevels[i].iVddc);	
+						PRINTF("odPerformanceLevels->aLevels[%d].Clock Value : %d\n" , i, odPerformanceLevels->aLevels[i].iClock);
+						PRINTF("odPerformanceLevels->aLevels[%d].Clock Editable : %d\n", i, (odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK) == ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK);
+						PRINTF("odPerformanceLevels->aLevels[%d].VDDC Value : %d\n", i, odPerformanceLevels->aLevels[i].iVddc);	
+						PRINTF("odPerformanceLevels->aLevels[%d].VDDC Editable : %d\n", i, (odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_VDDC) == ADLODNDPMMaskType::ADL_ODN_DPM_VDDC);
+						PRINTF("odPerformanceLevels->aLevels[%d].DPM State Value : %d\n", i, odPerformanceLevels->aLevels[i].iEnabled);	
+						PRINTF("odPerformanceLevels->aLevels[%d].DPM State Editable : %d\n\n", i, ((odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_MASK) == ADLODNDPMMaskType::ADL_ODN_DPM_MASK) && ((overdriveCapabilities.iFlags & ADL_ODN_MCLK_DPM_MASK_ENABLE) == ADL_ODN_MCLK_DPM_MASK_ENABLE));
 					}			
-					PRINTF("---------------------------------------------\n");					
+					PRINTF("---------------------------------------------\n");
+                    if (NULL != performanceLevelsBuffer)
+                        delete[] performanceLevelsBuffer;
 				}				
 				break;
 			}			
@@ -229,23 +258,6 @@ int setODNSCLKParameters(int level, int feature, int value)
 {
  	int i, active = 0;;
  	int iSupported,iEnabled,iVersion;
-	
-	
-	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-	       PRINTF("Cannot get the number of adapters!\n");
-		   return 0;
-	}
-
-    if ( 0 < iNumberAdapters )
-    {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
-    }
 
 	// Repeat for all available adapters in the system
     for ( i = 0; i < iNumberAdapters; i++ )
@@ -255,26 +267,26 @@ int setODNSCLKParameters(int level, int feature, int value)
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+					PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 				}
 				else
 				{
 					//performance levels info
-					ADLODNPerformanceLevels *odPerformanceLevels;
+					ADLODNPerformanceLevelsX2 *odPerformanceLevels;
 
-					int size = sizeof(ADLODNPerformanceLevels) + sizeof(ADLODNPerformanceLevel)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
+					int size = sizeof(ADLODNPerformanceLevelsX2) + sizeof(ADLODNPerformanceLevelX2)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
 					void* performanceLevelsBuffer = new char[size];
 					memset(performanceLevelsBuffer, 0, size);
-					odPerformanceLevels = (ADLODNPerformanceLevels*)performanceLevelsBuffer;
+					odPerformanceLevels = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer;
 					odPerformanceLevels->iSize = size;
 					odPerformanceLevels->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 					//get GPU clocks
-					if (ADL_OK != ADL2_OverdriveN_SystemClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
 						PRINTF("ADL2_OverdriveN_GPUClocks_Get is failed\n");
 
@@ -290,7 +302,7 @@ int setODNSCLKParameters(int level, int feature, int value)
 						{
 							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
 						}
-						else if (odPerformanceLevels->aLevels[level].iEnabled == 0)
+						else if (!((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK) == ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK))
 						{
 							PRINTF("Performance level (%d) is disabled\n" ,level);			
 						}
@@ -301,7 +313,14 @@ int setODNSCLKParameters(int level, int feature, int value)
 							odPerformanceLevels->aLevels[level].iClock = value;							
 							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;
 							
-							if (ADL_OK != ADL2_OverdriveN_SystemClocks_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							//Fill iEnabled values properly.
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
+							{
+								odPerformanceLevels->aLevels[i].iEnabled = odPerformanceLevels->aLevels[i].iEnabled > 0 ? 1 : 0;								
+							}
+							
+
+							if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 							{
 								PRINTF("ADL2_OverdriveN_SystemClocks_Set is failed\n");
 							}
@@ -323,7 +342,7 @@ int setODNSCLKParameters(int level, int feature, int value)
 						{
 							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
 						}
-						else if (odPerformanceLevels->aLevels[level].iEnabled == 0)
+						else if (!((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_VDDC) == ADLODNDPMMaskType::ADL_ODN_DPM_VDDC))
 						{
 							PRINTF("Performance level (%d) is disabled\n" ,level);			
 						}
@@ -333,19 +352,64 @@ int setODNSCLKParameters(int level, int feature, int value)
 							printODNSCLKParameters();
 							odPerformanceLevels->aLevels[level].iVddc = value;							
 							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;
-							
-							if (ADL_OK != ADL2_OverdriveN_SystemClocks_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+
+							//Fill iEnabled values properly.
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
 							{
-								PRINTF("ADL2_OverdriveN_SystemClocks_Set is failed\n");
+								odPerformanceLevels->aLevels[i].iEnabled = odPerformanceLevels->aLevels[i].iEnabled > 0 ? 1 : 0;								
+							}
+
+							if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							{
+								PRINTF("ADL2_OverdriveN_SystemClocksX2_Set is failed\n");
 							}
 							else
 							{
-								PRINTF("ADL2_OverdriveN_SystemClocks_Set is Success\n\n");
+								PRINTF("ADL2_OverdriveN_SystemClocksX2_Set is Success\n\n");
 								PRINTF ("****** Driver Values: After Apply ******\n");
 								printODNSCLKParameters();
 							}
 						}				
-					}						
+					}	
+					else if (feature == 3)
+					{
+						//Value parameter is reused as upper limit. level parameter treated as lower limit
+						if ((level > overdriveCapabilities.iMaximumNumberOfPerformanceLevels || level < 0) && 
+							(value > overdriveCapabilities.iMaximumNumberOfPerformanceLevels || value < 0))
+						{
+							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
+						}
+						else if (((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_MASK) == ADLODNDPMMaskType::ADL_ODN_DPM_MASK) && ((overdriveCapabilities.iFlags & ADL_ODN_MCLK_DPM_MASK_ENABLE) == ADL_ODN_MCLK_DPM_MASK_ENABLE))
+						{
+							PRINTF ("***** Driver Values: Before Apply ******\n");
+							printODNSCLKParameters();
+							//Fill iEnabled values properly.
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
+							{
+								odPerformanceLevels->aLevels[i].iEnabled = i >= level && i<= value ? 1 : 0;								
+							}							
+							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;
+							
+							
+
+							if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							{
+								PRINTF("ADL2_OverdriveN_SystemClocksX2_Set is failed\n");
+							}
+							else
+							{
+								PRINTF("ADL2_OverdriveN_SystemClocksX2_Set is Success\n\n");
+								PRINTF ("****** Driver Values: After Apply ******\n");
+								printODNSCLKParameters();
+							}
+						}
+						else
+						{
+							PRINTF("Performance level is not editable.\n");
+						}
+					}
+                    if (NULL != performanceLevelsBuffer)
+                        delete[] performanceLevelsBuffer;
 				}
 				break;
 			}
@@ -362,23 +426,6 @@ int printODNMCLKParameters()
 	int i, active = 0;;
 	int iSupported,iEnabled,iVersion;
 	
-
-	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-	       PRINTF("Cannot get the number of adapters!\n");
-		   return 0;
-	}
-
-    if ( 0 < iNumberAdapters )
-    {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
-    }
-
 	// Repeat for all available adapters in the system
     for ( i = 0; i < iNumberAdapters; i++ )
     {
@@ -388,49 +435,49 @@ int printODNMCLKParameters()
 				ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				 ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				 ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-						PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+						PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 					}
 				else
 				{
 					//performance levels info
-					ADLODNPerformanceLevels *odPerformanceLevels;
+					ADLODNPerformanceLevelsX2 *odPerformanceLevels;
 
-					int size = sizeof(ADLODNPerformanceLevels) + sizeof(ADLODNPerformanceLevel)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
+					int size = sizeof(ADLODNPerformanceLevelsX2) + sizeof(ADLODNPerformanceLevelX2)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
 					void* performanceLevelsBuffer = new char[size];
 					memset(performanceLevelsBuffer, 0, size);
-					odPerformanceLevels = (ADLODNPerformanceLevels*)performanceLevelsBuffer;
+					odPerformanceLevels = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer;
 					odPerformanceLevels->iSize = size;
 					odPerformanceLevels->iMode = 0; //current
 					odPerformanceLevels->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 					
 					//get GPU clocks
-					if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
-						PRINTF("ADL2_OverdriveN_GPUClocks_Get is failed\n");
+						PRINTF("ADL2_OverdriveN_MemoryClocksX2_Get is failed\n");
 
 					}
-					ADLODNPerformanceLevels *odPerformanceLevels_default;
+					ADLODNPerformanceLevelsX2 *odPerformanceLevels_default;
 					void* performanceLevelsBuffer_default = new char[size];
 					memset(performanceLevelsBuffer_default, 0, size);
-					odPerformanceLevels_default = (ADLODNPerformanceLevels*)performanceLevelsBuffer_default;
+					odPerformanceLevels_default = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer_default;
 					odPerformanceLevels_default->iSize = size;
 					odPerformanceLevels_default->iMode = 1; //Defaults
 					odPerformanceLevels_default->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 					
 					//get GPU clocks
-					if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels_default))
+					if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels_default))
 					{
-						PRINTF("ADL2_OverdriveN_GPUClocks_Get is failed\n");
+						PRINTF("ADL2_OverdriveN_MemoryClocksX2_Get is failed\n");
 
 					}
 
 					PRINTF("-------------------------------------\n");					
-					PRINTF("ADL2_OverdriveN_MemoryClocks_Get Data\n");
+					PRINTF("ADL2_OverdriveN_MemoryClocksX2_Get Data\n");
 					PRINTF("-------------------------------------\n");
 					PRINTF("Number of Levels : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);
 					//PRINTF("Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,overdriveCapabilities.sMemoryClockRange.iMin,overdriveCapabilities.sMemoryClockRange.iMax, overdriveCapabilities.sMemoryClockRange.iStep);
@@ -438,15 +485,24 @@ int printODNMCLKParameters()
 					
 					for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
 					{
-						PRINTF("odPerformanceLevels->aLevels[%d].iClock : %d\n" , i, odPerformanceLevels->aLevels[i].iClock);
-						PRINTF("MCLK Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,odPerformanceLevels_default->aLevels[i].iClock,odPerformanceLevels_default->aLevels[i].iClock + 5000, overdriveCapabilities.sMemoryClockRange.iStep);				
-						PRINTF("odPerformanceLevels->aLevels[%d].iEnabled : %d\n", i, odPerformanceLevels->aLevels[i].iEnabled);
-						PRINTF("odPerformanceLevels->aLevels[%d].iVddc : %d\n", i, odPerformanceLevels->aLevels[i].iVddc);	
-						PRINTF("Voltage: Minimum Range : %d, Maximum Range : %d, Step value: %d\n\n" ,overdriveCapabilities.svddcRange.iMin,overdriveCapabilities.svddcRange.iMax, overdriveCapabilities.svddcRange.iStep);
+						PRINTF("MCLK Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,
+							((overdriveCapabilities.iFlags & ADLODNFeatureControl::ADL_ODN_MCLK_UNDERCLOCK_ENABLE) == ADLODNFeatureControl::ADL_ODN_MCLK_UNDERCLOCK_ENABLE) ? overdriveCapabilities.sMemoryClockRange.iMin : odPerformanceLevels_default->aLevels[i].iClock, overdriveCapabilities.sMemoryClockRange.iMax, overdriveCapabilities.sMemoryClockRange.iStep);				
+						PRINTF("odPerformanceLevels->aLevels[%d].Clock Value : %d\n" , i, odPerformanceLevels->aLevels[i].iClock);
+						PRINTF("odPerformanceLevels->aLevels[%d].Clock Editable : %d\n", i, (odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK) == ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK);
+						
+						PRINTF("Voltage: Minimum Range : %d, Maximum Range : %d, Step value: %d\n" ,overdriveCapabilities.svddcRange.iMin,overdriveCapabilities.svddcRange.iMax, overdriveCapabilities.svddcRange.iStep);
+						PRINTF("odPerformanceLevels->aLevels[%d].VDDC Value : %d\n", i, odPerformanceLevels->aLevels[i].iVddc);	
+						PRINTF("odPerformanceLevels->aLevels[%d].VDDC Editable : %d\n", i, (odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_VDDC) == ADLODNDPMMaskType::ADL_ODN_DPM_VDDC);
+						
+						PRINTF("odPerformanceLevels->aLevels[%d].DPM State Value : %d\n", i, odPerformanceLevels->aLevels[i].iEnabled);	
+						PRINTF("odPerformanceLevels->aLevels[%d].DPM State Editable : %d\n\n", i, ((odPerformanceLevels->aLevels[i].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_MASK) == ADLODNDPMMaskType::ADL_ODN_DPM_MASK) && ((overdriveCapabilities.iFlags & ADL_ODN_MCLK_DPM_MASK_ENABLE) == ADL_ODN_MCLK_DPM_MASK_ENABLE));
 				
 					}	
-					PRINTF("-------------------------------------\n");					
-					
+					PRINTF("-------------------------------------\n");
+                    if (NULL != performanceLevelsBuffer)
+                        delete[] performanceLevelsBuffer;
+                    if (NULL != performanceLevelsBuffer_default)
+                        delete[] performanceLevelsBuffer_default;
 				}
 				break;
 			}			
@@ -463,23 +519,6 @@ int setODNMCLKParameters(int level, int feature, int value)
 	int i, active = 0;;
 	int iSupported,iEnabled,iVersion;
 	
-	
-	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-	       PRINTF("Cannot get the number of adapters!\n");
-		   return 0;
-	}
-
-    if ( 0 < iNumberAdapters )
-    {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
-    }
-
 	// Repeat for all available adapters in the system
     for ( i = 0; i < iNumberAdapters; i++ )
     {
@@ -488,28 +527,28 @@ int setODNMCLKParameters(int level, int feature, int value)
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+					PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 				}
 				else
 				{
 					//performance levels info
-					ADLODNPerformanceLevels *odPerformanceLevels;
+					ADLODNPerformanceLevelsX2 *odPerformanceLevels;
 
-					int size = sizeof(ADLODNPerformanceLevels) + sizeof(ADLODNPerformanceLevel)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
+					int size = sizeof(ADLODNPerformanceLevelsX2) + sizeof(ADLODNPerformanceLevelX2)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
 					void* performanceLevelsBuffer = new char[size];
 					memset(performanceLevelsBuffer, 0, size);
-					odPerformanceLevels = (ADLODNPerformanceLevels*)performanceLevelsBuffer;
+					odPerformanceLevels = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer;
 					odPerformanceLevels->iSize = size;
 					odPerformanceLevels->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 					//get GPU clocks
-					if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
-						PRINTF("ADL2_OverdriveN_MemoryClocks_Get is failed\n");
+						PRINTF("ADL2_OverdriveN_MemoryClocksX2_Get is failed\n");
 
 					}
 
@@ -523,7 +562,7 @@ int setODNMCLKParameters(int level, int feature, int value)
 						{
 							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
 						}
-						else if (odPerformanceLevels->aLevels[level].iEnabled == 0)
+						else if (!((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK) == ADLODNDPMMaskType::ADL_ODN_DPM_CLOCK))
 						{
 							PRINTF("Performance level (%d) is disabled\n" ,level);			
 						}
@@ -533,14 +572,18 @@ int setODNMCLKParameters(int level, int feature, int value)
 							printODNMCLKParameters();
 							odPerformanceLevels->aLevels[level].iClock = value;							
 							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;
-							
-							if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							//Fill iEnabled values properly.
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
 							{
-								PRINTF("ADL2_OverdriveN_MemoryClocks_Set is failed\n");
+								odPerformanceLevels->aLevels[i].iEnabled = odPerformanceLevels->aLevels[i].iEnabled > 0 ? 1 : 0;								
+							}
+							if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							{
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is failed\n");
 							}
 							else
 							{
-								PRINTF("ADL2_OverdriveN_MemoryClocks_Set is Success\n\n");
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is Success\n\n");
 								PRINTF ("****** Driver Values: After Apply ******\n");
 								printODNMCLKParameters();
 							}
@@ -556,7 +599,7 @@ int setODNMCLKParameters(int level, int feature, int value)
 						{
 							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
 						}
-						else if (odPerformanceLevels->aLevels[level].iEnabled == 0)
+						else if (!((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_VDDC) == ADLODNDPMMaskType::ADL_ODN_DPM_VDDC))
 						{
 							PRINTF("Performance level (%d) is disabled\n" ,level);			
 						}
@@ -566,19 +609,59 @@ int setODNMCLKParameters(int level, int feature, int value)
 							printODNMCLKParameters();
 							odPerformanceLevels->aLevels[level].iVddc = value;							
 							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;
-							
-							if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							//Fill iEnabled values properly.
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
 							{
-								PRINTF("ADL2_OverdriveN_MemoryClocks_Set is failed\n");
+								odPerformanceLevels->aLevels[i].iEnabled = odPerformanceLevels->aLevels[i].iEnabled > 0 ? 1 : 0;								
+							}
+							if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							{
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is failed\n");
 							}
 							else
 							{
-								PRINTF("ADL2_OverdriveN_MemoryClocks_Set is Success\n\n");
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is Success\n\n");
 								PRINTF ("****** Driver Values: After Apply ******\n");
 								printODNMCLKParameters();
 							}
 						}				
-					}						
+					}
+					else if (feature == 3)
+					{
+						//Value parameter is reused as upper limit. level parameter treated as lower limit
+						if ((level > overdriveCapabilities.iMaximumNumberOfPerformanceLevels || level < 0) && 
+							(value > overdriveCapabilities.iMaximumNumberOfPerformanceLevels || value < 0))
+						{
+							PRINTF("Performance level should be less than : %d\n" ,overdriveCapabilities.iMaximumNumberOfPerformanceLevels);			
+						}
+						else if (((odPerformanceLevels->aLevels[level].iControl &  ADLODNDPMMaskType::ADL_ODN_DPM_MASK) == ADLODNDPMMaskType::ADL_ODN_DPM_MASK) && ((overdriveCapabilities.iFlags & ADL_ODN_MCLK_DPM_MASK_ENABLE) == ADL_ODN_MCLK_DPM_MASK_ENABLE))
+						{
+							PRINTF ("***** Driver Values: Before Apply ******\n");
+							printODNSCLKParameters();
+							for (int i=0 ;i <overdriveCapabilities.iMaximumNumberOfPerformanceLevels;i++)
+							{
+								odPerformanceLevels->aLevels[i].iEnabled = i >= level && i<= value ? 1 : 0;								
+							}							
+							odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Manual;				
+							
+							if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Set(context,lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+							{
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is failed\n");
+							}
+							else
+							{
+								PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is Success\n\n");
+								PRINTF ("****** Driver Values: After Apply ******\n");
+								printODNMCLKParameters();
+							}
+						}
+						else
+						{
+							PRINTF("Performance level is not editable.\n");
+						}
+					}
+                    if (NULL != performanceLevelsBuffer)
+                        delete[] performanceLevelsBuffer;
 				}
 				break;
 			}
@@ -603,10 +686,10 @@ int printODNFANParameters()
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
 					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
 				}
@@ -664,10 +747,10 @@ int setODNFANParameters(int feature, int value)
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
 					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
 				}
@@ -781,10 +864,10 @@ int printODNTEMPParameters()
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
 					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
 				}
@@ -837,10 +920,10 @@ int setODNTEMPParameters(int feature, int value)
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
 					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
 				}
@@ -910,6 +993,147 @@ int setODNTEMPParameters(int feature, int value)
 	
 }
 
+int printODNTIMINGLEVELParameters()
+{
+    int  i, active = 0;;
+    int iSupported, iEnabled, iVersion;
+    int ret = 0;
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 7)
+            {
+                int support, currentValue, defaultValue, numberLevels;
+                int *levelList = NULL;
+
+                if (ADL_OK != ADL2_OverdriveN_MemoryTimingLevel_Get(context, lpAdapterInfo[i].iAdapterIndex, &support, &currentValue, &defaultValue, &numberLevels, &levelList))
+                {
+                    PRINTF("ADL2_OverdriveN_MemoryTimingLevel_Get is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_MemoryTimingLevel_Get Data\n");
+                    PRINTF("-------------------------------------------------\n");
+                    PRINTF("Memory Timing Level support : %d\n", support);
+                    PRINTF("Current value : %d\n", currentValue);
+                    PRINTF("Default value : %d\n", defaultValue);
+                    PRINTF("Number Levels : %d\n", numberLevels);
+                    for (int i = 0; i != numberLevels; ++i)
+                        PRINTF("List %d: %d\n", i, levelList[i]);
+                    PRINTF("-------------------------------------------------\n");
+
+                    //cleanup the memory
+                    if (NULL != levelList)
+                        ADL_Main_Memory_Free((void**)&levelList);
+
+                }
+                break;
+            }
+        }
+    }
+
+    return ret;
+}
+
+int setODNTIMINGLEVELParameters(int level_)
+{
+
+    int  i, active = 0;;
+    int iSupported, iEnabled, iVersion;
+    int ret = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 7)
+            {
+                if (ADL_OK != ADL2_OverdriveN_MemoryTimingLevel_Set(context, lpAdapterInfo[i].iAdapterIndex, level_))
+                {
+                    PRINTF("ADL2_OverdriveN_MemoryTimingLevel_Set is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_MemoryTimingLevel_Set is Success\n\n");
+                    PRINTF("****** Driver Values: After Apply ******\n");
+                    printODNTIMINGLEVELParameters();
+                }
+            }
+        }
+    }
+    return ret;
+}
+
+int printODNZERORPMParameters()
+{
+    int  i, active = 0;;
+    int iSupported, iEnabled, iVersion;
+    int ret = 0;
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 7)
+            {
+                int support, currentValue, defaultValue;
+                if (ADL_OK != ADL2_OverdriveN_ZeroRPMFan_Get(context, lpAdapterInfo[i].iAdapterIndex, &support, &currentValue, &defaultValue))
+                {
+                    PRINTF("ADL2_OverdriveN_ZeroRPMFan_Get is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_ZeroRPMFan_Get Data\n");
+                    PRINTF("-------------------------------------------------\n");
+                    PRINTF("Zero PRM Fan support : %d\n", support);
+                    PRINTF("Current value : %d\n", currentValue);
+                    PRINTF("Default value : %d\n", defaultValue);
+                }
+                break;
+            }
+        }
+    }
+
+    return ret;
+}
+
+int setODNZERORPMParameters(int value_)
+{
+
+    int  i, active = 0;;
+    int iSupported, iEnabled, iVersion;
+    int ret = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 7)
+            {
+                if (ADL_OK != ADL2_OverdriveN_ZeroRPMFan_Set(context, lpAdapterInfo[i].iAdapterIndex, value_))
+                {
+                    PRINTF("ADL2_OverdriveN_ZeroRPMFan_Set is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_ZeroRPMFan_Set is Success\n\n");
+                    PRINTF("****** Driver Values: After Apply ******\n");
+                    printODNZERORPMParameters();
+                }
+            }
+        }
+    }
+    return ret;
+}
+
 int printODNActivity()
 {
 	
@@ -925,12 +1149,12 @@ int printODNActivity()
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+					PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 				}
 
 				ADLODNPerformanceStatus odNPerformanceStatus;
@@ -988,49 +1212,50 @@ int resetODSettings()
 			ADL2_Overdrive_Caps(context,lpAdapterInfo[ i ].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
 			if (iVersion == 7)
 			{
-				ADLODNCapabilities overdriveCapabilities;
-				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilities));
+				ADLODNCapabilitiesX2 overdriveCapabilities;
+				memset(&overdriveCapabilities, 0, sizeof(ADLODNCapabilitiesX2));
     
-				if (ADL_OK != ADL2_OverdriveN_Capabilities_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
+				if (ADL_OK != ADL2_OverdriveN_CapabilitiesX2_Get(context,lpAdapterInfo[ i ].iAdapterIndex, &overdriveCapabilities))
 				{
-					PRINTF("ADL2_OverdriveN_Capabilities_Get is failed\n");				
+					PRINTF("ADL2_OverdriveN_CapabilitiesX2_Get is failed\n");				
 				}
 
 				//performance levels info
-				ADLODNPerformanceLevels *odPerformanceLevels;
+				ADLODNPerformanceLevelsX2 *odPerformanceLevels;
 
-				int size = sizeof(ADLODNPerformanceLevels) + sizeof(ADLODNPerformanceLevel)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
+				int size = sizeof(ADLODNPerformanceLevelsX2) + sizeof(ADLODNPerformanceLevelX2)* (overdriveCapabilities.iMaximumNumberOfPerformanceLevels - 1);
 				void* performanceLevelsBuffer = new char[size];
 				memset(performanceLevelsBuffer, 0, size);
-				odPerformanceLevels = (ADLODNPerformanceLevels*)performanceLevelsBuffer;
+				odPerformanceLevels = (ADLODNPerformanceLevelsX2*)performanceLevelsBuffer;
 				odPerformanceLevels->iSize = size;
+				odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Default;
 				odPerformanceLevels->iNumberOfPerformanceLevels = overdriveCapabilities.iMaximumNumberOfPerformanceLevels;
 				//GPU clocks reset
-				if (ADL_OK != ADL2_OverdriveN_SystemClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+				if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 				{
-					PRINTF("ADL2_OverdriveN_GPUClocks_Get is failed\n");
+					PRINTF("ADL2_OverdriveN_SystemClocksX2_Get is failed\n");
 				}
 				else
 				{
-					odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Default;
-					if (ADL_OK != ADL2_OverdriveN_SystemClocks_Set(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					if (ADL_OK != ADL2_OverdriveN_SystemClocksX2_Set(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
-						PRINTF("ADL2_OverdriveN_SystemClocks_Set is failed\n");
+						PRINTF("ADL2_OverdriveN_SystemClocksX2_Set is failed\n");
 					}
 					printODNSCLKParameters();
 				}
 
 				//Mem clocks reset
-				if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+				odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Default;
+				if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Get(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 				{
-					PRINTF("ADL2_OverdriveN_MemoryClocks_Get is failed\n");
+					PRINTF("ADL2_OverdriveN_MemoryClocksX2_Get is failed\n");
 				}
 				else
 				{
-					odPerformanceLevels->iMode = ADLODNControlType::ODNControlType_Default;
-					if (ADL_OK != ADL2_OverdriveN_MemoryClocks_Set(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
+					
+					if (ADL_OK != ADL2_OverdriveN_MemoryClocksX2_Set(context, lpAdapterInfo[ i ].iAdapterIndex, odPerformanceLevels))
 					{
-						PRINTF("ADL2_OverdriveN_MemoryClocks_Set is failed\n");
+						PRINTF("ADL2_OverdriveN_MemoryClocksX2_Set is failed\n");
 					}
 					printODNMCLKParameters();
 				}
@@ -1070,6 +1295,8 @@ int resetODSettings()
 					}
 					printODNTEMPParameters();
 				}
+                if (NULL != performanceLevelsBuffer)
+                    delete[] performanceLevelsBuffer;
 				break;
 			}		
 		}
@@ -1085,9 +1312,7 @@ int main(int argc, char* argv[])
 	if (initializeADL())
 	{
 		if (argc > 1)
-		{	 
-
-
+		{
 			// Obtain the number of adapters for the system
 			if (ADL_OK != ADL_Adapter_NumberOfAdapters_Get(&iNumberAdapters))
 			{
@@ -1112,7 +1337,7 @@ int main(int argc, char* argv[])
 					else if (argc == 5)
 						setODNSCLKParameters(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
 					else 
-						printf ("signature of SClock Set (ODNEXT.exe g X Y Z); X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range");
+						printf ("signature of SClock Set (ODNEXT.exe g X Y Z); X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range");
 					break;				
 				case 'm':
 					if (argc == 2)
@@ -1120,7 +1345,7 @@ int main(int argc, char* argv[])
 					else if (argc == 5)
 						setODNMCLKParameters(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
 					else 
-						printf ("signature of Memory Set (ODNEXT.exe m X Y Z); X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range");
+						printf ("signature of Memory Set (ODNEXT.exe m X Y Z); X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range");
 					break;
 					break;
 				case 'f':
@@ -1144,13 +1369,29 @@ int main(int argc, char* argv[])
 					break;
 				case 'r':
 					resetODSettings();
-					break;				
+					break;
+                case 'l':
+                    if (argc == 2)
+                        printODNTIMINGLEVELParameters();
+                    else if (argc == 3)
+                        setODNTIMINGLEVELParameters(atoi(argv[2]));
+                    else
+                        printf("signature of Memory Timing Level Set (ODNEXT.exe l X); X - Expected Levle");
+                    break;
+                case 'z':
+                    if (argc == 2)
+                        printODNZERORPMParameters();
+                    else if (argc == 3)
+                        setODNZERORPMParameters(atoi(argv[2]));
+                    else
+                        printf("signature of Zero RPM Fan Set (ODNEXT.exe z X); X - Expected Zero RPM value");
+                    break;
 				default:
 					printf ("Available command line parameters: f- Fan, g-GPU clocks, t-temp, m-Memory Clocks, a- Activity, r-reset \n ");
 					printf ("SClocks Get :  ODNEXT.exe g\n");
-					printf ("SClocks Set :  ODNEXT.exe g X Y Z; X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range \n");
+					printf ("SClocks Set :  ODNEXT.exe g X Y Z; X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range \n");
 					printf ("MClocks Get :  ODNEXT.exe m\n");
-					printf ("MClocks Set :  ODNEXT.exe m X Y Z; X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range\n");
+					printf ("MClocks Set :  ODNEXT.exe m X Y Z; X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range\n");
 					printf ("FAN Get :  ODNEXT.exe f\n");
 					printf ("FAN Set :  ODNEXT.exe f X Y; X - (1: Minimum Fan Speed, 2: Target Fan Speed, 3: Minimum Performance, 4: Target Temp), Y - Expected value should be in min max range\n");
 					printf ("Temp Get :  ODNEXT.exe t\n");
@@ -1159,17 +1400,14 @@ int main(int argc, char* argv[])
 					printf ("OD Reset :  ODNEXT.exe r\n");
 					break;
 			}
-
-
-
 		}
 		else
 		{
 					printf ("Available command line parameters: f- Fan, g-GPU clocks, t-temp, m-Memory Clocks, a- Activity, r-reset \n");
 					printf ("SClocks Get :  ODNEXT.exe g\n");
-					printf ("SClocks Set :  ODNEXT.exe g X Y Z; X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range \n");
+					printf ("SClocks Set :  ODNEXT.exe g X Y Z; X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range \n");
 					printf ("MClocks Get :  ODNEXT.exe m\n");
-					printf ("MClocks Set :  ODNEXT.exe m X Y Z; X - Level, Y - (1: Clock, 2: Voltage), Z - Expected value should be in min max range\n");
+					printf ("MClocks Set :  ODNEXT.exe m X Y Z; X - Level, Y - (1: Clock, 2: Voltage, 3: DPM state), Z - Expected value should be in min max range\n");
 					printf ("FAN Get :  ODNEXT.exe f\n");
 					printf ("FAN Set :  ODNEXT.exe f X Y; X - (1: Minimum Fan Speed, 2: Target Fan Speed, 3: Minimum Performance, 4: Target Temp), Y - Expected value should be in min max range\n");
 					printf ("Temp Get :  ODNEXT.exe t\n");

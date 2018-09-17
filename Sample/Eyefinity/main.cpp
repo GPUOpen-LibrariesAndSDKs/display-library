@@ -15,54 +15,44 @@
 
 int main (int c,char* k[],char* s[])
 {
-	// iOSDisplayID maps to the iDevNum input variable used by Windows to identify a display using the EnumDisplayDevices() API
-	char OSDisplayName[DISPLAY_NAME_LEN];
+	char OSDisplayName[DISPLAY_NAME_LEN];	
+    int iNumDisplaysInfo = 0;
 	EyefinityInfoStruct eyefinityInfo = {0};
-	int iNumDisplaysInfo;
 	DisplayInfoStruct *pDisplaysInfo = NULL;
 	
 	 // Get the default active display
  	int iDevNum = 0;
-	DISPLAY_DEVICE displayDevice;
 	int dwFlags = 0;
+	DISPLAY_DEVICE displayDevice;
 
-	 memset(&OSDisplayName,'\0',DISPLAY_NAME_LEN);
-	
+    memset(&OSDisplayName,'\0', DISPLAY_NAME_LEN);
 	displayDevice.cb = sizeof(displayDevice);
 
-	while ( EnumDisplayDevices(0, iDevNum, &displayDevice, 0) )
-	{
-		if (0 != (displayDevice.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE) )
-		{
-			memcpy(OSDisplayName, displayDevice.DeviceName,DISPLAY_NAME_LEN);
+	while ( EnumDisplayDevices(0, iDevNum, &displayDevice, 0) ) {
+		if (0 != (displayDevice.StateFlags & DISPLAY_DEVICE_PRIMARY_DEVICE) ) {
+			memcpy(OSDisplayName, displayDevice.DeviceName, DISPLAY_NAME_LEN);
 			break;
 		}
 		iDevNum++;
 	}
 
-
 	// Find out if this display has an Eyefinity config enabled
-	if ( TRUE == atiEyefinityGetConfigInfo( OSDisplayName, &eyefinityInfo, &iNumDisplaysInfo, &pDisplaysInfo ) )
-	{
-		if ( TRUE == eyefinityInfo.iSLSActive )
-		{
+	if (TRUE == atiEyefinityGetConfigInfo( OSDisplayName, &eyefinityInfo, &iNumDisplaysInfo, &pDisplaysInfo )) {
+		if (TRUE == eyefinityInfo.iSLSActive) {
 			int iCurrentDisplaysInfo = 0;
 
 			printf ( "\nEYEFINITY ENABLED for display name %s:\n", OSDisplayName);
 			printf ( " SLS grid is %i displays wide by %i displays tall.\n", eyefinityInfo.iSLSGridWidth, eyefinityInfo.iSLSGridHeight );
 			printf ( " SLS resolution is %ix%i pixels.\n", eyefinityInfo.iSLSWidth, eyefinityInfo.iSLSHeight );
 
-			if ( TRUE == eyefinityInfo.iBezelCompensatedDisplay )
-			{
+			if (TRUE == eyefinityInfo.iBezelCompensatedDisplay ) {
 				printf ( " SLS is bezel-compensated.\n" );
 			}
 
-			for ( iCurrentDisplaysInfo=0; iCurrentDisplaysInfo<iNumDisplaysInfo; iCurrentDisplaysInfo++ )
-			{
+			for ( iCurrentDisplaysInfo = 0; iCurrentDisplaysInfo < iNumDisplaysInfo; iCurrentDisplaysInfo++ ) {
 				printf ( "\nDisplay %i\n", iCurrentDisplaysInfo);
 
-				if ( TRUE == pDisplaysInfo[iCurrentDisplaysInfo].iPreferredDisplay )
-				{
+				if ( TRUE == pDisplaysInfo[iCurrentDisplaysInfo].iPreferredDisplay ) {
 					printf ( " Preferred/main monitor\n");
 				}
 
@@ -73,17 +63,14 @@ int main (int c,char* k[],char* s[])
 				printf ( " Visible dimensions [%ix%i]\n", pDisplaysInfo[iCurrentDisplaysInfo].displayRectVisible.iWidth, pDisplaysInfo[iCurrentDisplaysInfo].displayRectVisible.iHeight );
 			}
 		}
-		else
-		{
+		else {
 			printf ( "\nEYEFINITY DISABLED for display name %s.\n", OSDisplayName);
 		}
-
-		atiEyefinityReleaseConfigInfo ( &pDisplaysInfo );
-	}
-	else
-	{
+	} else {
 		printf ( "Eyefinity configuration query failed for display name %s.\n", OSDisplayName);
-	}
-
+	}        
+    if (iNumDisplaysInfo > 0) {
+        atiEyefinityReleaseConfigInfo(&pDisplaysInfo);
+    }
     return 0;
 }

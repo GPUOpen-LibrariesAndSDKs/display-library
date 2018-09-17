@@ -1299,7 +1299,7 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The bit mask identifies PX schemes for ADLPXSchemeRange.  <a href="group__define__powerxpress__constants.html#g4bf6f6b6c14a1b08558cb70a1547e265"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__powerxpress__constants.html#g824e7087648682b6d71e14e22b174e35">ADL_PX_SCHEMEMASK_DYNAMIC</a>&nbsp;&nbsp;&nbsp;0x0002</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__appprofiles.html#g42777ea6b4bf619157d423736992c107">ADL_APP_PROFILE_FILENAME_LENGTH</a>&nbsp;&nbsp;&nbsp;64</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__appprofiles.html#g42777ea6b4bf619157d423736992c107">ADL_APP_PROFILE_FILENAME_LENGTH</a>&nbsp;&nbsp;&nbsp;256</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__appprofiles.html#ge76d961486101d74d1d773a0882dc11b">ADL_APP_PROFILE_TIMESTAMP_LENGTH</a>&nbsp;&nbsp;&nbsp;32</td></tr>
 
@@ -1480,6 +1480,11 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__FreesyncFlags.html#g67f76e77006ca198d5ac823fd4bac3cc">ADL_HDR_FREESYNC_BACKLIGHT_SUPPORT</a>&nbsp;&nbsp;&nbsp;0x0001</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Global backlight control supported.  <a href="group__define__FreesyncFlags.html#g67f76e77006ca198d5ac823fd4bac3cc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__FreesyncFlags.html#ge45d534958e375b220dc375d8099269c">ADL_HDR_FREESYNC_LOCAL_DIMMING</a>&nbsp;&nbsp;&nbsp;0x0002</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__source__content__flags.html#gefeda62766df5ef20d225f99b254ebb3">ADL_SCA_LOCAL_DIMMING_DISABLE</a>&nbsp;&nbsp;&nbsp;0x0001</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__dbd__state.html#gb5b429de412a794115b0b63e749fbc80">ADL_DEEPBITDEPTH_FORCEOFF</a>&nbsp;&nbsp;&nbsp;0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">defines for ADL_Workstation_DeepBitDepth_Get and ADL_Workstation_DeepBitDepth_Set functions  <a href="group__define__dbd__state.html#gb5b429de412a794115b0b63e749fbc80"></a><br></td></tr>
@@ -1639,6 +1644,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__overdrive__EventCounter__type.html#g52eea84109ed0057eddf2d6c8d3cfd1b">ADL_ODN_EVENTCOUNTER_THERMAL</a>&nbsp;&nbsp;&nbsp;0</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__overdrive__EventCounter__type.html#ge055bb2d016c8428e99d891414a407c9">ADL_ODN_EVENTCOUNTER_VPURECOVERY</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g8d76d1d1b2d45ad55c3230e37471540c">ADL_PMLOG_MAX_SENSORS</a>&nbsp;&nbsp;&nbsp;256</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__ecc__mode__states.html#g7a9924b40e04e1c8f77a3297f0921bc1">ECC_MODE_OFF</a>&nbsp;&nbsp;&nbsp;0</td></tr>
 
@@ -1982,6 +1989,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <br class="typebreak">
 <a class="el" href="group__define__appprofiles.html#gb2cd5bf862b57775c5ac4fbfc14af407">_ADLProfilePropertyType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__appprofiles.html#g76ca60f4d591e80f1e4a31b419bb7c8e">ADLProfilePropertyType</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handle can be used to create Device Handle when using CreateDevice().  <a href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__thread__model.html#gdeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> { <a class="el" href="group__thread__model.html#ggdeb9a4d7042d1392f490d90a952f1900f89698b9054be257c5ecb20070e9151f">ADL_THREADING_UNLOCKED</a> =  0, 
 <a class="el" href="group__thread__model.html#ggdeb9a4d7042d1392f490d90a952f1900ea73eff1aa0c869612d887eeb0b324b1">ADL_THREADING_LOCKED</a>
@@ -2109,6 +2119,54 @@
 <a class="el" href="group__DEFINES.html#ggc07803d19d5f634dda7186c9e2b596cb648fce99d5590f73f083b5cd1f93b0fc">ODNControlType_Default</a>, 
 <a class="el" href="group__DEFINES.html#ggc07803d19d5f634dda7186c9e2b596cb4d9fa49a9ebea43d0a7b4d8127800cf2">ODNControlType_Auto</a>, 
 <a class="el" href="group__DEFINES.html#ggc07803d19d5f634dda7186c9e2b596cb1de73248bf9b8bbce3eb93f692b6697b">ODNControlType_Manual</a>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#gae2f909e57c202737d6aa255a42c0aa7">ADLODNDPMMaskType</a> { <a class="el" href="group__DEFINES.html#ggae2f909e57c202737d6aa255a42c0aa7ba516e08cacd35097ba7ad5208fcd285">ADL_ODN_DPM_CLOCK</a> =  1 &lt;&lt; 0, 
+<a class="el" href="group__DEFINES.html#ggae2f909e57c202737d6aa255a42c0aa7c646119d8e1ac0c895fee8ca9db965a3">ADL_ODN_DPM_VDDC</a> =  1 &lt;&lt; 1, 
+<a class="el" href="group__DEFINES.html#ggae2f909e57c202737d6aa255a42c0aa767621c76f52e6faedc64265c5aab956b">ADL_ODN_DPM_MASK</a> =  1 &lt;&lt; 2
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#gf302c85d47bbf0e8b047b08156842655">ADLODNFeatureControl</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426559623720425c1e4893905352b7a0d470a">ADL_ODN_SCLK_DPM</a> =  1 &lt;&lt; 0, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265543b5a7362ee2dc2ae445d3471a1f6566">ADL_ODN_MCLK_DPM</a> =  1 &lt;&lt; 1, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426551b89cd1fc916f2009cc6545140e9e8bf">ADL_ODN_SCLK_VDD</a> =  1 &lt;&lt; 2, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655be7cead4a9fc596b5fbd113d2cae1ff7">ADL_ODN_MCLK_VDD</a> =  1 &lt;&lt; 3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655b41b8091d3bdb720fd75a09ad201ba7d">ADL_ODN_FAN_SPEED_MIN</a> =  1 &lt;&lt; 4, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265592e857ab62adb6e46a01ceae49c35556">ADL_ODN_FAN_SPEED_TARGET</a> =  1 &lt;&lt; 5, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655e9fdad5293b4cb755cc9d71816b17ebf">ADL_ODN_ACOUSTIC_LIMIT_SCLK</a> =  1 &lt;&lt; 6, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655c55b86a1d6869879817eab6e789b0f32">ADL_ODN_TEMPERATURE_FAN_MAX</a> =  1 &lt;&lt; 7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426558ab79e169d52796c617308c0677d6442">ADL_ODN_TEMPERATURE_SYSTEM</a> =  1 &lt;&lt; 8, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426555a3acbdf1a15a513ef13d8834c183bc1">ADL_ODN_POWER_LIMIT</a> =  1 &lt;&lt; 9, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655be5389506b29785a7b5f41b113506964">ADL_ODN_SCLK_AUTO_LIMIT</a> =  1 &lt;&lt; 10, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426553c29976dc0902e5984e8c60d117ae362">ADL_ODN_MCLK_AUTO_LIMIT</a> =  1 &lt;&lt; 11, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655343144c5cc94275bf1086cc1798988d4">ADL_ODN_SCLK_DPM_MASK_ENABLE</a> =  1 &lt;&lt; 12, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655386d60b44666aa9c8d536d2499b5f279">ADL_ODN_MCLK_DPM_MASK_ENABLE</a> =  1 &lt;&lt; 13, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265510b21fdbe7122b0cf5ab0d16a0b84e23">ADL_ODN_MCLK_UNDERCLOCK_ENABLE</a> =  1 &lt;&lt; 14, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426554bc31da490113a29f0ccdea2f9354543">ADL_ODN_SCLK_DPM_THROTTLE_NOTIFY</a> =  1 &lt;&lt; 15, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b081568426556fad1d437217a46a0957044e9224eda2">ADL_ODN_POWER_UTILIZATION</a> =  1 &lt;&lt; 16, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265565517f51f3ced8b206a87b34f55e7ced">ADL_ODN_PERF_TUNING_SLIDER</a> =  1 &lt;&lt; 17, 
+<a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655ee7fa0a4e9da2ed0e3bb0c5f5a45e61e">ADL_ODN_REMOVE_WATTMAN_PAGE</a> =  1 &lt;&lt; 31
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#ge0a778de19b82ceb18a3b8a0b3c66d46">ADLOD8FeatureControl</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46354e9023fd58eef07c0b8a8493003501">ADL_OD8_GFXCLK_LIMITS</a> =  1 &lt;&lt; 0, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d466a497d31406f2fac59aecd1f46748a2c">ADL_OD8_GFXCLK_CURVE</a> =  1 &lt;&lt; 1, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46b73b7183896dedecb7118a10c70ff614">ADL_OD8_UCLK_MAX</a> =  1 &lt;&lt; 2, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4674e5395ca8bf8a038294757c0650c212">ADL_OD8_POWER_LIMIT</a> =  1 &lt;&lt; 3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d468574d6beecd842354ff6ef1f2d0c0d8f">ADL_OD8_ACOUSTIC_LIMIT_SCLK</a> =  1 &lt;&lt; 4, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46b5515dd0181517ef22c182c5b79f2606">ADL_OD8_FAN_SPEED_MIN</a> =  1 &lt;&lt; 5, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c54e5488ddd475db38a4df3a6d2eacdf">ADL_OD8_TEMPERATURE_FAN</a> =  1 &lt;&lt; 6, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d460ab2eb2e81cbdef0d4dbb60a8015e54e">ADL_OD8_TEMPERATURE_SYSTEM</a> =  1 &lt;&lt; 7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46cfba7566d70d1bdb7d75dd6077e48928">ADL_OD8_MEMORY_TIMING_TUNE</a> =  1 &lt;&lt; 8, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c5795aa5f7dd2a18046fef1531bcb211">ADL_OD8_FAN_ZERO_RPM_CONTROL</a> =  1 &lt;&lt; 9
+<br>
  }</td></tr>
 
 </table>

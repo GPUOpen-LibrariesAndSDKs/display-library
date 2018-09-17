@@ -33,54 +33,44 @@
 <span class="preprocessor"></span>
 <span class="keywordtype">int</span> main (<span class="keywordtype">int</span> c,<span class="keywordtype">char</span>* k[],<span class="keywordtype">char</span>* s[])
 {
-        <span class="comment">// iOSDisplayID maps to the iDevNum input variable used by Windows to identify a display using the EnumDisplayDevices() API</span>
-        <span class="keywordtype">char</span> OSDisplayName[DISPLAY_NAME_LEN];
+        <span class="keywordtype">char</span> OSDisplayName[DISPLAY_NAME_LEN];   
+    <span class="keywordtype">int</span> iNumDisplaysInfo = 0;
         EyefinityInfoStruct eyefinityInfo = {0};
-        <span class="keywordtype">int</span> iNumDisplaysInfo;
         DisplayInfoStruct *pDisplaysInfo = NULL;
         
          <span class="comment">// Get the default active display</span>
         <span class="keywordtype">int</span> iDevNum = 0;
-        DISPLAY_DEVICE displayDevice;
         <span class="keywordtype">int</span> dwFlags = 0;
+        DISPLAY_DEVICE displayDevice;
 
-         memset(&amp;OSDisplayName,<span class="charliteral">'\0'</span>,DISPLAY_NAME_LEN);
-        
+    memset(&amp;OSDisplayName,<span class="charliteral">'\0'</span>, DISPLAY_NAME_LEN);
         displayDevice.cb = <span class="keyword">sizeof</span>(displayDevice);
 
-        <span class="keywordflow">while</span> ( EnumDisplayDevices(0, iDevNum, &amp;displayDevice, 0) )
-        {
-                <span class="keywordflow">if</span> (0 != (displayDevice.StateFlags &amp; DISPLAY_DEVICE_PRIMARY_DEVICE) )
-                {
-                        memcpy(OSDisplayName, displayDevice.DeviceName,DISPLAY_NAME_LEN);
+        <span class="keywordflow">while</span> ( EnumDisplayDevices(0, iDevNum, &amp;displayDevice, 0) ) {
+                <span class="keywordflow">if</span> (0 != (displayDevice.StateFlags &amp; DISPLAY_DEVICE_PRIMARY_DEVICE) ) {
+                        memcpy(OSDisplayName, displayDevice.DeviceName, DISPLAY_NAME_LEN);
                         <span class="keywordflow">break</span>;
                 }
                 iDevNum++;
         }
 
-
         <span class="comment">// Find out if this display has an Eyefinity config enabled</span>
-        <span class="keywordflow">if</span> ( TRUE == atiEyefinityGetConfigInfo( OSDisplayName, &amp;eyefinityInfo, &amp;iNumDisplaysInfo, &amp;pDisplaysInfo ) )
-        {
-                <span class="keywordflow">if</span> ( TRUE == eyefinityInfo.iSLSActive )
-                {
+        <span class="keywordflow">if</span> (TRUE == atiEyefinityGetConfigInfo( OSDisplayName, &amp;eyefinityInfo, &amp;iNumDisplaysInfo, &amp;pDisplaysInfo )) {
+                <span class="keywordflow">if</span> (TRUE == eyefinityInfo.iSLSActive) {
                         <span class="keywordtype">int</span> iCurrentDisplaysInfo = 0;
 
                         printf ( <span class="stringliteral">"\nEYEFINITY ENABLED for display name %s:\n"</span>, OSDisplayName);
                         printf ( <span class="stringliteral">" SLS grid is %i displays wide by %i displays tall.\n"</span>, eyefinityInfo.iSLSGridWidth, eyefinityInfo.iSLSGridHeight );
                         printf ( <span class="stringliteral">" SLS resolution is %ix%i pixels.\n"</span>, eyefinityInfo.iSLSWidth, eyefinityInfo.iSLSHeight );
 
-                        <span class="keywordflow">if</span> ( TRUE == eyefinityInfo.iBezelCompensatedDisplay )
-                        {
+                        <span class="keywordflow">if</span> (TRUE == eyefinityInfo.iBezelCompensatedDisplay ) {
                                 printf ( <span class="stringliteral">" SLS is bezel-compensated.\n"</span> );
                         }
 
-                        <span class="keywordflow">for</span> ( iCurrentDisplaysInfo=0; iCurrentDisplaysInfo&lt;iNumDisplaysInfo; iCurrentDisplaysInfo++ )
-                        {
+                        <span class="keywordflow">for</span> ( iCurrentDisplaysInfo = 0; iCurrentDisplaysInfo &lt; iNumDisplaysInfo; iCurrentDisplaysInfo++ ) {
                                 printf ( <span class="stringliteral">"\nDisplay %i\n"</span>, iCurrentDisplaysInfo);
 
-                                <span class="keywordflow">if</span> ( TRUE == pDisplaysInfo[iCurrentDisplaysInfo].iPreferredDisplay )
-                                {
+                                <span class="keywordflow">if</span> ( TRUE == pDisplaysInfo[iCurrentDisplaysInfo].iPreferredDisplay ) {
                                         printf ( <span class="stringliteral">" Preferred/main monitor\n"</span>);
                                 }
 
@@ -91,18 +81,15 @@
                                 printf ( <span class="stringliteral">" Visible dimensions [%ix%i]\n"</span>, pDisplaysInfo[iCurrentDisplaysInfo].displayRectVisible.iWidth, pDisplaysInfo[iCurrentDisplaysInfo].displayRectVisible.iHeight );
                         }
                 }
-                <span class="keywordflow">else</span>
-                {
+                <span class="keywordflow">else</span> {
                         printf ( <span class="stringliteral">"\nEYEFINITY DISABLED for display name %s.\n"</span>, OSDisplayName);
                 }
-
-                atiEyefinityReleaseConfigInfo ( &amp;pDisplaysInfo );
-        }
-        <span class="keywordflow">else</span>
-        {
+        } <span class="keywordflow">else</span> {
                 printf ( <span class="stringliteral">"Eyefinity configuration query failed for display name %s.\n"</span>, OSDisplayName);
-        }
-
+        }        
+    <span class="keywordflow">if</span> (iNumDisplaysInfo &gt; 0) {
+        atiEyefinityReleaseConfigInfo(&amp;pDisplaysInfo);
+    }
     <span class="keywordflow">return</span> 0;
 }
 </pre></div> </div>

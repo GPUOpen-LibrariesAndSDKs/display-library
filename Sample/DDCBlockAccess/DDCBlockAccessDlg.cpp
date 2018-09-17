@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include <codecvt>
 #include "..\..\include\adl_sdk.h"
 #include "DDCBlockAccess.h"
 #include "DDCBlockAccessDlg.h"
@@ -113,10 +114,10 @@ int iInitDisplayNames(CString *aDriverNames)
 				iDisplayIndex = lpAdlDisplayInfo[ j ].displayID.iDisplayLogicalIndex;
 				aAllConnectedDisplays[ iAdapterIndex ] |= 1 << iDisplayIndex;
 
-				strncpy( MonitorNames[ j ], lpAdlDisplayInfo[ j ].strDisplayName, 127 );
+				strncpy_s( MonitorNames[ j ], lpAdlDisplayInfo[ j ].strDisplayName, 127 );
 			}
 			char tmp[4];
-			sprintf( tmp, "%d", lpAdapterInfo[ i ].iAdapterIndex );
+			sprintf_s( tmp, "%d", lpAdapterInfo[ i ].iAdapterIndex );
 			aDriverNames[i] = tmp;
 		}
 		return iNumberAdapters;
@@ -358,11 +359,11 @@ BOOL CDDCBlockAccessDlg::OnInitDialog()
   RefreshDisplayIndices ();
 
   // Init VCP combo box
-  cb_VCPCode.AddString("Luminance");
-  cb_VCPCode.AddString("Contrast");
-  cb_VCPCode.AddString("Color Temperature");
-  cb_VCPCode.AddString("Get Capabilities (Fixed)");
-  cb_VCPCode.AddString("Get Capabilities (Variable)");
+  cb_VCPCode.AddString(_T("Luminance"));
+  cb_VCPCode.AddString(_T("Contrast"));
+  cb_VCPCode.AddString(_T("Color Temperature"));
+  cb_VCPCode.AddString(_T("Get Capabilities (Fixed)"));
+  cb_VCPCode.AddString(_T("Get Capabilities (Variable)"));
   cb_VCPCode.SetCurSel(0);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -415,13 +416,13 @@ void CDDCBlockAccessDlg::RefreshDisplayIndices ()
   {
     if (ulDisplaysConnected & 0x1)
     {
-      UCHAR ucTemp[5];
-      sprintf((char*)ucTemp,"%d",j);
+      TCHAR ucTemp[5];
+      wsprintf(ucTemp,_T("%d"),j);
 
       //Add the display index to the combo box (AddString)
       //At the same time save the j into that entry (SetItemData)
       //j will be the display index corresponding to this entry
-      m_indexList.SetItemData (m_indexList.AddString((LPCTSTR)ucTemp), j);
+      m_indexList.SetItemData (m_indexList.AddString(ucTemp), j);
     }
     ulDisplaysConnected = ulDisplaysConnected>>1;
   }
@@ -430,8 +431,11 @@ void CDDCBlockAccessDlg::RefreshDisplayIndices ()
   int iDisplayIndex = (int)m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
 //  SetDlgItemText(IDC_EDIT_MONNAME, MonitorNames[ iDisplayIndex ] );
-  SetDlgItemText(IDC_EDIT_ANAME,  lpAdapterInfo[ iAdapterIndex ].strAdapterName );
-  SetDlgItemText(IDC_EDIT_DNAME,  lpAdapterInfo[ iAdapterIndex ].strDisplayName );
+  std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+  std::wstring wideAdapterName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strAdapterName);
+  std::wstring wideDisplayName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strDisplayName);
+  SetDlgItemText(IDC_EDIT_ANAME, wideAdapterName.c_str());
+  SetDlgItemText(IDC_EDIT_DNAME, wideDisplayName.c_str());
 
   // Read the EDID of the first display
   OnCbnSelchangeComboDisplayindex();
@@ -452,7 +456,7 @@ void CDDCBlockAccessDlg::OnBnClickedOk()
 void CDDCBlockAccessDlg::OnBnClickedButtonGet()
 {
   UINT ulMax=0, ulCur=0;
-  UCHAR ucBuffer [16];
+  TCHAR ucBuffer [16];
   int iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   int iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
@@ -460,13 +464,13 @@ void CDDCBlockAccessDlg::OnBnClickedButtonGet()
   {
     if (vGetCapabilitiesCommand(ucGlobalVcp, iAdapterIndex, iDisplayIndex))
     {
-      SetDlgItemText(IDC_EDIT_MAX,"PASS");
-      SetDlgItemText(IDC_EDIT_CURRENT,"PASS");
+      SetDlgItemText(IDC_EDIT_MAX,_T("PASS"));
+      SetDlgItemText(IDC_EDIT_CURRENT,_T("PASS"));
     }
     else
     {
-      SetDlgItemText(IDC_EDIT_MAX,"FAIL");
-      SetDlgItemText(IDC_EDIT_CURRENT,"FAIL");
+      SetDlgItemText(IDC_EDIT_MAX,_T("FAIL"));
+      SetDlgItemText(IDC_EDIT_CURRENT,_T("FAIL"));
     }
   }
   else
@@ -475,23 +479,23 @@ void CDDCBlockAccessDlg::OnBnClickedButtonGet()
 
     ulMax &= 0x0ffff;
     ulCur &= 0x0ffff;
-    sprintf((char*)ucBuffer,"0x%x",ulMax);
-    SetDlgItemText(IDC_EDIT_MAX,(LPCTSTR)ucBuffer);
-    sprintf((char*)ucBuffer,"0x%x",ulCur);
-    SetDlgItemText(IDC_EDIT_CURRENT,(LPCTSTR)ucBuffer);
+    wsprintf(ucBuffer,_T("0x%x"),ulMax);
+    SetDlgItemText(IDC_EDIT_MAX,ucBuffer);
+    wsprintf(ucBuffer,_T("0x%x"),ulCur);
+    SetDlgItemText(IDC_EDIT_CURRENT,ucBuffer);
   }
 }
 
 void CDDCBlockAccessDlg::OnBnClickedButtonSet()
 {
   UINT ulCur=0;
-  UCHAR ucBuffer[255];
+  TCHAR ucBuffer[255];
   int iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   int iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
-  if( GetDlgItemText(IDC_EDIT_CURRENT,(LPTSTR)ucBuffer,10) > 0 )
+  if( GetDlgItemText(IDC_EDIT_CURRENT,ucBuffer,10) > 0 )
   {
-    if( sscanf((char*)ucBuffer,"%x",&(ulCur)) > 0 )
+      if (_stscanf_s(ucBuffer, _T("%x"), &(ulCur)) > 0)
     {
       vSetVcpCommand(ucGlobalVcp,ulCur, iAdapterIndex, iDisplayIndex);
     }
@@ -544,9 +548,9 @@ void CDDCBlockAccessDlg::OnCbnSelchangeComboVcpcode()
 
 void CDDCBlockAccessDlg::OnCbnSelchangeComboDisplayindex()
 {
-  char hexBuffer[1000];
-  char tBuffer[ 1000 ];
-  char cTemp[4];
+  TCHAR hexBuffer[1000*2];
+  TCHAR tBuffer[1000*2];
+  TCHAR cTemp[4*2];
   unsigned char ucSymbol;
   int iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   int iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
@@ -557,38 +561,40 @@ void CDDCBlockAccessDlg::OnCbnSelchangeComboDisplayindex()
   aBlockOutput.iSize   = sizeof(ADLDisplayEDIDData);
   aBlockOutput.iBlockIndex = 0; //First block
   
-  SetDlgItemText(IDC_EDIT_MONNAME, MonitorNames[ iDisplayIndex ] );
+  std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
+  std::wstring wideChar = conv.from_bytes(MonitorNames[iDisplayIndex]);
+  SetDlgItemText(IDC_EDIT_MONNAME, wideChar.c_str());
 
   //Call ADL to get the EDID
   adlprocs.ADL_Display_EdidData_Get(iAdapterIndex, iDisplayIndex, &aBlockOutput);
 
   //Printout
-  strcpy( hexBuffer,"");
-  strcpy( tBuffer,"");
+  _tcscpy_s(hexBuffer, _T(""));
+  _tcscpy_s(tBuffer, _T(""));
   for (int i = 0; i < aBlockOutput.iEDIDSize ; i++)
   {
     //Newline every 8 bytes
     if (i != 0 && i% 8 == 0)
 	{
-      strcat( hexBuffer,"\r\n");
-      strcat( tBuffer,"\r\n");
+        _tcscat_s(hexBuffer, _T("\r\n"));
+        _tcscat_s(tBuffer, _T("\r\n"));
 	}
 
     //add the byte to the buffer string
 	ucSymbol = (unsigned char)aBlockOutput.cEDIDData[i];
-    sprintf( cTemp," %.2x", ucSymbol );
-    strcat( hexBuffer, cTemp);
+    wsprintf( cTemp,_T(" %.2x"), ucSymbol );
+    _tcscat_s(hexBuffer, cTemp);
 
     if ( ucSymbol < 0x20 )			// Mask control characters
 		ucSymbol |= 0x20;
 
-	sprintf( cTemp," %c", ucSymbol );
-    strcat( tBuffer, cTemp);
+    wsprintf(cTemp, _T(" %c"), ucSymbol);
+    _tcscat_s(tBuffer, cTemp);
   }
 
-  //Print to Edit box
-  SetDlgItemText(IDC_EDIT_RAWEDID, (LPCTSTR)hexBuffer);
-  SetDlgItemText(IDC_EDIT_TEXTEDID, (LPCTSTR)tBuffer);
+  //Print to Edit box  
+  SetDlgItemText(IDC_EDIT_RAWEDID, hexBuffer);
+  SetDlgItemText(IDC_EDIT_TEXTEDID, tBuffer);
 }
 
 void CDDCBlockAccessDlg::OnCbnSelchangeComboDriverindex()
@@ -608,11 +614,11 @@ bool InitADL()
 	int	ADL_Err = ADL_ERR;
   if (!adlprocs.hModule)
   {
-    adlprocs.hModule = LoadLibrary("atiadlxx.dll");
+    adlprocs.hModule = LoadLibrary(_T("atiadlxx.dll"));
     // A 32 bit calling application on 64 bit OS will fail to LoadLIbrary.
     // Try to load the 32 bit library (atiadlxy.dll) instead
     if (adlprocs.hModule == NULL)
-      adlprocs.hModule = LoadLibrary("atiadlxy.dll");
+      adlprocs.hModule = LoadLibrary(_T("atiadlxy.dll"));
 
     if(adlprocs.hModule)
     {
@@ -634,7 +640,7 @@ bool InitADL()
 		adlprocs.ADL_Display_DDCBlockAccess_Get   == NULL || 
 		adlprocs.ADL_Display_EdidData_Get   == NULL ) 
     {
-      AfxMessageBox("Error: ADL initialization failed! This app will NOT work!", MB_OK, 0);
+      AfxMessageBox(_T("Error: ADL initialization failed! This app will NOT work!"), MB_OK, 0);
       return false;
     }
 	// Initialize ADL with second parameter = 1, which means: Get the info for only currently active adapters!

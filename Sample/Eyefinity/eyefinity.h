@@ -10,6 +10,11 @@
 #ifndef EYEFINITY_H_
 #define EYEFINITY_H_
 
+#include "..\..\include\adl_sdk.h"
+#include <vector>
+
+using std::vector;
+
 typedef struct _SimpleRectStruct {
 
 	int iXOffset;
@@ -76,6 +81,161 @@ typedef struct _DisplayInfoStruct {
 	                       // defined by this rect.
 
 } DisplayInfoStruct;
+
+class TopologyDisplay
+{
+private:
+    ADLDisplayID DisplayID_;
+    
+    // Angle, relative to desktop
+    int Angle_;
+
+    // Size
+    int Width_;
+    int Height_;
+
+    // Position relative to the Desktop
+    int Left_;
+    int Top_;
+
+    //TODO: position in the SLS grid (row/column; 0-based)
+    int Row_;
+    int Col_;
+
+    // the badge ID is a number that allows a single monitor/display to be identified to user
+    int BadgeID_;
+
+public:
+    // Default c-tor
+    TopologyDisplay() :
+        DisplayID_(),
+        Angle_(0),
+        Width_(0),
+        Height_(0),
+        Left_(0),
+        Top_(0),
+        Row_(0),
+        Col_(0),
+        BadgeID_(0)
+    {
+    }
+
+    // Parameter constructor
+    // displayID - displayID
+    // angle_	- angle for this display relative to the desktop
+    // width_	- width for the display within its desktop
+    // height_	- height for the display within its desktop
+    // left_	- left position for the display relative to left of its desktop
+    // top_		- top position for the display relative to top of its desktop
+    // row_		- 0-based grid position (for SLS): row number
+    // col_		- 0-based grid position (for SLS): column number
+    // BadgeID_ - 0 : undefined, 0 < display badge number
+    TopologyDisplay(ADLDisplayID displayID_, int angle_,
+        int width_, int height_,
+        int left_, int top_, int row_, int col_) :
+        DisplayID_(displayID_),
+        Angle_(angle_),
+        Width_(width_),
+        Height_(height_),
+        Left_(left_),
+        Top_(top_),
+        Row_(row_),
+        Col_(col_),
+        BadgeID_(0)
+    {
+    }
+
+    // Copy c-tor
+    TopologyDisplay(const TopologyDisplay& other_) :
+        DisplayID_(other_.DisplayID_),
+        Angle_(other_.Angle_),
+        Width_(other_.Width_),
+        Height_(other_.Height_),
+        Left_(other_.Left_),
+        Top_(other_.Top_),
+        Row_(other_.Row_),
+        Col_(other_.Col_),
+        BadgeID_(other_.BadgeID_)
+    {
+    }
+
+    // Destructor
+    ~TopologyDisplay()
+    {
+    }
+
+    // move c-tor
+    TopologyDisplay(TopologyDisplay&& other_) :
+        DisplayID_(other_.DisplayID_),
+        Angle_(other_.Angle_),
+        Width_(other_.Width_),
+        Height_(other_.Height_),
+        Left_(other_.Left_),
+        Top_(other_.Top_),
+        Row_(other_.Row_),
+        Col_(other_.Col_),
+        BadgeID_(other_.BadgeID_)
+    {
+    }
+
+    // Copy assign operator
+    TopologyDisplay operator= (const TopologyDisplay& other_)
+    {
+        if (this != &other_)
+        {
+            //plain old data: copy other into us
+            DisplayID_ = other_.DisplayID_;
+            Angle_ = other_.Angle_;
+            Width_ = other_.Width_;
+            Height_ = other_.Height_;
+            Left_ = other_.Left_;
+            Top_ = other_.Top_;
+            Row_ = other_.Row_;
+            Col_ = other_.Col_;
+            BadgeID_ = other_.BadgeID_;
+        }
+        return *this;
+    }
+
+    // Move assign operator
+    TopologyDisplay operator= (const TopologyDisplay&& other_)
+    {
+        if (this != &other_)
+        {
+            DisplayID_ = other_.DisplayID_;
+            Angle_ = other_.Angle_;
+            Width_ = other_.Width_;
+            Height_ = other_.Height_;
+            Left_ = other_.Left_;
+            Top_ = other_.Top_;
+            Row_ = other_.Row_;
+            Col_ = other_.Col_;
+            BadgeID_ = other_.BadgeID_;
+        }
+        return *this;
+    }
+    //public getter methods
+    // Get displayID
+    ADLDisplayID DisplayID() const { return DisplayID_; }
+    // Get Angle, relative to desktop
+    int Angle() const { return Angle_; }
+    // Get Width
+    int Width() const { return Width_; }
+    // Get Height
+    int Height() const { return Height_; }
+    // Get left position relative to the Desktop
+    int Left() const { return Left_; }
+    // Get top position relative to the Desktop
+    int Top() const { return Top_; }
+    //Get row position in the SLS grid; 0-based
+    int Row() const { return Row_; }
+    //Get col position in the SLS grid; 0-based
+    int Col() const { return Col_; }
+    //Get badge number of desktop/display; 0 undefined;0 < display badge number
+    void SetBadgeID(int id) { BadgeID_ = id; }
+    //Get badge number of desktop/display; 0 undefined;0 < display badge number
+    int BadgeID() const { return BadgeID_; }
+};
 
 // Description
 //   Function used to query Eyefinity configuration state information relevant to ISVs. State info returned

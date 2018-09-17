@@ -24,6 +24,7 @@
 <span class="comment">//</span>
 
 <span class="preprocessor">#include "stdafx.h"</span>
+<span class="preprocessor">#include &lt;codecvt&gt;</span>
 <span class="preprocessor">#include "..\..\include\adl_sdk.h"</span>
 <span class="preprocessor">#include "DDCBlockAccess.h"</span>
 <span class="preprocessor">#include "DDCBlockAccessDlg.h"</span>
@@ -135,10 +136,10 @@ UCHAR ucGlobalVcp = VCP_CODE_BRIGHTNESS;
                                 iDisplayIndex = lpAdlDisplayInfo[ j ].<a name="a7"></a><a class="code" href="structADLDisplayInfo.html#d5c80e31651a63529680aff4aad8c399" title="The DisplayID structure.">displayID</a>.<a name="a8"></a><a class="code" href="structADLDisplayID.html#c1ab503151ff9ff329dff9701b71c96f" title="The logical display index belonging to this adapter.">iDisplayLogicalIndex</a>;
                                 aAllConnectedDisplays[ iAdapterIndex ] |= 1 &lt;&lt; iDisplayIndex;
 
-                                strncpy( MonitorNames[ j ], lpAdlDisplayInfo[ j ].strDisplayName, 127 );
+                                <a name="a9"></a><a class="code" href="secure__crt__linux_8h.html#fb9e900252aa4ece73ad42e4a6db7b95">strncpy_s</a>( MonitorNames[ j ], lpAdlDisplayInfo[ j ].strDisplayName, 127 );
                         }
                         <span class="keywordtype">char</span> tmp[4];
-                        sprintf( tmp, <span class="stringliteral">"%d"</span>, lpAdapterInfo[ i ].iAdapterIndex );
+                        sprintf_s( tmp, <span class="stringliteral">"%d"</span>, lpAdapterInfo[ i ].iAdapterIndex );
                         aDriverNames[i] = tmp;
                 }
                 <span class="keywordflow">return</span> iNumberAdapters;
@@ -380,11 +381,11 @@ BOOL CDDCBlockAccessDlg::OnInitDialog()
   RefreshDisplayIndices ();
 
   <span class="comment">// Init VCP combo box</span>
-  cb_VCPCode.AddString(<span class="stringliteral">"Luminance"</span>);
-  cb_VCPCode.AddString(<span class="stringliteral">"Contrast"</span>);
-  cb_VCPCode.AddString(<span class="stringliteral">"Color Temperature"</span>);
-  cb_VCPCode.AddString(<span class="stringliteral">"Get Capabilities (Fixed)"</span>);
-  cb_VCPCode.AddString(<span class="stringliteral">"Get Capabilities (Variable)"</span>);
+  cb_VCPCode.AddString(_T(<span class="stringliteral">"Luminance"</span>));
+  cb_VCPCode.AddString(_T(<span class="stringliteral">"Contrast"</span>));
+  cb_VCPCode.AddString(_T(<span class="stringliteral">"Color Temperature"</span>));
+  cb_VCPCode.AddString(_T(<span class="stringliteral">"Get Capabilities (Fixed)"</span>));
+  cb_VCPCode.AddString(_T(<span class="stringliteral">"Get Capabilities (Variable)"</span>));
   cb_VCPCode.SetCurSel(0);
 
         <span class="keywordflow">return</span> TRUE;  <span class="comment">// return TRUE  unless you set the focus to a control</span>
@@ -437,13 +438,13 @@ BOOL CDDCBlockAccessDlg::OnInitDialog()
   {
     <span class="keywordflow">if</span> (ulDisplaysConnected &amp; 0x1)
     {
-      UCHAR ucTemp[5];
-      sprintf((<span class="keywordtype">char</span>*)ucTemp,<span class="stringliteral">"%d"</span>,j);
+      TCHAR ucTemp[5];
+      wsprintf(ucTemp,_T(<span class="stringliteral">"%d"</span>),j);
 
       <span class="comment">//Add the display index to the combo box (AddString)</span>
       <span class="comment">//At the same time save the j into that entry (SetItemData)</span>
       <span class="comment">//j will be the display index corresponding to this entry</span>
-      m_indexList.SetItemData (m_indexList.AddString((LPCTSTR)ucTemp), j);
+      m_indexList.SetItemData (m_indexList.AddString(ucTemp), j);
     }
     ulDisplaysConnected = ulDisplaysConnected&gt;&gt;1;
   }
@@ -452,8 +453,11 @@ BOOL CDDCBlockAccessDlg::OnInitDialog()
   <span class="keywordtype">int</span> iDisplayIndex = (int)m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
 <span class="comment">//  SetDlgItemText(IDC_EDIT_MONNAME, MonitorNames[ iDisplayIndex ] );</span>
-  SetDlgItemText(IDC_EDIT_ANAME,  lpAdapterInfo[ iAdapterIndex ].strAdapterName );
-  SetDlgItemText(IDC_EDIT_DNAME,  lpAdapterInfo[ iAdapterIndex ].strDisplayName );
+  std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt; conv;
+  std::wstring wideAdapterName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strAdapterName);
+  std::wstring wideDisplayName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strDisplayName);
+  SetDlgItemText(IDC_EDIT_ANAME, wideAdapterName.c_str());
+  SetDlgItemText(IDC_EDIT_DNAME, wideDisplayName.c_str());
 
   <span class="comment">// Read the EDID of the first display</span>
   OnCbnSelchangeComboDisplayindex();
@@ -474,7 +478,7 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
 <span class="keywordtype">void</span> CDDCBlockAccessDlg::OnBnClickedButtonGet()
 {
   UINT ulMax=0, ulCur=0;
-  UCHAR ucBuffer [16];
+  TCHAR ucBuffer [16];
   <span class="keywordtype">int</span> iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   <span class="keywordtype">int</span> iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
@@ -482,13 +486,13 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
   {
     <span class="keywordflow">if</span> (vGetCapabilitiesCommand(ucGlobalVcp, iAdapterIndex, iDisplayIndex))
     {
-      SetDlgItemText(IDC_EDIT_MAX,<span class="stringliteral">"PASS"</span>);
-      SetDlgItemText(IDC_EDIT_CURRENT,<span class="stringliteral">"PASS"</span>);
+      SetDlgItemText(IDC_EDIT_MAX,_T(<span class="stringliteral">"PASS"</span>));
+      SetDlgItemText(IDC_EDIT_CURRENT,_T(<span class="stringliteral">"PASS"</span>));
     }
     <span class="keywordflow">else</span>
     {
-      SetDlgItemText(IDC_EDIT_MAX,<span class="stringliteral">"FAIL"</span>);
-      SetDlgItemText(IDC_EDIT_CURRENT,<span class="stringliteral">"FAIL"</span>);
+      SetDlgItemText(IDC_EDIT_MAX,_T(<span class="stringliteral">"FAIL"</span>));
+      SetDlgItemText(IDC_EDIT_CURRENT,_T(<span class="stringliteral">"FAIL"</span>));
     }
   }
   <span class="keywordflow">else</span>
@@ -497,23 +501,23 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
 
     ulMax &amp;= 0x0ffff;
     ulCur &amp;= 0x0ffff;
-    sprintf((<span class="keywordtype">char</span>*)ucBuffer,<span class="stringliteral">"0x%x"</span>,ulMax);
-    SetDlgItemText(IDC_EDIT_MAX,(LPCTSTR)ucBuffer);
-    sprintf((<span class="keywordtype">char</span>*)ucBuffer,<span class="stringliteral">"0x%x"</span>,ulCur);
-    SetDlgItemText(IDC_EDIT_CURRENT,(LPCTSTR)ucBuffer);
+    wsprintf(ucBuffer,_T(<span class="stringliteral">"0x%x"</span>),ulMax);
+    SetDlgItemText(IDC_EDIT_MAX,ucBuffer);
+    wsprintf(ucBuffer,_T(<span class="stringliteral">"0x%x"</span>),ulCur);
+    SetDlgItemText(IDC_EDIT_CURRENT,ucBuffer);
   }
 }
 
 <span class="keywordtype">void</span> CDDCBlockAccessDlg::OnBnClickedButtonSet()
 {
   UINT ulCur=0;
-  UCHAR ucBuffer[255];
+  TCHAR ucBuffer[255];
   <span class="keywordtype">int</span> iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   <span class="keywordtype">int</span> iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
 
-  <span class="keywordflow">if</span>( GetDlgItemText(IDC_EDIT_CURRENT,(LPTSTR)ucBuffer,10) &gt; 0 )
+  <span class="keywordflow">if</span>( GetDlgItemText(IDC_EDIT_CURRENT,ucBuffer,10) &gt; 0 )
   {
-    <span class="keywordflow">if</span>( sscanf((<span class="keywordtype">char</span>*)ucBuffer,<span class="stringliteral">"%x"</span>,&amp;(ulCur)) &gt; 0 )
+      <span class="keywordflow">if</span> (_stscanf_s(ucBuffer, _T(<span class="stringliteral">"%x"</span>), &amp;(ulCur)) &gt; 0)
     {
       vSetVcpCommand(ucGlobalVcp,ulCur, iAdapterIndex, iDisplayIndex);
     }
@@ -566,51 +570,53 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
 
 <span class="keywordtype">void</span> CDDCBlockAccessDlg::OnCbnSelchangeComboDisplayindex()
 {
-  <span class="keywordtype">char</span> hexBuffer[1000];
-  <span class="keywordtype">char</span> tBuffer[ 1000 ];
-  <span class="keywordtype">char</span> cTemp[4];
+  TCHAR hexBuffer[1000*2];
+  TCHAR tBuffer[1000*2];
+  TCHAR cTemp[4*2];
   <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ucSymbol;
   <span class="keywordtype">int</span> iAdapterIndex = (int) m_deviceList.GetItemData ( m_deviceList.GetCurSel() );
   <span class="keywordtype">int</span> iDisplayIndex = (int) m_indexList.GetItemData ( m_indexList.GetCurSel() );
   
   <span class="comment">//Setup structures for the ADL call</span>
-  <a name="_a9"></a><a class="code" href="structADLDisplayEDIDData.html" title="Structure containing information about EDID data.">ADLDisplayEDIDData</a>  aBlockOutput;
+  <a name="_a10"></a><a class="code" href="structADLDisplayEDIDData.html" title="Structure containing information about EDID data.">ADLDisplayEDIDData</a>  aBlockOutput;
   ZeroMemory(&amp;aBlockOutput, <span class="keyword">sizeof</span>(<a class="code" href="structADLDisplayEDIDData.html" title="Structure containing information about EDID data.">ADLDisplayEDIDData</a>));
-  aBlockOutput.<a name="a10"></a><a class="code" href="structADLDisplayEDIDData.html#cf14699a5a7d4c638a390e66d487e67f" title="Size of the structure.">iSize</a>   = <span class="keyword">sizeof</span>(<a class="code" href="structADLDisplayEDIDData.html" title="Structure containing information about EDID data.">ADLDisplayEDIDData</a>);
-  aBlockOutput.<a name="a11"></a><a class="code" href="structADLDisplayEDIDData.html#298363c49f53fad71f0b49642b7c3ef3" title="0, 1 or 2. If set to 3 or above an error ADL_ERR_INVALID_PARAM is generated">iBlockIndex</a> = 0; <span class="comment">//First block</span>
+  aBlockOutput.<a name="a11"></a><a class="code" href="structADLDisplayEDIDData.html#cf14699a5a7d4c638a390e66d487e67f" title="Size of the structure.">iSize</a>   = <span class="keyword">sizeof</span>(<a class="code" href="structADLDisplayEDIDData.html" title="Structure containing information about EDID data.">ADLDisplayEDIDData</a>);
+  aBlockOutput.<a name="a12"></a><a class="code" href="structADLDisplayEDIDData.html#298363c49f53fad71f0b49642b7c3ef3" title="0, 1 or 2. If set to 3 or above an error ADL_ERR_INVALID_PARAM is generated">iBlockIndex</a> = 0; <span class="comment">//First block</span>
   
-  SetDlgItemText(IDC_EDIT_MONNAME, MonitorNames[ iDisplayIndex ] );
+  std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt; conv;
+  std::wstring wideChar = conv.from_bytes(MonitorNames[iDisplayIndex]);
+  SetDlgItemText(IDC_EDIT_MONNAME, wideChar.c_str());
 
   <span class="comment">//Call ADL to get the EDID</span>
   adlprocs.ADL_Display_EdidData_Get(iAdapterIndex, iDisplayIndex, &amp;aBlockOutput);
 
   <span class="comment">//Printout</span>
-  strcpy( hexBuffer,<span class="stringliteral">""</span>);
-  strcpy( tBuffer,<span class="stringliteral">""</span>);
-  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; aBlockOutput.<a name="a12"></a><a class="code" href="structADLDisplayEDIDData.html#29313b35e72456a2a99bf7acb202dc2a" title="Size of cEDIDData. Set by ADL_Display_EdidData_Get() upon return.">iEDIDSize</a> ; i++)
+  _tcscpy_s(hexBuffer, _T(<span class="stringliteral">""</span>));
+  _tcscpy_s(tBuffer, _T(<span class="stringliteral">""</span>));
+  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; aBlockOutput.<a name="a13"></a><a class="code" href="structADLDisplayEDIDData.html#29313b35e72456a2a99bf7acb202dc2a" title="Size of cEDIDData. Set by ADL_Display_EdidData_Get() upon return.">iEDIDSize</a> ; i++)
   {
     <span class="comment">//Newline every 8 bytes</span>
     <span class="keywordflow">if</span> (i != 0 &amp;&amp; i% 8 == 0)
         {
-      strcat( hexBuffer,<span class="stringliteral">"\r\n"</span>);
-      strcat( tBuffer,<span class="stringliteral">"\r\n"</span>);
+        _tcscat_s(hexBuffer, _T(<span class="stringliteral">"\r\n"</span>));
+        _tcscat_s(tBuffer, _T(<span class="stringliteral">"\r\n"</span>));
         }
 
     <span class="comment">//add the byte to the buffer string</span>
-        ucSymbol = (<span class="keywordtype">unsigned</span> char)aBlockOutput.<a name="a13"></a><a class="code" href="structADLDisplayEDIDData.html#83e30fa7d24cd49a601ec8e7a7d5acd5" title="EDID data.">cEDIDData</a>[i];
-    sprintf( cTemp,<span class="stringliteral">" %.2x"</span>, ucSymbol );
-    strcat( hexBuffer, cTemp);
+        ucSymbol = (<span class="keywordtype">unsigned</span> char)aBlockOutput.<a name="a14"></a><a class="code" href="structADLDisplayEDIDData.html#83e30fa7d24cd49a601ec8e7a7d5acd5" title="EDID data.">cEDIDData</a>[i];
+    wsprintf( cTemp,_T(<span class="stringliteral">" %.2x"</span>), ucSymbol );
+    _tcscat_s(hexBuffer, cTemp);
 
     <span class="keywordflow">if</span> ( ucSymbol &lt; 0x20 )                      <span class="comment">// Mask control characters</span>
                 ucSymbol |= 0x20;
 
-        sprintf( cTemp,<span class="stringliteral">" %c"</span>, ucSymbol );
-    strcat( tBuffer, cTemp);
+    wsprintf(cTemp, _T(<span class="stringliteral">" %c"</span>), ucSymbol);
+    _tcscat_s(tBuffer, cTemp);
   }
 
-  <span class="comment">//Print to Edit box</span>
-  SetDlgItemText(IDC_EDIT_RAWEDID, (LPCTSTR)hexBuffer);
-  SetDlgItemText(IDC_EDIT_TEXTEDID, (LPCTSTR)tBuffer);
+  <span class="comment">//Print to Edit box  </span>
+  SetDlgItemText(IDC_EDIT_RAWEDID, hexBuffer);
+  SetDlgItemText(IDC_EDIT_TEXTEDID, tBuffer);
 }
 
 <span class="keywordtype">void</span> CDDCBlockAccessDlg::OnCbnSelchangeComboDriverindex()
@@ -630,11 +636,11 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
         <span class="keywordtype">int</span>     ADL_Err = <a class="code" href="group__define__adl__results.html#g917345ca58ec6b4d7c73865fdb611fd7" title="Generic Error. Most likely one or more of the Escape calls to the driver failed!">ADL_ERR</a>;
   <span class="keywordflow">if</span> (!adlprocs.hModule)
   {
-    adlprocs.hModule = LoadLibrary(<span class="stringliteral">"atiadlxx.dll"</span>);
+    adlprocs.hModule = LoadLibrary(_T(<span class="stringliteral">"atiadlxx.dll"</span>));
     <span class="comment">// A 32 bit calling application on 64 bit OS will fail to LoadLIbrary.</span>
     <span class="comment">// Try to load the 32 bit library (atiadlxy.dll) instead</span>
     <span class="keywordflow">if</span> (adlprocs.hModule == NULL)
-      adlprocs.hModule = LoadLibrary(<span class="stringliteral">"atiadlxy.dll"</span>);
+      adlprocs.hModule = LoadLibrary(_T(<span class="stringliteral">"atiadlxy.dll"</span>));
 
     <span class="keywordflow">if</span>(adlprocs.hModule)
     {
@@ -656,14 +662,14 @@ HCURSOR CDDCBlockAccessDlg::OnQueryDragIcon()
                 adlprocs.ADL_Display_DDCBlockAccess_Get   == NULL || 
                 adlprocs.ADL_Display_EdidData_Get   == NULL ) 
     {
-      AfxMessageBox(<span class="stringliteral">"Error: ADL initialization failed! This app will NOT work!"</span>, MB_OK, 0);
+      AfxMessageBox(_T(<span class="stringliteral">"Error: ADL initialization failed! This app will NOT work!"</span>), MB_OK, 0);
       <span class="keywordflow">return</span> <span class="keyword">false</span>;
     }
         <span class="comment">// Initialize ADL with second parameter = 1, which means: Get the info for only currently active adapters!</span>
     ADL_Err = adlprocs.ADL_Main_Control_Create (ADL_Main_Memory_Alloc, 1);
 
   }
-  <span class="keywordflow">return</span> (<a name="a14"></a><a class="code" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75" title="ADL function completed successfully.">ADL_OK</a> == ADL_Err) ?  <span class="keyword">true</span> : <span class="keyword">false</span>;
+  <span class="keywordflow">return</span> (<a name="a15"></a><a class="code" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75" title="ADL function completed successfully.">ADL_OK</a> == ADL_Err) ?  <span class="keyword">true</span> : <span class="keyword">false</span>;
           
 }
 

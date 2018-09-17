@@ -1,6 +1,6 @@
 ///
-///  Copyright (c) 2008 - 2010 Advanced Micro Devices, Inc.
- 
+///  Copyright (c) 2008 - 2018 Advanced Micro Devices, Inc.
+
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 ///  WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
@@ -8,526 +8,461 @@
 /// \file eyefinity.c
 
 #include <windows.h>
-#include <stdio.h>
-#include "..\..\include\adl_sdk.h"
+#include <algorithm>
 #include "eyefinity.h"
 
-// Comment out one of the two lines below to allow or supress diagnostic messages
-// #define PRINTF
 #define PRINTF printf
 
-// Definitions of the used function pointers. Add more if you use other ADL APIs
-typedef int ( *ADL_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int );
-typedef int ( *ADL_MAIN_CONTROL_DESTROY )();
-typedef int ( *ADL_ADAPTER_NUMBEROFADAPTERS_GET ) ( int* );
-typedef int ( *ADL_ADAPTER_ADAPTERINFO_GET ) ( LPAdapterInfo, int );
-typedef int ( *ADL_DISPLAY_COLORCAPS_GET ) ( int, int, int *, int * );
-typedef int ( *ADL_DISPLAY_COLOR_GET ) ( int, int, int, int *, int *, int *, int *, int * );
-typedef int ( *ADL_DISPLAY_COLOR_SET ) ( int, int, int, int );
-typedef int ( *ADL_DISPLAY_DISPLAYINFO_GET ) ( int, int *, ADLDisplayInfo **, int );
-typedef int ( *ADL_DISPLAY_SLSMAPINDEX_GET ) ( int, int, ADLDisplayTarget *, int * );
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_GET	) ( int, int, ADLSLSMap*, int*, ADLSLSTarget**, int*, ADLSLSMode**, int*, ADLBezelTransientMode**, int*, ADLBezelTransientMode**, int*, ADLSLSOffset**, int );
-typedef int ( *ADL_DISPLAY_MODES_GET ) ( int, int, int*, ADLMode ** );
-typedef int ( *ADL_DISPLAY_DISPLAYMAPCONFIG_GET ) ( int, int*, ADLDisplayMap**, int*, ADLDisplayTarget**, int );
+typedef int(*ADL2_ADAPTER_ADAPTERINFOX3_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* numAdapters, AdapterInfo** lppAdapterInfo);
+typedef int(*ADL2_DISPLAY_DISPLAYMAPCONFIG_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpNumDisplayMap, ADLDisplayMap**  lppDisplayMap,
+    int* lpNumDisplayTarget, ADLDisplayTarget** lppDisplayTarget, int iOptions);
 
-// Memory allocation function
-void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
+typedef int(*ADL2_DISPLAY_SLSMAPINDEXLIST_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpNumSLSMapIndexList, int** lppSLSMapIndexList,
+    int iOptions);
+
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIGX2_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSLSMapIndex, ADLSLSMap* lpSLSMap, int*                                                            lpNumSLSTarget, ADLSLSTarget** lppSLSTarget, int* lpNumStandardMode, ADLSLSMode** lppStandardMode,
+    int* lpNumStandardModeOffsets, ADLSLSOffset** lppStandardModeOffsets,
+    int* lpNumBezelMode, ADLBezelTransientMode** lppBezelMode, int* lpNumTransientMode,
+    ADLBezelTransientMode** lppTransientMode, int* lpNumSLSOffset, ADLSLSOffset** lppSLSOffset, int iOption);
+
+typedef int(*ADL2_MAIN_CONTROL_DESTROY) (ADL_CONTEXT_HANDLE);
+typedef int(*ADL2_MAIN_CONTROLX2_CREATE)  (ADL_MAIN_MALLOC_CALLBACK, int iEnumConnectedAdapter_, ADL_CONTEXT_HANDLE* context_, ADLThreadingModel);
+
+ADL2_ADAPTER_ADAPTERINFOX3_GET    ADL2_Adapter_AdapterInfoX3_Get = NULL;
+ADL2_DISPLAY_DISPLAYMAPCONFIG_GET ADL2_Display_DisplayMapConfig_Get = NULL;
+ADL2_DISPLAY_SLSMAPINDEXLIST_GET  ADL2_Display_SLSMapIndexList_Get = NULL;
+ADL2_DISPLAY_SLSMAPCONFIGX2_GET   ADL2_Display_SLSMapConfigX2_Get = NULL;
+ADL2_MAIN_CONTROLX2_CREATE        ADL2_Main_ControlX2_Create = NULL;
+ADL2_MAIN_CONTROL_DESTROY         ADL2_Main_Control_Destroy = NULL;
+
+static ADL_CONTEXT_HANDLE ADLContext_ = NULL;
+
+static bool DisplaysMatch(const ADLDisplayID& one_, const ADLDisplayID& other_);
+static int  FindSLSTarget(ADLDisplayID displayID_, int numDisplays_, const ADLSLSTarget* slsTargets_);
+static int  GpuBDF(const int& busNo_, const int& devNo_, const int& funcNo_) { return ((busNo_ & 0xFF) << 8) | ((devNo_ & 0x1F) << 3) | (funcNo_ & 0x07); }
+
+static int  GetPrimaryAdpaterId(char displayName[]);
+static int  GetWidth(ADLMode& oneMode_);
+static int  GetHeight(ADLMode& oneMode_);
+
+static void* __stdcall ADL_Main_Memory_Alloc(int iSize_)
 {
-    void* lpBuffer = malloc ( iSize );
+    void* lpBuffer = malloc(iSize_);
     return lpBuffer;
 }
 
-// Optional Memory de-allocation function
-void __stdcall ADL_Main_Memory_Free ( void** lpBuffer )
+static void __stdcall ADL_Main_Memory_Free(void** lpBuffer_)
 {
-    if ( NULL != *lpBuffer )
-    {
-        free ( *lpBuffer );
-        *lpBuffer = NULL;
+    if (NULL != lpBuffer_ && NULL != *lpBuffer_) {
+        free(*lpBuffer_);
+        *lpBuffer_ = NULL;
     }
 }
 
-int atiEyefinityReleaseConfigInfo ( DisplayInfoStruct **lppDisplaysInfo )
+ADL_CONTEXT_HANDLE GetADLContext()
 {
-	ADL_Main_Memory_Free( (void**)lppDisplaysInfo );
-
-	return TRUE;
+    return ADLContext_;
 }
 
-int atiEyefinityGetConfigInfo ( char OSDisplayName[], EyefinityInfoStruct *lpEyefinityInfo, int *lpNumDisplaysInfo, DisplayInfoStruct **lppDisplaysInfo )
+bool InitADL()
 {
-    HINSTANCE hDLL;
-
-    ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
-    ADL_MAIN_CONTROL_DESTROY         ADL_Main_Control_Destroy = NULL;
-    ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get = NULL;
-    ADL_ADAPTER_ADAPTERINFO_GET      ADL_Adapter_AdapterInfo_Get = NULL;
-	ADL_DISPLAY_SLSMAPINDEX_GET		 ADL_Display_SLSMapIndex_Get = NULL;
-	ADL_DISPLAY_SLSMAPCONFIG_GET	 ADL_Display_SLSMapConfig_Get = NULL;
-	ADL_DISPLAY_MODES_GET			 ADL_Display_Modes_Get = NULL;
-	ADL_DISPLAY_DISPLAYMAPCONFIG_GET ADL_Display_DisplayMapConfig_Get = NULL;
-
-    int iNumberAdapters = 0;
-	int iCurrentAdapter = 0;
-    LPAdapterInfo lpAdapterInfo = NULL;
-
-	int iNumDisplayTarget = 0;
-	ADLDisplayTarget *lpDisplayTarget = NULL;
-
-	int iNumDisplayMap = 0;
-	ADLDisplayMap *lpDisplayMap = NULL;
-	int iSLSMapIndex = 0;
-
-	int iNumSLSTarget = 0;
-	int iCurrentSLSTarget = 0;
-	ADLSLSTarget *lpSLSTarget = NULL;
-
-	int iNumNativeMode = 0;
-	int iCurrentNativeMode = 0;
-	ADLSLSMode *lpNativeMode = NULL;
-
-	int iNumBezelMode = 0;
-	int iCurrentBezelMode = 0;
-	ADLBezelTransientMode *lpBezelMode = NULL;
-
-	int iNumTransientMode = 0;
-	ADLBezelTransientMode *lpTransientMode = NULL;
-
-	int iNumSLSOffset = 0;
-	int iCurrentSLSOffset = 0;
-	ADLSLSOffset *lpSLSOffset = NULL;
-
-	int iNumModes = 0;
-	ADLMode *lpModes = NULL;
-
-	ADLSLSMap SLSMap = {0};
-
-	DisplayInfoStruct *lpDisplaysInfoCurrent = NULL;
-
-	int iCurrentDisplayTarget = 0;
-	int iEyefinityEnabled = 0;
-	int iDisplayWidth = 0;
-	int iDisplayHeight = 0;
-	int iDisplaysInPortraitMode = 0;
-	int iPreferredGridIndexX = 0;
-	int iPreferredGridIndexY = 0;
-	int iBezelCompensatedDisplay = 0;
-	int iReturnValue = TRUE;
-	int iFoundMatch = FALSE;
-	LPCSTR EnvironmentVariable = "ADL_4KWORKAROUND_CANCEL";
-
-	// Validate input params
-	if (NULL == lpEyefinityInfo ||
-		NULL == lpNumDisplaysInfo ||
-		NULL == lppDisplaysInfo )
-	{
-		return FALSE;
-	}
-
-	// Load the ADL dll
-	{
-		hDLL = LoadLibrary(TEXT("atiadlxx.dll"));
-		if (hDLL == NULL)
-		{
-			// A 32 bit calling application on 64 bit OS will fail to LoadLibrary.
-			// Try to load the 32 bit library (atiadlxy.dll) instead
-			hDLL = LoadLibrary(TEXT("atiadlxy.dll"));
-		}
-
-		if (NULL == hDLL)
-		{
-			PRINTF("Failed to load ADL library\n");
-			return FALSE;
-		}
-	}
-
-	// Get & validate function pointers
-	{
-		ADL_Main_Control_Create = (ADL_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL_Main_Control_Create");
-		ADL_Main_Control_Destroy = (ADL_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL_Main_Control_Destroy");
-		ADL_Adapter_NumberOfAdapters_Get = (ADL_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL_Adapter_NumberOfAdapters_Get");
-		ADL_Adapter_AdapterInfo_Get = (ADL_ADAPTER_ADAPTERINFO_GET) GetProcAddress(hDLL,"ADL_Adapter_AdapterInfo_Get");
-		ADL_Display_SLSMapIndex_Get = (ADL_DISPLAY_SLSMAPINDEX_GET)GetProcAddress(hDLL,"ADL_Display_SLSMapIndex_Get");
-		ADL_Display_SLSMapConfig_Get = (ADL_DISPLAY_SLSMAPCONFIG_GET)GetProcAddress(hDLL,"ADL_Display_SLSMapConfig_Get");
-		ADL_Display_Modes_Get = (ADL_DISPLAY_MODES_GET)GetProcAddress(hDLL,"ADL_Display_Modes_Get");
-		ADL_Display_DisplayMapConfig_Get = (ADL_DISPLAY_DISPLAYMAPCONFIG_GET)GetProcAddress(hDLL,"ADL_Display_DisplayMapConfig_Get");
-
-		if ( NULL == ADL_Main_Control_Create ||
-			 NULL == ADL_Main_Control_Destroy ||
-			 NULL == ADL_Adapter_NumberOfAdapters_Get ||
-			 NULL == ADL_Adapter_AdapterInfo_Get ||
-			 NULL == ADL_Display_SLSMapIndex_Get ||
-			 NULL == ADL_Display_SLSMapConfig_Get ||
-			 NULL == ADL_Display_Modes_Get ||
-			 NULL == ADL_Display_DisplayMapConfig_Get )
-		{
-			PRINTF("Failed to get ADL function pointers\n");
-			return FALSE;
-		}
-	}
-
-    // Initialize ADL. The second parameter is 1, which means:
-    // retrieve adapter information only for adapters that are physically present and enabled in the system
-    if ( ADL_OK != ADL_Main_Control_Create (ADL_Main_Memory_Alloc, 1) )
-	{
-		PRINTF("ADL_Main_Control_Create() failed\n");
-		return FALSE;
-	}
-
-    // Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-		PRINTF("ADL_Adapter_NumberOfAdapters_Get() failed\n");
-		return FALSE;
-	}
-
-	// Query the list of adapters & their info
-    if ( 0 != iNumberAdapters )
-    {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-		if ( NULL == lpAdapterInfo )
-		{
-			PRINTF("lpAdapterInfo allocation failed\n");
-			return FALSE;
-		}
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        if ( ADL_OK != ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters) )
-		{
-			PRINTF("ADL_Adapter_AdapterInfo_Get() failed\n");
-			return FALSE;
-		}
+    // Load the ADL dll
+    HINSTANCE hDLL = LoadLibrary(TEXT("atiadlxx.dll"));
+    if (hDLL == NULL) {
+        // A 32 bit calling application on 64 bit OS will fail to LoadLibrary.
+        // Try to load the 32 bit library (atiadlxy.dll) instead
+        hDLL = LoadLibrary(TEXT("atiadlxy.dll"));    
+        if (hDLL == NULL) {
+            PRINTF("Failed to load ADL library\n");
+            return false;
+        }
     }
-	else
-	{
-		PRINTF("ADL_Adapter_NumberOfAdapters_Get() returned no adapters\n");
-		return FALSE;
-	}
 
-    // For all available adapters in the system
-    for ( iCurrentAdapter = 0; iCurrentAdapter < iNumberAdapters; iCurrentAdapter++ )
-    {
-		// If this adapter/display isn't the one the calling app is asking about,
-		// jump ahead to the next one in the list
-		if (0 != memcmp(lpAdapterInfo[iCurrentAdapter].strDisplayName,OSDisplayName,sizeof(OSDisplayName)))
-		{
-			continue;
-		}
+    // Get & validate function pointers    
+    ADL2_Adapter_AdapterInfoX3_Get = (ADL2_ADAPTER_ADAPTERINFOX3_GET)GetProcAddress(hDLL, "ADL2_Adapter_AdapterInfoX3_Get");
+    ADL2_Display_DisplayMapConfig_Get = (ADL2_DISPLAY_DISPLAYMAPCONFIG_GET)GetProcAddress(hDLL, "ADL2_Display_DisplayMapConfig_Get");
+    ADL2_Display_SLSMapIndexList_Get = (ADL2_DISPLAY_SLSMAPINDEXLIST_GET)GetProcAddress(hDLL, "ADL2_Display_SLSMapIndexList_Get");
+    ADL2_Display_SLSMapConfigX2_Get = (ADL2_DISPLAY_SLSMAPCONFIGX2_GET)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfigX2_Get");
+    ADL2_Main_ControlX2_Create = (ADL2_MAIN_CONTROLX2_CREATE)GetProcAddress(hDLL, "ADL2_Main_ControlX2_Create");
+    ADL2_Main_Control_Destroy = (ADL2_MAIN_CONTROL_DESTROY)GetProcAddress(hDLL, "ADL2_Main_Control_Destroy");
 
-		// Get the list of display targets associated with this adapater
-		if (ADL_OK != ADL_Display_DisplayMapConfig_Get( lpAdapterInfo[iCurrentAdapter].iAdapterIndex,
-														&iNumDisplayMap, &lpDisplayMap, 
-														&iNumDisplayTarget, &lpDisplayTarget, 
-														ADL_DISPLAY_DISPLAYMAP_OPTION_GPUINFO ) )
-		{
-			PRINTF("ADL_Display_DisplayMapConfig_Get() failed\n");
-			iReturnValue = FALSE;
-			break;
-		}
+    if (NULL == ADL2_Adapter_AdapterInfoX3_Get ||
+        NULL == ADL2_Display_DisplayMapConfig_Get ||
+        NULL == ADL2_Display_SLSMapIndexList_Get ||
+        NULL == ADL2_Display_SLSMapConfigX2_Get ||
+        NULL == ADL2_Main_ControlX2_Create) {
+        PRINTF("Failed to get ADL function pointers\n");
+        return false;
+    }
 
-		// If we don't have more than one display, Eyefinity cannot be on.
-		if ( iNumDisplayTarget < 2 )
-		{
-			break;
-		}
+    if (ADL_OK != ADL2_Main_ControlX2_Create(ADL_Main_Memory_Alloc, 1, &ADLContext_, ADL_THREADING_LOCKED)) {
+        PRINTF("ADL_Main_Control_Create() failed\n");
+        return false;
+    }
+    return true;
+}
 
-		// Get the Eyefinity/SLS display map index
-		if ( ADL_OK != ADL_Display_SLSMapIndex_Get (lpAdapterInfo[iCurrentAdapter].iAdapterIndex, iNumDisplayTarget, lpDisplayTarget, &iSLSMapIndex) )
-		{
-			break;
-		}
+void DestoryADL()
+{
+    if (NULL != ADL2_Main_Control_Destroy)
+        ADL2_Main_Control_Destroy(ADLContext_);
+}
 
-		//This is a temporary workaround to enable SLS.
-		//Set this variable to any value.
-		SetEnvironmentVariable(EnvironmentVariable, "TRUE");
+int atiEyefinityGetConfigInfo(char OSDisplayName[], EyefinityInfoStruct *lpEyefinityInfo, int *lpNumDisplaysInfo, DisplayInfoStruct **lppDisplaysInfo)
+{
+    LPCSTR EnvironmentVariable = "ADL_4KWORKAROUND_CANCEL";
+    // This is a temporary workaround to enable SLS.
+    // Set this variable to any value.
+    SetEnvironmentVariable(EnvironmentVariable, "TRUE");
 
-		// Get the list of modes supported by the current Eyefinity/SLS index:
-		// for now, we only care about native and bezel-compensated modes
-		if ( ADL_OK != ADL_Display_SLSMapConfig_Get ( lpAdapterInfo[iCurrentAdapter].iAdapterIndex, iSLSMapIndex, &SLSMap,
-													  &iNumSLSTarget, &lpSLSTarget,
-													  &iNumNativeMode, &lpNativeMode,
-													  &iNumBezelMode, &lpBezelMode,
-													  &iNumTransientMode, &lpTransientMode,
-													  &iNumSLSOffset, &lpSLSOffset,
-													  ADL_DISPLAY_SLSGRID_CAP_OPTION_RELATIVETO_CURRENTANGLE ) )
-		{
-			PRINTF("ADL_Display_SLSMapConfig_Get() failed\n");
-			iReturnValue = FALSE;
-			break;
-		}
+    if (NULL == lpEyefinityInfo ||
+        NULL == lpNumDisplaysInfo ||
+        NULL == lppDisplaysInfo) {
+        return FALSE;
+    }
 
-		// First check that the number of grid entries is equal to the number
-		// of display targets associated with this adapter & SLS surface.
-		if ( iNumDisplayTarget != (SLSMap.grid.iSLSGridColumn * SLSMap.grid.iSLSGridRow) )
-		{
-			PRINTF("Number of display targets returned is not equal to the SLS grid size.\n");
-			iReturnValue = FALSE;
-			break;
-		}
+    if (!InitADL()) {
+        PRINTF("Failed to initiliaze ADL Library!\n");
+        return FALSE;
+    }
 
-		// Figure out which display is the "preferred" one for rendering of elements
-		// such as UIs, HUDs, prerendered cinematics, etc. This is user selectable in
-		// CCC, but the interface to do this is so obscure that most end users will never 
-		// figure out that they can control this. To avoid problems with game menus
-		// showing up on the wrong display, simply enforce which display should be the
-		// "preferred" one for showing game UI & HUD elements.
-		{
-			// Try to use the center-most column for gaming UI & HUD elements
-			switch ( SLSMap.grid.iSLSGridColumn )
-			{
-			case 0:
-			case 1:
-			case 2:
-			default:
-				iPreferredGridIndexX = 0;
-				break;
-			case 3:
-			case 4:
-				iPreferredGridIndexX = 1;
-				break;
-			case 5:
-			case 6:
-				iPreferredGridIndexX = 2;
-				break;
-			}
+    int primaryIndex = GetPrimaryAdpaterId(OSDisplayName);
+    if (primaryIndex < 0) {
+        PRINTF("Failed to get primary adapter id!\n");
+        return FALSE;
+    }
 
-			// Always default to the bottom row for gaming UI & HUD elements
-			iPreferredGridIndexY = SLSMap.grid.iSLSGridRow - 1;
-		}
+    vector<TopologyDisplay> displays(0);
+    displays.reserve(24);
 
-		// For all the display targets reported by ADL_Display_DisplayMapConfig_Get()
-		for ( iCurrentDisplayTarget=0; iCurrentDisplayTarget<iNumDisplayTarget; iCurrentDisplayTarget++ )
-		{
-			SimpleRectStruct *lpDisplayRect = NULL;
-			SimpleRectStruct *lpDisplayRectVisible = NULL;
+    int numDesktops = 0, numDisplays = 0;
+    ADLDisplayMap*    adlDesktops = NULL;
+    ADLDisplayTarget* adlDisplays = NULL;
 
-			// Get their current display mode for this adapter/display combination
-			{
-				ADL_Main_Memory_Free((void**)&lpModes);
-				if ( ADL_OK != ADL_Display_Modes_Get( lpAdapterInfo[iCurrentAdapter].iAdapterIndex,
-													  lpDisplayTarget[iCurrentDisplayTarget].displayID.iDisplayLogicalIndex,
-													  &iNumModes, &lpModes ) )
-				{
-					PRINTF("ADL_Display_Modes_Get() failed\n");
-					iReturnValue = FALSE;
-					break;
-				}
-			}
+    int adlRet = ADL2_Display_DisplayMapConfig_Get(GetADLContext(), primaryIndex, &numDesktops, &adlDesktops, &numDisplays, \
+        &adlDisplays, ADL_DISPLAY_DISPLAYMAP_OPTION_GPUINFO);
+    if (ADL_OK == adlRet || ADL_OK_WARNING == adlRet) {
+        for (int deskIdx = 0; deskIdx < numDesktops; deskIdx++) {
+            ADLDisplayMap oneAdlDesktop = adlDesktops[deskIdx];
+            ADLDisplayID preferredDisplay{ 0 };
 
-			// If Eyefinity is enabled for this adapter, then the display mode of an
-			// attached display target will match one of the SLS display modes reported by
-			// ADL_Display_SLSMapConfig_Get(). The match will either be with "native" SLS 
-			// modes (which are not bezel-compensated), or with "bezel" SLS modes which are.
-			// 
-			// So, simply compare current display mode against all the ones listed for the
-			// SLS native or bezel-compensated modes: if there is a match, then the mode
-			// currently used by this adapter is an Eyefinity/SLS mode, and Eyefinity is enabled.
-			{
-				// First check the native SLS mode list
-				for ( iCurrentNativeMode=0; iCurrentNativeMode<iNumNativeMode; iCurrentNativeMode++)
-				{
-					if ( lpModes->iXRes == lpNativeMode[iCurrentNativeMode].displayMode.iXRes &&
-						 lpModes->iYRes == lpNativeMode[iCurrentNativeMode].displayMode.iYRes )
-					{
-						iEyefinityEnabled |= 1 << iCurrentDisplayTarget;
-						break;
-					}
-				}
+            //If discover a rotation: swap X and Y in the mode
+            if (90 == oneAdlDesktop.displayMode.iOrientation || 270 == oneAdlDesktop.displayMode.iOrientation) {
+                int oldXRes = oneAdlDesktop.displayMode.iXRes;
+                oneAdlDesktop.displayMode.iXRes = oneAdlDesktop.displayMode.iYRes;
+                oneAdlDesktop.displayMode.iYRes = oldXRes;
+            }
 
-				// If no match was found, check the bezel-compensated SLS mode list
-				if ( 0 == ( iEyefinityEnabled & (1 << iCurrentDisplayTarget) ) )
-				{
-					for ( iCurrentBezelMode=0; iCurrentBezelMode<iNumBezelMode; iCurrentBezelMode++)
-					{
-						if ( lpModes->iXRes == lpBezelMode[iCurrentBezelMode].displayMode.iXRes &&
-							 lpModes->iYRes == lpBezelMode[iCurrentBezelMode].displayMode.iYRes )
-						{
-							iEyefinityEnabled |= 1 << iCurrentDisplayTarget;
-							iBezelCompensatedDisplay = TRUE;
-							break;
-						}
-					}
-				}
-			}
+            // By default non-SLS; one row, one column
+            int rows = 1, cols = 1;
+            // By default SLsMapIndex is -1 and SLS Mode is fill
+            int slsMapIndex = -1, slsMode = ADL_DISPLAY_SLSMAP_SLSLAYOUTMODE_FILL;
 
-			// Eyefinity is enabled for this display
-			if ( 0 != ( iEyefinityEnabled & (1 << iCurrentDisplayTarget) ) )
-			{
-				// If this is the first round through the display target loop,
-				// make sure we have an array of DisplayInfo structs allocated.
-				{
-					if ( *lppDisplaysInfo == NULL )
-					{
-						*lppDisplaysInfo = (DisplayInfoStruct*)malloc ( sizeof(DisplayInfoStruct) * iNumDisplayTarget );
-						if ( NULL == *lppDisplaysInfo )
-						{
-							PRINTF("ppDisplaysInfo allocation failed\n");
-							iReturnValue = FALSE;
-							break;
-						}
-						memset ( *lppDisplaysInfo,'\0', sizeof(DisplayInfoStruct) * iNumDisplayTarget );
-					}
-				}
+            int numAdapters = 0;
+            AdapterInfo* allAdapterInfo = NULL;
+            ADL2_Adapter_AdapterInfoX3_Get(GetADLContext(), -1, &numAdapters, &allAdapterInfo);
+            if (NULL == allAdapterInfo)
+                numAdapters = 0;
 
-				// Find the SLSTarget that maps to the current display target
-				{
-					for ( iCurrentSLSTarget=0; iCurrentSLSTarget<iNumSLSTarget; iCurrentSLSTarget++)
-					{
-						if ( lpDisplayTarget[iCurrentDisplayTarget].displayID.iDisplayLogicalIndex == lpSLSTarget[iCurrentSLSTarget].displayTarget.displayID.iDisplayLogicalIndex )
-						{
-							iFoundMatch = TRUE;
-							break;
-						}
-					}
+            for (int dispIdx = 0, foundDisplays = 0; dispIdx < numDisplays; dispIdx++) {
+                ADLDisplayTarget oneAdlDisplay = adlDisplays[dispIdx];
+                if (oneAdlDisplay.iDisplayMapIndex == oneAdlDesktop.iDisplayMapIndex) {
+                    if (primaryIndex == oneAdlDisplay.displayID.iDisplayPhysicalAdapterIndex) {
+                        //add a display in list. For SLS this info will be updated later
+                        displays.push_back(TopologyDisplay(oneAdlDisplay.displayID, 0,
+                            oneAdlDesktop.displayMode.iXRes, oneAdlDesktop.displayMode.iYRes, //size
+                            0, 0,	 //offset in desktop
+                            0, 0)); //grid location (0-based)
 
-					if ( FALSE == iFoundMatch )
-					{
-						PRINTF("Failed to find lpSLSTarget array match\n");
-						iReturnValue = FALSE;
-						break;
-					}
-				}
+                                    // count it and bail out of we found enough
+                        foundDisplays++;
+                        if (foundDisplays == oneAdlDesktop.iNumDisplayTarget)
+                            break;
+                    }
+                }
+            }
 
-				// Set some vars for later
-				{
-					iDisplayWidth = lpModes->iXRes;
-					iDisplayHeight = lpModes->iYRes;
-					if ( lpModes->iOrientation != 0 && lpModes->iOrientation != 180 )
-					{
-						iDisplaysInPortraitMode = TRUE;
-					}
-				}
+            if (numDisplays > 1 && displays.size() > 0) {
+                TopologyDisplay firstDisplay = displays[0];
+                preferredDisplay = firstDisplay.DisplayID();
 
-				// Now fill out the DisplayInfo structure passed in
-				// by the caller for this display
-				{
-					lpDisplaysInfoCurrent = &((*lppDisplaysInfo)[iCurrentDisplayTarget]);
+                lpEyefinityInfo->iSLSWidth = adlDesktops[0].displayMode.iXRes;
+                lpEyefinityInfo->iSLSHeight = adlDesktops[0].displayMode.iYRes;
 
-					// Set grid coordinates
-					lpDisplaysInfoCurrent->iGridXCoord = lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionX;
-					lpDisplaysInfoCurrent->iGridYCoord = lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionY;
+                int numSLSMaps = 0;
+                int* slsMapIDxs = NULL;
 
-					
-					// Set display rect dimensions & offset
-					{
-						// If the display is in portrait mode, flip the width and height since
-						// ADL still reports resolutions as though the display is in landscape
-						// mode.
-						if ( FALSE == iDisplaysInPortraitMode )
-						{
-							lpDisplaysInfoCurrent->displayRect.iWidth = lpModes->iXRes / SLSMap.grid.iSLSGridColumn;
-							lpDisplaysInfoCurrent->displayRect.iHeight = lpModes->iYRes / SLSMap.grid.iSLSGridRow;
-						}
-						else
-						{
-							lpDisplaysInfoCurrent->displayRect.iWidth = lpModes->iYRes / SLSMap.grid.iSLSGridColumn;
-							lpDisplaysInfoCurrent->displayRect.iHeight = lpModes->iXRes / SLSMap.grid.iSLSGridRow;
-						}
+                if (ADL_OK == ADL2_Display_SLSMapIndexList_Get(GetADLContext(), primaryIndex, &numSLSMaps, &slsMapIDxs, ADL_DISPLAY_SLSMAPINDEXLIST_OPTION_ACTIVE)) {
 
-						lpDisplaysInfoCurrent->displayRect.iXOffset = lpDisplaysInfoCurrent->displayRect.iWidth * lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionX;
-						lpDisplaysInfoCurrent->displayRect.iYOffset = lpDisplaysInfoCurrent->displayRect.iHeight * lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionY;
-					}
+                    // Declare data describing the SLS before the loop
+                    ADLSLSMap slsMap;
+                    int numSLSTargets = 0;
+                    ADLSLSTarget* slsTargets = NULL;
+                    int numStandardModes = 0, numStandardModesOffsets = 0, numBezelModes = 0, numTransientModes = 0, numBezelModesOffsets = 0;
 
-					// Set visible display rect dimensions & offset
-					if ( TRUE == iBezelCompensatedDisplay )
-					{
-						// Find the SLSOffset array entry that maps to the current display target and display mode
-						{
-							for ( iCurrentSLSOffset=0; iCurrentSLSOffset<iNumSLSOffset; iCurrentSLSOffset++)
-							{
-								if ( lpBezelMode[iCurrentBezelMode].iSLSModeIndex == lpSLSOffset[iCurrentSLSOffset].iBezelModeIndex &&
-									 lpDisplayTarget[iCurrentDisplayTarget].displayID.iDisplayLogicalIndex == lpSLSOffset[iCurrentSLSOffset].displayID.iDisplayLogicalIndex )
-								{
-									iFoundMatch = TRUE;
-									break;
-								}
-							}
+                    ADLSLSMode* standardModes = NULL;
+                    ADLBezelTransientMode *bezelModes = NULL, *transientModes = NULL;
+                    ADLSLSOffset *standardModesOffsets = NULL, *bezelTransientModesOffsets = NULL;
 
-							if ( FALSE == iFoundMatch )
-							{
-								PRINTF("Failed to find lpSLSOffset array match\n");
-								iReturnValue = FALSE;
-								break;
-							}
-						}
+                    for (int slsMapIdx = 0; slsMapIdx < numSLSMaps; slsMapIdx++) {
+                        bool isActiveSLS = false;
+                        // We got the SLS OK and it has the same number of displays as the current desktop
+                        if (ADL_OK == ADL2_Display_SLSMapConfigX2_Get(GetADLContext(), primaryIndex, slsMapIDxs[slsMapIdx], &slsMap, &numSLSTargets, &slsTargets,
+                            &numStandardModes, &standardModes,
+                            &numStandardModesOffsets, &standardModesOffsets,
+                            &numBezelModes, &bezelModes, &numTransientModes,
+                            &transientModes, &numBezelModesOffsets,
+                            &bezelTransientModesOffsets, ADL_DISPLAY_SLSMAPCONFIG_GET_OPTION_RELATIVETO_CURRENTANGLE)
+                            && numSLSTargets == oneAdlDesktop.iNumDisplayTarget) {
 
-						lpDisplaysInfoCurrent->displayRectVisible.iWidth = lpSLSOffset[iCurrentSLSOffset].iDisplayWidth;
-						lpDisplaysInfoCurrent->displayRectVisible.iHeight = lpSLSOffset[iCurrentSLSOffset].iDisplayHeight;
-						lpDisplaysInfoCurrent->displayRectVisible.iXOffset = lpSLSOffset[iCurrentSLSOffset].iBezelOffsetX;
-						lpDisplaysInfoCurrent->displayRectVisible.iYOffset = lpSLSOffset[iCurrentSLSOffset].iBezelOffsetY;
-					}
-					else
-					{
-						lpDisplaysInfoCurrent->displayRectVisible = lpDisplaysInfoCurrent->displayRect;
-					}
+                            cols = slsMap.grid.iSLSGridColumn;
+                            rows = slsMap.grid.iSLSGridRow;
 
-					// Set the preferred display flag
-					if ( iPreferredGridIndexX == lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionX &&
-						 iPreferredGridIndexY == lpSLSTarget[iCurrentSLSTarget].iSLSGridPositionY )
-					{
-						lpDisplaysInfoCurrent->iPreferredDisplay = TRUE;
-					}
-				}
-			}
-		}
+                            lpEyefinityInfo->iSLSGridWidth = cols;
+                            lpEyefinityInfo->iSLSGridHeight = rows;
 
-		// Finally, fill out the Eyefinity info struct passed in
-		if ( 0 != iEyefinityEnabled &&
-			 TRUE == iReturnValue )
-		{
-			lpEyefinityInfo->iSLSActive = TRUE;
-			lpEyefinityInfo->iSLSGridWidth = SLSMap.grid.iSLSGridColumn;
-			lpEyefinityInfo->iSLSGridHeight = SLSMap.grid.iSLSGridRow;
+                            bool displaysMatch = true;
+                            // Match slsTargets and the ones in this desktop, which are in the displays vector
+                            for (int j = 0; j < numSLSTargets; j++) {
+                                // find the SLS display into the display map allocation; find_if using lambda (perf: O(n))
+                                auto disp = std::find_if(displays.begin(), displays.end(),
+                                    [&](const TopologyDisplay& oneDisplay) { return (DisplaysMatch(oneDisplay.DisplayID(), slsTargets[j].displayTarget.displayID)); });
 
-			if ( FALSE == iDisplaysInPortraitMode )
-			{
-				lpEyefinityInfo->iSLSWidth = iDisplayWidth;
-				lpEyefinityInfo->iSLSHeight = iDisplayHeight;
-			}
-			else
-			{
-				lpEyefinityInfo->iSLSWidth = iDisplayHeight;
-				lpEyefinityInfo->iSLSHeight = iDisplayWidth;
-			}
+                                if (disp == displays.end()) {
+                                    displaysMatch = false;
+                                    break;
+                                }
+                            }
 
-			if ( TRUE == iBezelCompensatedDisplay )
-			{
-				lpEyefinityInfo->iBezelCompensatedDisplay = TRUE;
-			}
+                            // Found the SLS for this desktop; see if it is active by checking if current mode is an SLS one
+                            if (displaysMatch) {
+                                for (int slsModeIdx = 0; slsModeIdx < numStandardModes; slsModeIdx++) {
+                                    if (standardModes[slsModeIdx].displayMode.iXRes == GetWidth(oneAdlDesktop.displayMode) &&
+                                        standardModes[slsModeIdx].displayMode.iYRes == GetHeight(oneAdlDesktop.displayMode)) {
+                                        isActiveSLS = true;
+                                        // Ditch the displays and add new ones from standardModesOffsets for this standard mode for each SLS display
+                                        displays.clear();
 
-			*lpNumDisplaysInfo = iNumDisplayTarget;
-		}
+                                        for (int oneModeOffset = 0, foundDisplays = 0; oneModeOffset < numStandardModesOffsets; oneModeOffset++) {
+                                            // this is offset for the matched mode												
+                                            if (standardModesOffsets[oneModeOffset].iBezelModeIndex == standardModes[slsModeIdx].iSLSModeIndex) {
+                                                int index = FindSLSTarget(standardModesOffsets[oneModeOffset].displayID, numSLSTargets, slsTargets);
+                                                int angle = (index != -1) ? slsTargets[index].viewSize.iOrientation : 0;
+                                                int row = (index != -1) ? slsTargets[index].iSLSGridPositionY : 0;
+                                                int col = (index != -1) ? slsTargets[index].iSLSGridPositionX : 0;
 
-		// If we get this far, then we can just break out of the display loop 
-		// since we've found and processed the display the caller inquired about.
-		break;
-	}
+                                                displays.push_back(TopologyDisplay(standardModesOffsets[oneModeOffset].displayID, angle,
+                                                    standardModesOffsets[oneModeOffset].iDisplayWidth, standardModesOffsets[oneModeOffset].iDisplayHeight,
+                                                    standardModesOffsets[oneModeOffset].iBezelOffsetX, standardModesOffsets[oneModeOffset].iBezelOffsetY,
+                                                    row, col));//increase by one
 
-	ADL_Main_Memory_Free ((void**)&lpModes );
-	ADL_Main_Memory_Free ((void**)&lpSLSTarget );
-	ADL_Main_Memory_Free ((void**)&lpNativeMode );
-	ADL_Main_Memory_Free ((void**)&lpBezelMode );
-	ADL_Main_Memory_Free ((void**)&lpTransientMode );
-	ADL_Main_Memory_Free ((void**)&lpSLSOffset );
-	ADL_Main_Memory_Free ((void**)&lpDisplayMap );
-	ADL_Main_Memory_Free ((void**)&lpDisplayTarget );
-	ADL_Main_Memory_Free ((void**)&lpAdapterInfo );
+                                                // count it and bail if we found enough displays
+                                                foundDisplays++;
+                                                if (foundDisplays == numSLSTargets)
+                                                    break;
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                                if (!isActiveSLS) {
+                                    for (int slsModeIdx = 0; slsModeIdx < numBezelModes; slsModeIdx++) {
+                                        if (bezelModes[slsModeIdx].displayMode.iXRes == GetWidth(oneAdlDesktop.displayMode) &&
+                                            bezelModes[slsModeIdx].displayMode.iYRes == GetHeight(oneAdlDesktop.displayMode)) {
 
-    ADL_Main_Control_Destroy = (ADL_MAIN_CONTROL_DESTROY)GetProcAddress(hDLL,"ADL_Main_Control_Destroy");
-    if ( NULL != ADL_Main_Control_Destroy )
-        ADL_Main_Control_Destroy ();
+                                            lpEyefinityInfo->iBezelCompensatedDisplay = TRUE;
+                                            isActiveSLS = true;
+                                            displays.clear();
 
-    FreeLibrary(hDLL);
+                                            for (int oneModeOffset = 0, foundDisplays = 0; oneModeOffset < numBezelModesOffsets; oneModeOffset++) {
+                                                if (bezelTransientModesOffsets[oneModeOffset].iBezelModeIndex == bezelModes[slsModeIdx].iSLSModeIndex) {
+                                                    int index = FindSLSTarget(bezelTransientModesOffsets[oneModeOffset].displayID, numSLSTargets, slsTargets);
+                                                    int angle = (index != -1) ? slsTargets[index].viewSize.iOrientation : 0;
+                                                    int row = (index != -1) ? slsTargets[index].iSLSGridPositionY : 0;
+                                                    int col = (index != -1) ? slsTargets[index].iSLSGridPositionX : 0;
 
-	if ( FALSE == iReturnValue )
-	{
-		atiEyefinityReleaseConfigInfo( lppDisplaysInfo );
+                                                    displays.push_back(TopologyDisplay(bezelTransientModesOffsets[oneModeOffset].displayID, angle,
+                                                        bezelTransientModesOffsets[oneModeOffset].iDisplayWidth, bezelTransientModesOffsets[oneModeOffset].iDisplayHeight,
+                                                        bezelTransientModesOffsets[oneModeOffset].iBezelOffsetX, bezelTransientModesOffsets[oneModeOffset].iBezelOffsetY,
+                                                        row, col));
 
-		*lpNumDisplaysInfo = 0;
+                                                    foundDisplays++;
+                                                    if (foundDisplays == numSLSTargets)
+                                                        break;
+                                                }
+                                            }
+                                            // Found we are on bezel SLS mode
+                                            break;
+                                        }
+                                    }
+                                }
 
-		memset ( lpEyefinityInfo, '\0', sizeof(lpEyefinityInfo) );
-	}
+                                if (!isActiveSLS) {
+                                    for (int slsModeIdx = 0; slsModeIdx < numTransientModes; slsModeIdx++) {
+                                        if (transientModes[slsModeIdx].displayMode.iXRes == GetWidth(oneAdlDesktop.displayMode) &&
+                                            transientModes[slsModeIdx].displayMode.iYRes == GetHeight(oneAdlDesktop.displayMode)) {
 
-    return iReturnValue;
+                                            isActiveSLS = true;
+                                            displays.clear();
+
+                                            for (int oneModeOffset = 0, foundDisplays = 0; oneModeOffset < numBezelModesOffsets; oneModeOffset++) {
+                                                // this is offset for the matched mode
+                                                if (bezelTransientModesOffsets[oneModeOffset].iBezelModeIndex == transientModes[slsModeIdx].iSLSModeIndex)
+                                                {
+                                                    int index = FindSLSTarget(bezelTransientModesOffsets[oneModeOffset].displayID, numSLSTargets, slsTargets);
+                                                    int angle = (index != -1) ? slsTargets[index].viewSize.iOrientation : 0;
+                                                    int row = (index != -1) ? slsTargets[index].iSLSGridPositionY : 0;
+                                                    int col = (index != -1) ? slsTargets[index].iSLSGridPositionX : 0;
+
+                                                    displays.push_back(TopologyDisplay(bezelTransientModesOffsets[oneModeOffset].displayID, angle,
+                                                        bezelTransientModesOffsets[oneModeOffset].iDisplayWidth, bezelTransientModesOffsets[oneModeOffset].iDisplayHeight,
+                                                        bezelTransientModesOffsets[oneModeOffset].iBezelOffsetX, bezelTransientModesOffsets[oneModeOffset].iBezelOffsetY,
+                                                        row, col));
+
+                                                    foundDisplays++;
+                                                    if (foundDisplays == numSLSTargets)
+                                                        break;
+                                                }
+                                            }
+                                            // Found we are on SLS transient mode
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ADL_Main_Memory_Free((void**)&slsTargets);
+                        ADL_Main_Memory_Free((void**)&standardModes);
+                        ADL_Main_Memory_Free((void**)&bezelModes);
+                        ADL_Main_Memory_Free((void**)&transientModes);
+                        ADL_Main_Memory_Free((void**)&standardModesOffsets);
+                        ADL_Main_Memory_Free((void**)&bezelTransientModesOffsets);
+
+                        if (isActiveSLS) {
+                            lpEyefinityInfo->iSLSActive = TRUE;
+                            slsMapIndex = slsMapIDxs[slsMapIdx];
+                            slsMode = slsMap.iSLSMapValue;
+                            break;
+                        }
+                    }
+                }
+                ADL_Main_Memory_Free((void**)&slsMapIDxs);
+            }
+        }
+    }
+
+    // Fill out the eyefinity display info
+    if (displays.size() >= 1) {
+        size_t numDisplay = displays.size();
+         if (*lppDisplaysInfo == NULL) {
+            *lppDisplaysInfo = (DisplayInfoStruct*)malloc(sizeof(DisplayInfoStruct) * numDisplay);
+            if (NULL == *lppDisplaysInfo) {
+                PRINTF("ppDisplaysInfo allocation failed\n");
+            }
+            memset(*lppDisplaysInfo, '\0', sizeof(DisplayInfoStruct) * numDisplay);
+         }
+         *lpNumDisplaysInfo = (int)displays.size();
+         
+         for (int i = 0; i < displays.size(); i ++) {         
+             DisplayInfoStruct *lpDisplaysInfo = NULL;
+             lpDisplaysInfo = &((*lppDisplaysInfo)[i]);
+
+             auto disp = displays[i];
+             lpDisplaysInfo->iGridXCoord = disp.Col();
+             lpDisplaysInfo->iGridYCoord = disp.Row();
+
+             lpDisplaysInfo->displayRect.iXOffset = disp.Left();
+             lpDisplaysInfo->displayRect.iYOffset = disp.Top();             
+             lpDisplaysInfo->displayRect.iWidth = disp.Width();
+             lpDisplaysInfo->displayRect.iHeight = disp.Height();
+
+             lpDisplaysInfo->displayRectVisible = lpDisplaysInfo->displayRect;
+             lpDisplaysInfo->iPreferredDisplay = (i == 0) ? TRUE : FALSE;
+         }
+    }
+    DestoryADL();
+    return TRUE;
+}
+
+int GetWidth(ADLMode& oneMode_)
+{
+    return (90 == oneMode_.iOrientation || 270 == oneMode_.iOrientation) ? oneMode_.iYRes : oneMode_.iXRes;
+}
+
+int GetHeight(ADLMode& oneMode_)
+{
+    return (90 == oneMode_.iOrientation || 270 == oneMode_.iOrientation) ? oneMode_.iXRes : oneMode_.iYRes;
+}
+
+int FindSLSTarget(ADLDisplayID displayID_, int numDisplays_, const ADLSLSTarget* slsTargets_)
+{
+    int index = -1;
+    if (NULL != slsTargets_) {
+        for (int i = 0; i < numDisplays_; i++) {
+            if (DisplaysMatch(slsTargets_[i].displayTarget.displayID, displayID_)) {
+                index = i;
+                break;
+            }
+        }
+    }
+    return index;
+}
+
+bool DisplaysMatch(const ADLDisplayID& one_, const ADLDisplayID& other_)
+{
+    bool match = (-1 != one_.iDisplayLogicalIndex && -1 != other_.iDisplayLogicalIndex) ? (one_.iDisplayLogicalIndex == other_.iDisplayLogicalIndex) :
+        (-1 == one_.iDisplayLogicalIndex && -1 != other_.iDisplayLogicalIndex) ? (one_.iDisplayPhysicalIndex == other_.iDisplayLogicalIndex) :
+        (-1 != one_.iDisplayLogicalIndex && -1 == other_.iDisplayLogicalIndex) ? (one_.iDisplayLogicalIndex == other_.iDisplayPhysicalIndex) :
+        false;
+
+    if (match) {
+        match = (one_.iDisplayPhysicalAdapterIndex == other_.iDisplayPhysicalAdapterIndex);
+        if (!match && NULL != ADL2_Adapter_AdapterInfoX3_Get) {
+            int oneBDF, otherBDF;
+            LPAdapterInfo adNfo = NULL;
+            ADL2_Adapter_AdapterInfoX3_Get(ADLContext_, one_.iDisplayPhysicalAdapterIndex, NULL, &adNfo);
+            if (NULL != adNfo) {
+                oneBDF = GpuBDF(adNfo->iBusNumber, adNfo->iDeviceNumber, adNfo->iFunctionNumber);
+                ADL_Main_Memory_Free((void**)&adNfo);
+
+                ADL2_Adapter_AdapterInfoX3_Get(ADLContext_, other_.iDisplayPhysicalAdapterIndex, NULL, &adNfo);
+                if (NULL != adNfo) {
+                    otherBDF = GpuBDF(adNfo->iBusNumber, adNfo->iDeviceNumber, adNfo->iFunctionNumber);
+                    ADL_Main_Memory_Free((void**)&adNfo);
+                    match = (oneBDF == otherBDF);
+                }
+            }
+        }
+    }
+    return match;
+}
+
+int GetPrimaryAdpaterId(char displayName[])
+{
+    int adlRet = ADL_ERR;
+    int numAdapters = 0;
+    AdapterInfo*   allAdapterInfo = NULL;
+
+    adlRet = ADL2_Adapter_AdapterInfoX3_Get(GetADLContext(), -1, &numAdapters, &allAdapterInfo);
+    if (ADL_OK != adlRet)
+        return -1;
+
+    int primaryIndex = -1;
+    for (int i = 0; i < numAdapters; i++) {
+        int vendorID = allAdapterInfo[i].iVendorID;
+        if (vendorID != 1002)
+            continue;
+
+        if (strcmp(allAdapterInfo[i].strDisplayName, displayName) == 0) {
+            primaryIndex = allAdapterInfo[i].iAdapterIndex;
+            break;
+        }
+    }
+    return primaryIndex;
+}
+
+int atiEyefinityReleaseConfigInfo(DisplayInfoStruct **lppDisplaysInfo)
+{
+    ADL_Main_Memory_Free((void**)lppDisplaysInfo);
+    return TRUE;
 }

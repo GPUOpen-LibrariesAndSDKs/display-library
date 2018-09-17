@@ -12,70 +12,70 @@
 #include "eyefinity.h"
 #include <stdio.h>
 
+ADL_CONTEXT_HANDLE ADLContext_ = NULL;
+
 // Comment out one of the two lines below to allow or supress diagnostic messages
 // #define PRINTF
 #define PRINTF printf
 
 // Definitions of the used function pointers. Add more if you use other ADL APIs
-typedef int ( *ADL_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int );
-typedef int ( *ADL_MAIN_CONTROL_DESTROY )();
-typedef int ( *ADL_FLUSH_DRIVER_DATA)(int);
-typedef int ( *ADL_ADAPTER_NUMBEROFADAPTERS_GET ) ( int* );
-typedef int ( *ADL_ADAPTER_ADAPTERINFO_GET ) ( LPAdapterInfo, int );
-typedef int ( *ADL_DISPLAY_COLORCAPS_GET ) ( int, int, int *, int * );
-typedef int ( *ADL_DISPLAY_COLOR_GET ) ( int, int, int, int *, int *, int *, int *, int * );
-typedef int ( *ADL_DISPLAY_COLOR_SET ) ( int, int, int, int );
-typedef int ( *ADL_DISPLAY_DISPLAYINFO_GET ) ( int, int *, ADLDisplayInfo **, int );
+typedef int(*ADL2_MAIN_CONTROLX2_CREATE)                               (ADL_MAIN_MALLOC_CALLBACK, int iEnumConnectedAdapter_, ADL_CONTEXT_HANDLE* context_, ADLThreadingModel);
+typedef int(*ADL2_MAIN_CONTROL_DESTROY)                                (ADL_CONTEXT_HANDLE);
+typedef int(*ADL2_ADAPTER_ADAPTERINFOX3_GET)                           (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* numAdapters, AdapterInfo** lppAdapterInfo);
+typedef int(*ADL2_DISPLAY_DISPLAYINFO_GET)                             (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpNumDisplays, ADLDisplayInfo ** lppInfo, int iForceDetect);
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_VALID)                          (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLSLSMap slsMap, int iNumDisplayTarget, ADLSLSTarget* lpSLSTarget, int* lpSupportedSLSLayoutImageMode, int* lpReasonForNotSupportSLS, int iOption);
+
 // SLS functions
-typedef int ( *ADL_DISPLAY_SLSMAPINDEX_GET ) ( int, int, ADLDisplayTarget *, int * );
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_GET	) ( int, int, ADLSLSMap*, int*, ADLSLSTarget**, int*, ADLSLSMode**, int*, ADLBezelTransientMode**, int*, ADLBezelTransientMode**, int*, ADLSLSOffset**, int );
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_DELETE) (int, int);
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_CREATE) (int, ADLSLSMap, int, ADLSLSTarget*, int, int*, int);
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_REARRANGE) (int, int, int, ADLSLSTarget*, ADLSLSMap, int);
-typedef int ( *ADL_DISPLAY_SLSMAPCONFIG_SETSTATE) (int, int, int);
-typedef int ( *ADL_DISPLAY_SLSMAPINDEXLIST_GET) (int, int*, int**, int);
-typedef int ( *ADL_DISPLAY_MODES_GET ) ( int, int, int*, ADLMode ** );
-typedef int ( *ADL_DISPLAY_MODES_SET ) (int, int, int, ADLMode*);
-typedef int ( *ADL_DISPLAY_BEZELOFFSET_SET) ( int, int ,int, LPADLSLSOffset, ADLSLSMap, int);
-typedef int ( *ADL_DISPLAY_BEZELOFFSETSTEPPINGSIZE_GET) (int, int*, ADLBezelOffsetSteppingSize**);
+typedef int(*ADL2_DISPLAY_SLSMAPINDEX_GET) (ADL_CONTEXT_HANDLE, int, int, ADLDisplayTarget *, int *);
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_GET) (ADL_CONTEXT_HANDLE, int, int, ADLSLSMap*, int*, ADLSLSTarget**, int*, ADLSLSMode**, int*, ADLBezelTransientMode**, int*, ADLBezelTransientMode**, int*, ADLSLSOffset**, int);
+
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_DELETE)                         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSLSMapIndex);
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_CREATE)                         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLSLSMap SLSMap, int iNumTarget, ADLSLSTarget* lpSLSTarget, int iBezelModePercent, int *lpSLSMapIndex, int iOption);
+
+
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_REARRANGE) (ADL_CONTEXT_HANDLE, int, int, int, ADLSLSTarget*, ADLSLSMap, int);
+typedef int(*ADL2_DISPLAY_SLSMAPCONFIG_SETSTATE) (ADL_CONTEXT_HANDLE, int, int, int);
+typedef int(*ADL2_DISPLAY_SLSMAPINDEXLIST_GET) (ADL_CONTEXT_HANDLE, int, int*, int**, int);
+typedef int(*ADL2_DISPLAY_MODES_GET) (ADL_CONTEXT_HANDLE, int, int, int*, ADLMode **);
+typedef int(*ADL2_DISPLAY_MODES_SET) (ADL_CONTEXT_HANDLE, int, int, int, ADLMode*);
+typedef int(*ADL2_DISPLAY_BEZELOFFSET_SET) (ADL_CONTEXT_HANDLE, int, int, int, LPADLSLSOffset, ADLSLSMap, int);
+
 //display map functions
-typedef int ( *ADL_DISPLAY_DISPLAYMAPCONFIG_GET ) ( int, int*, ADLDisplayMap**, int*, ADLDisplayTarget**, int );
-typedef int ( *ADL_DISPLAY_DISPLAYMAPCONFIG_SET) (int, int, ADLDisplayMap*, int, ADLDisplayTarget*);
+typedef int(*ADL2_DISPLAY_DISPLAYMAPCONFIG_GET)                        (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpNumDisplayMap, ADLDisplayMap** lppDisplayMap, int* lpNumDisplayTarget, ADLDisplayTarget** lppDisplayTarget, int iOptions);
+typedef int(*ADL2_DISPLAY_DISPLAYMAPCONFIG_SET) (ADL_CONTEXT_HANDLE, int, int, ADLDisplayMap*, int, ADLDisplayTarget*);
 
 // adapter functions
-typedef int ( *ADL_DISPLAY_POSSIBLEMODE_GET ) (int, int*, ADLMode**);
-typedef int ( *ADL_DISPLAY_NUMBEROFDISPLAYS_GET) (int, int*);
-typedef int ( *ADL_ADAPTER_PRIMARY_SET ) (int);
-typedef int ( *ADL_ADAPTER_PRIMARY_GET ) (int*);
-typedef int ( *ADL_ADAPTER_ACTIVE_SET ) (int, int, int*);
+typedef int(*ADL2_DISPLAY_POSSIBLEMODE_GET) (ADL_CONTEXT_HANDLE, int, int*, ADLMode**);
+typedef int(*ADL2_ADAPTER_PRIMARY_SET) (ADL_CONTEXT_HANDLE, int);
+typedef int(*ADL2_ADAPTER_PRIMARY_GET) (ADL_CONTEXT_HANDLE, int*);
+typedef int(*ADL2_ADAPTER_ACTIVE_SET) (ADL_CONTEXT_HANDLE, int, int, int*);
 
 
 
 HINSTANCE hDLL;
 
-ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
-ADL_MAIN_CONTROL_DESTROY         ADL_Main_Control_Destroy = NULL;
-ADL_FLUSH_DRIVER_DATA			 ADL_Flush_Driver_Data = NULL;
-ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get = NULL;
-ADL_ADAPTER_ADAPTERINFO_GET      ADL_Adapter_AdapterInfo_Get = NULL;
-ADL_DISPLAY_SLSMAPINDEX_GET		 ADL_Display_SLSMapIndex_Get = NULL;
-ADL_DISPLAY_SLSMAPCONFIG_GET	 ADL_Display_SLSMapConfig_Get = NULL;
-ADL_DISPLAY_SLSMAPCONFIG_DELETE  ADL_Display_SLSMapConfig_Delete = NULL;
-ADL_DISPLAY_SLSMAPCONFIG_CREATE  ADL_Display_SLSMapConfig_Create = NULL;
-ADL_DISPLAY_SLSMAPCONFIG_REARRANGE  ADL_Display_SLSMapConfig_Rearrange = NULL;
-ADL_DISPLAY_SLSMAPCONFIG_SETSTATE ADL_Display_SLSMapConfig_SetState = NULL;
-ADL_DISPLAY_MODES_GET			 ADL_Display_Modes_Get = NULL;
-ADL_DISPLAY_POSSIBLEMODE_GET ADL_Display_PossibleMode_Get = NULL;
-ADL_DISPLAY_MODES_SET			 ADL_Display_Modes_Set = NULL;
-ADL_DISPLAY_DISPLAYMAPCONFIG_GET ADL_Display_DisplayMapConfig_Get = NULL;
-ADL_DISPLAY_DISPLAYMAPCONFIG_SET ADL_Display_DisplayMapConfig_Set = NULL;
-ADL_DISPLAY_BEZELOFFSET_SET		 ADL_Display_BezelOffset_Set = NULL;
-ADL_DISPLAY_BEZELOFFSETSTEPPINGSIZE_GET ADL_Display_BezelOffsetSteppingSize_Get = NULL;
-ADL_DISPLAY_NUMBEROFDISPLAYS_GET ADL_Display_NumberOfDisplays_Get = NULL;
-ADL_DISPLAY_DISPLAYINFO_GET ADL_Display_DisplayInfo_Get = NULL;
-ADL_ADAPTER_PRIMARY_SET ADL_Adapter_Primary_Set = NULL;
-ADL_ADAPTER_PRIMARY_GET ADL_Adapter_Primary_Get = NULL;
-ADL_ADAPTER_ACTIVE_SET ADL_Adapter_Active_Set = NULL;
+ADL2_MAIN_CONTROLX2_CREATE              ADL2_Main_ControlX2_Create = NULL;
+ADL2_MAIN_CONTROL_DESTROY               ADL2_Main_Control_Destroy = NULL;
+ADL2_ADAPTER_ADAPTERINFOX3_GET          ADL2_Adapter_AdapterInfoX3_Get = NULL;
+ADL2_DISPLAY_DISPLAYINFO_GET            ADL2_Display_DisplayInfo_Get = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_VALID         ADL2_Display_SLSMapConfig_Valid = NULL;
+
+ADL2_DISPLAY_SLSMAPINDEX_GET		 ADL2_Display_SLSMapIndex_Get = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_GET	 ADL2_Display_SLSMapConfig_Get = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_DELETE  ADL2_Display_SLSMapConfig_Delete = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_CREATE  ADL2_Display_SLSMapConfig_Create = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_REARRANGE  ADL2_Display_SLSMapConfig_Rearrange = NULL;
+ADL2_DISPLAY_SLSMAPCONFIG_SETSTATE ADL2_Display_SLSMapConfig_SetState = NULL;
+ADL2_DISPLAY_MODES_GET			 ADL2_Display_Modes_Get = NULL;
+ADL2_DISPLAY_POSSIBLEMODE_GET ADL2_Display_PossibleMode_Get = NULL;
+ADL2_DISPLAY_MODES_SET			 ADL2_Display_Modes_Set = NULL;
+ADL2_DISPLAY_DISPLAYMAPCONFIG_GET ADL2_Display_DisplayMapConfig_Get = NULL;
+ADL2_DISPLAY_DISPLAYMAPCONFIG_SET ADL2_Display_DisplayMapConfig_Set = NULL;
+ADL2_DISPLAY_BEZELOFFSET_SET		 ADL2_Display_BezelOffset_Set = NULL;
+
+ADL2_ADAPTER_PRIMARY_SET ADL2_Adapter_Primary_Set = NULL;
+ADL2_ADAPTER_PRIMARY_GET ADL2_Adapter_Primary_Get = NULL;
+ADL2_ADAPTER_ACTIVE_SET ADL2_Adapter_Active_Set = NULL;
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -115,52 +115,46 @@ int initializeADL()
 
 	// Get & validate function pointers
 	{
-		ADL_Main_Control_Create = (ADL_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL_Main_Control_Create");
-		ADL_Main_Control_Destroy = (ADL_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL_Main_Control_Destroy");
-		ADL_Adapter_NumberOfAdapters_Get = (ADL_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL_Adapter_NumberOfAdapters_Get");
-		ADL_Adapter_AdapterInfo_Get = (ADL_ADAPTER_ADAPTERINFO_GET) GetProcAddress(hDLL,"ADL_Adapter_AdapterInfo_Get");
-		ADL_Display_SLSMapIndex_Get = (ADL_DISPLAY_SLSMAPINDEX_GET)GetProcAddress(hDLL,"ADL_Display_SLSMapIndex_Get");
-		ADL_Display_SLSMapConfig_Get = (ADL_DISPLAY_SLSMAPCONFIG_GET)GetProcAddress(hDLL,"ADL_Display_SLSMapConfig_Get");
-		ADL_Display_Modes_Get = (ADL_DISPLAY_MODES_GET)GetProcAddress(hDLL,"ADL_Display_Modes_Get");
-		ADL_Display_PossibleMode_Get = (ADL_DISPLAY_POSSIBLEMODE_GET)GetProcAddress(hDLL,"ADL_Display_PossibleMode_Get");
-		ADL_Display_Modes_Set = (ADL_DISPLAY_MODES_SET)GetProcAddress(hDLL,"ADL_Display_Modes_Set");
-		ADL_Display_SLSMapConfig_Delete = (ADL_DISPLAY_SLSMAPCONFIG_DELETE)GetProcAddress(hDLL, "ADL_Display_SLSMapConfig_Delete");
-		ADL_Display_SLSMapConfig_Create = (ADL_DISPLAY_SLSMAPCONFIG_CREATE)GetProcAddress(hDLL, "ADL_Display_SLSMapConfig_Create");
-		ADL_Display_SLSMapConfig_Rearrange = (ADL_DISPLAY_SLSMAPCONFIG_REARRANGE)GetProcAddress(hDLL, "ADL_Display_SLSMapConfig_Rearrange");
-		ADL_Display_SLSMapConfig_SetState = (ADL_DISPLAY_SLSMAPCONFIG_SETSTATE)GetProcAddress(hDLL, "ADL_Display_SLSMapConfig_SetState");
-		ADL_Flush_Driver_Data = (ADL_FLUSH_DRIVER_DATA)GetProcAddress(hDLL, "ADL_Flush_Driver_Data");
-		ADL_Display_DisplayMapConfig_Get = (ADL_DISPLAY_DISPLAYMAPCONFIG_GET)GetProcAddress(hDLL,"ADL_Display_DisplayMapConfig_Get");
-		ADL_Display_DisplayMapConfig_Set = (ADL_DISPLAY_DISPLAYMAPCONFIG_SET)GetProcAddress(hDLL, "ADL_Display_DisplayMapConfig_Set");
-		ADL_Display_BezelOffset_Set = (ADL_DISPLAY_BEZELOFFSET_SET) GetProcAddress(hDLL, "ADL_Display_BezelOffset_Set");
-		ADL_Display_BezelOffsetSteppingSize_Get = (ADL_DISPLAY_BEZELOFFSETSTEPPINGSIZE_GET) GetProcAddress(hDLL, "ADL_Display_BezelOffsetSteppingSize_Get");
-		ADL_Display_NumberOfDisplays_Get = (ADL_DISPLAY_NUMBEROFDISPLAYS_GET) GetProcAddress(hDLL, "ADL_Display_NumberOfDisplays_Get");
-		ADL_Display_DisplayInfo_Get = (ADL_DISPLAY_DISPLAYINFO_GET) GetProcAddress(hDLL,"ADL_Display_DisplayInfo_Get");
-		ADL_Adapter_Primary_Set = (ADL_ADAPTER_PRIMARY_SET) GetProcAddress(hDLL,"ADL_Adapter_Primary_Set");
-		ADL_Adapter_Primary_Get = (ADL_ADAPTER_PRIMARY_GET) GetProcAddress(hDLL,"ADL_Adapter_Primary_Get");
-		ADL_Adapter_Active_Set = (ADL_ADAPTER_ACTIVE_SET) GetProcAddress(hDLL,"ADL_Adapter_Active_Set");
-		if ( NULL == ADL_Main_Control_Create ||
-			 NULL == ADL_Main_Control_Destroy ||
-			 NULL == ADL_Adapter_NumberOfAdapters_Get ||
-			 NULL == ADL_Adapter_AdapterInfo_Get ||
-			 NULL == ADL_Display_SLSMapIndex_Get ||
-			 NULL == ADL_Display_SLSMapConfig_Get ||
-			 NULL == ADL_Display_Modes_Get ||
-			 NULL == ADL_Display_Modes_Set ||
-			 NULL == ADL_Display_DisplayMapConfig_Get ||
-			 NULL == ADL_Display_SLSMapConfig_Delete ||
-			 NULL == ADL_Display_SLSMapConfig_Create ||
-			 NULL == ADL_Display_SLSMapConfig_Rearrange ||
-			 NULL == ADL_Display_SLSMapConfig_SetState ||
-			 NULL == ADL_Flush_Driver_Data ||
-			 NULL == ADL_Display_DisplayMapConfig_Set ||
-			 NULL == ADL_Display_BezelOffset_Set ||
-			 NULL == ADL_Display_BezelOffsetSteppingSize_Get ||
-			 NULL == ADL_Display_NumberOfDisplays_Get ||
-			 NULL == ADL_Display_DisplayInfo_Get ||
-			 NULL == ADL_Adapter_Primary_Set ||
-			 NULL == ADL_Adapter_Primary_Get ||
-			 NULL == ADL_Adapter_Active_Set ||
-			 NULL == ADL_Display_PossibleMode_Get
+        ADL2_Main_ControlX2_Create = (ADL2_MAIN_CONTROLX2_CREATE)GetProcAddress(hDLL, "ADL2_Main_ControlX2_Create");
+		ADL2_Main_Control_Destroy = (ADL2_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL2_Main_Control_Destroy");
+        ADL2_Adapter_AdapterInfoX3_Get = (ADL2_ADAPTER_ADAPTERINFOX3_GET)GetProcAddress(hDLL, "ADL2_Adapter_AdapterInfoX3_Get");
+        ADL2_Display_SLSMapConfig_Valid = (ADL2_DISPLAY_SLSMAPCONFIG_VALID)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfig_Valid");
+		ADL2_Display_SLSMapIndex_Get = (ADL2_DISPLAY_SLSMAPINDEX_GET)GetProcAddress(hDLL,"ADL2_Display_SLSMapIndex_Get");
+		ADL2_Display_SLSMapConfig_Get = (ADL2_DISPLAY_SLSMAPCONFIG_GET)GetProcAddress(hDLL,"ADL2_Display_SLSMapConfig_Get");
+		ADL2_Display_Modes_Get = (ADL2_DISPLAY_MODES_GET)GetProcAddress(hDLL,"ADL2_Display_Modes_Get");
+		ADL2_Display_PossibleMode_Get = (ADL2_DISPLAY_POSSIBLEMODE_GET)GetProcAddress(hDLL,"ADL2_Display_PossibleMode_Get");
+		ADL2_Display_Modes_Set = (ADL2_DISPLAY_MODES_SET)GetProcAddress(hDLL,"ADL2_Display_Modes_Set");
+		ADL2_Display_SLSMapConfig_Delete = (ADL2_DISPLAY_SLSMAPCONFIG_DELETE)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfig_Delete");
+		ADL2_Display_SLSMapConfig_Create = (ADL2_DISPLAY_SLSMAPCONFIG_CREATE)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfig_Create");
+		ADL2_Display_SLSMapConfig_Rearrange = (ADL2_DISPLAY_SLSMAPCONFIG_REARRANGE)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfig_Rearrange");
+		ADL2_Display_SLSMapConfig_SetState = (ADL2_DISPLAY_SLSMAPCONFIG_SETSTATE)GetProcAddress(hDLL, "ADL2_Display_SLSMapConfig_SetState");
+		ADL2_Display_DisplayMapConfig_Get = (ADL2_DISPLAY_DISPLAYMAPCONFIG_GET)GetProcAddress(hDLL,"ADL2_Display_DisplayMapConfig_Get");
+		ADL2_Display_DisplayMapConfig_Set = (ADL2_DISPLAY_DISPLAYMAPCONFIG_SET)GetProcAddress(hDLL, "ADL2_Display_DisplayMapConfig_Set");
+		ADL2_Display_BezelOffset_Set = (ADL2_DISPLAY_BEZELOFFSET_SET) GetProcAddress(hDLL, "ADL2_Display_BezelOffset_Set");
+		ADL2_Display_DisplayInfo_Get = (ADL2_DISPLAY_DISPLAYINFO_GET) GetProcAddress(hDLL,"ADL2_Display_DisplayInfo_Get");
+		ADL2_Adapter_Primary_Set = (ADL2_ADAPTER_PRIMARY_SET) GetProcAddress(hDLL,"ADL2_Adapter_Primary_Set");
+		ADL2_Adapter_Primary_Get = (ADL2_ADAPTER_PRIMARY_GET) GetProcAddress(hDLL,"ADL2_Adapter_Primary_Get");
+		ADL2_Adapter_Active_Set = (ADL2_ADAPTER_ACTIVE_SET) GetProcAddress(hDLL,"ADL2_Adapter_Active_Set");
+        if (NULL == ADL2_Main_ControlX2_Create ||
+            NULL == ADL2_Main_Control_Destroy ||
+            NULL == ADL2_Adapter_AdapterInfoX3_Get ||
+            NULL == ADL2_Display_SLSMapConfig_Valid ||
+			 NULL == ADL2_Display_SLSMapIndex_Get ||
+			 NULL == ADL2_Display_SLSMapConfig_Get ||
+			 NULL == ADL2_Display_Modes_Get ||
+			 NULL == ADL2_Display_Modes_Set ||
+			 NULL == ADL2_Display_DisplayMapConfig_Get ||
+			 NULL == ADL2_Display_SLSMapConfig_Delete ||
+			 NULL == ADL2_Display_SLSMapConfig_Create ||
+			 NULL == ADL2_Display_SLSMapConfig_Rearrange ||
+			 NULL == ADL2_Display_SLSMapConfig_SetState ||
+			 NULL == ADL2_Display_DisplayMapConfig_Set ||
+			 NULL == ADL2_Display_BezelOffset_Set ||
+			 NULL == ADL2_Display_DisplayInfo_Get ||
+			 NULL == ADL2_Adapter_Primary_Set ||
+			 NULL == ADL2_Adapter_Primary_Get ||
+			 NULL == ADL2_Adapter_Active_Set ||
+			 NULL == ADL2_Display_PossibleMode_Get
 			 )
 		{
 			PRINTF("Failed to get ADL function pointers\n");
@@ -168,9 +162,9 @@ int initializeADL()
 		}
 	}
 
-	if ( ADL_OK != ADL_Main_Control_Create (ADL_Main_Memory_Alloc, 1) )
+    if (ADL_OK != ADL2_Main_ControlX2_Create(ADL_Main_Memory_Alloc, 1, &ADLContext_, ADL_THREADING_LOCKED))
 	{
-		PRINTF("ADL_Main_Control_Create() failed\n");
+		PRINTF("ADL2_Main_ControlX2_Create() failed\n");
 		return FALSE;
 	}
 	
@@ -179,6 +173,9 @@ int initializeADL()
 
 void deinitializeADL()
 {
+    if (NULL != ADL2_Main_Control_Destroy)
+        ADL2_Main_Control_Destroy(ADLContext_);
+
     FreeLibrary(hDLL);
 }
 
@@ -222,6 +219,8 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 	int iNumCreatedBezelOffsets = 0;
 	LPCSTR EnvironmentVariable = "ADL_4KWORKAROUND_CANCEL";
 
+    //ADLDisplayTarget* lpDisplayTarget = (ADLDisplayTarget*)ADL_Main_Memory_Alloc(iNumOfDisplays * sizeof(ADLDisplayTarget));
+    //ZeroMemory(lpDisplayTarget, iNumOfDisplays * sizeof(ADLDisplayTarget));
 
 	pSLSTargets = (ADLSLSTarget*) malloc(iNumOfDisplays * sizeof(ADLSLSTarget));	
 	
@@ -241,10 +240,10 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 			setAdapterDisplaysToClone(iAdapterIndex, iDisplayMapIndexes, iNumOfDisplays);
 		}
 
-		iRetVal = ADL_Display_Modes_Get(iAdapterIndex, -1, &iNumModes, &pModes);
-
+        iRetVal = ADL2_Display_Modes_Get(ADLContext_, iAdapterIndex, -1, &iNumModes, &pModes);
+        
 		//Setting the SLSMAP Information
-		memset(&slsMap, 0, sizeof(ADLSLSMap));		
+		memset(&slsMap, 0, sizeof(ADLSLSMap));
 
 		slsMap.grid.iSLSGridColumn = iColumns;
 		slsMap.grid.iSLSGridRow = iRows;
@@ -255,15 +254,19 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 		slsMap.iNumNativeMode = 0;
 		slsMap.iNumBezelMode = 0;
 		slsMap.iOrientation = pModes[0].iOrientation;
-		slsMap.iSLSMapValue = iSLSMapValue;
+		slsMap.iSLSMapValue = 0;
 
-		iRetVal = ADL_Display_DisplayMapConfig_Get( iAdapterIndex,
+        
+
+        iRetVal = ADL2_Display_DisplayMapConfig_Get(ADLContext_, iAdapterIndex,
 														&iNumDisplayMap, &lpDisplayMap, 
 														&iNumDisplayTarget, &lpDisplayTarget, 
 														ADL_DISPLAY_DISPLAYMAP_OPTION_GPUINFO );
+
+
 		if (ADL_OK == iRetVal&& 1<iNumDisplayTarget)
 		{
-			iRetVal = ADL_Display_SLSMapIndex_Get (iAdapterIndex, 
+            iRetVal = ADL2_Display_SLSMapIndex_Get(ADLContext_, iAdapterIndex,
 				iNumDisplayTarget,
 				lpDisplayTarget,
 				&iSLSMapIndex);
@@ -274,7 +277,7 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 				//Set this variable to any value.
 				SetEnvironmentVariable(EnvironmentVariable, "TRUE");
 
-				iRetVal = ADL_Display_SLSMapConfig_Get ( iAdapterIndex, iSLSMapIndex, &lpCreatedSLSMap,
+                iRetVal = ADL2_Display_SLSMapConfig_Get(ADLContext_, iAdapterIndex, iSLSMapIndex, &lpCreatedSLSMap,
 														  &iNumCreatedSLSTargets, &lppCreatedSLSTargets,
 														  &iNumCreatedSLSNativeModes, &lppCreatedSLSNativeModes,
 														  &iNumCreatedBezelModes, &lppCreatedBezelModes,
@@ -356,20 +359,46 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 
 				pSLSTargets[iCurrentSLSTarget].iSLSGridPositionX = j;
 				pSLSTargets[iCurrentSLSTarget].iSLSGridPositionY = i;
+
+                // this is used only for SLS builder; set "Enabled" in all other cases
+                pSLSTargets[iCurrentSLSTarget].iSLSTargetValue = 0x0001;
+                pSLSTargets[iCurrentSLSTarget].iSLSTargetMask = 0x0001;
+
 				iCurrentSLSTarget++;
 			}		
 		}
 
+        bool ok = false;
+        
+        int supportedLayoutModes = -1, reasonForNotSupport = -1, option = ADL_DISPLAY_SLSMAPCONFIG_CREATE_OPTION_RELATIVETO_CURRENTANGLE;
+        // Validate Fit
+        slsMap.iSLSMapValue |= ADL_DISPLAY_SLSMAP_SLSLAYOUTMODE_FIT;
+        int ret = ADL2_Display_SLSMapConfig_Valid(ADLContext_, iAdapterIndex, slsMap, iNumOfDisplays, pSLSTargets, &supportedLayoutModes, &reasonForNotSupport, option);
+        if (ADL_OK == ret && 0 == reasonForNotSupport)
+        {
+            ok = true;
+        }
+        // Validate Fill
+        if (!ok)
+        {
+            slsMap.iSLSMapValue ^= ADL_DISPLAY_SLSMAP_SLSLAYOUTMODE_FIT;
+            slsMap.iSLSMapValue |= ADL_DISPLAY_SLSMAP_SLSLAYOUTMODE_FILL;
+            int ret = ADL2_Display_SLSMapConfig_Valid(ADLContext_, iAdapterIndex, slsMap, iNumOfDisplays, pSLSTargets, &supportedLayoutModes, &reasonForNotSupport, option);
+            if (ADL_OK == ret && 0 == reasonForNotSupport)
+                ok = true;
+        }
+
 		if (!iSLSRearrange)
 		{
-			iRetVal = ADL_Display_SLSMapConfig_Create (
+            iRetVal = ADL2_Display_SLSMapConfig_Create(
+                    ADLContext_,
 					iAdapterIndex,
 					slsMap,
 					iNumOfDisplays,
 					pSLSTargets,
 					0, // bezel mode percent
 					&iSLSMapIndexOut,
-					ADL_DISPLAY_SLSMAPCONFIG_CREATE_OPTION_RELATIVETO_LANDSCAPE
+                    option
 					);
 			if (iRetVal == ADL_OK)
 				PRINTF("SLS created Successfully\n");			
@@ -380,7 +409,7 @@ int setAdapterDisplaysToEyefinity(int iAdapterIndex, int iRows, int iColumns,int
 		}
 		else
 		{
-			iRetVal = ADL_Display_SLSMapConfig_Rearrange(iAdapterIndex,slsMap.iSLSMapIndex, iNumOfDisplays, pSLSTargets, lpCreatedSLSMap, ADL_DISPLAY_SLSMAPCONFIG_REARRANGE_OPTION_RELATIVETO_LANDSCAPE);
+            iRetVal = ADL2_Display_SLSMapConfig_Rearrange(ADLContext_, iAdapterIndex, slsMap.iSLSMapIndex, iNumOfDisplays, pSLSTargets, lpCreatedSLSMap, option);
 			if (iRetVal == ADL_OK)
 				PRINTF("SLS Re-arranged Successfully\n");			
 			else
@@ -444,13 +473,13 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 	ADLSLSOffset* lpTempAppliedBezelOffsets = NULL;
 	LPCSTR EnvironmentVariable = "ADL_4KWORKAROUND_CANCEL";
 
-	iRetVal = ADL_Display_DisplayMapConfig_Get( iAdapterIndex,
+    iRetVal = ADL2_Display_DisplayMapConfig_Get(ADLContext_, iAdapterIndex,
 													&iNumDisplayMap, &lpDisplayMap, 
 													&iNumDisplayTarget, &lpDisplayTarget, 
 													ADL_DISPLAY_DISPLAYMAP_OPTION_GPUINFO );
 	if (ADL_OK == iRetVal&& 1<iNumDisplayTarget)
 	{
-		iRetVal = ADL_Display_SLSMapIndex_Get (iAdapterIndex, 
+        iRetVal = ADL2_Display_SLSMapIndex_Get(ADLContext_, iAdapterIndex,
 			iNumDisplayTarget,
 			lpDisplayTarget,
 			&iSLSMapIndex);
@@ -461,7 +490,7 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 			//Set this variable to any value.
 			SetEnvironmentVariable(EnvironmentVariable, "TRUE");
 
-			iRetVal = ADL_Display_SLSMapConfig_Get ( iAdapterIndex, iSLSMapIndex, &lpCreatedSLSMap,
+            iRetVal = ADL2_Display_SLSMapConfig_Get(ADLContext_, iAdapterIndex, iSLSMapIndex, &lpCreatedSLSMap,
 														&iNumCreatedSLSTargets, &lppCreatedSLSTargets,
 														&iNumCreatedSLSNativeModes, &lppCreatedSLSNativeModes,
 														&iNumCreatedBezelModes, &lppCreatedBezelModes,
@@ -483,7 +512,7 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 				//	break;
 				//}
 
-				iRetVal = ADL_Display_SLSMapConfig_SetState(iAdapterIndex, iSLSMapIndex, 0);
+                iRetVal = ADL2_Display_SLSMapConfig_SetState(ADLContext_, iAdapterIndex, iSLSMapIndex, 0);
 			}		
 		}
 			
@@ -491,7 +520,8 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 	
 	if (iRetVal == 0 && (0 != iHbezel || 0 != iVbezel))
 	{
-		iRetVal = ADL_Display_SLSMapConfig_Create (
+		iRetVal = ADL2_Display_SLSMapConfig_Create (
+            ADLContext_,
 			iAdapterIndex,
 			lpCreatedSLSMap,
 			iNumCreatedSLSTargets,
@@ -503,7 +533,7 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 
 	
 
-		iRetVal = ADL_Display_SLSMapConfig_Get ( iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, &lpCreatedSLSMap,
+        iRetVal = ADL2_Display_SLSMapConfig_Get(ADLContext_, iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, &lpCreatedSLSMap,
 														&iNumCreatedSLSTargets, &lppCreatedSLSTargets,
 														&iNumCreatedSLSNativeModes, &lppCreatedSLSNativeModes,
 														&iNumCreatedBezelModes, &lppCreatedBezelModes,
@@ -515,7 +545,7 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 		if (iNumCreatedTransientModes > 0)
 		{
 			ADLMode *pTransientModes = NULL;
-			iRetVal = ADL_Display_Modes_Get(iAdapterIndex, -1, &iNumModes, &pTransientModes);
+            iRetVal = ADL2_Display_Modes_Get(ADLContext_, iAdapterIndex, -1, &iNumModes, &pTransientModes);
 
 			//lppCreatedTransientModes = (ADLBezelTransientMode*) malloc(iNumCreatedTransientModes * sizeof(ADLBezelTransientMode));
 			for(iCurrentTransientMode = 0; iCurrentTransientMode < iNumCreatedTransientModes; iCurrentTransientMode++)
@@ -523,13 +553,13 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 				// we need to figure out the positioning of this display in the SLS
 				pTransientModes[iCurrentTransientMode].iXRes = lppCreatedTransientModes[iCurrentTransientMode].displayMode.iXRes;
 				pTransientModes[iCurrentTransientMode].iYRes = lppCreatedTransientModes[iCurrentTransientMode].displayMode.iYRes;
-				iRetVal = ADL_Display_Modes_Set(iAdapterIndex, -1, 1, &pTransientModes[iCurrentTransientMode]);
+                iRetVal = ADL2_Display_Modes_Set(ADLContext_, iAdapterIndex, -1, 1, &pTransientModes[iCurrentTransientMode]);
 				break;
 			}
 
 			if (iRetVal == 0)
 			{
-				iRetVal = ADL_Display_SLSMapConfig_Get ( iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, &lpCreatedSLSMap,
+                iRetVal = ADL2_Display_SLSMapConfig_Get(ADLContext_, iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, &lpCreatedSLSMap,
 														&iNumCreatedSLSTargets, &lppCreatedSLSTargets,
 														&iNumCreatedSLSNativeModes, &lppCreatedSLSNativeModes,
 														&iNumCreatedBezelModes, &lppCreatedBezelModes,
@@ -570,7 +600,7 @@ int setBezelOffsets(int iAdapterIndex, int iHbezel, int iVbezel)
 
 					lpCreatedSLSMap.iSLSMapMask = 0;
 					lpCreatedSLSMap.iSLSMapValue = iSLSMapValue;
-					iRetVal = ADL_Display_BezelOffset_Set(iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, iNumCreatedSLSTargets, lpAppliedBezelOffsets, lpCreatedSLSMap, ADL_DISPLAY_BEZELOFFSET_COMMIT | ADL_DISPLAY_SLSGRID_CAP_OPTION_RELATIVETO_CURRENTANGLE);
+                    iRetVal = ADL2_Display_BezelOffset_Set(ADLContext_, iAdapterIndex, lpCreatedSLSMap.iSLSMapIndex, iNumCreatedSLSTargets, lpAppliedBezelOffsets, lpCreatedSLSMap, ADL_DISPLAY_BEZELOFFSET_COMMIT | ADL_DISPLAY_SLSGRID_CAP_OPTION_RELATIVETO_CURRENTANGLE);
 					if (iRetVal != 0)
 					{
 						PRINTF("Setting bezel offsets failed");
@@ -591,7 +621,7 @@ int setResolution(int iAdapterIndex, int iXRes, int iYRes)
 	if (iAdapterIndex != -1)
 	{
 		// Check if the mode is in the possible mode list.
-		iRetVal = ADL_Display_PossibleMode_Get (iAdapterIndex, &iNumModesPriv, &lppModesPriv);
+        iRetVal = ADL2_Display_PossibleMode_Get(ADLContext_, iAdapterIndex, &iNumModesPriv, &lppModesPriv);
 		if (NULL != lppModesPriv)
 		{
 			for ( i=0;i<iNumModesPriv;i++)
@@ -606,12 +636,12 @@ int setResolution(int iAdapterIndex, int iXRes, int iYRes)
 
 		if (iResfound)
 		{
-			iRetVal = ADL_Display_Modes_Get(iAdapterIndex, -1, &iNumModes, &pModes);
+            iRetVal = ADL2_Display_Modes_Get(ADLContext_, iAdapterIndex, -1, &iNumModes, &pModes);
 			if (iRetVal == ADL_OK)
 			{
 				pModes[0].iXRes = iXRes;
 				pModes[0].iYRes = iYRes;
-				iRetVal = ADL_Display_Modes_Set(iAdapterIndex, -1, 1, &pModes[0]);
+                iRetVal = ADL2_Display_Modes_Set(ADLContext_, iAdapterIndex, -1, 1, &pModes[0]);
 				if (iRetVal != ADL_OK)
 				{
 					PRINTF("unable to set provided resolution \n");
@@ -635,11 +665,11 @@ int setResolution(int iAdapterIndex, int iXRes, int iYRes)
 int setPrimaryAdapter(int iAdapterIndex)
 {
 	int iCurrentAdapterIndex = 0;
-	if (ADL_OK == ADL_Adapter_Primary_Get(&iCurrentAdapterIndex))
+    if (ADL_OK == ADL2_Adapter_Primary_Get(ADLContext_, &iCurrentAdapterIndex))
 	{
 		if (iCurrentAdapterIndex != iAdapterIndex && CanSetPrimary(iAdapterIndex ,iCurrentAdapterIndex))
 		{
-			ADL_Adapter_Primary_Set(iAdapterIndex);
+            ADL2_Adapter_Primary_Set(ADLContext_, iAdapterIndex);
 		}
 	}
 	return TRUE;
@@ -658,7 +688,7 @@ int setAdapterDisplaysToDisable(int iAdapterIndex)
 	{
 		if (iAdapterIndex != iAdapterIndexes[i] && iAdapterIndexes[i] != -1)
 		{
-			ADL_Adapter_Active_Set (iAdapterIndexes[i], 0, &active);
+            ADL2_Adapter_Active_Set(ADLContext_, iAdapterIndexes[i], 0, &active);
 		}
 	}
 	return TRUE;
@@ -678,7 +708,7 @@ int setAdapterDisplaysToClone(int iAdapterIndex, int iDisplayIndexes[], int iDis
 	mapArray.iNumDisplayTarget = iDisplaysCount;
 	mapArray.iDisplayMapIndex = 0;
 	
-	ADL_Display_Modes_Get(iAdapterIndex, -1, &iNumModes, &pModes);
+    ADL2_Display_Modes_Get(ADLContext_,iAdapterIndex, -1, &iNumModes, &pModes);
 	memset(&(mapArray.displayMode), 0, sizeof(ADLMode));
 	mapArray.displayMode.iAdapterIndex = iAdapterIndex;
 	mapArray.displayMode.iModeFlag = pModes[0].iModeFlag;
@@ -698,7 +728,7 @@ int setAdapterDisplaysToClone(int iAdapterIndex, int iDisplayIndexes[], int iDis
 		pDisplayTargets[i].displayID.iDisplayLogicalIndex = iDisplayIndexes[i];
 		pDisplayTargets[i].iDisplayMapIndex = 0;
 	}
-	ADL_Display_DisplayMapConfig_Set(iAdapterIndex,1,&mapArray,iDisplaysCount,pDisplayTargets);
+    ADL2_Display_DisplayMapConfig_Set(ADLContext_, iAdapterIndex, 1, &mapArray, iDisplaysCount, pDisplayTargets);
 
 	ADL_Main_Memory_Free((void**)&pDisplayTargets);
 	return TRUE;
@@ -712,20 +742,20 @@ int disableAdapterEyefinityMapping(int iAdapterIndex)
 	ADLDisplayMap *lpDisplayMap = NULL;
 	int iSLSMapIndex = -1,iRetVal=-1;
 
-	iRetVal = ADL_Display_DisplayMapConfig_Get( iAdapterIndex,
+    iRetVal = ADL2_Display_DisplayMapConfig_Get(ADLContext_, iAdapterIndex,
 														&iNumDisplayMap, &lpDisplayMap, 
 														&iNumDisplayTarget, &lpDisplayTarget, 
 														ADL_DISPLAY_DISPLAYMAP_OPTION_GPUINFO );
 	if (ADL_OK == iRetVal&& 1<iNumDisplayTarget)
 	{
-		iRetVal = ADL_Display_SLSMapIndex_Get (iAdapterIndex, 
+        iRetVal = ADL2_Display_SLSMapIndex_Get(ADLContext_, iAdapterIndex,
 			iNumDisplayTarget,
 			lpDisplayTarget,
 			&iSLSMapIndex);
 
 		if (ADL_OK == iRetVal && iSLSMapIndex != -1)
 		{
-			iRetVal = ADL_Display_SLSMapConfig_SetState(iAdapterIndex, iSLSMapIndex, 0);
+            iRetVal = ADL2_Display_SLSMapConfig_SetState(ADLContext_, iAdapterIndex, iSLSMapIndex, 0);
 			if (iRetVal != ADL_OK)
 			{
 				PRINTF ("Unable to Disable SLS");
@@ -742,35 +772,27 @@ int disableAdapterEyefinityMapping(int iAdapterIndex)
 
 int printDisplayIndexes()
 {
-	int  iNumberAdapters, iNumDisplays;
+	int  iNumberAdapters=0, iNumDisplays;
     int  iAdapterIndex;
     int  iDisplayIndex[6];
 	int iBusNumber;
 	int i=0,j=0,k=0,l=0, iGPUfound=0, iDisplayFound=0, iGPUIndex=0,iCount=0, iGPUCounter=0;
 	LPAdapterInfo     lpAdapterInfo = NULL;
     LPADLDisplayInfo  lpAdlDisplayInfo = NULL;
-	int igpuBusIndexes[4];
+    int igpuBusIndexes[4];
 
 	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
+    if (ADL_OK != ADL2_Adapter_AdapterInfoX3_Get(ADLContext_, -1, &iNumberAdapters, &lpAdapterInfo))
 	{
-	       PRINTF("Cannot get the number of adapters!\n");
+	       PRINTF("ADL2_Adapter_AdapterInfoX3_Get failed!\n");
 		   return 0;
 	}
-
-    if ( 0 < iNumberAdapters )
-    {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
-    }
-
+    
 	for (iGPUIndex = 0; iGPUIndex < 4; iGPUIndex++)
 	{
 		igpuBusIndexes[iGPUIndex] = -1;
 	}
+
 	PRINTF (" Adapter and Displays Indexes <AdapterIndex, DisplayIndex> \n");
 	PRINTF (" --------------------------------------------------------- \n");
     // Repeat for all available adapters in the system
@@ -802,7 +824,7 @@ int printDisplayIndexes()
 				{
 					iAdapterIndex = lpAdapterInfo[ j ].iAdapterIndex;
 					ADL_Main_Memory_Free ((void**) &lpAdlDisplayInfo );
-					if (ADL_OK != ADL_Display_DisplayInfo_Get (lpAdapterInfo[j].iAdapterIndex, &iNumDisplays, &lpAdlDisplayInfo, 0))
+                    if (ADL_OK != ADL2_Display_DisplayInfo_Get(ADLContext_, lpAdapterInfo[j].iAdapterIndex, &iNumDisplays, &lpAdlDisplayInfo, 0))
 						continue;
 
 					for ( k = 0; k < iNumDisplays; k++ )
@@ -837,6 +859,8 @@ int printDisplayIndexes()
 
 		}
 	}
+
+    ADL_Main_Memory_Free((void**)&lpAdapterInfo);
 	PRINTF (" --------------------------------------------------------- \n");
 	PRINTF ("* if adapter index -1 means, Disabled Display\n");
 	PRINTF (" --------------------------------------------------------- \n");
@@ -852,20 +876,11 @@ int getDisplayIndexesofOneGPU(int iCurrentAdapterIndex, int* lpAdpaterIndexes, i
 	LPAdapterInfo     lpAdapterInfo = NULL;
     LPADLDisplayInfo  lpAdlDisplayInfo = NULL;
 	*lpCount = 0;
-	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-	       PRINTF("Cannot get the number of adapters!\n");
-		   return 0;
-	}
 
-    if ( 0 < iNumberAdapters )
+    if (ADL_OK != ADL2_Adapter_AdapterInfoX3_Get(ADLContext_, -1, &iNumberAdapters, &lpAdapterInfo))
     {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
+        PRINTF("ADL2_Adapter_AdapterInfoX3_Get failed!\n");
+        return 0;
     }
 
 	for ( i = 0; i < iNumberAdapters; i++ )
@@ -883,7 +898,7 @@ int getDisplayIndexesofOneGPU(int iCurrentAdapterIndex, int* lpAdpaterIndexes, i
 
 		iAdapterIndex = lpAdapterInfo[ i ].iAdapterIndex;
 		ADL_Main_Memory_Free ((void**) &lpAdlDisplayInfo );
-		if (ADL_OK != ADL_Display_DisplayInfo_Get (lpAdapterInfo[i].iAdapterIndex, &iNumDisplays, &lpAdlDisplayInfo, 0))
+        if (ADL_OK != ADL2_Display_DisplayInfo_Get(ADLContext_, lpAdapterInfo[i].iAdapterIndex, &iNumDisplays, &lpAdlDisplayInfo, 0))
 			continue;
 
         for ( j = 0; j < iNumDisplays; j++ )
@@ -912,6 +927,7 @@ int getDisplayIndexesofOneGPU(int iCurrentAdapterIndex, int* lpAdpaterIndexes, i
 			}			
 		}
 	}
+    ADL_Main_Memory_Free((void**)&lpAdapterInfo);
 	return TRUE;
 }
 
@@ -922,20 +938,11 @@ int CanSetPrimary(int iAdapterIndex, int iCurrentPrimaryAdapterIndex)
 	int i;
 	LPAdapterInfo     lpAdapterInfo = NULL;
     LPADLDisplayInfo  lpAdlDisplayInfo = NULL;
-	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
-	{
-	       PRINTF("Cannot get the number of adapters!\n");
-		   return 0;
-	}
 
-    if ( 0 < iNumberAdapters )
+    if (ADL_OK != ADL2_Adapter_AdapterInfoX3_Get(ADLContext_, -1, &iNumberAdapters, &lpAdapterInfo))
     {
-        lpAdapterInfo = (LPAdapterInfo)malloc ( sizeof (AdapterInfo) * iNumberAdapters );
-        memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
-
-        // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
+        PRINTF("ADL2_Adapter_AdapterInfoX3_Get failed!\n");
+        return 0;
     }
 
 	//Finding Adapater Index for SLS creation.
@@ -952,6 +959,7 @@ int CanSetPrimary(int iAdapterIndex, int iCurrentPrimaryAdapterIndex)
 		}
 	}
 
+    ADL_Main_Memory_Free((void**)&lpAdapterInfo);
 	if (iCurrentPrimaryAdapterBusNumber == iBusNumber)
 	{
 		return 1;
