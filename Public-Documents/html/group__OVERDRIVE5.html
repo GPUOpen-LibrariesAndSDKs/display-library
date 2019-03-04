@@ -1483,7 +1483,7 @@ This function retrieves current power management capabilities for a specified ad
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Call this API prior to calling any other Overdrive APIs to determine if this feature is supported and enabled. <p>
 Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a24">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a25">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g5b04daec92fb57546231f1d893ed9263"></a><!-- doxytag: member="overdrive5.h::ADL_Overdrive_Caps" ref="g5b04daec92fb57546231f1d893ed9263" args="(int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)" -->

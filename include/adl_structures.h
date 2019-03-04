@@ -268,7 +268,7 @@ typedef struct ADLDDCInfo2
     int iSupportedHDR;
 /// Bit vector for freesync flags
     int iFreesyncFlags;
-	
+
 /// Return minimum monitor luminance without dimming data
     int ulMinLuminanceNoDimmingData;
 
@@ -2171,6 +2171,8 @@ typedef struct _ADLECCData
 } ADLECCData;
 
 
+
+
 /// \brief Handle to ADL client context.
 ///
 ///  ADL clients obtain context handle from initial call to \ref ADL2_Main_Control_Create.
@@ -2583,7 +2585,7 @@ typedef struct _ADLDceSettings
             unsigned int numberofTotalLanes;    // Read-only
             int relativePreEmphasis;            // Allowable values are -2 to +2
             int relativeVoltageSwing;           // Allowable values are -2 to +2
-            int persistFlag;                    
+            int persistFlag;
         } DpLink;
         struct
         {
@@ -2867,28 +2869,17 @@ typedef struct _ADLODNCurrentPowerParameters
     int  currentPower;
 } ADLODNCurrentPowerParameters;
 
-typedef enum _ADLOD8SettingId
+//ODN Ext range data structure
+typedef struct _ADLODNExtSingleInitSetting
 {
-    OD8_GFXCLK_FMAX = 0,
-    OD8_GFXCLK_FMIN,
-    OD8_GFXCLK_FREQ1,
-    OD8_GFXCLK_VOLTAGE1,
-    OD8_GFXCLK_FREQ2,
-    OD8_GFXCLK_VOLTAGE2,
-    OD8_GFXCLK_FREQ3,
-    OD8_GFXCLK_VOLTAGE3,
-    OD8_UCLK_FMAX,
-    OD8_POWER_PERCENTAGE,
-    OD8_FAN_MIN_SPEED,
-    OD8_FAN_ACOUSTIC_LIMIT,
-    OD8_FAN_TARGET_TEMP,
-    OD8_OPERATING_TEMP_MAX,
-    OD8_AC_TIMING,
-    OD8_FAN_ZERORPM_CONTROL,
-    OD8_COUNT
-} ADLOD8SettingId;
+	int mode;
+	int minValue;
+	int maxValue;
+	int step;
+	int defaultValue;
+} ADLODNExtSingleInitSetting;
 
-
+//OD8 Ext range data structure
 typedef struct _ADLOD8SingleInitSetting
 {
     int featureID;
@@ -2896,6 +2887,7 @@ typedef struct _ADLOD8SingleInitSetting
     int maxValue;
     int defaultValue;
 } ADLOD8SingleInitSetting;
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about Overdrive8 initial setting
@@ -2987,7 +2979,11 @@ typedef enum _ADLSensorType
     PMLOG_INFO_ACTIVITY_MEM = 20,
     PMLOG_GFX_VOLTAGE       = 21,
     PMLOG_MEM_VOLTAGE       = 22,
-    PMLOG_ASIC_POWER        = 23
+    PMLOG_ASIC_POWER        = 23,
+    PMLOG_TEMPERATURE_VRSOC  = 24,
+    PMLOG_TEMPERATURE_VRMVDD0= 25,
+    PMLOG_TEMPERATURE_VRMVDD1= 26,
+	PMLOG_TEMPERATURE_HOTSPOT= 27
 } ADLSensorType;
 
 
@@ -3022,21 +3018,21 @@ typedef struct _ADLFPSSettingsOutput
     /// size
     int ulSize;
     /// FPS Monitor is enabled in the AC state if 1
-    int bACFPSEnabled;                       
+    int bACFPSEnabled;
     /// FPS Monitor is enabled in the DC state if 1
-    int bDCFPSEnabled;                    
+    int bDCFPSEnabled;
     /// Current Value of FPS Monitor in AC state
-    int ulACFPSCurrent;              
+    int ulACFPSCurrent;
     /// Current Value of FPS Monitor in DC state
-    int ulDCFPSCurrent;          
+    int ulDCFPSCurrent;
     /// Maximum FPS Threshold allowed in PPLib for AC
-    int ulACFPSMaximum;  
+    int ulACFPSMaximum;
     /// Minimum FPS Threshold allowed in PPLib for AC
-    int ulACFPSMinimum;  
+    int ulACFPSMinimum;
     /// Maximum FPS Threshold allowed in PPLib for DC
-    int ulDCFPSMaximum;  
+    int ulDCFPSMaximum;
     /// Minimum FPS Threshold allowed in PPLib for DC
-    int ulDCFPSMinimum;       
+    int ulDCFPSMinimum;
 
 } ADLFPSSettingsOutput;
 
@@ -3051,11 +3047,11 @@ typedef struct _ADLFPSSettingsInput
     /// size
     int ulSize;
     /// Settings are for Global FPS (used by CCC)
-    int bGlobalSettings;                     
-    /// Current Value of FPS Monitor in AC state 
-    int ulACFPSCurrent;              
+    int bGlobalSettings;
+    /// Current Value of FPS Monitor in AC state
+    int ulACFPSCurrent;
     /// Current Value of FPS Monitor in DC state
-    int ulDCFPSCurrent;  
+    int ulDCFPSCurrent;
     /// Reserved
     int ulReserved[6];
 
@@ -3099,7 +3095,15 @@ typedef enum _ADL_PMLOG_SENSORS
     ADL_PMLOG_SOC_VOLTAGE         = 16,
     ADL_PMLOG_SOC_POWER           = 17,
     ADL_PMLOG_SOC_CURRENT         = 18,
-    ADL_PMLOG_INFO_ACTIVITY_GFX   = 19
+    ADL_PMLOG_INFO_ACTIVITY_GFX   = 19,
+    ADL_PMLOG_INFO_ACTIVITY_MEM   = 20,
+    ADL_PMLOG_GFX_VOLTAGE         = 21,
+    ADL_PMLOG_MEM_VOLTAGE         = 22,
+    ADL_PMLOG_ASIC_POWER          = 23,
+    ADL_PMLOG_TEMPERATURE_VRSOC   = 24,
+    ADL_PMLOG_TEMPERATURE_VRMVDD0 = 25,
+    ADL_PMLOG_TEMPERATURE_VRMVDD1 = 26,
+    ADL_PMLOG_TEMPERATURE_HOTSPOT = 27
 } ADL_PMLOG_SENSORS;
 
 
@@ -3154,6 +3158,161 @@ typedef struct _ADLPMLogStartOutput
 
 } ADLPMLogStartOutput;
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Get Error Counts Information
+///
+/// This structure is used to store RAS Error Counts Get Input Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct _ADLRASGetErrorCountsInput
+{
+    unsigned int                Reserved[16];
+} ADLRASGetErrorCountsInput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Get Error Counts Information
+///
+/// This structure is used to store RAS Error Counts Get Output Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASGetErrorCountsOutput
+{
+    unsigned int                CorrectedErrors;    // includes both DRAM and SRAM ECC
+    unsigned int                UnCorrectedErrors;  // includes both DRAM and SRAM ECC
+    unsigned int                Reserved[14];
+} ADLRASGetErrorCountsOutput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Get Error Counts Information
+///
+/// This structure is used to store RAS Error Counts Get Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct _ADLRASGetErrorCounts
+{
+    unsigned int                InputSize;
+    ADLRASGetErrorCountsInput   Input;
+    unsigned int                OutputSize;
+    ADLRASGetErrorCountsOutput  Output;
+} ADLRASGetErrorCounts;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Counts Reset Information
+///
+/// This structure is used to store RAS Error Counts Reset Input Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASResetErrorCountsInput
+{
+    unsigned int                Reserved[8];
+} ADLRASResetErrorCountsInput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Counts Reset Information
+///
+/// This structure is used to store RAS Error Counts Reset Output Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASResetErrorCountsOutput
+{
+    unsigned int                Reserved[8];
+} ADLRASResetErrorCountsOutput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Counts Reset Information
+///
+/// This structure is used to store RAS Error Counts Reset Information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASResetErrorCounts
+{
+    unsigned int                    InputSize;
+    ADLRASResetErrorCountsInput     Input;
+    unsigned int                    OutputSize;
+    ADLRASResetErrorCountsOutput    Output;
+} ADLRASResetErrorCounts;
+
+
+typedef enum _ADL_RAS_ERROR_INJECTION_MODE
+{
+    ADL_RAS_ERROR_INJECTION_MODE_SINGLE      = 1,
+    ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE    = 2
+}ADL_RAS_ERROR_INJECTION_MODE;
+
+
+typedef enum _ADL_RAS_BLOCK_ID
+{
+    ADL_RAS_BLOCK_ID_UMC = 0,
+	ADL_RAS_BLOCK_ID_SDMA,
+	ADL_RAS_BLOCK_ID_GFX_HUB,
+	ADL_RAS_BLOCK_ID_MMHUB,
+	ADL_RAS_BLOCK_ID_ATHUB,
+	ADL_RAS_BLOCK_ID_PCIE_BIF,
+	ADL_RAS_BLOCK_ID_HDP,
+	ADL_RAS_BLOCK_ID_XGMI_WAFL,
+	ADL_RAS_BLOCK_ID_DF,
+	ADL_RAS_BLOCK_ID_SMN,
+	ADL_RAS_BLOCK_ID_GFX	
+}ADL_RAS_BLOCK_ID;
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Injection information
+///
+/// This structure is used to store RAS Error Injection input information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct _ADLRASErrorInjectonInput
+{
+    unsigned long long Address;
+    unsigned long long Value;
+    unsigned int BlockId;
+    unsigned int InjectErrorType;
+    unsigned int SubBlockIndex;
+    unsigned int padding[9];
+} ADLRASErrorInjectonInput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Injection information
+///
+/// This structure is used to store RAS Error Injection output information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASErrorInjectionOutput
+{
+    unsigned int ErrorInjectionStatus;
+    unsigned int padding[15];
+} ADLRASErrorInjectionOutput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related RAS Error Injection information
+///
+/// This structure is used to store RAS Error Injection information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+typedef struct _ADLRASErrorInjection
+{
+    unsigned int                           InputSize;
+    ADLRASErrorInjectonInput               Input;
+    unsigned int                           OutputSize;
+    ADLRASErrorInjectionOutput             Output;
+} ADLRASErrorInjection;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about an application
 ///
@@ -3170,7 +3329,7 @@ typedef struct _ADLSGApplicationInfo
     wchar_t strVersion[ADL_MAX_PATH];
     /// Timestamp at which application has run
     long long int timeStamp;
-    /// Holds whether the applicaition profile exists or not 
+    /// Holds whether the applicaition profile exists or not
     unsigned int iProfileExists;
     /// The GPU on which application runs
     unsigned int iGPUAffinity;

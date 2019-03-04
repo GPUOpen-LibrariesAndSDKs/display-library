@@ -1989,6 +1989,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <br class="typebreak">
 <a class="el" href="group__define__appprofiles.html#gb2cd5bf862b57775c5ac4fbfc14af407">_ADLProfilePropertyType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__appprofiles.html#g76ca60f4d591e80f1e4a31b419bb7c8e">ADLProfilePropertyType</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="group__DEFINES.html#g3809112f202dec7d5f69b6ac114388b1">_ADLOD8SettingId</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g7c7693d51ab40db38e4915ad39d420f1">ADLOD8SettingId</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handle can be used to create Device Handle when using CreateDevice().  <a href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff"></a><br></td></tr>
@@ -2153,6 +2155,40 @@
 <br>
  }</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g2efd49277dbe050497cf7f696b70042a">ADLODNExtFeatureControl</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042abe0d3f6d1d7c42aa4ba05c193a754142">ADL_ODN_EXT_FEATURE_MEMORY_TIMING_TUNE</a> =  1 &lt;&lt; 0, 
+<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a337f7e2c4d6464981db7e2a13d139808">ADL_ODN_EXT_FEATURE_FAN_ZERO_RPM_CONTROL</a> =  1 &lt;&lt; 1, 
+<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a31e9656a6f2a7bb249bed86dc6db1aad">ADL_ODN_EXT_FEATURE_AUTO_UV_ENGINE</a> =  1 &lt;&lt; 2, 
+<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a0db5de0c41292a1f1c05d0a0bea6bf71">ADL_ODN_EXT_FEATURE_AUTO_OC_ENGINE</a> =  1 &lt;&lt; 3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042ad9384b5a51f1f7aeba5c989d14dc46d0">ADL_ODN_EXT_FEATURE_AUTO_OC_MEMORY</a> =  1 &lt;&lt; 4, 
+<a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a25b25b6ef9153a7eaef4456163bb50a7">ADL_ODN_EXT_FEATURE_FAN_CURVE</a> =  1 &lt;&lt; 5
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g29c2368d8417f4e55eaaac677c362b85">ADLODNExtSettingId</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b8579e3aa57dc74c28a5edf21c1951a7e37">ADL_ODN_PARAMETER_AC_TIMING</a> =  0, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b855c26544de0ae75fc3ebb6f12010070bb">ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85446c33c8c83835c854c67eecb695f366">ADL_ODN_PARAMETER_AUTO_UV_ENGINE</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85772660966340f52e2314a4997b3e74ea">ADL_ODN_PARAMETER_AUTO_OC_ENGINE</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b852dbbb611214b83d1fb421b4b7b4758ef">ADL_ODN_PARAMETER_AUTO_OC_MEMORY</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85902b52b42bd4f0e8ece6ff547a40cdd3">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_1</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b8587de082b4712f030e2a3e315a568d6cd">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_1</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85e3055e26844c839bc5d7e2f4da01297c">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_2</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b853d06d31d4a26078744bc3b7ef7371276">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_2</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85b987856c3e12027335b89fadb9f8df64">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_3</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b859e9e2940ea8d19f18497617ed8955bb5">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_3</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b857b3f22a99770c43324aa5ae26f9c62ab">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_4</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85a9b5f22d936e2422845926748235883f">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_4</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85844db8ed430597a1a263c6c50fbefcf1">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_5</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85207cb75cf6552fb8b39861c636ff0e6b">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_5</a>, 
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b850b691c4cea5ef6d7d5f77ef8843b618f">ODN_COUNT</a>
+<br>
+ }</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#ge0a778de19b82ceb18a3b8a0b3c66d46">ADLOD8FeatureControl</a> { <br>
 &nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46354e9023fd58eef07c0b8a8493003501">ADL_OD8_GFXCLK_LIMITS</a> =  1 &lt;&lt; 0, 
 <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d466a497d31406f2fac59aecd1f46748a2c">ADL_OD8_GFXCLK_CURVE</a> =  1 &lt;&lt; 1, 
@@ -2165,7 +2201,53 @@
 <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d460ab2eb2e81cbdef0d4dbb60a8015e54e">ADL_OD8_TEMPERATURE_SYSTEM</a> =  1 &lt;&lt; 7, 
 <br>
 &nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46cfba7566d70d1bdb7d75dd6077e48928">ADL_OD8_MEMORY_TIMING_TUNE</a> =  1 &lt;&lt; 8, 
-<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c5795aa5f7dd2a18046fef1531bcb211">ADL_OD8_FAN_ZERO_RPM_CONTROL</a> =  1 &lt;&lt; 9
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c5795aa5f7dd2a18046fef1531bcb211">ADL_OD8_FAN_ZERO_RPM_CONTROL</a> =  1 &lt;&lt; 9, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d461eb1bf376ca1f75055495d4cfac8dc7d">ADL_OD8_AUTO_UV_ENGINE</a> =  1 &lt;&lt; 10, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4652a75ab29eb6992eb76f0e6c330713f0">ADL_OD8_AUTO_OC_ENGINE</a> =  1 &lt;&lt; 11, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4614258a2157a4e89eb69dcacd0d90bc98">ADL_OD8_AUTO_OC_MEMORY</a> =  1 &lt;&lt; 12, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c8dad1770b2ea6f82e63a2195890ad8c">ADL_OD8_FAN_CURVE</a> =  1 &lt;&lt; 13
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g3809112f202dec7d5f69b6ac114388b1">_ADLOD8SettingId</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1982d6daf2764c82bc51457734dccd27f">OD8_GFXCLK_FMAX</a> =  0, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b10369c1890ae4bf9020bd85c0e30a0e9d">OD8_GFXCLK_FMIN</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b130af8f9c927ac21893cdbf0ea16c2069">OD8_GFXCLK_FREQ1</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b16f76610a8ea889481c9ad6b0e07e44a2">OD8_GFXCLK_VOLTAGE1</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b10a072cc0d33b05116c6e96a7286ddfd9">OD8_GFXCLK_FREQ2</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b146d9801a3252b6a0ec47a0fd76c3d247">OD8_GFXCLK_VOLTAGE2</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1681d81c8de7137f1ed71a92157f99b27">OD8_GFXCLK_FREQ3</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1cdd7e5f077cb657059615f66c3f9d835">OD8_GFXCLK_VOLTAGE3</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1a3477aa5aa55ecb526df75ff467e5158">OD8_UCLK_FMAX</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b14a63bf1157a71493e176cffb7e0d1a7a">OD8_POWER_PERCENTAGE</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1916e317c2596b793ee88d6fa1cd42625">OD8_FAN_MIN_SPEED</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b128af16ec0f34e139032498666960edc4">OD8_FAN_ACOUSTIC_LIMIT</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b11dac4e917f22fb55c5c0a5a14645cca5">OD8_FAN_TARGET_TEMP</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1186325d95fd1e14480e04d6975013ce8">OD8_OPERATING_TEMP_MAX</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b10fb06daa25cbd9eae1982fee3d97f2e8">OD8_AC_TIMING</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1a67bb515301f366d1f4d675552db52d0">OD8_FAN_ZERORPM_CONTROL</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1934648b3d3f9536ffb361c40df5bcf5c">OD8_AUTO_UV_ENGINE_CONTROL</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b12bf409091e6a3fab9fdfeeec92977f89">OD8_AUTO_OC_ENGINE_CONTROL</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1788d2b9807b774aff7d4404e11d5a944">OD8_AUTO_OC_MEMORY_CONTROL</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b115a612d53ff9a7b23d4ef4ab3fcd17f5">OD8_FAN_CURVE_TEMPERATURE_1</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b14c0fb3c553a282e23398e3e1e1ada037">OD8_FAN_CURVE_SPEED_1</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b11d22d33da1e4a12fc384b9e2066a0227">OD8_FAN_CURVE_TEMPERATURE_2</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1467d770475eb70271a026aab88eee015">OD8_FAN_CURVE_SPEED_2</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b116bf4a5ff8ad28e0ff8f1bbbe5a0efd2">OD8_FAN_CURVE_TEMPERATURE_3</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1ceb87b0c679a1ffdf2fb55313948a692">OD8_FAN_CURVE_SPEED_3</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1223692e234b64586820145095d169dd3">OD8_FAN_CURVE_TEMPERATURE_4</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1e1e85e190a0732d9b6bc81df45de3d7d">OD8_FAN_CURVE_SPEED_4</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b12d86831bdcc452def864e2f8f4da4faf">OD8_FAN_CURVE_TEMPERATURE_5</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1b80109ee710b9f76518a38e943d9c468">OD8_FAN_CURVE_SPEED_5</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b11243dc1c3c0b3939f7b7e47440b08e79">OD8_COUNT</a>
 <br>
  }</td></tr>
 

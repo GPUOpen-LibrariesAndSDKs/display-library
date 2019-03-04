@@ -597,8 +597,12 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__OVERDRIVE6.html#gf1f2087db935d4324bc413248aea8526">overdrive6.h</a>
 <li>ADL2_Overdrive8_Current_Setting_Get()
 : <a class="el" href="group__OVERDRIVE8.html#gfda4b3aa090bcab01ed2fa980b2fc26e">overdrive8.h</a>
+<li>ADL2_Overdrive8_Current_SettingX2_Get()
+: <a class="el" href="group__OVERDRIVE8.html#g48abdb68e666069c4d33e3b07ce29eb2">overdrive8.h</a>
 <li>ADL2_Overdrive8_Init_Setting_Get()
 : <a class="el" href="group__OVERDRIVE8.html#gc13bd3ad924670ddf0766537581304f9">overdrive8.h</a>
+<li>ADL2_Overdrive8_Init_SettingX2_Get()
+: <a class="el" href="group__OVERDRIVE8.html#g38d76f552e19db90cd56dd466eb2484c">overdrive8.h</a>
 <li>ADL2_Overdrive8_Setting_Set()
 : <a class="el" href="group__OVERDRIVE8.html#g82db905465f4acaec95c4a7a8ea8a2d3">overdrive8.h</a>
 <li>ADL2_Overdrive_Caps()
@@ -629,6 +633,10 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__OVERDRIVEN.html#gfeecd1a8d63358e57431ddc0f7df5185">overdriveN.h</a>
 <li>ADL2_OverdriveN_PowerLimit_Set()
 : <a class="el" href="group__OVERDRIVEN.html#g8de7998dbd949b3b3202cc00a99a716d">overdriveN.h</a>
+<li>ADL2_OverdriveN_SettingsExt_Get()
+: <a class="el" href="group__OVERDRIVEN.html#g8dec3d5e52db9099ad5161c976fd0ce9">overdriveN.h</a>
+<li>ADL2_OverdriveN_SettingsExt_Set()
+: <a class="el" href="group__OVERDRIVEN.html#gc1c4396cba82fc521e3b9ab3e8d1a088">overdriveN.h</a>
 <li>ADL2_OverdriveN_SystemClocks_Get()
 : <a class="el" href="group__OVERDRIVEN.html#gefc61c6d450304347f1d274368cec771">overdriveN.h</a>
 <li>ADL2_OverdriveN_SystemClocks_Set()
@@ -2094,8 +2102,7 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 <li>ADL_ERROR_RECORD_SEVERITY
 : <a class="el" href="adl__structures_8h.html#159a903c5ef160113c082039992afcc1">adl_structures.h</a>
 <li>ADL_EXTERNC
-: <a class="el" href="crossdisplay_8h.html#24a14773b8978b7ef0fb45451fcc495e">crossdisplay.h</a>
-, <a class="el" href="adapter_8h.html#24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
+: <a class="el" href="adapter_8h.html#24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
 , <a class="el" href="appprofiles_8h.html#24a14773b8978b7ef0fb45451fcc495e">appprofiles.h</a>
 , <a class="el" href="controller_8h.html#24a14773b8978b7ef0fb45451fcc495e">controller.h</a>
 , <a class="el" href="display_8h.html#24a14773b8978b7ef0fb45451fcc495e">display.h</a>
@@ -2104,10 +2111,11 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 , <a class="el" href="overdrive5_8h.html#24a14773b8978b7ef0fb45451fcc495e">overdrive5.h</a>
 , <a class="el" href="overdrive6_8h.html#24a14773b8978b7ef0fb45451fcc495e">overdrive6.h</a>
 , <a class="el" href="overdrive8_8h.html#24a14773b8978b7ef0fb45451fcc495e">overdrive8.h</a>
+, <a class="el" href="overdriveN_8h.html#24a14773b8978b7ef0fb45451fcc495e">overdriveN.h</a>
 , <a class="el" href="powerxpress_8h.html#24a14773b8978b7ef0fb45451fcc495e">powerxpress.h</a>
 , <a class="el" href="workstation_8h.html#24a14773b8978b7ef0fb45451fcc495e">workstation.h</a>
-, <a class="el" href="overdriveN_8h.html#24a14773b8978b7ef0fb45451fcc495e">overdriveN.h</a>
 , <a class="el" href="lnx_8h.html#24a14773b8978b7ef0fb45451fcc495e">lnx.h</a>
+, <a class="el" href="crossdisplay_8h.html#24a14773b8978b7ef0fb45451fcc495e">crossdisplay.h</a>
 <li>ADL_FALSE
 : <a class="el" href="group__define__misc.html#gd032e621d4d5dccb5bdeb053fced69dd">adl_defines.h</a>
 <li>ADL_Flush_Driver_Data()
@@ -2504,6 +2512,14 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__define__overdrive6__thermalcontroller__caps.html#gc289e4f38fca8f41aebe40fa2bf63497">adl_defines.h</a>
 <li>ADL_OD8_ACOUSTIC_LIMIT_SCLK
 : <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d468574d6beecd842354ff6ef1f2d0c0d8f">adl_defines.h</a>
+<li>ADL_OD8_AUTO_OC_ENGINE
+: <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4652a75ab29eb6992eb76f0e6c330713f0">adl_defines.h</a>
+<li>ADL_OD8_AUTO_OC_MEMORY
+: <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4614258a2157a4e89eb69dcacd0d90bc98">adl_defines.h</a>
+<li>ADL_OD8_AUTO_UV_ENGINE
+: <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d461eb1bf376ca1f75055495d4cfac8dc7d">adl_defines.h</a>
+<li>ADL_OD8_FAN_CURVE
+: <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c8dad1770b2ea6f82e63a2195890ad8c">adl_defines.h</a>
 <li>ADL_OD8_FAN_SPEED_MIN
 : <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46b5515dd0181517ef22c182c5b79f2606">adl_defines.h</a>
 <li>ADL_OD8_FAN_ZERO_RPM_CONTROL
@@ -2534,6 +2550,18 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__define__overdrive__EventCounter__type.html#g52eea84109ed0057eddf2d6c8d3cfd1b">adl_defines.h</a>
 <li>ADL_ODN_EVENTCOUNTER_VPURECOVERY
 : <a class="el" href="group__define__overdrive__EventCounter__type.html#ge055bb2d016c8428e99d891414a407c9">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_AUTO_OC_ENGINE
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a0db5de0c41292a1f1c05d0a0bea6bf71">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_AUTO_OC_MEMORY
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042ad9384b5a51f1f7aeba5c989d14dc46d0">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_AUTO_UV_ENGINE
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a31e9656a6f2a7bb249bed86dc6db1aad">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_FAN_CURVE
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a25b25b6ef9153a7eaef4456163bb50a7">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_FAN_ZERO_RPM_CONTROL
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042a337f7e2c4d6464981db7e2a13d139808">adl_defines.h</a>
+<li>ADL_ODN_EXT_FEATURE_MEMORY_TIMING_TUNE
+: <a class="el" href="group__DEFINES.html#gg2efd49277dbe050497cf7f696b70042abe0d3f6d1d7c42aa4ba05c193a754142">adl_defines.h</a>
 <li>ADL_ODN_FAN_SPEED_MIN
 : <a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655b41b8091d3bdb720fd75a09ad201ba7d">adl_defines.h</a>
 <li>ADL_ODN_FAN_SPEED_TARGET
@@ -2548,6 +2576,36 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265510b21fdbe7122b0cf5ab0d16a0b84e23">adl_defines.h</a>
 <li>ADL_ODN_MCLK_VDD
 : <a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b08156842655be7cead4a9fc596b5fbd113d2cae1ff7">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_AC_TIMING
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b8579e3aa57dc74c28a5edf21c1951a7e37">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_AUTO_OC_ENGINE
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85772660966340f52e2314a4997b3e74ea">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_AUTO_OC_MEMORY
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b852dbbb611214b83d1fb421b4b7b4758ef">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_AUTO_UV_ENGINE
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85446c33c8c83835c854c67eecb695f366">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_SPEED_1
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b8587de082b4712f030e2a3e315a568d6cd">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_SPEED_2
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b853d06d31d4a26078744bc3b7ef7371276">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_SPEED_3
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b859e9e2940ea8d19f18497617ed8955bb5">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_SPEED_4
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85a9b5f22d936e2422845926748235883f">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_SPEED_5
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85207cb75cf6552fb8b39861c636ff0e6b">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_1
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85902b52b42bd4f0e8ece6ff547a40cdd3">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_2
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85e3055e26844c839bc5d7e2f4da01297c">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_3
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85b987856c3e12027335b89fadb9f8df64">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_4
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b857b3f22a99770c43324aa5ae26f9c62ab">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_5
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85844db8ed430597a1a263c6c50fbefcf1">adl_defines.h</a>
+<li>ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL
+: <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b855c26544de0ae75fc3ebb6f12010070bb">adl_defines.h</a>
 <li>ADL_ODN_PERF_TUNING_SLIDER
 : <a class="el" href="group__DEFINES.html#ggf302c85d47bbf0e8b047b0815684265565517f51f3ced8b206a87b34f55e7ced">adl_defines.h</a>
 <li>ADL_ODN_POWER_LIMIT
@@ -2708,6 +2766,8 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__DEFINES.html#ggaff310346e51a8892feb20fc0c0ec0c6f2e0267a982128ff7924e66d67040577">adl_defines.h</a>
 <li>ADL_PM_PARAM_DONT_CHANGE
 : <a class="el" href="group__DEFINES.html#g290f4e77d6592cced54b5e38455882c3">adl_defines.h</a>
+<li>ADL_PMLOG_ASIC_POWER
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec341c50f52e34ac09a7a14792b83edc02">adl_structures.h</a>
 <li>ADL_PMLOG_CLK_GFXCLK
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec4ef49ee6b144c1004bf2470a9e54f176">adl_structures.h</a>
 <li>ADL_PMLOG_CLK_MEMCLK
@@ -2726,12 +2786,18 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86decb0532080fb59b945b3938be8042dc1cf">adl_structures.h</a>
 <li>ADL_PMLOG_FAN_RPM
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec7aa52f5f0282dc8f20d0b94159948bf4">adl_structures.h</a>
+<li>ADL_PMLOG_GFX_VOLTAGE
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86deca6cf817bbf2240cddc90251450a7bd78">adl_structures.h</a>
 <li>ADL_PMLOG_INFO_ACTIVITY_GFX
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86deca46e7007e598848eb2f632a5f0742a27">adl_structures.h</a>
+<li>ADL_PMLOG_INFO_ACTIVITY_MEM
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec728aca66de9dc134588533a7dfea46b8">adl_structures.h</a>
 <li>ADL_PMLOG_MAX_SENSORS
 : <a class="el" href="group__DEFINES.html#g8d76d1d1b2d45ad55c3230e37471540c">adl_defines.h</a>
 <li>ADL_PMLOG_MAX_SUPPORTED_SENSORS
 : <a class="el" href="adl__structures_8h.html#06fc87d81c62e9abb8790b6e5713c55b8eba0e06d876c3d8ec46aa9d2fadb6ab">adl_structures.h</a>
+<li>ADL_PMLOG_MEM_VOLTAGE
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec1fe8455b922214a2f50232ebe298b4be">adl_structures.h</a>
 <li>ADL_PMLOG_SENSORS
 : <a class="el" href="adl__structures_8h.html#7cb6c7d02817b1a5cf0b9e0e6c47d5a4">adl_structures.h</a>
 <li>ADL_PMLOG_SOC_CURRENT
@@ -2742,6 +2808,8 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec9617e74ce2b5548f544e49374eb34c96">adl_structures.h</a>
 <li>ADL_PMLOG_TEMPERATURE_EDGE
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86decf04be5c93893bb280e09a92bcbb2b05c">adl_structures.h</a>
+<li>ADL_PMLOG_TEMPERATURE_HOTSPOT
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86decaf06c22f57c6afb30f617d388e2d2c81">adl_structures.h</a>
 <li>ADL_PMLOG_TEMPERATURE_LIQUID
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dece7892d09778fe0141dffb387cc28ca33">adl_structures.h</a>
 <li>ADL_PMLOG_TEMPERATURE_MEM
@@ -2750,6 +2818,12 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec0e4dd79e8b8558f763f8e38713426344">adl_structures.h</a>
 <li>ADL_PMLOG_TEMPERATURE_VRMVDD
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec13968d36fbf49f51ab07681193f4b39f">adl_structures.h</a>
+<li>ADL_PMLOG_TEMPERATURE_VRMVDD0
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec2157f8fef112722cc52e3db4ad2d22d6">adl_structures.h</a>
+<li>ADL_PMLOG_TEMPERATURE_VRMVDD1
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86decf4209a6819749a1ad02ad757d3ec090d">adl_structures.h</a>
+<li>ADL_PMLOG_TEMPERATURE_VRSOC
+: <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec9c92a81a19fa5e4bef3b3811c3957e69">adl_structures.h</a>
 <li>ADL_PMLOG_TEMPERATURE_VRVDDC
 : <a class="el" href="adl__structures_8h.html#f6d6f77f520be4456f46f528c1a86dec9b2854536f1bf2ce8f9903b339bc6906">adl_structures.h</a>
 <li>ADL_PowerXpress_AncillaryDevices_Get()
@@ -2830,6 +2904,36 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__define__emulation__query.html#g6bc973d982ad1e77a121e2d23f9c4c18">adl_defines.h</a>
 <li>ADL_QUERY_REAL_DATA
 : <a class="el" href="group__define__emulation__query.html#gea2ccbf5fad46135b822a32a59733499">adl_defines.h</a>
+<li>ADL_RAS_BLOCK_ID
+: <a class="el" href="adl__structures_8h.html#357791818b4565784b558f448258058d">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_ATHUB
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350e7c9e9e434937caa5d4a662064be7cba">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_DF
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350a3593f744c59651cc523c411d5af4c1d">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_GFX
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350456346bb32abb6b2393281f545d78312">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_GFX_HUB
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350614889aa52c8aacdd9042116f8b633f1">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_HDP
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f78653505c186b07db42af3c1ab773ffdc1372ea">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_MMHUB
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f786535039ea6a4a934679c5dbe9ffd650c9d07b">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_PCIE_BIF
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350990262e67ed5f38563243837e9c21654">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_SDMA
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350e7d87e1ea7475f715f6f5dcbbe5309a3">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_SMN
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f7865350b3a457a912264c5e3204401be68ff795">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_UMC
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f786535043bbe3b99fa702062471ea0e9b3c34d8">adl_structures.h</a>
+<li>ADL_RAS_BLOCK_ID_XGMI_WAFL
+: <a class="el" href="adl__structures_8h.html#621b4fcb8ffddd92151a4e81f786535010b057c54955ed180d646a01572fb74e">adl_structures.h</a>
+<li>ADL_RAS_ERROR_INJECTION_MODE
+: <a class="el" href="adl__structures_8h.html#4c8e1d30b7cfde086cb0df2d2ecdeb5b">adl_structures.h</a>
+<li>ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE
+: <a class="el" href="adl__structures_8h.html#67b8c88c594975c1ecdd547295344b3a64db70d868dca70e2e01aa7a59b219dd">adl_structures.h</a>
+<li>ADL_RAS_ERROR_INJECTION_MODE_SINGLE
+: <a class="el" href="adl__structures_8h.html#67b8c88c594975c1ecdd547295344b3ab8bf9c5f04c74ee3ac2099e2e188f484">adl_structures.h</a>
 <li>ADL_REGAMMA_COEFFICIENT_A0_DIVIDER
 : <a class="el" href="group__defines__gamutspace.html#ga6debbe3a55d61e67c820ce258ac9dcb">adl_defines.h</a>
 <li>ADL_REGAMMA_COEFFICIENT_A1A2A3_DIVIDER
@@ -3153,7 +3257,7 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 <li>ADLOD8SetSetting
 : <a class="el" href="adl__structures_8h.html#970316f69a2712bd4e053bbaa32c2298">adl_structures.h</a>
 <li>ADLOD8SettingId
-: <a class="el" href="adl__structures_8h.html#7c7693d51ab40db38e4915ad39d420f1">adl_structures.h</a>
+: <a class="el" href="group__DEFINES.html#g7c7693d51ab40db38e4915ad39d420f1">adl_defines.h</a>
 <li>ADLOD8SingleInitSetting
 : <a class="el" href="adl__structures_8h.html#98e97ba4506384942067b71b2ff333da">adl_structures.h</a>
 <li>ADLOD8SingleSetSetting
@@ -3170,6 +3274,12 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="adl__structures_8h.html#bacfc2b2e0adb46965cc5a668b302252">adl_structures.h</a>
 <li>ADLODNDPMMaskType
 : <a class="el" href="group__DEFINES.html#gae2f909e57c202737d6aa255a42c0aa7">adl_defines.h</a>
+<li>ADLODNExtFeatureControl
+: <a class="el" href="group__DEFINES.html#g2efd49277dbe050497cf7f696b70042a">adl_defines.h</a>
+<li>ADLODNExtSettingId
+: <a class="el" href="group__DEFINES.html#g29c2368d8417f4e55eaaac677c362b85">adl_defines.h</a>
+<li>ADLODNExtSingleInitSetting
+: <a class="el" href="adl__structures_8h.html#bf4944c31d14819a096f95a1103da689">adl_structures.h</a>
 <li>ADLODNFeatureControl
 : <a class="el" href="group__DEFINES.html#gf302c85d47bbf0e8b047b08156842655">adl_defines.h</a>
 <li>ADLODNParameterRange
@@ -3196,6 +3306,24 @@ Here is a list of all functions, variables, defines, enums, and typedefs with li
 : <a class="el" href="group__DEFINES.html#g50ca4e1e7652f0b8d1fc764e1fcf5b83">adl_defines.h</a>
 <li>ADLPXScheme
 : <a class="el" href="group__define__powerxpress__constants.html#g339543465180ede51cecd16d5006b51f">adl_defines.h</a>
+<li>ADLRASErrorInjection
+: <a class="el" href="adl__structures_8h.html#917baba7a7cbcf2f8a990cb3d55bd9b8">adl_structures.h</a>
+<li>ADLRASErrorInjectionOutput
+: <a class="el" href="adl__structures_8h.html#31a380c217629e75c91cbd24ed9e760a">adl_structures.h</a>
+<li>ADLRASErrorInjectonInput
+: <a class="el" href="adl__structures_8h.html#a182bf40ace1d0b23025cd5241ebd37b">adl_structures.h</a>
+<li>ADLRASGetErrorCounts
+: <a class="el" href="adl__structures_8h.html#f24a128aefa805e288ec93588bf31c2e">adl_structures.h</a>
+<li>ADLRASGetErrorCountsInput
+: <a class="el" href="adl__structures_8h.html#0d8a3c2ca90110bb0625bc47ec231bb6">adl_structures.h</a>
+<li>ADLRASGetErrorCountsOutput
+: <a class="el" href="adl__structures_8h.html#afda79f866a3ea6bfe8e5e081427d146">adl_structures.h</a>
+<li>ADLRASResetErrorCounts
+: <a class="el" href="adl__structures_8h.html#02e3da4184f125f17ee4a8c4ea0824a3">adl_structures.h</a>
+<li>ADLRASResetErrorCountsInput
+: <a class="el" href="adl__structures_8h.html#6341c3f7d8d59f4e9673ed1c64427075">adl_structures.h</a>
+<li>ADLRASResetErrorCountsOutput
+: <a class="el" href="adl__structures_8h.html#89fc2db15aa41e83aabbe5e7ed61ca08">adl_structures.h</a>
 <li>ADLSampleRate
 : <a class="el" href="group__DEFINES.html#g430780400ce7fceaab3d424c254a28be">adl_defines.h</a>
 <li>ADLSampleRate_176P4KHz

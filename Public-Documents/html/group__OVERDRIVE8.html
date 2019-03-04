@@ -33,6 +33,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g48705da45f75d44581b9453f6d963786">ADL2_New_QueryPMLogData_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLPMLogDataOutput.html">ADLPMLogDataOutput</a> *lpDataOutput)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings.  <a href="#g48705da45f75d44581b9453f6d963786"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g38d76f552e19db90cd56dd466eb2484c">ADL2_Overdrive8_Init_SettingX2_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpOverdrive8Capabilities, int *lpNumberOfFeatures, <a class="el" href="struct__ADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **lppInitSettingList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the Overdrive8 current range settings. This is new versin of ADL2_Overdrive8_Init_Setting_Get. It supports new features and does not need to change the PAI.  <a href="#g38d76f552e19db90cd56dd466eb2484c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g48abdb68e666069c4d33e3b07ce29eb2">ADL2_Overdrive8_Current_SettingX2_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpNumberOfFeatures, int **lppCurrentSettingList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings. This is new versin of ADL2_Overdrive8_Current_SettingX2_Get. It supports new features and does not need to change the PAI.  <a href="#g48abdb68e666069c4d33e3b07ce29eb2"></a><br></td></tr>
 </table>
 <hr><h2>Function Documentation</h2>
 <a class="anchor" name="gc13bd3ad924670ddf0766537581304f9"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Init_Setting_Get" ref="gc13bd3ad924670ddf0766537581304f9" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLOD8InitSetting *lpInitSetting)" -->
@@ -231,6 +237,121 @@ This function retrieves the Overdrive8 current settings for a specified adapter.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b><a class="el" href="deprecated.html#_deprecated000041">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g38d76f552e19db90cd56dd466eb2484c"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Init_SettingX2_Get" ref="g38d76f552e19db90cd56dd466eb2484c" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpOverdrive8Capabilities, int *lpNumberOfFeatures, ADLOD8SingleInitSetting **lppInitSettingList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_Init_SettingX2_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpOverdrive8Capabilities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfFeatures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **&nbsp;</td>
+          <td class="paramname"> <em>lppInitSettingList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the Overdrive8 current range settings. This is new versin of ADL2_Overdrive8_Init_Setting_Get. It supports new features and does not need to change the PAI. 
+<p>
+This function retrieves the Overdrive8 current range settings for a specified adapter. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpOverdrive8Capabilities</em>&nbsp;</td><td>The pointer to the bit-vector which indicates wich OD8 feature is supported. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in/out]</em>&nbsp;</td><td>lpNumberOfFeatures The pointer to an integer which indicates the number of OD8 features. The callee shold input the expected number of features. Then ADL can use this input to support comptiable. When returing, the number is actual number of dricver currently supported features </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppInitSettingList</em>&nbsp;</td><td>The pointer to the list of current OD8 range of settingts. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g48abdb68e666069c4d33e3b07ce29eb2"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Current_SettingX2_Get" ref="g48abdb68e666069c4d33e3b07ce29eb2" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfFeatures, int **lppCurrentSettingList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_Current_SettingX2_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfFeatures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>lppCurrentSettingList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the Overdrive8 current settings. This is new versin of ADL2_Overdrive8_Current_SettingX2_Get. It supports new features and does not need to change the PAI. 
+<p>
+This function retrieves the Overdrive8 current settings for a specified adapter. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in/out]</em>&nbsp;</td><td>lpNumberOfFeatures The pointer to an integer which indicates the number of OD8 features. The callee shold input the expected number of features. Then ADL can use this input to support comptiable. When returing, the number is actual number of dricver currently supported features </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpInitSettingList</em>&nbsp;</td><td>The pointer to the list of current OD8 settingts. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div><p>

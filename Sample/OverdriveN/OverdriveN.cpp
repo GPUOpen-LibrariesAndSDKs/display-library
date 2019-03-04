@@ -49,6 +49,9 @@ typedef int (*ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_SET) (ADL_CONTEXT_HANDLE context
 typedef int (*ADL2_OVERDRIVEN_ZERORPMFAN_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupport, int *lpCurrentValue, int *lpDefaultValue);
 typedef int (*ADL2_OVERDRIVEN_ZERORPMFAN_SET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int currentValue);
 
+typedef int(*ADL2_OVERDRIVEN_SETTINGSEXT_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpOverdriveNExtCapabilities, int *lpNumberOfODNExtFeatures, ADLODNExtSingleInitSetting** lppInitSettingList, int** lppCurrentSettingList);
+typedef int(*ADL2_OVERDRIVEN_SETTINGSEXT_SET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumberOfODNExtFeatures, int* itemValueValidList, int* lpItemValueList);
+
 HINSTANCE hDLL;
 
 ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
@@ -74,6 +77,10 @@ ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_GET ADL2_OverdriveN_MemoryTimingLevel_Get = NU
 ADL2_OVERDRIVEN_MEMORYTIMINGLEVEL_SET ADL2_OverdriveN_MemoryTimingLevel_Set = NULL;
 ADL2_OVERDRIVEN_ZERORPMFAN_GET ADL2_OverdriveN_ZeroRPMFan_Get = NULL;
 ADL2_OVERDRIVEN_ZERORPMFAN_SET ADL2_OverdriveN_ZeroRPMFan_Set = NULL;
+
+ADL2_OVERDRIVEN_SETTINGSEXT_GET ADL2_OverdriveN_SettingsExt_Get = NULL;
+ADL2_OVERDRIVEN_SETTINGSEXT_SET ADL2_OverdriveN_SettingsExt_Set = NULL;
+
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -138,6 +145,8 @@ int initializeADL()
     ADL2_OverdriveN_ZeroRPMFan_Get = (ADL2_OVERDRIVEN_ZERORPMFAN_GET)GetProcAddress(hDLL, "ADL2_OverdriveN_ZeroRPMFan_Get");
     ADL2_OverdriveN_ZeroRPMFan_Set = (ADL2_OVERDRIVEN_ZERORPMFAN_SET)GetProcAddress(hDLL, "ADL2_OverdriveN_ZeroRPMFan_Set");
 
+    ADL2_OverdriveN_SettingsExt_Get = (ADL2_OVERDRIVEN_SETTINGSEXT_GET)GetProcAddress(hDLL, "ADL2_OverdriveN_SettingsExt_Get");
+    ADL2_OverdriveN_SettingsExt_Set = (ADL2_OVERDRIVEN_SETTINGSEXT_SET)GetProcAddress(hDLL, "ADL2_OverdriveN_SettingsExt_Set");
 
 	if ( NULL == ADL_Main_Control_Create ||
 		 NULL == ADL_Main_Control_Destroy ||
@@ -157,7 +166,9 @@ int initializeADL()
         NULL == ADL2_OverdriveN_MemoryTimingLevel_Get ||
         NULL == ADL2_OverdriveN_MemoryTimingLevel_Set ||
         NULL == ADL2_OverdriveN_ZeroRPMFan_Get ||
-        NULL == ADL2_OverdriveN_ZeroRPMFan_Set
+        NULL == ADL2_OverdriveN_ZeroRPMFan_Set ||
+        NULL == ADL2_OverdriveN_SettingsExt_Get ||
+        NULL == ADL2_OverdriveN_SettingsExt_Set
 		)
 	{
 		PRINTF("Failed to get ADL function pointers\n");
@@ -1305,6 +1316,198 @@ int resetODSettings()
 	return ret;
 }
 
+int ODNSettingExtGet()
+{
+    int iSupported, iEnabled, iVersion;
+    int i, ret = 1;
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ret = ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (NULL != ADL2_OverdriveN_SettingsExt_Get)
+            {
+                int overdriveNExtCapabilities;
+                int numberOfODNExtFeatures = ODN_COUNT;
+                ADLODNExtSingleInitSetting* lpInitSettingList = NULL;
+                int* lpCurrentSettingList = NULL;
+                ret = ADL2_OverdriveN_SettingsExt_Get(context, lpAdapterInfo[i].iAdapterIndex, &overdriveNExtCapabilities, &numberOfODNExtFeatures, &lpInitSettingList, &lpCurrentSettingList);
+                if (ADL_OK != ret)
+                {
+                    PRINTF("ADL2_OverdriveN_SettingsExt_Get is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_SettingsExt_Get is Success\n\n");
+                    PRINTF("****** Driver Values: After Apply ******\n");
+                    PRINTF("ADL_ODN_PARAMETER_AC_TIMING = 0******Memory timing\n,\
+                        ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL = 1******Zero RPM\n,\
+                        ADL_ODN_PARAMETER_AUTO_UV_ENGINE = 2******Auto UV Engine\n,\
+                        ADL_ODN_PARAMETER_AUTO_OC_ENGINE = 3******Auto OC ingine\n,\
+                        ADL_ODN_PARAMETER_AUTO_OC_MEMORY = 4******Auto OC memory\n,\
+                        The follwoing is Fan curve temperature and speed:\n \
+                        ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_1 = 5\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_SPEED_1 = 6\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_2 = 7\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_SPEED_2 = 8\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_3 = 9\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_SPEED_3 = 10\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_4 = 11\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_SPEED_4 = 12\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_5 = 13\n,\
+                        ADL_ODN_PARAMETER_FAN_CURVE_SPEED_5 = 14 \n");
+                    for (int j = 0; j < numberOfODNExtFeatures; j++)
+                    {
+                        PRINTF("******numberOfODNExtFeatures:%d******\n",j);
+                        PRINTF("lpCurrentSettingList Value : %d\n", lpCurrentSettingList[j]);
+                        PRINTF("lpInitSettingList.defaultValue : %d\n", lpInitSettingList[j].defaultValue);
+                        PRINTF("lpInitSettingList.maxValue : %d\n", lpInitSettingList[j].maxValue);
+                        PRINTF("lpInitSettingList.minValue : %d\n", lpInitSettingList[j].minValue);
+                    }
+                }
+                ADL_Main_Memory_Free((void**)&lpInitSettingList);
+                ADL_Main_Memory_Free((void**)&lpCurrentSettingList);
+            }
+        }
+    }
+    return ret;
+}
+
+int ODNSettingExtSet(int itemId, int value)
+{
+    int iSupported, iEnabled, iVersion;
+    int i, ret = ADL_FALSE;
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (NULL != ADL2_OverdriveN_SettingsExt_Get && NULL != ADL2_OverdriveN_SettingsExt_Set)
+            {
+                int overdriveNExtCapabilities;
+                int numberOfODNExtFeatures = ODN_COUNT;
+                ADLODNExtSingleInitSetting* lpInitSettingList = NULL;
+                int* lpCurrentSettingList = NULL;
+                int itemValueValidList[ODN_COUNT];
+                int itemValueList[ODN_COUNT];
+                int ret = ADL2_OverdriveN_SettingsExt_Get(context, lpAdapterInfo[i].iAdapterIndex, &overdriveNExtCapabilities, &numberOfODNExtFeatures, &lpInitSettingList, &lpCurrentSettingList);
+                if (ADL_OK != ret)
+                {
+                    PRINTF("ADL2_OverdriveN_SettingsExt_Get is failed\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_OverdriveN_SettingsExt_Get is Success\n\n");
+                    for (int j = 0; j < numberOfODNExtFeatures; j++)
+                    {
+                        itemValueValidList[j] = 0;
+                    }
+                    if (ADL_ODN_PARAMETER_AC_TIMING == itemId)
+                    {
+                        if(!(lpInitSettingList[ADL_ODN_PARAMETER_AC_TIMING].minValue <= value && lpInitSettingList[ADL_ODN_PARAMETER_AC_TIMING].maxValue >= value))
+                        {
+                            PRINTF("ODN value range should be in Min : %d, Max : %d\n", lpInitSettingList[ADL_ODN_PARAMETER_AC_TIMING].minValue <= value, lpInitSettingList[ADL_ODN_PARAMETER_AC_TIMING].maxValue <= value);
+                            ret = ADL_ERR;
+                        }
+                        else
+                        {
+                            itemValueList[itemId] = 1;
+                            itemValueList[itemId] = value;
+                            ret = ADL2_OverdriveN_SettingsExt_Set(context, lpAdapterInfo[i].iAdapterIndex, numberOfODNExtFeatures, itemValueValidList, itemValueList);
+
+                            if (ADL_OK != ret)
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is failed\n");
+                            }
+                            else
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is Success\n\n");
+                            }
+                        }
+                    }
+                    else if (ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL == itemId)
+                    {
+                        if (!(lpInitSettingList[ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL].minValue <= value && lpInitSettingList[ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL].maxValue >= value))
+                        {
+                            PRINTF("ODN value range should be in Min : %d, Max : %d\n", lpInitSettingList[ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL].minValue <= value, lpInitSettingList[ADL_ODN_PARAMETER_FAN_ZERO_RPM_CONTROL].maxValue <= value);
+                            ret = ADL_ERR;
+                        }
+                        else
+                        {
+                            itemValueList[itemId] = 1;
+                            itemValueList[itemId] = value;
+                            ret = ADL2_OverdriveN_SettingsExt_Set(context, lpAdapterInfo[i].iAdapterIndex, numberOfODNExtFeatures, itemValueValidList, itemValueList);
+
+                            if (ADL_OK != ret)
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is failed\n");
+                            }
+                            else
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is Success\n\n");
+                            }
+                        }
+                    }
+                    else if (ADL_ODN_PARAMETER_AUTO_UV_ENGINE == itemId)
+                    {
+                        if (!(lpInitSettingList[ADL_ODN_PARAMETER_AUTO_UV_ENGINE].minValue <= value && lpInitSettingList[ADL_ODN_PARAMETER_AUTO_UV_ENGINE].maxValue >= value))
+                        {
+                            PRINTF("ODN value range should be in Min : %d, Max : %d\n", lpInitSettingList[ADL_ODN_PARAMETER_AUTO_UV_ENGINE].minValue <= value, lpInitSettingList[ADL_ODN_PARAMETER_AUTO_UV_ENGINE].maxValue <= value);
+                            ret = ADL_ERR;
+                        }
+                        else
+                        {
+                            itemValueList[itemId] = 1;
+                            itemValueList[itemId] = value;
+                            ret = ADL2_OverdriveN_SettingsExt_Set(context, lpAdapterInfo[i].iAdapterIndex, numberOfODNExtFeatures, itemValueValidList, itemValueList);
+
+                            if (ADL_OK != ret)
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is failed\n");
+                            }
+                            else
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is Success\n\n");
+                            }
+                        }
+                    }
+                    else if (ADL_ODN_PARAMETER_AUTO_OC_ENGINE == itemId)
+                    {
+                        if (!(lpInitSettingList[ADL_ODN_PARAMETER_AUTO_OC_ENGINE].minValue <= value && lpInitSettingList[ADL_ODN_PARAMETER_AUTO_OC_ENGINE].maxValue >= value))
+                        {
+                            PRINTF("ODN value range should be in Min : %d, Max : %d\n", lpInitSettingList[ADL_ODN_PARAMETER_AUTO_OC_ENGINE].minValue <= value, lpInitSettingList[ADL_ODN_PARAMETER_AUTO_OC_ENGINE].maxValue <= value);
+                            ret = ADL_ERR;
+                        }
+                        else
+                        {
+                            itemValueList[itemId] = 1;
+                            itemValueList[itemId] = value;
+                            ret = ADL2_OverdriveN_SettingsExt_Set(context, lpAdapterInfo[i].iAdapterIndex, numberOfODNExtFeatures, itemValueValidList, itemValueList);
+
+                            if (ADL_OK != ret)
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is failed\n");
+                            }
+                            else
+                            {
+                                PRINTF("ADL2_OverdriveN_SettingsExt_Set is Success\n\n");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        PRINTF("ADL2_OverdriveN_SettingsExt_Set is failed\n");
+                        ret = ADL_ERR;
+                    }
+                }
+                ADL_Main_Memory_Free((void**)&lpInitSettingList);
+                ADL_Main_Memory_Free((void**)&lpCurrentSettingList);
+            }
+        }
+    }
+    return ret;
+}
+
 int main(int argc, char* argv[])
 {
 //	Sleep(30000);
@@ -1385,6 +1588,14 @@ int main(int argc, char* argv[])
                         setODNZERORPMParameters(atoi(argv[2]));
                     else
                         printf("signature of Zero RPM Fan Set (ODNEXT.exe z X); X - Expected Zero RPM value");
+                    break;
+                case 'e':
+                    if (argc == 2)
+                        ODNSettingExtGet();
+                    else if (argc == 4)
+                        ODNSettingExtSet(atoi(argv[2]), atoi(argv[3]));
+                    else
+                        printf("signature of ODN Setting Ext_Get (ODNEXT.exe e X); X - Expected Levle");
                     break;
 				default:
 					printf ("Available command line parameters: f- Fan, g-GPU clocks, t-temp, m-Memory Clocks, a- Activity, r-reset \n ");

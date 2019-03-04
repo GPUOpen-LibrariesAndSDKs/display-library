@@ -156,7 +156,7 @@ The function is used to check if the adapter associated with iAdapterIndex is ac
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a9">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a13">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="PowerXPress_2PowerXPress_8cpp-example.html#a14">PowerXPress/PowerXPress.cpp</a>.</dl>
+<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a9">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a14">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="PowerXPress_2PowerXPress_8cpp-example.html#a14">PowerXPress/PowerXPress.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g0ea636181aaad0c76d78186c96020daf"></a><!-- doxytag: member="adapter.h::ADL_Adapter_Active_Get" ref="g0ea636181aaad0c76d78186c96020daf" args="(int iAdapterIndex, int *lpStatus)" -->
@@ -368,7 +368,7 @@ This function retrieves the number of graphics adapters recognized by the OS (OS
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a5">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="ColorCaps_2main_8cpp-example.html#a6">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a133">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a10">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a2">Sample-Managed/ADL.cs</a>.</dl>
+<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a5">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="ColorCaps_2main_8cpp-example.html#a6">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a133">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a11">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a2">Sample-Managed/ADL.cs</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g89dfa2e0779ac9caf1c755e873031860"></a><!-- doxytag: member="adapter.h::ADL2_Flush_Driver_Data" ref="g89dfa2e0779ac9caf1c755e873031860" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex)" -->
@@ -527,7 +527,7 @@ This function retrieves the adapter information of all OS-known adapters in the 
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>This API take a fixed-size output array. For dynamic-size output, use <a class="el" href="group__ADAPTER.html#g88b05692f3e345356db2bbf2f0daef52">ADL_Adapter_AdapterInfoX2_Get</a> function. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="ColorCaps_2main_8cpp-example.html#a7">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a134">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a11">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a3">Sample-Managed/ADL.cs</a>.</dl>
+<a class="el" href="ColorCaps_2main_8cpp-example.html#a7">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a134">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a12">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a3">Sample-Managed/ADL.cs</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g95aceedb870d727257e217ac5b2e968d"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_AdapterInfoX2_Get" ref="g95aceedb870d727257e217ac5b2e968d" args="(ADL_CONTEXT_HANDLE context, AdapterInfo **lppAdapterInfo)" -->
@@ -1338,7 +1338,7 @@ This function implements a DI call to retrieve adapter capability information . 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a12">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a13">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 </div>

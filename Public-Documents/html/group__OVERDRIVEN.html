@@ -92,6 +92,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVEN.html#g42d800dfcf861f59d55c16758e37f91e">ADL2_OverdriveN_ZeroRPMFan_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int currentValue)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to change Zero RPM cntrol levels.  <a href="#g42d800dfcf861f59d55c16758e37f91e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVEN.html#g8dec3d5e52db9099ad5161c976fd0ce9">ADL2_OverdriveN_SettingsExt_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpOverdriveNExtCapabilities, int *lpNumberOfODNExtFeatures, <a class="el" href="struct__ADLODNExtSingleInitSetting.html">ADLODNExtSingleInitSetting</a> **lppInitSettingList, int **lppCurrentSettingList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get Fan curve info.  <a href="#g8dec3d5e52db9099ad5161c976fd0ce9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVEN.html#gc1c4396cba82fc521e3b9ab3e8d1a088">ADL2_OverdriveN_SettingsExt_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iNumberOfODNExtFeatures, int *itemValueValidList, int *lpItemValueList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set fan curve (temperature and speed).  <a href="#gc1c4396cba82fc521e3b9ab3e8d1a088"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This group outlines all OverDrive Next related APIs <hr><h2>Function Documentation</h2>
@@ -188,7 +194,7 @@ This function retrieves the OverdriveN capabilities for a specified adapter. <dl
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a14">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a15">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="gefc61c6d450304347f1d274368cec771"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_SystemClocks_Get" ref="gefc61c6d450304347f1d274368cec771" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceLevels *lpODPerformanceLevels)" -->
@@ -332,7 +338,7 @@ This function retrieves the current GPU clocks for a specified adapter. <dl clas
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a15">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a16">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="ge29a1d06c2beda899bdbfb4dc6707359"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_SystemClocksX2_Set" ref="ge29a1d06c2beda899bdbfb4dc6707359" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceLevelsX2 *lpODPerformanceLevels)" -->
@@ -380,7 +386,7 @@ This function applies the current GPU clocks for a specified adapter. <dl class=
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a16">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a17">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="ga141830b2e41239d07fdbd12226ce654"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_MemoryClocksX2_Get" ref="ga141830b2e41239d07fdbd12226ce654" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceLevelsX2 *lpODPerformanceLevels)" -->
@@ -428,7 +434,7 @@ This function retrieves the current memory clocks for a specified adapter. <dl c
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a22">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a23">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g7bae9d706448be46762a2dfe4f1b2e95"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_MemoryClocksX2_Set" ref="g7bae9d706448be46762a2dfe4f1b2e95" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceLevelsX2 *lpODPerformanceLevels)" -->
@@ -476,7 +482,7 @@ This function applies the current memory clocks for a specified adapter. <dl cla
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a23">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a24">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g5c3ceff60521a78ebbf5b914fb5c2827"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_MemoryClocks_Get" ref="g5c3ceff60521a78ebbf5b914fb5c2827" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceLevels *lpODPerformanceLevels)" -->
@@ -620,7 +626,7 @@ This function retrieves the current fan for a specified adapter. <dl class="user
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a18">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a19">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="gad4634656ebc96eca502dcbf7de0f2e9"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_FanControl_Set" ref="gad4634656ebc96eca502dcbf7de0f2e9" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNFanControl *lpODFanControl)" -->
@@ -668,7 +674,7 @@ This function applies the current Fan control for a specified adapter. <dl class
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a19">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a20">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="gfeecd1a8d63358e57431ddc0f7df5185"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_PowerLimit_Get" ref="gfeecd1a8d63358e57431ddc0f7df5185" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPowerLimitSetting *lpODPowerLimit)" -->
@@ -716,7 +722,7 @@ This function retrieves the current power limit for a specified adapter. <dl cla
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a20">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a21">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g8de7998dbd949b3b3202cc00a99a716d"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_PowerLimit_Set" ref="g8de7998dbd949b3b3202cc00a99a716d" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPowerLimitSetting *lpODPowerLimit)" -->
@@ -764,7 +770,7 @@ This function retrieves the current power limit for a specified adapter. <dl cla
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a21">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a22">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="ge8a4a87b95f8a1b6d39ac13661b8b321"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_Temperature_Get" ref="ge8a4a87b95f8a1b6d39ac13661b8b321" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iTemperatureType, int *iTemperature)" -->
@@ -819,7 +825,7 @@ This function retrieves the current temperature for a specified adapter. <dl cla
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a25">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a26">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g532c1f2221aa402609e304500924e218"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_PerformanceStatus_Get" ref="g532c1f2221aa402609e304500924e218" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLODNPerformanceStatus *lpODPerformanceStatus)" -->
@@ -867,7 +873,7 @@ This function retrieves the current OD performance for a specified adapter. <dl 
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a17">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a18">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="gc8fe3661bd6b08864cacc7384340cc95"></a><!-- doxytag: member="overdriveN.h::ADL2_CustomFan_Caps" ref="gc8fe3661bd6b08864cacc7384340cc95" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported)" -->
@@ -1079,7 +1085,7 @@ This function enables/disables memory timing for a specified adapter. <dl class=
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a>/// </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a26">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a27">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g8d0e6ec20c4ab47af90377dc582a3704"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_MemoryTimingLevel_Set" ref="g8d0e6ec20c4ab47af90377dc582a3704" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int currentValue)" -->
@@ -1126,7 +1132,7 @@ This function set GPU memory timing level for a specified adapter. <dl class="us
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a>/// </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a27">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a28">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g45dd9d9ae8bcd447774190153cbf2444"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_ZeroRPMFan_Get" ref="g45dd9d9ae8bcd447774190153cbf2444" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupport, int *lpCurrentValue, int *lpDefaultValue)" -->
@@ -1187,7 +1193,7 @@ This function to retrieve zero RPM fan control for a specified adapter. <dl clas
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a>/// </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a28">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a29">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g42d800dfcf861f59d55c16758e37f91e"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_ZeroRPMFan_Set" ref="g42d800dfcf861f59d55c16758e37f91e" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int currentValue)" -->
@@ -1234,7 +1240,137 @@ This function set GPU Zero RPM cntrol level for a specified adapter. <dl class="
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a>/// </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a29">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a30">OverdriveN/OverdriveN.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="g8dec3d5e52db9099ad5161c976fd0ce9"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_SettingsExt_Get" ref="g8dec3d5e52db9099ad5161c976fd0ce9" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpOverdriveNExtCapabilities, int *lpNumberOfODNExtFeatures, ADLODNExtSingleInitSetting **lppInitSettingList, int **lppCurrentSettingList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_OverdriveN_SettingsExt_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpOverdriveNExtCapabilities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfODNExtFeatures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLODNExtSingleInitSetting.html">ADLODNExtSingleInitSetting</a> **&nbsp;</td>
+          <td class="paramname"> <em>lppInitSettingList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>lppCurrentSettingList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to get Fan curve info. 
+<p>
+This function to retrieve Fan curve for a specified adapter. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpOverdriveNCapabilities</em>&nbsp;</td><td>The pointer to the bit-vector which indicates wich ODN feature is supported. /// </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpNumberPoints</em>&nbsp;</td><td>an integer ponter of Fan curve points. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in/out]</em>&nbsp;</td><td>lpNumberOfODNExtFeatures The pointer to an integer which indicates the number of ODN features. The callee shold input the expected number of features. Then ADL can use this input to support comptiable. When returing, the number is actual number of dricver currently supported features </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpInitSettingList</em>&nbsp;</td><td>The pointer to the list of current ODN Ext settingts. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppInitSettingList</em>&nbsp;</td><td>The pointer to the list of current ODN Ext range of settingts. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a31">OverdriveN/OverdriveN.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="gc1c4396cba82fc521e3b9ab3e8d1a088"></a><!-- doxytag: member="overdriveN.h::ADL2_OverdriveN_SettingsExt_Set" ref="gc1c4396cba82fc521e3b9ab3e8d1a088" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumberOfODNExtFeatures, int *itemValueValidList, int *lpItemValueList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_OverdriveN_SettingsExt_Set           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iNumberOfODNExtFeatures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>itemValueValidList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpItemValueList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to set fan curve (temperature and speed). 
+<p>
+This function to for set fan curve (temperature and speed) a specified adapter. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iNumberOfODNExtFeatures</em>&nbsp;</td><td>An integer which indicates the number of ODN features. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpItemValueValidList</em>&nbsp;</td><td>an integer pointer which indicates which element in lpItemValueList is valid </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpItemValueList</em>&nbsp;</td><td>an integer pointer which indicate the current value </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a32">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 </div>
