@@ -25,20 +25,14 @@ struct OverdriveRangeDataStruct
     int Min_;
     //Maximum value
     int Max_;
-    //Step value
-    int Step_;
     //Expected value: similar to current value
     int ExpectedValue_;
     //Default value
     int DefaultValue_;
     //Actual value
     int ActualValue_;
-    // The enabled state
-    bool Enabled_;
     // If ActualValue can be got from the driver, ActualValueAvailable_ will be true
     bool ActualValueAvailable_;
-    // If the Range feature is supported by the driver, it is true.
-    bool RangeSupport_;
     // If the disable/enable feature is supported by the driver, it is true.
     bool EnableDisableSupport_;
     // The enabled state
@@ -102,7 +96,9 @@ void __stdcall ADL_Main_Memory_Free ( void** lpBuffer )
 ADL_CONTEXT_HANDLE context = NULL;
 LPAdapterInfo   lpAdapterInfo = NULL;
 int  iNumberAdapters;
-
+int PrintFeatureName(int itemID_);
+int SetOD8Range(const ADLOD8InitSetting &odInitSetting, ADLOD8CurrentSetting &odCurrentSetting, int iAdapterIndex, int SettingId, int Reset, int value);
+int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, ADLOD8CurrentSetting odCurrentSetting, OverdriveRangeDataStruct &oneRangeData, int itemID_, int featureID_);
 
 int initializeADL()
 {
@@ -177,6 +173,106 @@ void deinitializeADL()
     }
 }
 
+bool GetOD8OneRange(ADLOD8InitSetting initSettings, int featureID_)
+{
+    bool RangeSupport_ = (initSettings.overdrive8Capabilities & featureID_) ? true : false;
+    return RangeSupport_;
+}
+
+int GetOD8InitSetting(int iAdapterIndex, ADLOD8InitSetting &odInitSetting)
+{
+    int ret = -1;
+    memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
+    odInitSetting.count = OD8_COUNT;
+    int overdrive8Capabilities;
+    int numberOfFeatures = OD8_COUNT;
+    ADLOD8SingleInitSetting* lpInitSettingList = NULL;
+    if (NULL != ADL2_Overdrive8_Init_SettingX2_Get)
+    {
+        ret = ADL2_Overdrive8_Init_SettingX2_Get(context, iAdapterIndex, &overdrive8Capabilities, &numberOfFeatures, &lpInitSettingList);
+        if (0 == ret)
+        {
+            ret = -1;
+            odInitSetting.count = numberOfFeatures > OD8_COUNT ? OD8_COUNT : numberOfFeatures;
+            odInitSetting.overdrive8Capabilities = overdrive8Capabilities;
+            for (int i = 0; i < odInitSetting.count; i++)
+            {
+                odInitSetting.od8SettingTable[i].defaultValue = lpInitSettingList[i].defaultValue;
+                odInitSetting.od8SettingTable[i].featureID = lpInitSettingList[i].featureID;
+                odInitSetting.od8SettingTable[i].maxValue = lpInitSettingList[i].maxValue;
+                odInitSetting.od8SettingTable[i].minValue = lpInitSettingList[i].minValue;
+            }
+            ADL_Main_Memory_Free((void**)&lpInitSettingList);
+        }
+        else
+        {
+            PRINTF("ADL2_Overdrive8_Init_SettingX2_Get is failed\n");
+            ADL_Main_Memory_Free((void**)&lpInitSettingList);
+            return ADL_ERR;
+        }
+    }
+    else
+    {
+        if (NULL != ADL2_Overdrive8_Init_Setting_Get)
+        {
+            ret = ADL2_Overdrive8_Init_Setting_Get(context, iAdapterIndex, &odInitSetting);
+            if (0 == ret)
+                ret = -1;
+            else
+            {
+                PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                return ADL_ERR;
+            }
+        }
+    }
+    return ADL_OK;
+}
+
+int GetOD8CurrentSetting(int iAdapterIndex, ADLOD8CurrentSetting &odCurrentSetting)
+{
+    int ret = -1;
+    memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
+    odCurrentSetting.count = OD8_COUNT;
+
+    int numberOfFeaturesCurrent = OD8_COUNT;
+    int* lpCurrentSettingList = NULL;
+    if (NULL != ADL2_Overdrive8_Current_SettingX2_Get)
+    {
+        ret = ADL2_Overdrive8_Current_SettingX2_Get(context, iAdapterIndex, &numberOfFeaturesCurrent, &lpCurrentSettingList);
+        if (0 == ret)
+        {
+            ret = -1;
+            odCurrentSetting.count = numberOfFeaturesCurrent > OD8_COUNT ? OD8_COUNT : numberOfFeaturesCurrent;
+            for (int i = 0; i < odCurrentSetting.count; i++)
+            {
+                odCurrentSetting.Od8SettingTable[i] = lpCurrentSettingList[i];
+            }
+            ADL_Main_Memory_Free((void**)&lpCurrentSettingList);
+        }
+        else
+        {
+            PRINTF("ADL2_Overdrive8_Current_SettingX2_Get is failed\n");
+            ADL_Main_Memory_Free((void**)&lpCurrentSettingList);
+            return ADL_ERR;
+        }
+    }
+    else
+    {
+        if (NULL != ADL2_Overdrive8_Current_Setting_Get)
+        {
+            ret = ADL2_Overdrive8_Current_Setting_Get(context, iAdapterIndex, &odCurrentSetting);
+            if (0 == ret)
+                ret = -1;
+            else
+            {
+                PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                return ADL_ERR;
+            }
+        }
+
+    }
+    return ADL_OK;
+}
 int printOD8GPUClocksParameters()
 {
     int i;
@@ -196,30 +292,20 @@ int printOD8GPUClocksParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -231,80 +317,11 @@ int printOD8GPUClocksParameters()
                     {
                         //GPU clocks
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_FREQ1];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_FREQ1\n");
-                        PRINTF("OD8_GFXCLK_FREQ1.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_FREQ1.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_FREQ1.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_FREQ2];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_FREQ2\n");
-                        PRINTF("OD8_GFXCLK_FREQ2.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_FREQ2.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_FREQ2.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_FREQ3];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_FREQ3\n");
-                        PRINTF("OD8_GFXCLK_FREQ3.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_FREQ3.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_FREQ3.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_FMIN];
-                        oneRangeData.RangeSupport_ = true;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_FMIN\n");
-                        PRINTF("OD8_GFXCLK_FMIN.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_FMIN.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_FMIN.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_FMAX];
-                        oneRangeData.RangeSupport_ = true;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_FMAX\n");
-                        PRINTF("OD8_GFXCLK_FMAX.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_FMAX.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_FMAX.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_FREQ1, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_FREQ2, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_FREQ3, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_FMIN, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_FMAX, ADL_OD8_GFXCLK_CURVE);
 
                         PRINTF("ADLSensorType: PMLOG_CLK_GFXCLK\n");
                         PRINTF("PMLOG_CLK_GFXCLK.supported:%d\n", odlpDataOutput.sensors[PMLOG_CLK_GFXCLK].supported);
@@ -348,204 +365,70 @@ int SetOD8GPUClocksParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS ||
+                    (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE)
+                {
                     if (OD8_GFXCLK_FMIN == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_FMIN Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_FMIN].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUClocksParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_FMIN ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_FMIN ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_FMIN parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_FMAX == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_FMAX Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_FMAX].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUClocksParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_FMAX ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_FMAX ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_FMAX parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_FREQ1 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_FREQ1 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ1].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUClocksParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ1 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ1 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_FREQ1 parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_FREQ2 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_FREQ2 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUClocksParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ2 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ2 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_FREQ2 parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_FREQ3 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_FREQ3 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ3].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_FREQ2].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUClocksParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ3 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_FREQ3 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_FREQ3 parameters failed.\n");
                     }
-
+                    else
+                        PRINTF("Set Error settingID.\n");
                 }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
-                    return ADL_ERR;
-                }
-
                 break;
             }
         }
@@ -573,30 +456,20 @@ int printOD8GPUVoltageParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -608,50 +481,9 @@ int printOD8GPUVoltageParameters()
                     {
                         //GPU Voltage
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_VOLTAGE1];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_VOLTAGE1\n");
-                        PRINTF("OD8_GFXCLK_VOLTAGE1.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE1.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE1.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_VOLTAGE2];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_VOLTAGE2\n");
-                        PRINTF("OD8_GFXCLK_VOLTAGE2.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE2.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE2.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_GFXCLK_VOLTAGE3];
-                        oneRangeData.RangeSupport_ = (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) ? true : false;
-                        oneRangeData.Step_ = 1;
-                        PRINTF("FeatureID: OD8_GFXCLK_VOLTAGE3\n");
-                        PRINTF("OD8_GFXCLK_VOLTAGE3.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE3.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_GFXCLK_VOLTAGE3.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_GFXCLK_FREQ1.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_GFXCLK_FREQ1.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_VOLTAGE1, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_VOLTAGE2, ADL_OD8_GFXCLK_CURVE);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_VOLTAGE3, ADL_OD8_GFXCLK_CURVE);
                     }
                     else
                         PRINTF("OD8 Failed to get GPU voltages\n");
@@ -661,7 +493,6 @@ int printOD8GPUVoltageParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
@@ -689,135 +520,51 @@ int SetOD8GPUVoltageParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS ||
+                    (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE)
+                {
                     if (OD8_GFXCLK_VOLTAGE1 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_VOLTAGE1 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE1].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUVoltageParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE1 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUVoltageParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE1 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_VOLTAGE1 parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_VOLTAGE2 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_VOLTAGE2 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE2].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUVoltageParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE2 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUVoltageParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE2 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_VOLTAGE2 parameters failed.\n");
                     }
                     else if (OD8_GFXCLK_VOLTAGE3 == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].minValue <= value && odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_GFXCLK_VOLTAGE3 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].minValue, odInitSetting.od8SettingTable[OD8_GFXCLK_VOLTAGE3].maxValue);
-                            return ADL_ERR;
+                            printOD8GPUVoltageParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE3 ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8GPUVoltageParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_GFXCLK_VOLTAGE3 ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_GFXCLK_VOLTAGE3 parameters failed.\n");
                     }
-                }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
-                    return ADL_ERR;
+                    else
+                        PRINTF("Set Error settingID.\n");
                 }
 
                 break;
@@ -847,30 +594,20 @@ int printOD8MemoryClocksParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -881,23 +618,7 @@ int printOD8MemoryClocksParameters()
                     {
                         //Memory Clocks
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_UCLK_FMAX].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_UCLK_FMAX].minValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_UCLK_FMAX].defaultValue;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_UCLK_FMAX];
-                        oneRangeData.RangeSupport_ = true;
-                        oneRangeData.Visible_ = true;
-                        oneRangeData.ActualValueAvailable_ = true;
-                        oneRangeData.ActualValue_ = odCurrentSetting.Od8SettingTable[OD8_UCLK_FMAX];
-                        PRINTF("FeatureID: OD8_UCLK_FMAX\n");
-                        PRINTF("OD8_UCLK_FMAX.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_UCLK_FMAX.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_UCLK_FMAX.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_UCLK_FMAX.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_UCLK_FMAX.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_UCLK_FMAX, ADL_OD8_UCLK_MAX);
 
                         PRINTF("ADLSensorType: PMLOG_CLK_MEMCLK\n");
                         PRINTF("PMLOG_CLK_MEMCLK.supported:%d\n", odlpDataOutput.sensors[PMLOG_CLK_MEMCLK].supported);
@@ -913,7 +634,6 @@ int printOD8MemoryClocksParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
@@ -941,71 +661,34 @@ int SetOD8MemoryClocksParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
-                    if (OD8_UCLK_FMAX == SettingId)
-                    {
-                        if (!(odInitSetting.od8SettingTable[OD8_UCLK_FMAX].minValue <= value && odInitSetting.od8SettingTable[OD8_UCLK_FMAX].maxValue >= value))
-                        {
-                            PRINTF("OD8_GFXCLK_VOLTAGE1 Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_UCLK_FMAX].minValue, odInitSetting.od8SettingTable[OD8_UCLK_FMAX].maxValue);
-                            return ADL_ERR;
-                        }
-                        else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_UCLK_FMAX ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8MemoryClocksParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_UCLK_FMAX ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_UCLK_MAX) == ADL_OD8_UCLK_MAX)
+                {
+                    if (OD8_UCLK_FMAX == SettingId)
+                    {
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
+                        {
+                            printOD8MemoryClocksParameters();
+                        }
+                        else
+                            PRINTF("Set OD8_UCLK_FMAX parameters failed.\n");
+                    }
+                    else
+                        PRINTF("Set Error settingID.\n");
+                }
                 break;
             }
         }
@@ -1033,30 +716,20 @@ int printOD8TemperatureSettingParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -1068,66 +741,18 @@ int printOD8TemperatureSettingParameters()
                         ((odInitSetting.overdrive8Capabilities &  ADL_OD8_POWER_LIMIT) == ADL_OD8_POWER_LIMIT))
                     {
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].defaultValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities &  ADL_OD8_TEMPERATURE_SYSTEM) == ADL_OD8_TEMPERATURE_SYSTEM) ? true : false;
-                        if (oneRangeData.Visible_)
-                        {
-                            oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_OPERATING_TEMP_MAX];
-                            PRINTF("OD8_OPERATING_TEMP_MAX.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        }
-                        PRINTF("FeatureID: OD8_OPERATING_TEMP_MAX\n");
-                        PRINTF("OD8_OPERATING_TEMP_MAX.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_OPERATING_TEMP_MAX.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_OPERATING_TEMP_MAX.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_OPERATING_TEMP_MAX.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_OPERATING_TEMP_MAX, ADL_OD8_TEMPERATURE_SYSTEM);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_FAN_TARGET_TEMP, ADL_OD8_TEMPERATURE_FAN);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_POWER_PERCENTAGE, ADL_OD8_POWER_LIMIT);
 
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].defaultValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities & ADL_OD8_TEMPERATURE_FAN) == ADL_OD8_TEMPERATURE_FAN) ? true : false;
-                        if (oneRangeData.Visible_)
-                        {
-                            oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_FAN_TARGET_TEMP];
-                            PRINTF("OD8_FAN_TARGET_TEMP.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        }
-                        PRINTF("FeatureID: OD8_FAN_TARGET_TEMP\n");
-                        PRINTF("OD8_FAN_TARGET_TEMP.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_FAN_TARGET_TEMP.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_FAN_TARGET_TEMP.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_FAN_TARGET_TEMP.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].defaultValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities &  ADL_OD8_POWER_LIMIT) == ADL_OD8_POWER_LIMIT) ? true : false;
-                        if (oneRangeData.Visible_)
-                        {
-                            oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_POWER_PERCENTAGE];
-                            PRINTF("OD8_POWER_PERCENTAGE.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        }
-                        PRINTF("FeatureID: OD8_POWER_PERCENTAGE\n");
-                        PRINTF("OD8_POWER_PERCENTAGE.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_POWER_PERCENTAGE.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_POWER_PERCENTAGE.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_POWER_PERCENTAGE.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        PRINTF("ADLSensorType: PMLOG_TEMPERATURE_EDGE\n");
+                        PRINTF("ADLSensorType: PMLOG_TEMPERATURE_EDGE - Current Temp\n");
                         PRINTF("PMLOG_TEMPERATURE_EDGE.supported:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_EDGE].supported);
                         PRINTF("PMLOG_TEMPERATURE_EDGE.value:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_EDGE].value);
+
+                        PRINTF("ADLSensorType: PMLOG_TEMPERATURE_HOTSPOT - Junction Temp\n");
+                        PRINTF("PMLOG_TEMPERATURE_HOTSPOT.supported:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_HOTSPOT].supported);
+                        PRINTF("PMLOG_TEMPERATURE_HOTSPOT.value:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_HOTSPOT].value);
+
                         PRINTF("-----------------------------------------\n");
 
                     }
@@ -1139,7 +764,6 @@ int printOD8TemperatureSettingParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
@@ -1167,138 +791,51 @@ int SetOD8TemperatureSettingParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if (((odInitSetting.overdrive8Capabilities &  ADL_OD8_TEMPERATURE_SYSTEM) == ADL_OD8_TEMPERATURE_SYSTEM) ||
+                    ((odInitSetting.overdrive8Capabilities &  ADL_OD8_TEMPERATURE_FAN) == ADL_OD8_TEMPERATURE_FAN) ||
+                    ((odInitSetting.overdrive8Capabilities &  ADL_OD8_POWER_LIMIT) == ADL_OD8_POWER_LIMIT))
+                {
                     if (OD8_FAN_TARGET_TEMP == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].minValue <= value && odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_FAN_TARGET_TEMP Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].minValue, odInitSetting.od8SettingTable[OD8_FAN_TARGET_TEMP].maxValue);
-                            return ADL_ERR;
+                            printOD8TemperatureSettingParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_FAN_TARGET_TEMP ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8TemperatureSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_FAN_TARGET_TEMP ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_FAN_TARGET_TEMP parameters failed.\n");
                     }
                     else if (OD8_POWER_PERCENTAGE == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].minValue <= value && odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_POWER_PERCENTAGE Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].minValue, odInitSetting.od8SettingTable[OD8_POWER_PERCENTAGE].maxValue);
-                            return ADL_ERR;
+                            printOD8TemperatureSettingParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_POWER_PERCENTAGE ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8TemperatureSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_POWER_PERCENTAGE ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_POWER_PERCENTAGE parameters failed.\n");
                     }
                     else if (OD8_OPERATING_TEMP_MAX == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].minValue <= value && odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_OPERATING_TEMP_MAX Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].minValue, odInitSetting.od8SettingTable[OD8_OPERATING_TEMP_MAX].maxValue);
-                            return ADL_ERR;
+                            printOD8TemperatureSettingParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_OPERATING_TEMP_MAX ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8TemperatureSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_OPERATING_TEMP_MAX ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_OPERATING_TEMP_MAX parameters failed.\n");
                     }
-
                 }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
-                    return ADL_ERR;
-                }
-
                 break;
             }
         }
@@ -1321,35 +858,25 @@ int printOD8FanSettingParameters()
         PRINTF("-----------------------------------------\n");
         if (lpAdapterInfo[i].iBusNumber > -1)
         {
-            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
-            if (iVersion == 8)
+            ret = ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (ret == 0 && iVersion == 8)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -1360,49 +887,20 @@ int printOD8FanSettingParameters()
                         (odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_SPEED_MIN) == ADL_OD8_FAN_SPEED_MIN)
                     {
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].defaultValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_SPEED_MIN) == ADL_OD8_FAN_SPEED_MIN) ? true : false;
-                        if (oneRangeData.Visible_)
-                        {
-                            oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_FAN_MIN_SPEED];
-                            PRINTF("OD8_FAN_MIN_SPEED.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        }
-                        PRINTF("FeatureID: OD8_FAN_MIN_SPEED\n");
-                        PRINTF("OD8_FAN_MIN_SPEED.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_FAN_MIN_SPEED.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_FAN_MIN_SPEED.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_FAN_MIN_SPEED.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("-----------------------------------------\n");
-
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].maxValue;
-                        oneRangeData.Min_ = odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].minValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].defaultValue;
-                        oneRangeData.Step_ = 1;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities & ADL_OD8_ACOUSTIC_LIMIT_SCLK) == ADL_OD8_ACOUSTIC_LIMIT_SCLK) ? true : false;
-                        if (oneRangeData.Visible_)
-                        {
-                            oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT];
-                            PRINTF("OD8_FAN_ACOUSTIC_LIMIT.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        }
-                        PRINTF("FeatureID: OD8_FAN_ACOUSTIC_LIMIT\n");
-                        PRINTF("OD8_FAN_ACOUSTIC_LIMIT.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_FAN_ACOUSTIC_LIMIT.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_FAN_ACOUSTIC_LIMIT.step:%d\n", oneRangeData.Step_);
-                        PRINTF("OD8_FAN_ACOUSTIC_LIMIT.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_FAN_MIN_SPEED, ADL_OD8_FAN_SPEED_MIN);
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_FAN_ACOUSTIC_LIMIT, ADL_OD8_ACOUSTIC_LIMIT_SCLK);
 
                         PRINTF("ADLSensorType: PMLOG_FAN_RPM\n");
                         PRINTF("PMLOG_FAN_RPM.supported:%d\n", odlpDataOutput.sensors[PMLOG_FAN_RPM].supported);
                         PRINTF("PMLOG_FAN_RPM.value:%d\n", odlpDataOutput.sensors[PMLOG_FAN_RPM].value);
                         PRINTF("-----------------------------------------\n");
-
+                    }
+                    // Fan Curve
+                    else if ((odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_CURVE) == ADL_OD8_FAN_CURVE) 
+                    {
+                        PRINTF("ADLSensorType: PMLOG_FAN_RPM\n");
+                        PRINTF("OD8_FAN_RPM:%d\n", odlpDataOutput.sensors[PMLOG_FAN_RPM].value);
+                        PRINTF("-----------------------------------------\n");
                     }
                     else
                         PRINTF("OD8 Failed to get Fan Settings\n");
@@ -1412,7 +910,6 @@ int printOD8FanSettingParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
@@ -1440,109 +937,45 @@ int SetOD8FanSettingParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_ACOUSTIC_LIMIT_SCLK) == ADL_OD8_ACOUSTIC_LIMIT_SCLK ||
+                    (odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_SPEED_MIN) == ADL_OD8_FAN_SPEED_MIN ||
+                    (odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_CURVE) == ADL_OD8_FAN_CURVE)
+                {
                     if (OD8_FAN_MIN_SPEED == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].minValue <= value && odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_FAN_MIN_SPEED Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].minValue, odInitSetting.od8SettingTable[OD8_FAN_MIN_SPEED].maxValue);
-                            return ADL_ERR;
+                            printOD8FanSettingParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_FAN_MIN_SPEED ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8FanSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_FAN_MIN_SPEED ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_FAN_MIN_SPEED parameters failed.\n");
                     }
                     else if (OD8_FAN_ACOUSTIC_LIMIT == SettingId)
                     {
-                        if (!(odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].minValue <= value && odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].maxValue >= value))
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
                         {
-                            PRINTF("OD8_FAN_ACOUSTIC_LIMIT Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].minValue, odInitSetting.od8SettingTable[OD8_FAN_ACOUSTIC_LIMIT].maxValue);
-                            return ADL_ERR;
+                            printOD8FanSettingParameters();
                         }
                         else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_FAN_ACOUSTIC_LIMIT ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8FanSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_FAN_ACOUSTIC_LIMIT ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
+                            PRINTF("Set OD8_FAN_ACOUSTIC_LIMIT parameters failed.\n");
                     }
-
                 }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
-                    return ADL_ERR;
-                }
-
                 break;
             }
         }
-
     }
     return 0;
 }
@@ -1566,30 +999,20 @@ int printOD8MemoryTimingSettingParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -1599,19 +1022,7 @@ int printOD8MemoryTimingSettingParameters()
                     if ((odInitSetting.overdrive8Capabilities & ADL_OD8_MEMORY_TIMING_TUNE) == ADL_OD8_MEMORY_TIMING_TUNE)
                     {
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.Min_ = 1;
-                        oneRangeData.Max_ = odInitSetting.od8SettingTable[OD8_AC_TIMING].maxValue;
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_AC_TIMING].defaultValue;
-                        oneRangeData.Enabled_ = true;
-                        oneRangeData.Visible_ = true;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_AC_TIMING];
-                        PRINTF("FeatureID: OD8_AC_TIMING\n");
-                        PRINTF("OD8_AC_TIMING.maxValue:%d\n", oneRangeData.Max_);
-                        PRINTF("OD8_AC_TIMING.minValue:%d\n", oneRangeData.Min_);
-                        PRINTF("OD8_AC_TIMING.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_AC_TIMING.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_AC_TIMING, ADL_OD8_MEMORY_TIMING_TUNE);
                     }
                     else
                         PRINTF("OD8 Failed to get Memory Timing Settings\n");
@@ -1621,7 +1032,6 @@ int printOD8MemoryTimingSettingParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
@@ -1649,71 +1059,33 @@ int SetOD8MemoryTimingSettingParameters(int SettingId, int Reset, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
-                    if (OD8_AC_TIMING == SettingId)
-                    {
-                        if (!(odInitSetting.od8SettingTable[OD8_AC_TIMING].minValue <= value && odInitSetting.od8SettingTable[OD8_AC_TIMING].maxValue >= value))
-                        {
-                            PRINTF("OD8_AC_TIMING Fan speed range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[OD8_AC_TIMING].minValue, odInitSetting.od8SettingTable[OD8_AC_TIMING].maxValue);
-                            return ADL_ERR;
-                        }
-                        else
-                        {
-                            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = value;
-                            }
-                            else if (1 == Reset)
-                            {
-                                odSetSetting.od8SettingTable[SettingId].reset = Reset;
-                                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
-                            }
-
-                            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
-                            {
-                                PRINTF("OD8_AC_TIMING ADL2_Overdrive8_Setting_Set is Success\n\n");
-                                PRINTF("****** Driver Values: After Apply ******\n");
-                                printOD8MemoryTimingSettingParameters();
-                            }
-                            else
-                            {
-                                PRINTF("OD8_AC_TIMING ADL2_Overdrive8_Setting_Set is failed\n");
-                                return ADL_ERR;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
 
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_MEMORY_TIMING_TUNE) == ADL_OD8_MEMORY_TIMING_TUNE)
+                {
+
+                    if (OD8_AC_TIMING == SettingId)
+                    {
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
+                        {
+                            printOD8MemoryTimingSettingParameters();
+                        }
+                        else
+                            PRINTF("Set OD8_AC_TIMING parameters failed.\n");
+                    }
+                }
                 break;
             }
         }
@@ -1741,30 +1113,20 @@ int printOD8ZeroFanControlSettingParameters()
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
+                    PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-
+                 
                 //make ADL call for VEGA12
                 ADLPMLogDataOutput odlpDataOutput;
                 memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
@@ -1774,15 +1136,7 @@ int printOD8ZeroFanControlSettingParameters()
                     if ((odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_ZERO_RPM_CONTROL) == ADL_OD8_FAN_ZERO_RPM_CONTROL)
                     {
                         OverdriveRangeDataStruct oneRangeData;
-                        memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
-                        oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[OD8_FAN_ZERORPM_CONTROL].defaultValue;
-                        oneRangeData.Visible_ = true;
-                        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[OD8_FAN_ZERORPM_CONTROL];
-                        oneRangeData.Enabled_ = true;
-                        PRINTF("FeatureID: OD8_FAN_ZERORPM_CONTROL\n");
-                        PRINTF("OD8_FAN_ZERORPM_CONTROL.defaultValue:%d\n", oneRangeData.DefaultValue_);
-                        PRINTF("OD8_FAN_ZERORPM_CONTROL.actualValue:%d\n", oneRangeData.ExpectedValue_);
-                        PRINTF("-----------------------------------------\n");
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_FAN_ZERORPM_CONTROL, ADL_OD8_FAN_ZERO_RPM_CONTROL);
                     }
                     else
                         PRINTF("OD8 Failed to get Zero Fan Control Settings\n");
@@ -1792,11 +1146,75 @@ int printOD8ZeroFanControlSettingParameters()
                     PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
                     return ADL_ERR;
                 }
-
                 break;
             }
         }
+    }
+    return 0;
+}
 
+int printOD8TuningControlSettingParameters()
+{
+    int i;
+    int ret = -1;
+    int iSupported = 0, iEnabled = 0, iVersion = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        PRINTF("-----------------------------------------\n");
+        PRINTF("Adapter Index[%d]\n ", lpAdapterInfo[i].iAdapterIndex);
+        PRINTF("-----------------------------------------\n");
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 8)
+            {
+                //OD8 initial Status
+                ADLOD8InitSetting odInitSetting;
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
+                {
+                    PRINTF("Get Init Setting failed.\n");
+                    return ADL_ERR;
+                }
+
+                //OD8 Current Status
+                ADLOD8CurrentSetting odCurrentSetting;
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
+                {
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+
+                ADLPMLogDataOutput odlpDataOutput;
+                memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
+                ret = ADL2_New_QueryPMLogData_Get(context, lpAdapterInfo[i].iAdapterIndex, &odlpDataOutput);
+                if (0 == ret)
+                {
+                    if ((odInitSetting.overdrive8Capabilities & ADL_OD8_AUTO_UV_ENGINE) == ADL_OD8_AUTO_UV_ENGINE)
+                    {
+                        OverdriveRangeDataStruct oneRangeData;
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_AUTO_UV_ENGINE_CONTROL, ADL_OD8_AUTO_UV_ENGINE);
+                    }
+                    if ((odInitSetting.overdrive8Capabilities & ADL_OD8_AUTO_OC_ENGINE) == ADL_OD8_AUTO_OC_ENGINE)
+                    {
+                        OverdriveRangeDataStruct oneRangeData;
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_AUTO_OC_ENGINE_CONTROL, ADL_OD8_AUTO_OC_ENGINE);
+                    }
+                    if ((odInitSetting.overdrive8Capabilities & ADL_OD8_AUTO_OC_MEMORY) == ADL_OD8_AUTO_OC_MEMORY)
+                    {
+                        OverdriveRangeDataStruct oneRangeData;
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_AUTO_OC_MEMORY_CONTROL, ADL_OD8_AUTO_OC_MEMORY);
+                    }
+                }
+                else
+                {
+                    PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
+                    return ADL_ERR;
+                }
+                break;
+            }
+        }
     }
     return 0;
 }
@@ -1820,54 +1238,32 @@ int SetOD8ZeroFanControlSettingParameters(int SettingId, int value)
             {
                 //OD8 initial Status
                 ADLOD8InitSetting odInitSetting;
-                memset(&odInitSetting, 0, sizeof(ADLOD8InitSetting));
-                odInitSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Init_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odInitSetting);
-                if (0 == ret)
-                    ret = -1;
-                else
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
                 {
-                    PRINTF("ADL2_Overdrive8_Init_Setting_Get is failed\n");
+                    PRINTF("Get Init Setting failed.\n");
                     return ADL_ERR;
                 }
 
                 //OD8 Current Status
                 ADLOD8CurrentSetting odCurrentSetting;
-                memset(&odCurrentSetting, 0, sizeof(ADLOD8CurrentSetting));
-                odCurrentSetting.count = OD8_COUNT;
-                ret = ADL2_Overdrive8_Current_Setting_Get(context, lpAdapterInfo[i].iAdapterIndex, &odCurrentSetting);
-                if (0 == ret)
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
                 {
-                    ret = -1;
-
-                    ADLOD8SetSetting odSetSetting;
-                    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
-                    odSetSetting.count = OD8_COUNT;
-                    odSetSetting.od8SettingTable[SettingId].requested = 1;
-
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_FAN_ZERO_RPM_CONTROL) == ADL_OD8_FAN_ZERO_RPM_CONTROL)
+                {
                     if (OD8_FAN_ZERORPM_CONTROL == SettingId)
                     {
-                        odSetSetting.od8SettingTable[SettingId].value = value;
-
-                        if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, lpAdapterInfo[i].iAdapterIndex, &odSetSetting, &odCurrentSetting))
+                        //do not reset
+                        if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, 0, value))
                         {
-                            PRINTF("OD8_FAN_ZERORPM_CONTROL ADL2_Overdrive8_Setting_Set is Success\n\n");
-                            PRINTF("****** Driver Values: After Apply ******\n");
                             printOD8ZeroFanControlSettingParameters();
                         }
                         else
-                        {
-                            PRINTF("OD8_FAN_ZERORPM_CONTROL ADL2_Overdrive8_Setting_Set is failed\n");
-                            return ADL_ERR;
-                        }
+                            PRINTF("Set OD8_FAN_ZERORPM_CONTROL parameters failed.\n");
                     }
                 }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_Setting_Get is failed\n");
-                    return ADL_ERR;
-                }
-
                 break;
             }
         }
@@ -1876,87 +1272,333 @@ int SetOD8ZeroFanControlSettingParameters(int SettingId, int value)
     return 0;
 }
 
-int GetInitOD8Setting()
+int PrintFeatureName(int itemID_)
 {
-
-    ADLOD8InitSetting overdriveInitSetting;
-    memset(&overdriveInitSetting, 0, sizeof(ADLOD8InitSetting));
-    overdriveInitSetting.count = OD8_COUNT;
-    int overdrive8Capabilities;
-    int numberOfFeatures = OD8_COUNT;
-    ADLOD8SingleInitSetting* lpInitSettingList = NULL;
-    int iSupported, iEnabled, iVersion;
-    int i, ret = ADL_FALSE;
-    for (i = 0; i < iNumberAdapters; i++)
+    switch (itemID_)
     {
-        if (lpAdapterInfo[i].iBusNumber > -1)
-        {
-            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
-            if (NULL != ADL2_Overdrive8_Init_SettingX2_Get)
-            {
-                ret = ADL2_Overdrive8_Init_SettingX2_Get(context, lpAdapterInfo[i].iAdapterIndex, &overdrive8Capabilities, &numberOfFeatures, &lpInitSettingList);
-                if (ADL_OK != ret)
-                {
-                    PRINTF("ADL2_Overdriven8_Init_SettingX2_get is failed\n");
-                }
-                else
-                {
-                    PRINTF("ADL2_Overdriven8_Init_SettingX2_get is Success\n\n");
-                    PRINTF("****** Driver Values: After Apply ******\n");
-                    overdriveInitSetting.count = numberOfFeatures > OD8_COUNT ? OD8_COUNT : numberOfFeatures;
-                    overdriveInitSetting.overdrive8Capabilities = overdrive8Capabilities;
-                    for (int j = 0; j < overdriveInitSetting.count; j++)
-                    {
-                        PRINTF("lpInitSettingList.defaultValue : %d\n", lpInitSettingList[j].defaultValue);
-                        PRINTF("lpInitSettingList.featureID : %d\n", lpInitSettingList[j].featureID);
-                        PRINTF("lpInitSettingList.maxValue : %d\n", lpInitSettingList[j].maxValue);
-                        PRINTF("lpInitSettingList.minValue : %d\n", lpInitSettingList[j].minValue);
-                    }
-                }
-                ADL_Main_Memory_Free((void**)&lpInitSettingList);
-            }
-        }
+    case OD8_GFXCLK_FREQ1:
+        PRINTF("OD8_GFXCLK_FREQ1:");
+        break;
+    case OD8_GFXCLK_FREQ2:
+        PRINTF("OD8_GFXCLK_FREQ2:");
+        break;
+    case OD8_GFXCLK_FREQ3:
+        PRINTF("OD8_GFXCLK_FREQ3:");
+        break;
+    case OD8_GFXCLK_FMIN:
+        PRINTF("OD8_GFXCLK_FMIN:");
+        break;
+    case OD8_GFXCLK_FMAX:
+        PRINTF("OD8_GFXCLK_FMAX:");
+        break;
+    case OD8_GFXCLK_VOLTAGE1:
+        PRINTF("OD8_GFXCLK_VOLTAGE1:");
+        break;
+    case OD8_GFXCLK_VOLTAGE2:
+        PRINTF("OD8_GFXCLK_VOLTAGE2:");
+        break;
+    case OD8_GFXCLK_VOLTAGE3:
+        PRINTF("OD8_GFXCLK_VOLTAGE3:");
+        break;
+    case OD8_UCLK_FMAX:
+        PRINTF("OD8_UCLK_FMAX:");
+        break;
+    case OD8_OPERATING_TEMP_MAX:
+        PRINTF("OD8_OPERATING_TEMP_MAX:");
+        break;
+    case OD8_FAN_TARGET_TEMP:
+        PRINTF("OD8_FAN_TARGET_TEMP:");
+        break;
+    case OD8_POWER_PERCENTAGE:
+        PRINTF("OD8_POWER_PERCENTAGE:");
+        break;
+    case OD8_FAN_MIN_SPEED:
+        PRINTF("OD8_FAN_MIN_SPEED:");
+        break;
+    case OD8_FAN_ACOUSTIC_LIMIT:
+        PRINTF("OD8_FAN_ACOUSTIC_LIMIT:");
+        break;
+    case OD8_AC_TIMING:
+        PRINTF("OD8_AC_TIMING:");
+        break;
+    case OD8_FAN_ZERORPM_CONTROL:
+        PRINTF("OD8_FAN_ZERORPM_CONTROL:");
+        break;
+    case OD8_FAN_CURVE_TEMPERATURE_1:
+        PRINTF("OD8_FAN_CURVE_TEMPERATURE_1:");
+        break;
+    case OD8_FAN_CURVE_SPEED_1:
+        PRINTF("OD8_FAN_CURVE_SPEED_1:");
+        break;
+    case OD8_FAN_CURVE_TEMPERATURE_2:
+        PRINTF("OD8_FAN_CURVE_TEMPERATURE_2:");
+        break;
+    case OD8_FAN_CURVE_SPEED_2:
+        PRINTF("OD8_FAN_CURVE_SPEED_2:");
+        break;
+    case OD8_FAN_CURVE_TEMPERATURE_3:
+        PRINTF("OD8_FAN_CURVE_TEMPERATURE_3:");
+        break;
+    case OD8_FAN_CURVE_SPEED_3:
+        PRINTF("OD8_FAN_CURVE_SPEED_3:");
+        break;
+    case OD8_FAN_CURVE_TEMPERATURE_4:
+        PRINTF("OD8_FAN_CURVE_TEMPERATURE_4:");
+        break;
+    case OD8_FAN_CURVE_SPEED_4:
+        PRINTF("OD8_FAN_CURVE_SPEED_4 = 26:");
+        break;
+    case OD8_FAN_CURVE_TEMPERATURE_5:
+        PRINTF("OD8_FAN_CURVE_TEMPERATURE_5:");
+        break;
+    case OD8_FAN_CURVE_SPEED_5:
+        PRINTF("OD8_FAN_CURVE_SPEED_5:");
+        break;
+    default:
+        PRINTF("Found no featureID \n");
+        return ADL_ERR;
     }
-    return ret;
+    return ADL_OK;
 }
 
-int GetCurrentOD8Setting()
+int SetOD8Range(const ADLOD8InitSetting &odInitSetting, ADLOD8CurrentSetting &odCurrentSetting, int iAdapterIndex, int SettingId, int Reset, int value)
 {
-
-    ADLOD8InitSetting overdriveInitSetting;
-    memset(&overdriveInitSetting, 0, sizeof(ADLOD8InitSetting));
-    overdriveInitSetting.count = OD8_COUNT;
-    int numberOfFeaturesCurrent = OD8_COUNT;
-    int* lpCurrentSettingList = NULL;
-    int iSupported, iEnabled, iVersion;
-    int i, ret = ADL_FALSE;
-    for (i = 0; i < iNumberAdapters; i++)
+    ADLOD8SetSetting odSetSetting;
+    memset(&odSetSetting, 0, sizeof(ADLOD8SetSetting));
+    odSetSetting.count = OD8_COUNT;
+    // setting
+    for (int i = OD8_GFXCLK_FREQ1; i <= OD8_UCLK_FMAX; ++i)
     {
-        if (lpAdapterInfo[i].iBusNumber > -1)
+        odSetSetting.od8SettingTable[i].requested = 1;
+        odSetSetting.od8SettingTable[i].value = odCurrentSetting.Od8SettingTable[i];
+    }
+    bool reset = true;
+    if (SettingId <= OD8_FAN_CURVE_SPEED_5 && SettingId >= OD8_FAN_CURVE_TEMPERATURE_1)
+    {
+        reset = false;
+    }
+
+    for (int i = OD8_FAN_CURVE_TEMPERATURE_1; i <= OD8_FAN_CURVE_SPEED_5; ++i)
+    {
+        odSetSetting.od8SettingTable[i].reset = reset;
+        odSetSetting.od8SettingTable[i].requested = 1;
+        odSetSetting.od8SettingTable[i].value = odCurrentSetting.Od8SettingTable[i];
+    }
+
+    odSetSetting.od8SettingTable[SettingId].requested = 1;
+    if (ADL_OK == PrintFeatureName(SettingId))
+    {
+        if (!(odInitSetting.od8SettingTable[SettingId].minValue <= value && odInitSetting.od8SettingTable[SettingId].maxValue >= value))
         {
-            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
-            if (NULL != ADL2_Overdrive8_Current_SettingX2_Get)
+            PrintFeatureName(SettingId);
+            PRINTF("range should be in Min : %d, Max : %d\n", odInitSetting.od8SettingTable[SettingId].minValue, odInitSetting.od8SettingTable[SettingId].maxValue);
+            return ADL_ERR;
+        }
+        else
+        {
+            if (0 == Reset)//0 - do not reset , 1 - reset setting back to default
             {
-                ret = ADL2_Overdrive8_Current_SettingX2_Get(context, lpAdapterInfo[i].iAdapterIndex, &numberOfFeaturesCurrent, &lpCurrentSettingList);
-                if (ADL_OK != ret)
-                {
-                    PRINTF("ADL2_Overdrive8_Current_SettingX2_Get is failed\n");
-                }
-                else
-                {
-                    PRINTF("ADL2_Overdrive8_Current_SettingX2_Get is Success\n\n");
-                    PRINTF("****** Driver Values: After Apply ******\n");
-                    overdriveInitSetting.count = numberOfFeaturesCurrent > OD8_COUNT ? OD8_COUNT : numberOfFeaturesCurrent;
-                    for (int j = 0; j < overdriveInitSetting.count; j++)
-                    {
-                        PRINTF("lpCurrentSettingList Value : %d\n", lpCurrentSettingList[j]);
-                    }
-                }
-                ADL_Main_Memory_Free((void**)&lpCurrentSettingList);
+                odSetSetting.od8SettingTable[SettingId].value = value;
+                if (OD8_GFXCLK_FMAX == SettingId )
+                    odSetSetting.od8SettingTable[OD8_GFXCLK_FREQ3].value = value;
+                else if (OD8_GFXCLK_FMIN == SettingId)
+                    odSetSetting.od8SettingTable[OD8_GFXCLK_FREQ1].value = value;
+            }
+            else if (1 == Reset)
+            {
+                odSetSetting.od8SettingTable[SettingId].reset = Reset;
+                odSetSetting.od8SettingTable[SettingId].value = odInitSetting.od8SettingTable[SettingId].defaultValue;
+            }
+
+            if (ADL_OK == ADL2_Overdrive8_Setting_Set(context, iAdapterIndex, &odSetSetting, &odCurrentSetting))
+            {
+                PrintFeatureName(SettingId);
+                PRINTF("ADL2_Overdrive8_Setting_Set is Success\n\n");
+                PRINTF("****** Driver Values: After Apply ******\n");
+            }
+            else
+            {
+                PrintFeatureName(SettingId);
+                PRINTF("ADL2_Overdrive8_Setting_Set is failed\n");
+                return ADL_ERR;
             }
         }
     }
-    return ret;
+    else
+    {
+        PRINTF("Found No Feature ID.\n");
+        return ADL_ERR;
+    }
+    return ADL_OK;
+}
+
+
+int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, ADLOD8CurrentSetting odCurrentSetting, OverdriveRangeDataStruct &oneRangeData, int itemID_, int featureID_)
+{
+    memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
+    oneRangeData.Max_ = odInitSetting.od8SettingTable[itemID_].maxValue;
+    oneRangeData.Min_ = odInitSetting.od8SettingTable[itemID_].minValue;
+    oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[itemID_].defaultValue;
+    if (OD8_GFXCLK_FMIN == itemID_ || OD8_GFXCLK_FMAX == itemID_ || OD8_UCLK_FMAX == itemID_ || OD8_AC_TIMING == itemID_ || OD8_FAN_ZERORPM_CONTROL == itemID_
+         || OD8_AUTO_UV_ENGINE_CONTROL == itemID_ || OD8_AUTO_OC_ENGINE_CONTROL == itemID_ || OD8_AUTO_OC_MEMORY_CONTROL == itemID_)
+        oneRangeData.Visible_ = true;
+    else
+        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities & featureID_) == featureID_) ? true : false;
+    PRINTF("itemID:");
+    PrintFeatureName(itemID_);
+    if (oneRangeData.Visible_) {
+        PRINTF(" is Visible\n");
+        oneRangeData.ExpectedValue_ = odCurrentSetting.Od8SettingTable[itemID_];
+        PRINTF("actualValue:%d\n", oneRangeData.ExpectedValue_);
+    }
+    else 
+        PRINTF(" is not Visible\n");
+    PrintFeatureName(itemID_);
+    PRINTF("maxValue:%d\n", oneRangeData.Max_);
+    PRINTF("minValue:%d\n", oneRangeData.Min_);
+    PRINTF("defaultValue:%d\n", oneRangeData.DefaultValue_);
+    PRINTF("-----------------------------------------\n");
+    return ADL_OK;
+}
+
+int PrintfOD8FanCurve()
+{
+    int i;
+    int ret = -1;
+    int iSupported = 0, iEnabled = 0, iVersion = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        PRINTF("-----------------------------------------\n");
+        PRINTF("Adapter Index[%d]\n ", lpAdapterInfo[i].iAdapterIndex);
+        PRINTF("-----------------------------------------\n");
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 8)
+            {
+                //OD8 initial Status
+                ADLOD8InitSetting odInitSetting;
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
+                {
+                    PRINTF("Get Init Setting failed.\n");
+                    return ADL_ERR;
+                }
+
+                //OD8 Current Status
+                ADLOD8CurrentSetting odCurrentSetting;
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
+                {
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if (!GetOD8OneRange(odInitSetting, ADL_OD8_FAN_CURVE))
+                {
+                    PRINTF("Not support Fan Curve.\n");
+                    return ADL_ERR;
+                }
+                else
+                {
+                    PRINTF("The follwoing is Fan curve temperature and speed:\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_1 = 19\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_1 = 20\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_2 = 21\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_2 = 22\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_3 = 23\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_3 = 24\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_4 = 25\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_4 = 26\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_5 = 27\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_5 = 28 \n");
+                }
+                //make ADL call for VEGA12
+                ADLPMLogDataOutput odlpDataOutput;
+                memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
+                ret = ADL2_New_QueryPMLogData_Get(context, lpAdapterInfo[i].iAdapterIndex, &odlpDataOutput);
+                if (0 == ret)
+                {
+                    OverdriveRangeDataStruct oneRangeData;
+                    for (int index = OD8_FAN_CURVE_TEMPERATURE_1; index <= OD8_FAN_CURVE_SPEED_5; ++index)
+                    {
+                        GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, index, ADL_OD8_FAN_CURVE);
+                    }
+                    PRINTF("ADLSensorType: PMLOG_CLK_GFXCLK\n");
+                    PRINTF("PMLOG_CLK_GFXCLK.supported:%d\n", odlpDataOutput.sensors[PMLOG_CLK_GFXCLK].supported);
+                    PRINTF("PMLOG_CLK_GFXCLK.value:%d\n", odlpDataOutput.sensors[PMLOG_CLK_GFXCLK].value);
+                    PRINTF("-----------------------------------------\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
+                    return ADL_ERR;
+                }
+                break;
+            }
+        }
+
+    }
+    return 0;
+}
+
+int SetOD8FanCurveSettingParameters(int SettingId, int Reset, int value)
+{
+    int i;
+    int ret = -1;
+    int iSupported = 0, iEnabled = 0, iVersion = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        PRINTF("-----------------------------------------\n");
+        PRINTF("Adapter Index[%d]\n ", lpAdapterInfo[i].iAdapterIndex);
+        PRINTF("-----------------------------------------\n");
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 8)
+            {
+                //OD8 initial Status
+                ADLOD8InitSetting odInitSetting;
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
+                {
+                    PRINTF("Get Init Setting failed.\n");
+                    return ADL_ERR;
+                }
+
+                //OD8 Current Status
+                ADLOD8CurrentSetting odCurrentSetting;
+                if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
+                {
+                    PRINTF("Get Current Setting failed.\n");
+                    return ADL_ERR;
+                }
+                if (!GetOD8OneRange(odInitSetting, ADL_OD8_FAN_CURVE))
+                {
+                    return ADL_ERR;
+                }
+                else
+                {
+                    PRINTF("The follwoing is Fan curve temperature and speed:\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_1 = 19\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_1 = 20\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_2 = 21\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_2 = 22\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_3 = 23\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_3 = 24\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_4 = 25\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_4 = 26\n");
+                    PRINTF("OD8_FAN_CURVE_TEMPERATURE_5 = 27\n");
+                    PRINTF("OD8_FAN_CURVE_SPEED_5 = 28 \n");
+                }
+                if (ADL_OK == SetOD8Range(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
+                    PrintfOD8FanCurve();
+                break;
+            }
+        }
+
+    }
+    return 0;
 }
 
 void printHelp(char *exeName)
@@ -2085,13 +1727,19 @@ int main(int argc, char* argv[])
                 else
                     printHelp(argv[0]);
             }
-            else if ('x' == *(argv[1]))
+            else if ('t' == *(argv[1]))//tuning control
+            {
+                if (argc == 2)
+                    printOD8TuningControlSettingParameters();
+            }
+            else if ('r' == *(argv[1]))//Fan curve
             {
                 if (argc == 2)
                 {
-                    GetInitOD8Setting();
-                    GetCurrentOD8Setting();
+                    PrintfOD8FanCurve();
                 }
+                else if (argc == 5)
+                    SetOD8FanCurveSettingParameters(atoi(argv[2]), atoi(argv[3]), atoi(argv[4]));
                 else
                     printHelp(argv[0]);
             }
