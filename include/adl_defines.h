@@ -848,9 +848,9 @@
 #define ADL_OSMODEINFOCOLOURDEPTH_DEFAULT32        32
 #define ADL_OSMODEINFOORIENTATION_DEFAULT        0
 
-#ifdef _WIN32 || _WIN64
+#if defined (_WIN32) || defined (_WIN64)
 #define ADL_OSMODEINFOORIENTATION_DEFAULT_WIN7    DISPLAYCONFIG_ROTATION_FORCE_UINT32
-#endif
+#endif /* (_WIN32) || (_WIN64) */
 
 #define ADL_OSMODEFLAG_DEFAULT                    0
 // @}
