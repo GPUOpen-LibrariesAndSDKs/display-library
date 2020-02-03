@@ -51,6 +51,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gb0e34d0ecea85eff5a3527db6096d69c">ADL2_Adapter_AdapterInfo_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, <a class="el" href="structAdapterInfo.html">LPAdapterInfo</a> lpInfo, int iInputSize)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="#gb0e34d0ecea85eff5a3527db6096d69c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g3b65ffa4d5c46336f0813a161dc57a96">ADL2_Adapter_VerndorID_Int_get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves adapter vendor id.  <a href="#g3b65ffa4d5c46336f0813a161dc57a96"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gd305c0548224ab4623e1b89965b14f6b">ADL_Adapter_AdapterInfo_Get</a> (<a class="el" href="structAdapterInfo.html">LPAdapterInfo</a> lpInfo, int iInputSize)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="#gd305c0548224ab4623e1b89965b14f6b"></a><br></td></tr>
@@ -60,6 +63,18 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g88b05692f3e345356db2bbf2f0daef52">ADL_Adapter_AdapterInfoX2_Get</a> (<a class="el" href="structAdapterInfo.html">AdapterInfo</a> **lppAdapterInfo)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="#g88b05692f3e345356db2bbf2f0daef52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g2ffd4d9662de3c58983aac793c285d19">ADL_Adapter_RegValueString_Get</a> (int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to query a string registry value set by driver.  <a href="#g2ffd4d9662de3c58983aac793c285d19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g7c27f05e48925cb83186f9cdad33e2dd">ADL_Adapter_RegValueString_Set</a> (int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to set a driver registry string value.  <a href="#g7c27f05e48925cb83186f9cdad33e2dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gfbdc750dc141b9c93dcf069fe52b01db">ADL2_Adapter_RegValueString_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to set a driver registry string value.  <a href="#gfbdc750dc141b9c93dcf069fe52b01db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g7d729d7bba404bf20f72edf74a334bf8">ADL2_Adapter_RegValueString_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to query a string registry value set by driver.  <a href="#g7d729d7bba404bf20f72edf74a334bf8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gdeb3e55dbbef0b41ca7505eece793bc3">ADL2_Adapter_ASICFamilyType_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpAsicTypes, int *lpValids)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the ASICFamilyType from the adapter.  <a href="#gdeb3e55dbbef0b41ca7505eece793bc3"></a><br></td></tr>
@@ -156,7 +171,7 @@ The function is used to check if the adapter associated with iAdapterIndex is ac
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a9">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a14">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="PowerXPress_2PowerXPress_8cpp-example.html#a14">PowerXPress/PowerXPress.cpp</a>.</dl>
+<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a9">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="ASDR_2ASDR_8cpp-example.html#a15">ASDR/ASDR.cpp</a>, <a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a17">Overdrive8/Overdrive8.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a14">OverdriveN/OverdriveN.cpp</a>, <a class="el" href="PMLog_2PMLog_8cpp-example.html#a11">PMLog/PMLog.cpp</a>, and <a class="el" href="PowerXPress_2PowerXPress_8cpp-example.html#a14">PowerXPress/PowerXPress.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g0ea636181aaad0c76d78186c96020daf"></a><!-- doxytag: member="adapter.h::ADL_Adapter_Active_Get" ref="g0ea636181aaad0c76d78186c96020daf" args="(int iAdapterIndex, int *lpStatus)" -->
@@ -368,7 +383,7 @@ This function retrieves the number of graphics adapters recognized by the OS (OS
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a5">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="ColorCaps_2main_8cpp-example.html#a6">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a133">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a11">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a2">Sample-Managed/ADL.cs</a>.</dl>
+<a class="el" href="Adl2_2Adl2__Sample_8cpp-example.html#a5">Adl2/Adl2_Sample.cpp</a>, <a class="el" href="ASDR_2ASDR_8cpp-example.html#a11">ASDR/ASDR.cpp</a>, <a class="el" href="ColorCaps_2main_8cpp-example.html#a6">ColorCaps/main.cpp</a>, <a class="el" href="NativeAUX_2AUX__Sample_8cpp-example.html#a6">NativeAUX/AUX_Sample.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a133">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a14">Overdrive8/Overdrive8.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a11">OverdriveN/OverdriveN.cpp</a>, <a class="el" href="PMLog_2PMLog_8cpp-example.html#a9">PMLog/PMLog.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a2">Sample-Managed/ADL.cs</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g89dfa2e0779ac9caf1c755e873031860"></a><!-- doxytag: member="adapter.h::ADL2_Flush_Driver_Data" ref="g89dfa2e0779ac9caf1c755e873031860" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex)" -->
@@ -489,6 +504,44 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <a class="el" href="PowerXPress_2PowerXPress_8cpp-example.html#a13">PowerXPress/PowerXPress.cpp</a>.</dl>
 </div>
 </div><p>
+<a class="anchor" name="g3b65ffa4d5c46336f0813a161dc57a96"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_VerndorID_Int_get" ref="g3b65ffa4d5c46336f0813a161dc57a96" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_VerndorID_Int_get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Retrieves adapter vendor id. 
+<p>
+This function retrieves the parsed hex vendor id <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
 <a class="anchor" name="gd305c0548224ab4623e1b89965b14f6b"></a><!-- doxytag: member="adapter.h::ADL_Adapter_AdapterInfo_Get" ref="gd305c0548224ab4623e1b89965b14f6b" args="(LPAdapterInfo lpInfo, int iInputSize)" -->
 <div class="memitem">
 <div class="memproto">
@@ -527,7 +580,7 @@ This function retrieves the adapter information of all OS-known adapters in the 
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>This API take a fixed-size output array. For dynamic-size output, use <a class="el" href="group__ADAPTER.html#g88b05692f3e345356db2bbf2f0daef52">ADL_Adapter_AdapterInfoX2_Get</a> function. </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="ColorCaps_2main_8cpp-example.html#a7">ColorCaps/main.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a134">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a12">OverdriveN/OverdriveN.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a3">Sample-Managed/ADL.cs</a>.</dl>
+<a class="el" href="ASDR_2ASDR_8cpp-example.html#a12">ASDR/ASDR.cpp</a>, <a class="el" href="ColorCaps_2main_8cpp-example.html#a7">ColorCaps/main.cpp</a>, <a class="el" href="NativeAUX_2AUX__Sample_8cpp-example.html#a7">NativeAUX/AUX_Sample.cpp</a>, <a class="el" href="Overdrive_2Overdrive__Sample_8cpp-example.html#a134">Overdrive/Overdrive_Sample.cpp</a>, <a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a15">Overdrive8/Overdrive8.cpp</a>, <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a12">OverdriveN/OverdriveN.cpp</a>, <a class="el" href="PMLog_2PMLog_8cpp-example.html#a10">PMLog/PMLog.cpp</a>, and <a class="el" href="Sample-Managed_2ADL_8cs-example.html#a3">Sample-Managed/ADL.cs</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g95aceedb870d727257e217ac5b2e968d"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_AdapterInfoX2_Get" ref="g95aceedb870d727257e217ac5b2e968d" args="(ADL_CONTEXT_HANDLE context, AdapterInfo **lppAdapterInfo)" -->
@@ -598,6 +651,290 @@ This function retrieves the adapter information of all OS-known adapters in the 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>This API uses the memory allocation callback function provided by the user. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g2ffd4d9662de3c58983aac793c285d19"></a><!-- doxytag: member="adapter.h::ADL_Adapter_RegValueString_Get" ref="g2ffd4d9662de3c58983aac793c285d19" args="(int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Adapter_RegValueString_Get           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iDriverPathOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szSubKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szKeyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>lpKeyValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ADL local interface. Function to query a string registry value set by driver. 
+<p>
+This function queries a driver registry string value for a specified adapter by specifying the subkey path and key name. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iDriverPathOption</em>&nbsp;</td><td>The option of the driver path. 0: Current; 1: function1; 2: function2; 0xFFFF for all device. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szSubKey</em>&nbsp;</td><td>The path of registry sub key to be accessed. This is a null terminated string and the parameter can be NULL. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szKeyName</em>&nbsp;</td><td>The name of registry value to be got. This is a null terminated string. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iSize</em>&nbsp;</td><td>The size of registry value to be got. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpKeyValue</em>&nbsp;</td><td>The pointer to registry value to be got. </td></tr>
+  </table>
+</dl>
+<dl class="user" compact><dt><b>Supported Platforms: </b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g7c27f05e48925cb83186f9cdad33e2dd"></a><!-- doxytag: member="adapter.h::ADL_Adapter_RegValueString_Set" ref="g7c27f05e48925cb83186f9cdad33e2dd" args="(int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Adapter_RegValueString_Set           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iDriverPathOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szSubKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szKeyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>lpKeyValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ADL local interface. Function to set a driver registry string value. 
+<p>
+This function sets a driver registry string value for a specified adapter by specifying the subkey path and key name. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iDriverPathOption</em>&nbsp;</td><td>The option of the driver path. 0: Current; 1: function1; 2: function2; 0xFFFF for all device. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szSubKey</em>&nbsp;</td><td>The path of registry sub key to be accessed. This is a null terminated string and the parameter can be NULL. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szKeyName</em>&nbsp;</td><td>The name of registry value to be set. This is a null terminated string. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iSize</em>&nbsp;</td><td>The size of registry value to be set. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpKeyValue</em>&nbsp;</td><td>The pointer to registry value to be set. </td></tr>
+  </table>
+</dl>
+<dl class="user" compact><dt><b>Supported Platforms: </b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfbdc750dc141b9c93dcf069fe52b01db"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_RegValueString_Set" ref="gfbdc750dc141b9c93dcf069fe52b01db" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_RegValueString_Set           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iDriverPathOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szSubKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szKeyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>lpKeyValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ADL local interface. Function to set a driver registry string value. 
+<p>
+This function sets a driver registry string value for a specified adapter by specifying the subkey path and key name. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iDriverPathOption</em>&nbsp;</td><td>The option of the driver path. 0: Current; 1: function1; 2: function2; 0xFFFF for all device. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szSubKey</em>&nbsp;</td><td>The path of registry sub key to be accessed. This is a null terminated string and the parameter can be NULL. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szKeyName</em>&nbsp;</td><td>The name of registry value to be set. This is a null terminated string. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iSize</em>&nbsp;</td><td>The size of registry value to be set. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpKeyValue</em>&nbsp;</td><td>The pointer to registry value to be set. </td></tr>
+  </table>
+</dl>
+<dl class="user" compact><dt><b>Supported Platforms: </b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g7d729d7bba404bf20f72edf74a334bf8"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_RegValueString_Get" ref="g7d729d7bba404bf20f72edf74a334bf8" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_RegValueString_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iDriverPathOption</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szSubKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>szKeyName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>lpKeyValue</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ADL local interface. Function to query a string registry value set by driver. 
+<p>
+This function queries a driver registry string value for a specified adapter by specifying the subkey path and key name. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iDriverPathOption</em>&nbsp;</td><td>The option of the driver path. 0: Current; 1: function1; 2: function2; 0xFFFF for all device. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szSubKey</em>&nbsp;</td><td>The path of registry sub key to be accessed. This is a null terminated string and the parameter can be NULL. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>szKeyName</em>&nbsp;</td><td>The name of registry value to be got. This is a null terminated string. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iSize</em>&nbsp;</td><td>The size of registry value to be got. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpKeyValue</em>&nbsp;</td><td>The pointer to registry value to be got. </td></tr>
+  </table>
+</dl>
+<dl class="user" compact><dt><b>Supported Platforms: </b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div><p>
@@ -1338,7 +1675,7 @@ This function implements a DI call to retrieve adapter capability information . 
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a13">OverdriveN/OverdriveN.cpp</a>.</dl>
+<a class="el" href="ASDR_2ASDR_8cpp-example.html#a13">ASDR/ASDR.cpp</a>, <a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a16">Overdrive8/Overdrive8.cpp</a>, and <a class="el" href="OverdriveN_2OverdriveN_8cpp-example.html#a13">OverdriveN/OverdriveN.cpp</a>.</dl>
 </div>
 </div><p>
 </div>

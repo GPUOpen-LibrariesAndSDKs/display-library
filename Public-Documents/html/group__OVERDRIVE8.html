@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-<title>ADL (AMD Display Library) Public APIs: OVERDRIVE8</title>
+<title>ADL (AMD Display Library) Public APIs: OverDrive8 APIs</title>
 <link href="tabs.css" rel="stylesheet" type="text/css">
 <link href="doxygen.css" rel="stylesheet" type="text/css">
 </head><body>
@@ -18,7 +18,10 @@
   </div>
 </div>
 <div class="contents">
-<h1>OVERDRIVE8</h1><table border="0" cellpadding="0" cellspacing="0">
+<h1>OverDrive8 APIs<br>
+<small>
+[<a class="el" href="group__OVERDRIVE.html">OverDrive APIs</a>]</small>
+</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#gc13bd3ad924670ddf0766537581304f9">ADL2_Overdrive8_Init_Setting_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADLOD8InitSetting.html">ADLOD8InitSetting</a> *lpInitSetting)</td></tr>
@@ -39,8 +42,39 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g48abdb68e666069c4d33e3b07ce29eb2">ADL2_Overdrive8_Current_SettingX2_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpNumberOfFeatures, int **lppCurrentSettingList)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings. This is new versin of ADL2_Overdrive8_Current_SettingX2_Get. It supports new features and does not need to change the PAI.  <a href="#g48abdb68e666069c4d33e3b07ce29eb2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#gac7719d1bc9aae4dc431c7ecd362f687">ADL2_AutoTuningResult_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, bool *lpDataOutput)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the current auto tuning state.  <a href="#gac7719d1bc9aae4dc431c7ecd362f687"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#ge956fe170346bbe6827829c9450347d8">ADL2_Overdrive8_PMLogSenorRange_Caps</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpNumberOfSupportedSensorRange, <a class="el" href="struct__ADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **lppSenorRangeCapsList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the PMLog sensor range value if the driver supports the sensor.  <a href="#ge956fe170346bbe6827829c9450347d8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#gd3ff2d8cacad5a27b1f31edac3eb12a6">ADL2_Overdrive8_PMLogSenorType_Support_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpNumOfSupportedSensorType, int **lppSenroTypesList)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the PMLog sensor real value reading support flag from the driver.  <a href="#gd3ff2d8cacad5a27b1f31edac3eb12a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g85b1f02745f7dce5f92e860be033e1f8">ADL2_Overdrive8_PMLog_ShareMemory_Support</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpSupported, int option)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the support flag, which indictates if the shared memoory way is avilable or not.  <a href="#g85b1f02745f7dce5f92e860be033e1f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g5f9f66d5baf07b295fae4fecbe00380d">ADL2_Overdrive8_PMLog_ShareMemory_Start</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iSampleRate, int iNumofPMLogSendorList, int *lpPMLogSendorList, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *lpHDevice, void **lppSharedMemory, int iOption)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to start a shared memory session.  <a href="#g5f9f66d5baf07b295fae4fecbe00380d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#gb3ddfafd642f00e7e983d0fcf63f3c9d">ADL2_Overdrive8_PMLog_ShareMemory_Read</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iNumSensor, int *lpSensorList, void **lppSharedMemory, <a class="el" href="struct__ADLPMLogDataOutput.html">ADLPMLogDataOutput</a> *lpDataOutput)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to start a shared memory session.  <a href="#gb3ddfafd642f00e7e983d0fcf63f3c9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g3c884042d7e725ea838ab1dd47dbb17d">ADL2_Overdrive8_PMLog_ShareMemory_Stop</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *lpHDevice)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to stop a shared memory session.  <a href="#g3c884042d7e725ea838ab1dd47dbb17d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g14bcd4cfe2e7e6e6af9be8f0287c6199">ADL2_Device_PMLog_Device_Create</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *pDevice)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This function create the device. Adds MGPU support over legacy functions.  <a href="#g14bcd4cfe2e7e6e6af9be8f0287c6199"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g03d21d3e098d73bb583bb2b77144817c">ADL2_Device_PMLog_Device_Destroy</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, <a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> hDevice)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This function destroy the device. Adds MGPU support over legacy functions.  <a href="#g03d21d3e098d73bb583bb2b77144817c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8.html#g3818b5bc38c0027ef7306a1aa9f16d23">ADL2_Overdrive8_Current_SettingX3_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpFeatureNotAdjustableBits, int *lpNumberOfSettings, int **lppCurrentSettingList, int iOption)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings. This is new versin of ADL2_Overdrive8_Current_SettingX3_Get. It supports the availablity of each item.  <a href="#g3818b5bc38c0027ef7306a1aa9f16d23"></a><br></td></tr>
 </table>
-<hr><h2>Function Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+This group outlines all OverDrive8 related APIs <hr><h2>Function Documentation</h2>
 <a class="anchor" name="gc13bd3ad924670ddf0766537581304f9"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Init_Setting_Get" ref="gc13bd3ad924670ddf0766537581304f9" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLOD8InitSetting *lpInitSetting)" -->
 <div class="memitem">
 <div class="memproto">
@@ -86,7 +120,8 @@ This function retrieves the Overdrive8 initial settings for a specified adapter.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b><a class="el" href="deprecated.html#_deprecated000038">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a19">Overdrive8/Overdrive8.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="gfda4b3aa090bcab01ed2fa980b2fc26e"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Current_Setting_Get" ref="gfda4b3aa090bcab01ed2fa980b2fc26e" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLOD8CurrentSetting *lpCurrentSetting)" -->
@@ -134,7 +169,8 @@ This function retrieves the Overdrive8 current settings for a specified adapter.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b><a class="el" href="deprecated.html#_deprecated000039">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a20">Overdrive8/Overdrive8.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g82db905465f4acaec95c4a7a8ea8a2d3"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Setting_Set" ref="g82db905465f4acaec95c4a7a8ea8a2d3" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLOD8SetSetting *lpSetSetting, ADLOD8CurrentSetting *lpCurrentSetting)" -->
@@ -189,7 +225,8 @@ This function set the Overdrive8 settings for a specified adapter. <dl class="us
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b><a class="el" href="deprecated.html#_deprecated000040">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a21">Overdrive8/Overdrive8.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g48705da45f75d44581b9453f6d963786"></a><!-- doxytag: member="overdrive8.h::ADL2_New_QueryPMLogData_Get" ref="g48705da45f75d44581b9453f6d963786" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogDataOutput *lpDataOutput)" -->
@@ -237,7 +274,8 @@ This function retrieves the Overdrive8 current settings for a specified adapter.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <dl compact><dt><b><a class="el" href="deprecated.html#_deprecated000041">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a22">Overdrive8/Overdrive8.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g38d76f552e19db90cd56dd466eb2484c"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Init_SettingX2_Get" ref="g38d76f552e19db90cd56dd466eb2484c" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpOverdrive8Capabilities, int *lpNumberOfFeatures, ADLOD8SingleInitSetting **lppInitSettingList)" -->
@@ -298,7 +336,8 @@ This function retrieves the Overdrive8 current range settings for a specified ad
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a23">Overdrive8/Overdrive8.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="g48abdb68e666069c4d33e3b07ce29eb2"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Current_SettingX2_Get" ref="g48abdb68e666069c4d33e3b07ce29eb2" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfFeatures, int **lppCurrentSettingList)" -->
@@ -352,6 +391,566 @@ This function retrieves the Overdrive8 current settings for a specified adapter.
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a24">Overdrive8/Overdrive8.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="gac7719d1bc9aae4dc431c7ecd362f687"></a><!-- doxytag: member="overdrive8.h::ADL2_AutoTuningResult_Get" ref="gac7719d1bc9aae4dc431c7ecd362f687" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, bool *lpDataOutput)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_AutoTuningResult_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool *&nbsp;</td>
+          <td class="paramname"> <em>lpDataOutput</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the current auto tuning state. 
+<p>
+This function retrieves the Overdrive8 auto tuning settings for a specified adapter. <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpDataOutput</em>&nbsp;</td><td>The pointer to an bool which indicates the auto tuning state </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ge956fe170346bbe6827829c9450347d8"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLogSenorRange_Caps" ref="ge956fe170346bbe6827829c9450347d8" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfSupportedSensorRange, ADLOD8SingleInitSetting **lppSenorRangeCapsList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLogSenorRange_Caps           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfSupportedSensorRange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **&nbsp;</td>
+          <td class="paramname"> <em>lppSenorRangeCapsList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the PMLog sensor range value if the driver supports the sensor. 
+<p>
+This function retrieves the supported sensors's range value <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpNumberOfSupportedSensorRange</em>&nbsp;</td><td>The pointer to the number of sensors' rang supported. The sensor types defined <a class="el" href="group__DEFINES.html#g675dfbf2669dbab873de7a7b428712f0">ADLSensorType</a> </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppSenorRangeCapsList</em>&nbsp;</td><td>The pointer to the pointer to the first range supported sensor address. This pointer does not need to be initialized by the user. However, the client needs to free the pointer after. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gd3ff2d8cacad5a27b1f31edac3eb12a6"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLogSenorType_Support_Get" ref="gd3ff2d8cacad5a27b1f31edac3eb12a6" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumOfSupportedSensorType, int **lppSenroTypesList)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLogSenorType_Support_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumOfSupportedSensorType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>lppSenroTypesList</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the PMLog sensor real value reading support flag from the driver. 
+<p>
+This function retrieves the supported sensor list, which value can be reading from the driver <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpNumOfSupportedSensorType</em>&nbsp;</td><td>The pointer to the number of sensors' rang supported. The sensor types defined <a class="el" href="group__DEFINES.html#g675dfbf2669dbab873de7a7b428712f0">ADLSensorType</a> </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppSenroTypesList</em>&nbsp;</td><td>The pointer to the pointer to the first value-reading supported sensor address. This pointer does not need to be initialized by the user. However, the client needs to free the pointer after. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g85b1f02745f7dce5f92e860be033e1f8"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLog_ShareMemory_Support" ref="g85b1f02745f7dce5f92e860be033e1f8" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int option)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLog_ShareMemory_Support           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpSupported</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>option</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the support flag, which indictates if the shared memoory way is avilable or not. 
+<p>
+This function retrive the supporting flag of shared memeory way is supported by the driver to rad sensor's real value <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpSupported</em>&nbsp;</td><td>The pointer to an int variable which indicates if shared memory reading feature is supported ( <a class="el" href="group__define__misc.html#g4075eb5b8e4e10b540b3c849899f9bc4">ADL_TRUE</a> : supported, <a class="el" href="group__define__misc.html#gd032e621d4d5dccb5bdeb053fced69dd">ADL_FALSE</a> : not supported) </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iOption</em>&nbsp;</td><td>Integer for extension. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a>. If Overdrive feature is not supported the return code is <a class="el" href="group__define__adl__results.html#g4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> <p>
+If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g5f9f66d5baf07b295fae4fecbe00380d"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLog_ShareMemory_Start" ref="g5f9f66d5baf07b295fae4fecbe00380d" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSampleRate, int iNumofPMLogSendorList, int *lpPMLogSendorList, ADL_D3DKMT_HANDLE *lpHDevice, void **lppSharedMemory, int iOption)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLog_ShareMemory_Start           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iSampleRate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iNumofPMLogSendorList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpPMLogSendorList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *&nbsp;</td>
+          <td class="paramname"> <em>lpHDevice</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&nbsp;</td>
+          <td class="paramname"> <em>lppSharedMemory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iOption</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to start a shared memory session. 
+<p>
+This function Let the drivr start to create a shared memeory tlo store the sensors real values <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iSampleRate</em>&nbsp;</td><td>An integer which indicates how many milli-seconds the driver needs to refresh the context of the shared mwmeory. The unite is second. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iNumofPMLogSendorList</em>&nbsp;</td><td>An integer which indicates how mnay sensrs need to be read. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpPMLogSendorList</em>&nbsp;</td><td>A pointer to an integer, which include of sensors need to be monitored. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpDevice</em>&nbsp;</td><td>A pointer to ADL_D3DKMT_HANDLE, which is 3D device handle </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppSharedMemory</em>&nbsp;</td><td>A pointer to a poniter , which contains the addreess of shareed memory </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iOption</em>&nbsp;</td><td>Integer for extension. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a>. If Overdrive feature is not supported the return code is <a class="el" href="group__define__adl__results.html#g4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> <p>
+If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gb3ddfafd642f00e7e983d0fcf63f3c9d"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLog_ShareMemory_Read" ref="gb3ddfafd642f00e7e983d0fcf63f3c9d" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumSensor, int *lpSensorList, void **lppSharedMemory, ADLPMLogDataOutput *lpDataOutput)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLog_ShareMemory_Read           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iNumSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpSensorList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&nbsp;</td>
+          <td class="paramname"> <em>lppSharedMemory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct__ADLPMLogDataOutput.html">ADLPMLogDataOutput</a> *&nbsp;</td>
+          <td class="paramname"> <em>lpDataOutput</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to start a shared memory session. 
+<p>
+This function Let the drivr start to create a shared memeory tlo store the sensors real values <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>IN]</em>&nbsp;</td><td>iNumSensor, An integer, which indicates how many sensor will be read </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>IN]</em>&nbsp;</td><td>lpSensorList A pointer to an integer , which contains a list of sensor's IDs </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>IN]</em>&nbsp;</td><td>lppSharedMemory A pointer to a poniter , which contains the addreess of shareed memory </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>ADLPMLogDataOutput</em>&nbsp;</td><td>A pointer to data structure ADLPMLogDataOutput, which is the sensor real value in it. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iOption</em>&nbsp;</td><td>Integer for extension. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a>. If Overdrive feature is not supported the return code is <a class="el" href="group__define__adl__results.html#g4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> <p>
+If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g3c884042d7e725ea838ab1dd47dbb17d"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_PMLog_ShareMemory_Stop" ref="g3c884042d7e725ea838ab1dd47dbb17d" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE *lpHDevice)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_PMLog_ShareMemory_Stop           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *&nbsp;</td>
+          <td class="paramname"> <em>lpHDevice</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to stop a shared memory session. 
+<p>
+This function Let the drivr stop to destrortrue shared memeory of ore the sensors real values <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>lpDevice</em>&nbsp;</td><td>A pointer to pointer, which contains the addreess of shareed memory </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a>. If Overdrive feature is not supported the return code is <a class="el" href="group__define__adl__results.html#g4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> <p>
+If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g14bcd4cfe2e7e6e6af9be8f0287c6199"></a><!-- doxytag: member="overdrive8.h::ADL2_Device_PMLog_Device_Create" ref="g14bcd4cfe2e7e6e6af9be8f0287c6199" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE *pDevice)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Device_PMLog_Device_Create           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> *&nbsp;</td>
+          <td class="paramname"> <em>pDevice</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+This function create the device. Adds MGPU support over legacy functions. 
+<p>
+<dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired desktop. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>pDevice</em>&nbsp;</td><td>The pointer to the device handle. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="PMLog_2PMLog_8cpp-example.html#a13">PMLog/PMLog.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="g03d21d3e098d73bb583bb2b77144817c"></a><!-- doxytag: member="overdrive8.h::ADL2_Device_PMLog_Device_Destroy" ref="g03d21d3e098d73bb583bb2b77144817c" args="(ADL_CONTEXT_HANDLE context, ADL_D3DKMT_HANDLE hDevice)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Device_PMLog_Device_Destroy           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>hDevice</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+This function destroy the device. Adds MGPU support over legacy functions. 
+<p>
+<dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>hDevice</em>&nbsp;</td><td>The device handle. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="PMLog_2PMLog_8cpp-example.html#a14">PMLog/PMLog.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="g3818b5bc38c0027ef7306a1aa9f16d23"></a><!-- doxytag: member="overdrive8.h::ADL2_Overdrive8_Current_SettingX3_Get" ref="g3818b5bc38c0027ef7306a1aa9f16d23" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpFeatureNotAdjustableBits, int *lpNumberOfSettings, int **lppCurrentSettingList, int iOption)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Overdrive8_Current_SettingX3_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpFeatureNotAdjustableBits</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&nbsp;</td>
+          <td class="paramname"> <em>lppCurrentSettingList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>iOption</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Function to retrieve the Overdrive8 current settings. This is new versin of ADL2_Overdrive8_Current_SettingX3_Get. It supports the availablity of each item. 
+<p>
+This function retrieves the Overdrive8 currente seetings plus the availability. The availablility of each item can be dynamically changed when something happens <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Windows (XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>iAdapterIndex</em>&nbsp;</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpFeatureNotAdjustableBits</em>&nbsp;</td><td>The pointer to an integer which's bit indicates the feature can be adjustment now. ref </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>in/out]</em>&nbsp;</td><td>lpNumberOfSettings The pointer to an integer which indicates the number of OD8 features. The callee shold input the expected number of settings. Then ADL can use this input to support comptiable. When returing, the number is actual number of dricver currently supported features </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpInitSettingList</em>&nbsp;</td><td>The pointer to the list of current OD8 settingts. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such cli </dd></dl>
 
 </div>
 </div><p>

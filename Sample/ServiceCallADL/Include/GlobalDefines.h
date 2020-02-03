@@ -1,6 +1,6 @@
 #ifndef _GLOBAL_DEFINES_H__ 
 #define _GLOBAL_DEFINES_H__ 
-#include "adl_sdk.h"
+#include "..\..\..\include\adl_sdk.h"
 
 #define ADL_FUNCTION_NAME							L"FunctionName="
 #define ADL_FUNCTION_NAME_LEN							13

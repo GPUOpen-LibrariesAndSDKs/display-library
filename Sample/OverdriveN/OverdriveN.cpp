@@ -1380,6 +1380,17 @@ int ODNSettingExtGet()
                     for (int j = 0; j < numberOfODNExtFeatures; j++)
                     {
                         PRINTF("******numberOfODNExtFeatures:%d******\n", j);
+                        if (j == ADL_ODN_POWERGAUGE) {
+                            if (lpInitSettingList[j].maxValue != -1) {
+                                PRINTF("Support this feature;\n");
+                                PRINTF("lpInitSettingList.defaultValue : %d\n", lpInitSettingList[j].defaultValue);
+                                PRINTF("lpInitSettingList.maxValue : %d\n", lpInitSettingList[j].maxValue);
+                                PRINTF("lpInitSettingList.minValue : %d\n", lpInitSettingList[j].minValue);
+                            }
+                            else
+                                PRINTF("Not Support this featureID\n");
+                            continue;
+                        }
                         if (overdriveCapabilities.iFlags & (ADLODNExtSettingId)j == (ADLODNExtSettingId)j)
                         {
                             PRINTF("Support this feature;\n");

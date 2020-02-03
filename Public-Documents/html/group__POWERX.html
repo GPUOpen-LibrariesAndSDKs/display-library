@@ -81,6 +81,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__POWERX.html#g780d0958859051c72af7101a75d30757">ADL2_SwitchableGraphics_Applications_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iListType, int *lpNumApps, <a class="el" href="struct__ADLSGApplicationInfo.html">ADLSGApplicationInfo</a> **lppAppList)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to get all the recently ran and currently running applications.  <a href="#g780d0958859051c72af7101a75d30757"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__POWERX.html#g8c178c1fb5fecb521afe2c91c029af02">ADL2_Win_IsHybridAI</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to get Hybrid Discrete graphics support.  <a href="#g8c178c1fb5fecb521afe2c91c029af02"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__POWERX.html#g0a1f9e71317c7c0628af177aca0f72da">ADL2_PowerXpress_Configuration_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, <a class="el" href="adl__structures_8h.html#94ae23592252d759e648650f16b47768">ADLPxType</a> *lpPxType, <a class="el" href="structADLAdapterLocation.html">ADLBdf</a> *lpIGPUBdf, int *lpNumberOfDGPUs, <a class="el" href="structADLAdapterLocation.html">ADLBdf</a> **lppDGPUBDFs)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This function gets PX configuration.  <a href="#g0a1f9e71317c7c0628af177aca0f72da"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This group outlines PowerXpress Related APIs. <hr><h2>Function Documentation</h2>
@@ -996,6 +1002,97 @@ The function is used to get all the recently ran and currently running applicati
 </dl>
 <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8c178c1fb5fecb521afe2c91c029af02"></a><!-- doxytag: member="powerxpress.h::ADL2_Win_IsHybridAI" ref="g8c178c1fb5fecb521afe2c91c029af02" args="(ADL_CONTEXT_HANDLE context)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Win_IsHybridAI           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+ADL local interface. Function to get Hybrid Discrete graphics support. 
+<p>
+The function is used to get if the windows has inbuilt support for Hybrid Discrete graphics, which implies A+I <dl class="user" compact><dt><b>Supported Platforms:</b></dt><dd></dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>TRUE: HybridDiscrete; FALSE: otherwise. </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0a1f9e71317c7c0628af177aca0f72da"></a><!-- doxytag: member="powerxpress.h::ADL2_PowerXpress_Configuration_Get" ref="g0a1f9e71317c7c0628af177aca0f72da" args="(ADL_CONTEXT_HANDLE context, ADLPxType *lpPxType, ADLBdf *lpIGPUBdf, int *lpNumberOfDGPUs, ADLBdf **lppDGPUBDFs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_PowerXpress_Configuration_Get           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&nbsp;</td>
+          <td class="paramname"> <em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#94ae23592252d759e648650f16b47768">ADLPxType</a> *&nbsp;</td>
+          <td class="paramname"> <em>lpPxType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLAdapterLocation.html">ADLBdf</a> *&nbsp;</td>
+          <td class="paramname"> <em>lpIGPUBdf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>lpNumberOfDGPUs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLAdapterLocation.html">ADLBdf</a> **&nbsp;</td>
+          <td class="paramname"> <em>lppDGPUBDFs</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+This function gets PX configuration. 
+<p>
+In Power Express configuration system, the master GPU(Integrated GPU) can have several linked GPUs <dl class="user" compact><dt><b>Supported Platforms: </b></dt><dd>Windows 7; 32bit and 64bit </dd></dl>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"><tt>[in]</tt>&nbsp;</td><td valign="top"><em>context,:</em>&nbsp;</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpPxType</em>&nbsp;</td><td>Pointer to a variable that indicates the PX type <a class="el" href="adl__structures_8h.html#94ae23592252d759e648650f16b47768">ADLPxType</a> </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpIGPUBdf</em>&nbsp;</td><td>Pointer to a variable that indicates the IGPU BDF <a class="el" href="adl__structures_8h.html#74e09c04dd327447da9e7cd8b2887cf6">ADLBdf</a> </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lpNumberOfDGPUs</em>&nbsp;</td><td>Pointer to a variable that indicates the number of DGPUs. </td></tr>
+    <tr><td valign="top"><tt>[out]</tt>&nbsp;</td><td valign="top"><em>lppDGPUBDFs</em>&nbsp;</td><td>Pointer of a pointer to a variable with type <a class="el" href="adl__structures_8h.html#74e09c04dd327447da9e7cd8b2887cf6">ADLBdf</a>, which contains a list of DGPUs . </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="remark" compact><dt><b>Remarks:</b></dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#g4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div><p>

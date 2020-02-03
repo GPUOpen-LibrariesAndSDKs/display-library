@@ -57,6 +57,12 @@ typedef int(*ADL2_NEW_QUERYPMLOGDATA_GET) (ADL_CONTEXT_HANDLE, int, ADLPMLogData
 typedef int(*ADL2_OVERDRIVE8_INIT_SETTINGX2_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int* lpOverdrive8Capabilities, int *lpNumberOfFeatures, ADLOD8SingleInitSetting** lppInitSettingList);
 typedef int(*ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfFeatures, int** lppCurrentSettingList);
 
+
+typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogSupportInfo* pPMLogSupportInfo);
+typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_START) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogStartInput* pPMLogStartInput, ADLPMLogStartOutput* pPMLogStartOutput, ADL_D3DKMT_HANDLE pDevice);
+typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_STOP) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE pDevice);
+typedef int(*ADL2_DESKTOP_DEVICE_CREATE) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE *pDevice);
+typedef int(*ADL2_DESKTOP_DEVICE_DESTROY) (ADL_CONTEXT_HANDLE context, ADL_D3DKMT_HANDLE hDevice);
 HINSTANCE hDLL;
 
 ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
@@ -75,6 +81,13 @@ ADL2_NEW_QUERYPMLOGDATA_GET ADL2_New_QueryPMLogData_Get = NULL;
 
 ADL2_OVERDRIVE8_INIT_SETTINGX2_GET ADL2_Overdrive8_Init_SettingX2_Get = NULL;
 ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET ADL2_Overdrive8_Current_SettingX2_Get = NULL;
+
+ADL2_ADAPTER_PMLOG_SUPPORT_GET ADL2_Adapter_PMLog_Support_Get = NULL;
+ADL2_ADAPTER_PMLOG_SUPPORT_START ADL2_Adapter_PMLog_Support_Start = NULL;
+ADL2_ADAPTER_PMLOG_SUPPORT_STOP ADL2_Adapter_PMLog_Support_Stop = NULL;
+ADL2_DESKTOP_DEVICE_CREATE ADL2_Desktop_Device_Create = NULL;
+ADL2_DESKTOP_DEVICE_DESTROY ADL2_Desktop_Device_Destroy = NULL;
+
 
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
@@ -99,6 +112,97 @@ int  iNumberAdapters;
 int PrintFeatureName(int itemID_);
 int SetOD8Range(const ADLOD8InitSetting &odInitSetting, ADLOD8CurrentSetting &odCurrentSetting, int iAdapterIndex, int SettingId, int Reset, int value);
 int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, ADLOD8CurrentSetting odCurrentSetting, OverdriveRangeDataStruct &oneRangeData, int itemID_, int featureID_);
+int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, OverdriveRangeDataStruct &oneRangeData, int itemID_, int featureID_);
+int printOD8();
+int PMLogAllSensorStart(int adapterNumber, int sampleRate, ADLPMLogData** PMLogOutput, ADL_D3DKMT_HANDLE *hDevice);
+
+char * ADLOD8FeatureControlStr[]
+{
+	"ADL_OD8_GFXCLK_LIMITS",
+	"ADL_OD8_GFXCLK_CURVE",
+	"ADL_OD8_UCLK_MAX",
+	"ADL_OD8_POWER_LIMIT",
+	"ADL_OD8_ACOUSTIC_LIMIT_SCLK FanMaximumRpm",
+	"ADL_OD8_FAN_SPEED_MIN FanMinimumPwm",
+	"ADL_OD8_TEMPERATURE_FAN FanTargetTemperature",
+	"ADL_OD8_TEMPERATURE_SYSTEM MaxOpTemp",
+	"ADL_OD8_MEMORY_TIMING_TUNE  ",
+	"ADL_OD8_FAN_ZERO_RPM_CONTROL ",
+	"ADL_OD8_AUTO_UV_ENGINE",
+	"ADL_OD8_AUTO_OC_ENGINE",
+	"ADL_OD8_AUTO_OC_MEMORY",
+	"ADL_OD8_FAN_CURVE ",
+	"ADL_OD8_WS_AUTO_FAN_ACOUSTIC_LIMIT",
+	"ADL_OD8_POWER_GAUGE"
+};
+
+char *ADLOD8SettingIdStr[] =
+{
+	"OD8_GFXCLK_FMAX",
+	"OD8_GFXCLK_FMIN",
+	"OD8_GFXCLK_FREQ1",
+	"OD8_GFXCLK_VOLTAGE1",
+	"OD8_GFXCLK_FREQ2",
+	"OD8_GFXCLK_VOLTAGE2",
+	"OD8_GFXCLK_FREQ3",
+	"OD8_GFXCLK_VOLTAGE3",
+	"OD8_UCLK_FMAX",
+	"OD8_POWER_PERCENTAGE",
+	"OD8_FAN_MIN_SPEED",
+	"OD8_FAN_ACOUSTIC_LIMIT",
+	"OD8_FAN_TARGET_TEMP",
+	"OD8_OPERATING_TEMP_MAX",
+	"OD8_AC_TIMING",
+	"OD8_FAN_ZERORPM_CONTROL",
+	"OD8_AUTO_UV_ENGINE_CONTROL",
+	"OD8_AUTO_OC_ENGINE_CONTROL",
+	"OD8_AUTO_OC_MEMORY_CONTROL",
+	"OD8_FAN_CURVE_TEMPERATURE_1",
+	"OD8_FAN_CURVE_SPEED_1",
+	"OD8_FAN_CURVE_TEMPERATURE_2",
+	"OD8_FAN_CURVE_SPEED_2",
+	"OD8_FAN_CURVE_TEMPERATURE_3",
+	"OD8_FAN_CURVE_SPEED_3",
+	"OD8_FAN_CURVE_TEMPERATURE_4",
+	"OD8_FAN_CURVE_SPEED_4",
+	"OD8_FAN_CURVE_TEMPERATURE_5",
+	"OD8_FAN_CURVE_SPEED_5",
+	"OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT",
+	"OD8_POWER_GAUGE",
+	"OD8_COUNT"
+};
+
+
+char *sensorType[] = {
+"SENSOR_MAXTYPES",
+"PMLOG_CLK_GFXCLK",
+"PMLOG_CLK_MEMCLK",
+"PMLOG_CLK_SOCCLK",
+"PMLOG_CLK_UVDCLK1",
+"PMLOG_CLK_UVDCLK2",
+"PMLOG_CLK_VCECLK",
+"PMLOG_CLK_VCNCLK",
+"PMLOG_TEMPERATURE_EDGE",
+"PMLOG_TEMPERATURE_MEM",
+"PMLOG_TEMPERATURE_VRVDDC",
+"PMLOG_TEMPERATURE_VRMVDD",
+"PMLOG_TEMPERATURE_LIQUID",
+"PMLOG_TEMPERATURE_PLX",
+"PMLOG_FAN_RPM",
+"PMLOG_FAN_PERCENTAGE",
+"PMLOG_SOC_VOLTAGE",
+"PMLOG_SOC_POWER",
+"PMLOG_SOC_CURRENT",
+"PMLOG_INFO_ACTIVITY_GFX",
+"PMLOG_INFO_ACTIVITY_MEM",
+"PMLOG_GFX_VOLTAGE",
+"PMLOG_MEM_VOLTAGE",
+"PMLOG_ASIC_POWER",
+"PMLOG_TEMPERATURE_VRSOC",
+"PMLOG_TEMPERATURE_VRMVDD0",
+"PMLOG_TEMPERATURE_VRMVDD1",
+"PMLOG_TEMPERATURE_HOTSPOT"
+};
 
 int initializeADL()
 {
@@ -134,6 +238,12 @@ int initializeADL()
     ADL2_Overdrive8_Init_SettingX2_Get = (ADL2_OVERDRIVE8_INIT_SETTINGX2_GET)GetProcAddress(hDLL, "ADL2_Overdrive8_Init_SettingX2_Get");
     ADL2_Overdrive8_Current_SettingX2_Get = (ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET)GetProcAddress(hDLL, "ADL2_Overdrive8_Current_SettingX2_Get");
 
+	ADL2_Adapter_PMLog_Support_Get = (ADL2_ADAPTER_PMLOG_SUPPORT_GET)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Support_Get");
+	ADL2_Adapter_PMLog_Support_Start = (ADL2_ADAPTER_PMLOG_SUPPORT_START)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Start");
+	ADL2_Adapter_PMLog_Support_Stop = (ADL2_ADAPTER_PMLOG_SUPPORT_STOP)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Stop");
+	ADL2_Desktop_Device_Create = (ADL2_DESKTOP_DEVICE_CREATE)GetProcAddress(hDLL, "ADL2_Desktop_Device_Create");
+	ADL2_Desktop_Device_Destroy = (ADL2_DESKTOP_DEVICE_DESTROY)GetProcAddress(hDLL, "ADL2_Desktop_Device_Destroy");
+
     if (NULL == ADL_Main_Control_Create ||
         NULL == ADL_Main_Control_Destroy ||
         NULL == ADL_Adapter_NumberOfAdapters_Get ||
@@ -147,8 +257,12 @@ int initializeADL()
         NULL == ADL2_Overdrive8_Setting_Set ||
         NULL == ADL2_New_QueryPMLogData_Get ||
         NULL == ADL2_Overdrive8_Init_SettingX2_Get ||
-        NULL == ADL2_Overdrive8_Current_SettingX2_Get
-        )
+        NULL == ADL2_Overdrive8_Current_SettingX2_Get ||
+		NULL == ADL2_Adapter_PMLog_Support_Get ||
+		NULL == ADL2_Adapter_PMLog_Support_Start ||
+		NULL == ADL2_Adapter_PMLog_Support_Stop ||
+		NULL == ADL2_Desktop_Device_Create ||
+		NULL == ADL2_Desktop_Device_Destroy   )
     {
         PRINTF("Failed to get ADL function pointers\n");
         return FALSE;
@@ -326,6 +440,10 @@ int printOD8GPUClocksParameters()
                         PRINTF("ADLSensorType: PMLOG_CLK_GFXCLK\n");
                         PRINTF("PMLOG_CLK_GFXCLK.supported:%d\n", odlpDataOutput.sensors[PMLOG_CLK_GFXCLK].supported);
                         PRINTF("PMLOG_CLK_GFXCLK.value:%d\n", odlpDataOutput.sensors[PMLOG_CLK_GFXCLK].value);
+                        PRINTF("-----------------------------------------\n");
+                        PRINTF("ADLSensorType: PMLOG_INFO_ACTIVITY_GFX-GPU activity percentage value\n");
+                        PRINTF("PMLOG_INFO_ACTIVITY_GFX.supported:%d\n", odlpDataOutput.sensors[PMLOG_INFO_ACTIVITY_GFX].supported);
+                        PRINTF("PMLOG_INFO_ACTIVITY_GFX.value:%d\n", odlpDataOutput.sensors[PMLOG_INFO_ACTIVITY_GFX].value);
                         PRINTF("-----------------------------------------\n");
 
                     }
@@ -753,6 +871,9 @@ int printOD8TemperatureSettingParameters()
                         PRINTF("PMLOG_TEMPERATURE_HOTSPOT.supported:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_HOTSPOT].supported);
                         PRINTF("PMLOG_TEMPERATURE_HOTSPOT.value:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_HOTSPOT].value);
 
+						PRINTF("ADLSensorType: PMLOG_TEMPERATURE_MEM - Memory Temp\n");
+						PRINTF("PMLOG_TEMPERATURE_MEM.supported:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_MEM].supported);
+						PRINTF("PMLOG_TEMPERATURE_MEM.value:%d\n", odlpDataOutput.sensors[PMLOG_TEMPERATURE_MEM].value);
                         PRINTF("-----------------------------------------\n");
 
                     }
@@ -1272,6 +1393,65 @@ int SetOD8ZeroFanControlSettingParameters(int SettingId, int value)
     return 0;
 }
 
+int printOD8PowerGaugeParameters()
+{
+    int i;
+    int ret = -1;
+    int iSupported = 0, iEnabled = 0, iVersion = 0;
+
+    // Repeat for all available adapters in the system
+    for (i = 0; i < iNumberAdapters; i++)
+    {
+        PRINTF("-----------------------------------------\n");
+        PRINTF("Adapter Index[%d]\n ", lpAdapterInfo[i].iAdapterIndex);
+        PRINTF("-----------------------------------------\n");
+        if (lpAdapterInfo[i].iBusNumber > -1)
+        {
+            ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+            if (iVersion == 8)
+            {
+                //OD8 initial Status
+                ADLOD8InitSetting odInitSetting;
+                if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
+                {
+                    PRINTF("Get Init Setting failed.\n");
+                    return ADL_ERR;
+                }
+                
+                //make ADL call for VEGA12
+                ADLPMLogDataOutput odlpDataOutput;
+                memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
+                ret = ADL2_New_QueryPMLogData_Get(context, lpAdapterInfo[i].iAdapterIndex, &odlpDataOutput);
+                if (0 == ret)
+                {
+                    if ((odInitSetting.overdrive8Capabilities & ADL_OD8_POWER_GAUGE) == ADL_OD8_POWER_GAUGE)
+                    {
+                        //Power reading
+                        OverdriveRangeDataStruct oneRangeData;
+                        GetOD8RangePrint(odInitSetting, oneRangeData, OD8_POWER_GAUGE, ADL_OD8_POWER_GAUGE);
+
+                        PRINTF("ADLSensorType: PMLOG_ASIC_POWER\n");
+                        PRINTF("PMLOG_ASIC_POWER.supported:%d\n", odlpDataOutput.sensors[PMLOG_ASIC_POWER].supported);
+                        PRINTF("PMLOG_ASIC_POWER.value:%d\n", odlpDataOutput.sensors[PMLOG_ASIC_POWER].value);
+                        PRINTF("-----------------------------------------\n");
+
+                    }
+                    else
+                        PRINTF("OD8 Failed to get ASIC Power reading\n");
+                }
+                else
+                {
+                    PRINTF("ADL2_New_QueryPMLogData_Get is failed\n");
+                    return ADL_ERR;
+                }
+                break;
+            }
+        }
+
+    }
+    return 0;
+}
+
 int PrintFeatureName(int itemID_)
 {
     switch (itemID_)
@@ -1353,6 +1533,9 @@ int PrintFeatureName(int itemID_)
         break;
     case OD8_FAN_CURVE_SPEED_5:
         PRINTF("OD8_FAN_CURVE_SPEED_5:");
+        break;
+    case OD8_POWER_GAUGE:
+        PRINTF("OD8_POWER_GAUGE:");
         break;
     default:
         PRINTF("Found no featureID \n");
@@ -1452,6 +1635,33 @@ int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, ADLOD8CurrentSetting odCur
         PRINTF("actualValue:%d\n", oneRangeData.ExpectedValue_);
     }
     else 
+        PRINTF(" is not Visible\n");
+    PrintFeatureName(itemID_);
+    PRINTF("maxValue:%d\n", oneRangeData.Max_);
+    PRINTF("minValue:%d\n", oneRangeData.Min_);
+    PRINTF("defaultValue:%d\n", oneRangeData.DefaultValue_);
+    PRINTF("-----------------------------------------\n");
+    return ADL_OK;
+}
+
+int GetOD8RangePrint(ADLOD8InitSetting odInitSetting, OverdriveRangeDataStruct &oneRangeData, int itemID_, int featureID_)
+{
+    memset(&oneRangeData, 0, sizeof(OverdriveRangeDataStruct));
+    oneRangeData.Max_ = odInitSetting.od8SettingTable[itemID_].maxValue;
+    oneRangeData.Min_ = odInitSetting.od8SettingTable[itemID_].minValue;
+    oneRangeData.DefaultValue_ = odInitSetting.od8SettingTable[itemID_].defaultValue;
+    if (OD8_GFXCLK_FMIN == itemID_ || OD8_GFXCLK_FMAX == itemID_ || OD8_UCLK_FMAX == itemID_ || OD8_AC_TIMING == itemID_ || OD8_FAN_ZERORPM_CONTROL == itemID_
+        || OD8_AUTO_UV_ENGINE_CONTROL == itemID_ || OD8_AUTO_OC_ENGINE_CONTROL == itemID_ || OD8_AUTO_OC_MEMORY_CONTROL == itemID_)
+        oneRangeData.Visible_ = true;
+    else
+        oneRangeData.Visible_ = ((odInitSetting.overdrive8Capabilities & featureID_) == featureID_) ? true : false;
+    PRINTF("itemID:");
+    PrintFeatureName(itemID_);
+    if (oneRangeData.Visible_) {
+        PRINTF(" is Visible\n");
+        PRINTF("actualValue:%d\n", oneRangeData.ExpectedValue_);
+    }
+    else
         PRINTF(" is not Visible\n");
     PrintFeatureName(itemID_);
     PRINTF("maxValue:%d\n", oneRangeData.Max_);
@@ -1641,6 +1851,36 @@ void printHelp(char *exeName)
     PRINTF("Ex: %s z\n\n", exeName);
     PRINTF("Method to Set OD8 Fan Zero RPM: \t Overdrive8.exe z X Y ; X - (15:OD8_FAN_ZERORPM_CONTROL); Y - (value of setting)\n");
     PRINTF("EX: %s z 15 0\n\n", exeName);
+    //Power Gauge
+    PRINTF("Method to Read OD8 ASIC Power: \t Overdrive8.exe p\n");
+    PRINTF("Ex: %s p\n\n", exeName);
+    //Tuning Control
+    PRINTF("Method to Read OD8 Tuning Control: \t Overdrive8.exe u\n");
+    PRINTF("Ex: %s u\n\n", exeName);
+}
+
+
+
+int PMLogDestroyD3DDevice(int adapterNumber, ADL_D3DKMT_HANDLE hDevice)
+{
+	if (ADL_OK != ADL2_Desktop_Device_Destroy(context, hDevice))
+	{
+		PRINTF("Err: Failed to destory D3D device\n");
+		return ADL_ERR;
+	}
+
+	return ADL_OK;
+}
+
+int PMLogCreateD3DDevice(int adapterNumber, ADL_D3DKMT_HANDLE *hDevice)
+{
+	if (ADL_OK != ADL2_Desktop_Device_Create(context, lpAdapterInfo[adapterNumber].iAdapterIndex, hDevice))
+	{
+		PRINTF("Err: Failed to create D3D device\n");
+		return ADL_ERR;
+	}
+
+	return ADL_OK;
 }
 
 int main(int argc, char* argv[])
@@ -1663,8 +1903,15 @@ int main(int argc, char* argv[])
                 // Get the AdapterInfo structure for all adapters in the system
                 ADL_Adapter_AdapterInfo_Get(lpAdapterInfo, sizeof(AdapterInfo)* iNumberAdapters);
             }
+			if ('a' == *(argv[1]))//all
+			{
+				getchar();
+				 
+				printOD8();
 
-            if ('c' == *(argv[1]))//GPU Clocks
+			}
+
+			else if ('c' == *(argv[1]))//GPU Clocks
             {
                 if (argc == 2)
                     printOD8GPUClocksParameters();
@@ -1727,7 +1974,7 @@ int main(int argc, char* argv[])
                 else
                     printHelp(argv[0]);
             }
-            else if ('t' == *(argv[1]))//tuning control
+            else if ('u' == *(argv[1]))//tuning control
             {
                 if (argc == 2)
                     printOD8TuningControlSettingParameters();
@@ -1743,6 +1990,13 @@ int main(int argc, char* argv[])
                 else
                     printHelp(argv[0]);
             }
+            else if ('p' == *(argv[1]))//Power gauge
+            {
+                if (argc == 2)
+                    printOD8PowerGaugeParameters();
+                else
+                    printHelp(argv[0]);
+            }
         }
         else
             printHelp(argv[0]);
@@ -1753,4 +2007,242 @@ int main(int argc, char* argv[])
     }
 
     return 0;
+}
+
+int GetPMLogSupport(int adapterNumber, ADLPMLogSupportInfo *adlPMLogSupportInfo)
+{
+
+	if (ADL_OK != ADL2_Adapter_PMLog_Support_Get(context, lpAdapterInfo[adapterNumber].iAdapterIndex, adlPMLogSupportInfo))
+	{
+		PRINTF("Err: Failed to get PMLog Support for adapter number: %d\n", adapterNumber);
+		return ADL_ERR;
+	}
+
+	return ADL_OK;
+}
+
+int IsSensorSupportedusingPMLogCall(ADLPMLogSupportInfo *adlPMLogSupportInfo, int item)
+{
+	int support = 0;
+	if (item != 0)
+	{
+		for (int i = 0; i < ADL_PMLOG_MAX_SUPPORTED_SENSORS; i++)
+		{
+			if (adlPMLogSupportInfo->usSensors[i] == item)
+			{
+				support = 1;
+				break;
+			}
+		}
+	}
+	return support;
+}
+
+int GetSensorValueFromPMLog(ADLPMLogData** PMLogOutput, int item)
+{
+	int value = -1;
+	if (item != 0)
+	{
+ 		for (int i = 0; i < ADL_PMLOG_MAX_SUPPORTED_SENSORS; i++)
+		{
+			if ((*PMLogOutput)->ulValues[i][0] == item)
+			{
+				value = (*PMLogOutput)->ulValues[i][1];
+				break;
+			}
+		}
+	}
+		return value;
+}
+
+int PMLogAllSensorStart(int adapterNumber, int sampleRate,  ADLPMLogData** PMLogOutput, ADL_D3DKMT_HANDLE *hDevice)
+{
+	ADLPMLogSupportInfo adlPMLogSupportInfo;
+	ADLPMLogStartInput adlPMLogStartInput;
+	ADLPMLogStartOutput adlPMLogStartOutput;
+	//ADLPMLogData* PMLogOutput;
+	int i = 0;
+	
+	if(*hDevice == 0)
+	{
+		if (ADL_OK != PMLogCreateD3DDevice(adapterNumber, hDevice))
+		{
+			PRINTF("Err: Failed to create D3D Device, can not start PMLOG\n");
+			return ADL_ERR;
+		}
+	}
+	if (ADL_OK != GetPMLogSupport(adapterNumber, &adlPMLogSupportInfo))
+	{
+		PRINTF("Err: Failed to get supported sensors, can not start PMLOG\n");
+		return ADL_ERR;
+	}
+
+
+	while (adlPMLogSupportInfo.usSensors[i] != ADL_SENSOR_MAXTYPES)
+	{
+		adlPMLogStartInput.usSensors[i] = adlPMLogSupportInfo.usSensors[i];
+		i++;
+	}
+
+	adlPMLogStartInput.usSensors[i] = ADL_SENSOR_MAXTYPES;
+	adlPMLogStartInput.ulSampleRate = sampleRate;
+
+ 	if (ADL_OK != ADL2_Adapter_PMLog_Support_Start(context, lpAdapterInfo[0].iAdapterIndex, &adlPMLogStartInput, &adlPMLogStartOutput, *hDevice))
+	{
+ 		PRINTF("Failed to start PMLOG\n");
+		return ADL_ERR;
+	}
+
+
+	 *PMLogOutput = (ADLPMLogData  *)(adlPMLogStartOutput.pLoggingAddress);
+
+
+//	PMLogDestroyD3DDevice(lpAdapterInfo[0].iAdapterIndex,*hDevice);
+	/*DisplayPMLogOutput(PMLogOutput, Duration);
+
+	if (ADL_OK != ADL2_Adapter_PMLog_Support_Stop(context, lpAdapterInfo[0].iAdapterIndex, hDevice))
+	{
+		PRINTF("Failed to get PMLog Support\n");
+		return ADL_ERR;
+	}*/
+
+	return ADL_OK;
+}
+
+int printOD8()
+{
+	int i;
+	int ret = -1;
+	int iSupported = 0, iEnabled = 0, iVersion = 0;
+//	getchar();
+	// Repeat for all available adapters in the system
+	for (i = 0; i < iNumberAdapters; i++)
+	{
+		PRINTF("-----------------------------------------\n");
+		PRINTF("Adapter Index[%d]\n ", lpAdapterInfo[i].iAdapterIndex);
+		PRINTF("-----------------------------------------\n");
+		if (lpAdapterInfo[i].iBusNumber > -1)
+		{
+			ADL2_Overdrive_Caps(context, lpAdapterInfo[i].iAdapterIndex, &iSupported, &iEnabled, &iVersion);
+			if (iVersion == 8)
+			{
+				//OD8 initial Status
+				ADLOD8InitSetting odInitSetting;
+				if (ADL_OK != GetOD8InitSetting(lpAdapterInfo[i].iAdapterIndex, odInitSetting))
+				{
+					PRINTF("Get Init Setting failed.\n");
+					return ADL_ERR;
+				}
+				else
+				{
+					PRINTF("odInitSetting.connt=%d\n", odInitSetting.count);
+					PRINTF("odInitSetting.Caps=%d\n", odInitSetting.overdrive8Capabilities);
+					PRINTF("**************Caps**************\n");
+
+					for (int j=0;j<16;j++)
+					{
+						if (( odInitSetting.overdrive8Capabilities & (1 << j)) == (1 << j))
+						{
+							PRINTF(" feature %-50s support\n", ADLOD8FeatureControlStr[j]);
+						}
+						else
+						{
+							PRINTF(" feature %-50s Not support\n", ADLOD8FeatureControlStr[j]);
+						}
+					}
+
+					PRINTF("\n************* Range **********\n");
+
+					for (int j = 0; j < odInitSetting.count; j++)
+					{
+						PRINTF("j=%-10d %-35s ID=%-10d def=%-10d min=%-10d max=%-10d\n",j, ADLOD8SettingIdStr[j],odInitSetting.od8SettingTable[j].featureID, odInitSetting.od8SettingTable[j].defaultValue, odInitSetting.od8SettingTable[j].minValue, odInitSetting.od8SettingTable[j].maxValue);
+					}
+				}
+
+				//OD8 Current Status
+				ADLOD8CurrentSetting odCurrentSetting;
+				if (ADL_OK != GetOD8CurrentSetting(lpAdapterInfo[i].iAdapterIndex, odCurrentSetting))
+				{
+					PRINTF("Get Current Setting failed.\n");
+					return ADL_ERR;
+				}
+				else
+				{
+					PRINTF("\n************* Settings **********\n");
+
+					PRINTF("odCurrentSetting.connt=%d\n", odCurrentSetting.count);
+					for (int j = 0; j < odCurrentSetting.count; j++)
+					{
+						PRINTF("j=%-10d %-25s current=%d\n", j, ADLOD8SettingIdStr[j],odCurrentSetting.Od8SettingTable[j]);
+						
+					}
+
+				}
+
+				ADL_D3DKMT_HANDLE hDevice = 0;
+
+				if (hDevice == 0)
+				{
+					if (ADL_OK != PMLogCreateD3DDevice(lpAdapterInfo[i].iAdapterIndex, &hDevice))
+					{
+						PRINTF("Err: Failed to create D3D Device, can not start PMLOG\n");
+						return ADL_ERR;
+					}
+				}
+
+				ADLPMLogData* PMLogOutput=NULL;
+				int ret = PMLogAllSensorStart(0, 1000, &PMLogOutput,&hDevice);
+				system("cls");
+
+				for (int k = 0; k < 200; k++)
+				{
+					//make ADL call for VEGA12
+					ADLPMLogDataOutput odlpDataOutput;
+					memset(&odlpDataOutput, 0, sizeof(ADLPMLogDataOutput));
+					ret = ADL2_New_QueryPMLogData_Get(context, lpAdapterInfo[i].iAdapterIndex, &odlpDataOutput);
+					ADLPMLogSupportInfo adlPMLogSupportInfo;
+					memset(&adlPMLogSupportInfo, 0, sizeof(ADLPMLogSupportInfo));
+
+					ret = GetPMLogSupport(lpAdapterInfo[i].iAdapterIndex, &adlPMLogSupportInfo);
+
+
+					if (0 == ret)
+					{
+						PRINTF("\n************* PMLOG **********\n");
+						PRINTF("odlpDataOutput.size=%d\n", odlpDataOutput.size);
+						for (int j = 0; j < PMLOG_TEMPERATURE_HOTSPOT; j++)
+						{
+							int itemSupport = IsSensorSupportedusingPMLogCall(&adlPMLogSupportInfo, j);
+							int itemValue = itemSupport ? odlpDataOutput.sensors[j].value, GetSensorValueFromPMLog(&PMLogOutput, j) : -1;
+          							PRINTF(" j=%-10d %-25s suport=%-10d vaue=%-10d newSupprt=%-10d  newaue=%-10d \n", j, sensorType[j], odlpDataOutput.sensors[j].supported, odlpDataOutput.sensors[j].value, itemSupport, itemValue);
+
+						}
+
+
+
+
+					}
+					else
+					{
+						PRINTF("ADL2_New_QueryPMLogData_Get is failed\n"); 
+						return ADL_ERR;
+					}
+
+					Sleep(500);
+					system("cls");
+
+				}
+
+
+				if (ADL_OK != ADL2_Adapter_PMLog_Support_Stop(context, lpAdapterInfo[0].iAdapterIndex, hDevice))
+				{
+					PRINTF("Failed to get PMLog Support\n");
+					return ADL_ERR;
+				}
+				break;
+			}
+		}
+
+	}
+	return 0;
 }

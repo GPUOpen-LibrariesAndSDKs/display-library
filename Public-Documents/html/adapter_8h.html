@@ -60,6 +60,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gb0e34d0ecea85eff5a3527db6096d69c">ADL2_Adapter_AdapterInfo_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, <a class="el" href="structAdapterInfo.html">LPAdapterInfo</a> lpInfo, int iInputSize)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="group__ADAPTER.html#gb0e34d0ecea85eff5a3527db6096d69c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g3b65ffa4d5c46336f0813a161dc57a96">ADL2_Adapter_VerndorID_Int_get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves adapter vendor id.  <a href="group__ADAPTER.html#g3b65ffa4d5c46336f0813a161dc57a96"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gd305c0548224ab4623e1b89965b14f6b">ADL_Adapter_AdapterInfo_Get</a> (<a class="el" href="structAdapterInfo.html">LPAdapterInfo</a> lpInfo, int iInputSize)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="group__ADAPTER.html#gd305c0548224ab4623e1b89965b14f6b"></a><br></td></tr>
@@ -69,6 +72,18 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g88b05692f3e345356db2bbf2f0daef52">ADL_Adapter_AdapterInfoX2_Get</a> (<a class="el" href="structAdapterInfo.html">AdapterInfo</a> **lppAdapterInfo)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves all OS-known adapter information.  <a href="group__ADAPTER.html#g88b05692f3e345356db2bbf2f0daef52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g2ffd4d9662de3c58983aac793c285d19">ADL_Adapter_RegValueString_Get</a> (int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to query a string registry value set by driver.  <a href="group__ADAPTER.html#g2ffd4d9662de3c58983aac793c285d19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g7c27f05e48925cb83186f9cdad33e2dd">ADL_Adapter_RegValueString_Set</a> (int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to set a driver registry string value.  <a href="group__ADAPTER.html#g7c27f05e48925cb83186f9cdad33e2dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gfbdc750dc141b9c93dcf069fe52b01db">ADL2_Adapter_RegValueString_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to set a driver registry string value.  <a href="group__ADAPTER.html#gfbdc750dc141b9c93dcf069fe52b01db"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#g7d729d7bba404bf20f72edf74a334bf8">ADL2_Adapter_RegValueString_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int iDriverPathOption, char *szSubKey, char *szKeyName, int iSize, char *lpKeyValue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ADL local interface. Function to query a string registry value set by driver.  <a href="group__ADAPTER.html#g7d729d7bba404bf20f72edf74a334bf8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTER.html#gdeb3e55dbbef0b41ca7505eece793bc3">ADL2_Adapter_ASICFamilyType_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpAsicTypes, int *lpValids)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the ASICFamilyType from the adapter.  <a href="group__ADAPTER.html#gdeb3e55dbbef0b41ca7505eece793bc3"></a><br></td></tr>
@@ -156,6 +171,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LINUX.html#g025c0b4b69601ad7bdbdcce5d1f31557">ADL_Adapter_ObservedClockInfo_Get</a> (int iAdapterIndex, int *lpCoreClock, int *lpMemoryClock)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the core and memory clock info of an adapter.  This is the clock displayed on CCC information center.          Specific logic is used to select appropriate clock for display in current configuration.  <a href="group__LINUX.html#g025c0b4b69601ad7bdbdcce5d1f31557"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LINUX.html#g2b2c1177ddb0272467a767cb50e9963c">ADL_Adapter_ObservedGameClockInfo_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpBaseClock, int *lpGameClock, int *lpBoostClock, int *lpMemoryClock)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the base, game, boost and memory clock info of an adapter.          Specific logic is used to select appropriate clock for display in current configuration.  <a href="group__LINUX.html#g2b2c1177ddb0272467a767cb50e9963c"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EDIDAPI.html#gcf8c4e446718ccd97a07813cd0226806">ADL2_Adapter_BoardLayout_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, int *lpValidFlags, int *lpNumberSlots, <a class="el" href="structADLBracketSlotInfo.html">ADLBracketSlotInfo</a> **lppBracketSlot, int *lpNumberConnector, <a class="el" href="structADLConnectorInfo.html">ADLConnectorInfo</a> **lppConnector)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the board layout information.  <a href="group__EDIDAPI.html#gcf8c4e446718ccd97a07813cd0226806"></a><br></td></tr>
@@ -228,6 +246,30 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g50871fc5d04bbed131a1542ad85ca2c4">ADL2_FPS_Settings_Reset</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to reset FPS Global Settings.  <a href="group__FPS.html#g50871fc5d04bbed131a1542ad85ca2c4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#gcab49c66fcafbf8289c658137f4279bd">ADL2_RIS_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__RIS__SETTINGS.html">ADL_RIS_SETTINGS</a> settings, <a class="el" href="struct__ADL__RIS__NOTFICATION__REASON.html">ADL_RIS_NOTFICATION_REASON</a> changeReason)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set RIS settings This function sets the user input values to RIS feature.  <a href="group__FPS.html#gcab49c66fcafbf8289c658137f4279bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g1f9f924f584a91860af8855ebde3398d">ADL2_RIS_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__RIS__SETTINGS.html">ADL_RIS_SETTINGS</a> *settings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the RIS settings This function retrieves the RIS settings for a specified display adapter.  <a href="group__FPS.html#g1f9f924f584a91860af8855ebde3398d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#gdc1ce9f15cd2c389f688403d452b2634">ADL2_CHILL_SettingsX2_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__CHILL__SETTINGS.html">ADL_CHILL_SETTINGS</a> settings, <a class="el" href="struct__ADL__CHILL__NOTFICATION__REASON.html">ADL_CHILL_NOTFICATION_REASON</a> changeReason, <a class="el" href="struct__ADL__ERROR__REASON.html">ADL_ERROR_REASON</a> *errorReason)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set CHILL settings This function sets the user input values to CHILL feature.  <a href="group__FPS.html#gdc1ce9f15cd2c389f688403d452b2634"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g69775ff326ed9d698e30c87493364c00">ADL2_CHILL_SettingsX2_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__CHILL__SETTINGS.html">ADL_CHILL_SETTINGS</a> *settings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the CHILL settings This function retrieves the CHILL settings for a specified display adapter.  <a href="group__FPS.html#g69775ff326ed9d698e30c87493364c00"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#gc2bfedd31be3be4995881215cbd24b3b">ADL2_DELAG_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__DELAG__SETTINGS.html">ADL_DELAG_SETTINGS</a> settings, <a class="el" href="struct__ADL__DELAG__NOTFICATION__REASON.html">ADL_DELAG_NOTFICATION_REASON</a> changeReason, <a class="el" href="struct__ADL__ERROR__REASON.html">ADL_ERROR_REASON</a> *errorReason)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set DELAG settings This function sets the user input values to DELAG feature.  <a href="group__FPS.html#gc2bfedd31be3be4995881215cbd24b3b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g170d660f346db5b11cf92066eaa676ff">ADL2_DELAG_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__DELAG__SETTINGS.html">ADL_DELAG_SETTINGS</a> *settings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the DELAG settings This function retrieves the DELAG settings for a specified display adapter.  <a href="group__FPS.html#g170d660f346db5b11cf92066eaa676ff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g295f255cc1a1f2388d9b633ad375e099">ADL2_BOOST_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__BOOST__SETTINGS.html">ADL_BOOST_SETTINGS</a> settings, <a class="el" href="struct__ADL__BOOST__NOTFICATION__REASON.html">ADL_BOOST_NOTFICATION_REASON</a> changeReason, <a class="el" href="struct__ADL__ERROR__REASON.html">ADL_ERROR_REASON</a> *errorReason)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to set BOOST settings This function sets the user input values to BOOST feature.  <a href="group__FPS.html#g295f255cc1a1f2388d9b633ad375e099"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FPS.html#g32f8cb5044e563830cac6f92c73b6d3f">ADL2_BOOST_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="struct__ADL__BOOST__SETTINGS.html">ADL_BOOST_SETTINGS</a> *settings)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to get the BOOST settings This function retrieves the BOOST settings for a specified display adapter.  <a href="group__FPS.html#g32f8cb5044e563830cac6f92c73b6d3f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#a0fff076b956185fc24e1ac1268057f1">ADL2_Adapter_ClockInfo_Get</a> (<a class="el" href="adl__structures_8h.html#81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int iAdapterIndex, <a class="el" href="structADLClockInfo.html">ADLClockInfo</a> *lpClockInfo)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Function to retrieve clock information for an adapter.  <a href="#a0fff076b956185fc24e1ac1268057f1"></a><br></td></tr>
@@ -649,7 +691,8 @@ This function implements a call to retrieve power management logging support. <d
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#g29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
-
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="Overdrive8_2Overdrive8_8cpp-example.html#a25">Overdrive8/Overdrive8.cpp</a>, and <a class="el" href="PMLog_2PMLog_8cpp-example.html#a12">PMLog/PMLog.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="27be2ed9fe8873c0a6fb32f53b46af68"></a><!-- doxytag: member="adapter.h::ADL2_Adapter_PMLog_Start" ref="27be2ed9fe8873c0a6fb32f53b46af68" args="(ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogStartInput *pPMLogStartInput, ADLPMLogStartOutput *pPMLogStartOutput, ADL_D3DKMT_HANDLE hDevice)" -->
