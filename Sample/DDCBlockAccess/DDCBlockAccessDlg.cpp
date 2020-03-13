@@ -7,6 +7,7 @@
 #include "DDCBlockAccess.h"
 #include "DDCBlockAccessDlg.h"
 #include "mccs.h"
+#include <string>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -434,8 +435,8 @@ void CDDCBlockAccessDlg::RefreshDisplayIndices ()
   std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
   std::wstring wideAdapterName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strAdapterName);
   std::wstring wideDisplayName = conv.from_bytes(lpAdapterInfo[iAdapterIndex].strDisplayName);
-  SetDlgItemText(IDC_EDIT_ANAME, wideAdapterName.c_str());
-  SetDlgItemText(IDC_EDIT_DNAME, wideDisplayName.c_str());
+  SetDlgItemText(IDC_EDIT_ANAME, (LPCTSTR) wideAdapterName.c_str());
+  SetDlgItemText(IDC_EDIT_DNAME, (LPCTSTR) wideDisplayName.c_str());
 
   // Read the EDID of the first display
   OnCbnSelchangeComboDisplayindex();
@@ -563,7 +564,7 @@ void CDDCBlockAccessDlg::OnCbnSelchangeComboDisplayindex()
   
   std::wstring_convert<std::codecvt_utf8<wchar_t>> conv;
   std::wstring wideChar = conv.from_bytes(MonitorNames[iDisplayIndex]);
-  SetDlgItemText(IDC_EDIT_MONNAME, wideChar.c_str());
+  SetDlgItemText(IDC_EDIT_MONNAME, (LPCTSTR) wideChar.c_str());
 
   //Call ADL to get the EDID
   adlprocs.ADL_Display_EdidData_Get(iAdapterIndex, iDisplayIndex, &aBlockOutput);

@@ -46,7 +46,7 @@ ADL2_OVERDRIVEN_CAPABILITIESX2_GET  ADL2_OverdriveN_CapabilitiesX2_Get = nullptr
 class CACHE_ALIGN BaseExternADL
 {
 public:
-	INT64 iAdapters;
+	int iAdapters;
 	ADL_CONTEXT_HANDLE context;
 	INT64 szData;// ADL point buffer size
 	void * buffer;// ADL point buffer
@@ -135,9 +135,9 @@ public:
 			ADL2_Adapter_Primary_Get(context, &primary);
 			buffer = new AdapterInfo[iNumberAdapters];
 			szData = iNumberAdapters * sizeof(AdapterInfo);
-			ZeroMemory(buffer, szData);
+			ZeroMemory(buffer, (size_t) szData);
 			// Get Adapater infor to buffer
-			int ret = (ADL_OK == ADL2_Adapter_AdapterInfo_Get(context, (LPAdapterInfo)buffer, szData));
+			int ret = (ADL_OK == ADL2_Adapter_AdapterInfo_Get(context, (LPAdapterInfo)buffer, (int) szData));
 			return ret;
 		}
 		return false;

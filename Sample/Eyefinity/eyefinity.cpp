@@ -363,7 +363,7 @@ int atiEyefinityGetConfigInfo(char OSDisplayName[], EyefinityInfoStruct *lpEyefi
          }
          *lpNumDisplaysInfo = (int)displays.size();
          
-         for (int i = 0; i < displays.size(); i ++) {         
+         for (unsigned int i = 0; i < displays.size(); i ++) {         
              DisplayInfoStruct *lpDisplaysInfo = NULL;
              lpDisplaysInfo = &((*lppDisplaysInfo)[i]);
 

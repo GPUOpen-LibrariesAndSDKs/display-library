@@ -1033,7 +1033,6 @@ void setBranchData(int iAdapterIndex, ADLDevicePort devicePort, int iConnectionT
 {
 	ADLConnectionData connectionData;
 	ADLSupportedConnections supportedConnections;
-	FILE *ptr_myfile;
 	
 	PRINTF (" --------------------------------------------------------- \n");
 	

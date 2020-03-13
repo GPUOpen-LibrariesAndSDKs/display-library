@@ -1337,7 +1337,6 @@ int resetODSettings()
 
 int ODNSettingExtGet()
 {
-    int iSupported, iEnabled, iVersion;
     int i, ret = 1;
     for (i = 0; i < iNumberAdapters; i++)
     {
@@ -1380,7 +1379,7 @@ int ODNSettingExtGet()
                     for (int j = 0; j < numberOfODNExtFeatures; j++)
                     {
                         PRINTF("******numberOfODNExtFeatures:%d******\n", j);
-                        if (overdriveCapabilities.iFlags & (ADLODNExtSettingId)j == (ADLODNExtSettingId)j)
+                        if ((overdriveCapabilities.iFlags & (ADLODNExtSettingId)j) == (ADLODNExtSettingId)j)
                         {
                             PRINTF("Support this feature;\n");
                             PRINTF("lpCurrentSettingList Value : %d\n", lpCurrentSettingList[j]);

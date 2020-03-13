@@ -103,10 +103,10 @@ GetUserProcessData<TData>::GetUserProcessData(PCWCHAR lpFunctionName, TData & re
 				// This ADL function had point buffer to read
 				if (requestServiceData.szData > 0)
 				{
-					TData * responsePointADLdata =  (TData *)(new char[(nSize + requestServiceData.szData) / sizeof(char)]);
-					ZeroMemory(responsePointADLdata, nSize + requestServiceData.szData );
+					TData * responsePointADLdata =  (TData *)(new char[(unsigned int) ((nSize + requestServiceData.szData) / (int) sizeof(char))]);
+					ZeroMemory(responsePointADLdata, (size_t) (nSize + requestServiceData.szData) );
 					// Get ADL point buffer and template structure from shared memory
-					cShareMFile.ReadBuffer(strShareMemoryPath, (PVOID)responsePointADLdata, requestServiceData.szData + nSize);
+					cShareMFile.ReadBuffer(strShareMemoryPath, (PVOID)responsePointADLdata, (ULONG) (requestServiceData.szData + nSize));
 					m_pData = responsePointADLdata;
 				}
 			}

@@ -72,7 +72,6 @@ BOOL RunProcess::GetTokenByName(HANDLE &hToken)
 		}
 
 
-		LUID luid;
 		HANDLE hTokenDup = NULL;
 		DWORD dwSize = 0;
 
