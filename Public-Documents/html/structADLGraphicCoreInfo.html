@@ -33,12 +33,26 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADLGraphicCoreInfo.html#6614eef9570214dafbb35c42004638d4">iGCGen</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">indicate the graphic core generation  <a href="#6614eef9570214dafbb35c42004638d4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADLGraphicCoreInfo.html#a8a840f9dcf157c9b15a143d0596b9c9">iNumCUs</a></td></tr>
+<tr><td class="memItemLeft" nowrap>union {</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total number of CUs. Valid for GCN (iGCGen == GCN).  <a href="#a8a840f9dcf157c9b15a143d0596b9c9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADLGraphicCoreInfo.html#8134aa9d95f7aaee7ccb1c935c7a39af">iNumPEsPerCU</a></td></tr>
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structADLGraphicCoreInfo.html#a8a840f9dcf157c9b15a143d0596b9c9">iNumCUs</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of processing elements per CU. Valid for GCN (iGCGen == GCN).  <a href="#8134aa9d95f7aaee7ccb1c935c7a39af"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total number of CUs. Valid for GCN (iGCGen == GCN).  <a href="#c62fe228e833b2fbd1df29d52f85370e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structADLGraphicCoreInfo.html#2051925203267d0eb9a2616fc5a94740">iNumWGPs</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total number of WGPs. Valid for RDNA (iGCGen == RDNA).  <a href="#d8ea301817bdde14e0171f612d2bc0ad"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap valign="top">};&nbsp;</td><td class="memItemRight" valign="bottom"></td></tr>
+
+<tr><td class="memItemLeft" nowrap>union {</td></tr>
+
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structADLGraphicCoreInfo.html#8134aa9d95f7aaee7ccb1c935c7a39af">iNumPEsPerCU</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of processing elements per CU. Valid for GCN (iGCGen == GCN).  <a href="#d5b08907cc252fa798b5231f39075a18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap>&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;<a class="el" href="structADLGraphicCoreInfo.html#2a69f5090641419ab3be75b4ab93fe9b">iNumPEsPerWGP</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Number of processing elements per WGP. Valid for RDNA (iGCGen == RDNA).  <a href="#74ad573aae94e90f341aa7cf1b00718e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap valign="top">};&nbsp;</td><td class="memItemRight" valign="bottom"></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADLGraphicCoreInfo.html#0dea977670ec9633784293cc4850b14c">iNumSIMDs</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total number of SIMDs. Valid for Pre GCN (iGCGen == Pre-GCN).  <a href="#0dea977670ec9633784293cc4850b14c"></a><br></td></tr>
@@ -87,6 +101,38 @@ Total number of CUs. Valid for GCN (iGCGen == GCN).
 
 </div>
 </div><p>
+<a class="anchor" name="2051925203267d0eb9a2616fc5a94740"></a><!-- doxytag: member="ADLGraphicCoreInfo::iNumWGPs" ref="2051925203267d0eb9a2616fc5a94740" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structADLGraphicCoreInfo.html#2051925203267d0eb9a2616fc5a94740">ADLGraphicCoreInfo::iNumWGPs</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Total number of WGPs. Valid for RDNA (iGCGen == RDNA). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="53a5fd36a2798401a53705b47e2feb0d"></a><!-- doxytag: member="ADLGraphicCoreInfo::@9" ref="53a5fd36a2798401a53705b47e2feb0d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... }           </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="8134aa9d95f7aaee7ccb1c935c7a39af"></a><!-- doxytag: member="ADLGraphicCoreInfo::iNumPEsPerCU" ref="8134aa9d95f7aaee7ccb1c935c7a39af" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -100,6 +146,38 @@ Total number of CUs. Valid for GCN (iGCGen == GCN).
 
 <p>
 Number of processing elements per CU. Valid for GCN (iGCGen == GCN). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2a69f5090641419ab3be75b4ab93fe9b"></a><!-- doxytag: member="ADLGraphicCoreInfo::iNumPEsPerWGP" ref="2a69f5090641419ab3be75b4ab93fe9b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structADLGraphicCoreInfo.html#2a69f5090641419ab3be75b4ab93fe9b">ADLGraphicCoreInfo::iNumPEsPerWGP</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of processing elements per WGP. Valid for RDNA (iGCGen == RDNA). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="229c22df084543c6eea3c679d5f2c836"></a><!-- doxytag: member="ADLGraphicCoreInfo::@11" ref="229c22df084543c6eea3c679d5f2c836" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... }           </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>
 
 </div>

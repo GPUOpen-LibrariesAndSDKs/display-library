@@ -382,6 +382,8 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__formats__ovr.html#g4bd48d399201029dec626785b6c16c83">ADL_BUSTYPE_PCIE_GEN3</a>&nbsp;&nbsp;&nbsp;4</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__formats__ovr.html#gede7fae03a066c24eec335ad7161912b">ADL_BUSTYPE_PCIE_GEN4</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__ws__caps.html#gf342ae6ab6cbdac16806e1fdfe28e271">ADL_STEREO_SUPPORTED</a>&nbsp;&nbsp;&nbsp;(1 &lt;&lt; 2)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This value indicates that the workstation card supports active stereo though stereo output connector.  <a href="group__define__ws__caps.html#gf342ae6ab6cbdac16806e1fdfe28e271"></a><br></td></tr>
@@ -957,6 +959,8 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Enables ITC processing for HDMI panels that are capable of the feature.  <a href="group__DEFINES.html#gb66a50ee4e41133d32e9b6e4fe046507"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#gb62478c97a071e7880d290600e17268d">ADL_DL_DISPLAYPROPERTY_TYPE_DOWNSCALE</a>&nbsp;&nbsp;&nbsp;11</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#ge403172ef25b0cd424a7bfac8fc3713d">ADL_DL_DISPLAYPROPERTY_TYPE_INTEGER_SCALING</a>&nbsp;&nbsp;&nbsp;12</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g4f51387b18fe08678b569c195e146721">ADL_DL_DISPLAYCONTENT_TYPE_GRAPHICS</a>&nbsp;&nbsp;&nbsp;1</td></tr>
 
@@ -1776,12 +1780,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__linkrate__constants.html#g2e3b304b2fff1795a01407092042fe8b">ADL_LINK_BITRATE_2_7_GHZ</a>&nbsp;&nbsp;&nbsp;0x0A</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates if link rate is 2.7Ghz.  <a href="group__define__linkrate__constants.html#g2e3b304b2fff1795a01407092042fe8b"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__linkrate__constants.html#g7eff264874b97b43213eefb77f8a3147">ADL_LINK_BTIRATE_3_24_GHZ</a>&nbsp;&nbsp;&nbsp;0x0C</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates if link rate is 3.24Ghz.  <a href="group__define__linkrate__constants.html#g7eff264874b97b43213eefb77f8a3147"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__linkrate__constants.html#g51594f247e455e43e3a42059e4d5da3b">ADL_LINK_BITRATE_5_4_GHZ</a>&nbsp;&nbsp;&nbsp;0x14</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates if link rate is 5.4Ghz.  <a href="group__define__linkrate__constants.html#g51594f247e455e43e3a42059e4d5da3b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__linkrate__constants.html#g877c9569045500e8310bca564103b8f0">ADL_LINK_BITRATE_8_1_GHZ</a>&nbsp;&nbsp;&nbsp;0x1E</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates if link rate is 8.1Ghz.  <a href="group__define__linkrate__constants.html#g877c9569045500e8310bca564103b8f0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__linkrate__constants.html#gd593c007da947ce41faaa3bc41b093b3">ADL_LINK_BITRATE_DEF</a>&nbsp;&nbsp;&nbsp;ADL_LINK_BITRATE_2_7_GHZ</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Indicates default value of link rate.  <a href="group__define__linkrate__constants.html#gd593c007da947ce41faaa3bc41b093b3"></a><br></td></tr>
@@ -1991,9 +1995,32 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="group__DEFINES.html#g3809112f202dec7d5f69b6ac114388b1">_ADLOD8SettingId</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g7c7693d51ab40db38e4915ad39d420f1">ADLOD8SettingId</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="group__DEFINES.html#g8073a97504867f4c3e5515312956ab46">_ADLSensorType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g675dfbf2669dbab873de7a7b428712f0">ADLSensorType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <br class="typebreak">
+<a class="el" href="group__DEFINES.html#gcf1c5dc90f6b57e3aa741b1e53a7a5c5">_ADL_THROTTLE_NOTIFICATION</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g9b4a1966cd1a5b9753f3eac1077a6d25">ADL_THROTTLE_NOTIFICATION</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="group__DEFINES.html#gf6d6f77f520be4456f46f528c1a86dec">_ADL_PMLOG_SENSORS</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g7cb6c7d02817b1a5cf0b9e0e6c47d5a4">ADL_PMLOG_SENSORS</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Handle can be used to create Device Handle when using CreateDevice().  <a href="group__define__D3DKMT__HANDLE.html#g4dcdb9d1c4af78791ea518c36f381fff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <br class="typebreak">
+<a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3a">_ADL_RAS_ERROR_INJECTION_MODE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#4c8e1d30b7cfde086cb0df2d2ecdeb5b">ADL_RAS_ERROR_INJECTION_MODE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350">_ADL_RAS_BLOCK_ID</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#357791818b4565784b558f448258058d">ADL_RAS_BLOCK_ID</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f">_ADL_MEM_SUB_BLOCK_ID</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#691941af10cc2d2cc369d6f2337a5f72">ADL_MEM_SUB_BLOCK_ID</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9">_ADL_RAS_ERROR_TYPE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#1cdc8a2a08727f49c790fdceeda0e30f">ADL_RAS_ERROR_TYPE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <br class="typebreak">
+<a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e6870">_ADL_RAS_INJECTION_METHOD</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#2429950366e2429fb1d31086e8058be4">ADL_RAS_INJECTION_METHOD</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b3">_ADL_DRIVER_EVENT_TYPE</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#f74c4bce0cab24e8c78bef2439724d72">ADL_DRIVER_EVENT_TYPE</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef enum <a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c">_ADL_UIFEATURES_GROUP</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#21b05a3a76f787f8bb9ff5b9fb62184b">ADL_UIFEATURES_GROUP</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__thread__model.html#gdeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> { <a class="el" href="group__thread__model.html#ggdeb9a4d7042d1392f490d90a952f1900f89698b9054be257c5ecb20070e9151f">ADL_THREADING_UNLOCKED</a> =  0, 
 <a class="el" href="group__thread__model.html#ggdeb9a4d7042d1392f490d90a952f1900ea73eff1aa0c869612d887eeb0b324b1">ADL_THREADING_LOCKED</a>
@@ -2038,7 +2065,8 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g8e182d3ce5dd857b0246f6fd84a3fff5">ADLGraphicCoreGeneration</a> { <a class="el" href="group__DEFINES.html#gg8e182d3ce5dd857b0246f6fd84a3fff53a62ac288e84c16ab673f822ab32d37c">ADL_GRAPHIC_CORE_GENERATION_UNDEFINED</a> =  0, 
 <a class="el" href="group__DEFINES.html#gg8e182d3ce5dd857b0246f6fd84a3fff5611f988908752da5e2c24241d86bc116">ADL_GRAPHIC_CORE_GENERATION_PRE_GCN</a> =  1, 
-<a class="el" href="group__DEFINES.html#gg8e182d3ce5dd857b0246f6fd84a3fff5a1b988d0309a9e7e7974c377e1fb12f4">ADL_GRAPHIC_CORE_GENERATION_GCN</a> =  2
+<a class="el" href="group__DEFINES.html#gg8e182d3ce5dd857b0246f6fd84a3fff5a1b988d0309a9e7e7974c377e1fb12f4">ADL_GRAPHIC_CORE_GENERATION_GCN</a> =  2, 
+<a class="el" href="group__DEFINES.html#gg8e182d3ce5dd857b0246f6fd84a3fff5367d10a540f0380b54cd844961909d0f">ADL_GRAPHIC_CORE_GENERATION_RDNA</a> =  3
  }</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__eyefinity__constants.html#g41e48de66c9833e6e2ed21773f112bd5">_SLS_ImageCropType</a> { <a class="el" href="group__define__eyefinity__constants.html#gg41e48de66c9833e6e2ed21773f112bd50d5bcda4f956bac297e6947bdefcd13d">Fit</a> =  1, 
@@ -2185,7 +2213,9 @@
 &nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85a9b5f22d936e2422845926748235883f">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_4</a>, 
 <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85844db8ed430597a1a263c6c50fbefcf1">ADL_ODN_PARAMETER_FAN_CURVE_TEMPERATURE_5</a>, 
 <a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b85207cb75cf6552fb8b39861c636ff0e6b">ADL_ODN_PARAMETER_FAN_CURVE_SPEED_5</a>, 
-<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b850b691c4cea5ef6d7d5f77ef8843b618f">ODN_COUNT</a>
+<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b8531ed167a7c34ed59805a3cd5b4bab69d">ADL_ODN_POWERGAUGE</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg29c2368d8417f4e55eaaac677c362b850b691c4cea5ef6d7d5f77ef8843b618f">ODN_COUNT</a>
 <br>
  }</td></tr>
 
@@ -2206,7 +2236,9 @@
 <a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4652a75ab29eb6992eb76f0e6c330713f0">ADL_OD8_AUTO_OC_ENGINE</a> =  1 &lt;&lt; 11, 
 <br>
 &nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4614258a2157a4e89eb69dcacd0d90bc98">ADL_OD8_AUTO_OC_MEMORY</a> =  1 &lt;&lt; 12, 
-<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c8dad1770b2ea6f82e63a2195890ad8c">ADL_OD8_FAN_CURVE</a> =  1 &lt;&lt; 13
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d46c8dad1770b2ea6f82e63a2195890ad8c">ADL_OD8_FAN_CURVE</a> =  1 &lt;&lt; 13, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d461cba01b3435b42509d727add718e5c09">ADL_OD8_WS_AUTO_FAN_ACOUSTIC_LIMIT</a> =  1 &lt;&lt; 14, 
+<a class="el" href="group__DEFINES.html#gge0a778de19b82ceb18a3b8a0b3c66d4663770b03c41941620f92c032b88db0fc">ADL_OD8_POWER_GAUGE</a> =  1 &lt;&lt; 15
 <br>
  }</td></tr>
 
@@ -2247,7 +2279,202 @@
 <a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b12d86831bdcc452def864e2f8f4da4faf">OD8_FAN_CURVE_TEMPERATURE_5</a>, 
 <br>
 &nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b1b80109ee710b9f76518a38e943d9c468">OD8_FAN_CURVE_SPEED_5</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b17be9b6f2afdc2239f7159d6065d0d86d">OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT</a>, 
+<a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b154f340b06faf8f86ec6b4878350350fc">OD8_POWER_GAUGE</a>, 
 <a class="el" href="group__DEFINES.html#gg3809112f202dec7d5f69b6ac114388b11243dc1c3c0b3939f7b7e47440b08e79">OD8_COUNT</a>
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#g8073a97504867f4c3e5515312956ab46">_ADLSensorType</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab462aa2e1187562ccb74466c5adfd5b056b">SENSOR_MAXTYPES</a> =  0, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46e1a1b5a93cb44b64abf0f9df0eebaac7">PMLOG_CLK_GFXCLK</a> =  1, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab462b6c2a1cbf99949e170a0107042016ad">PMLOG_CLK_MEMCLK</a> =  2, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab466d5efb9c3f35d9dcd52fcd3487bba0b4">PMLOG_CLK_SOCCLK</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46ad06f72993bfc994f9987931d536a8fe">PMLOG_CLK_UVDCLK1</a> =  4, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4649ed3b40c0c8d7bdf9757e48489734e9">PMLOG_CLK_UVDCLK2</a> =  5, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4694fce0b9c7e887e83aabf05a3e917b11">PMLOG_CLK_VCECLK</a> =  6, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4688fa4c4a23023fde54ffa6222a242957">PMLOG_CLK_VCNCLK</a> =  7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab464e7ff4ab0853e8350e7aec9d99565ec9">PMLOG_TEMPERATURE_EDGE</a> =  8, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4607763eb548d90aeedea6df68c4cfe989">PMLOG_TEMPERATURE_MEM</a> =  9, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46175da631d593c2a68d1d84dfa88c534d">PMLOG_TEMPERATURE_VRVDDC</a> =  10, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46899d78f840e5b30892d5b975922ad699">PMLOG_TEMPERATURE_VRMVDD</a> =  11, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46fd5e77eed6a9907e17f1a120a050affe">PMLOG_TEMPERATURE_LIQUID</a> =  12, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4621bec63c0a26c70e0b160be4dabefae9">PMLOG_TEMPERATURE_PLX</a> =  13, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab461ae532a55abac8c4297207f824ca8139">PMLOG_FAN_RPM</a> =  14, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab460c8c68eb2df6ef927f0ddf3857ab1552">PMLOG_FAN_PERCENTAGE</a> =  15, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab465e85a4caa0f53fc5523bb21c1800fe66">PMLOG_SOC_VOLTAGE</a> =  16, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46472826cea8c40ab9b626fca07b46e8ff">PMLOG_SOC_POWER</a> =  17, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46a647094dc7258bbaba821dbf068bae28">PMLOG_SOC_CURRENT</a> =  18, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46545bb07bb97bd465c0bcc5085b7d9691">PMLOG_INFO_ACTIVITY_GFX</a> =  19, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46a33e98b1e282388f8e2fad2914ee081a">PMLOG_INFO_ACTIVITY_MEM</a> =  20, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab462b7c03a18b7817a1af84c7c263fbc990">PMLOG_GFX_VOLTAGE</a> =  21, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46f8d43ee0e3f7477273b14a6fe1579df6">PMLOG_MEM_VOLTAGE</a> =  22, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46e34ce867737e9115ef5f783fcb74dd54">PMLOG_ASIC_POWER</a> =  23, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab463099181c680589af5747c363348aa5d5">PMLOG_TEMPERATURE_VRSOC</a> =  24, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab468e7ef24cc2c410314f56358e8c7ab57d">PMLOG_TEMPERATURE_VRMVDD0</a> =  25, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4696e66c753783cb889b9567c40832d32f">PMLOG_TEMPERATURE_VRMVDD1</a> =  26, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab466f93e34de9bd1e1e329c5be26862ba60">PMLOG_TEMPERATURE_HOTSPOT</a> =  27, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46f2dd6a3131ff151e83e02cb912c5cb5b">PMLOG_TEMPERATURE_GFX</a> =  28, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4662738e177b0dc3386ea8e1e2edfa3554">PMLOG_TEMPERATURE_SOC</a> =  29, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab469caa7beb1d66322c6987850dc142c00a">PMLOG_GFX_POWER</a> =  30, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46d962f26230da6c60d249688e8a7bf196">PMLOG_GFX_CURRENT</a> =  31, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab461f3ab3b52acf97ef5150e04663a322d2">PMLOG_TEMPERATURE_CPU</a> =  32, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab466ccd5fb64b2c6e02f072aacaaef62273">PMLOG_CPU_POWER</a> =  33, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4653f587de796e8c55aaa01073b465700e">PMLOG_CLK_CPUCLK</a> =  34, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab4617e99ed600192dfc50a2c88bcb31fd5f">PMLOG_THROTTLER_STATUS</a> =  35, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab460003e38683b247270f5d8f601232a9ea">PMLOG_CLK_VCN1CLK1</a> =  36, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46b5e937ae105616ab79bf6db68f27943a">PMLOG_CLK_VCN1CLK2</a> =  37, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab469b90297f84fd2f1ed5c4eb1846bd5e74">PMLOG_SMART_POWERSHIFT_CPU</a> =  38, 
+<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab46e1290245112a6c2904d09698b2a86b87">PMLOG_SMART_POWERSHIFT_DGPU</a> =  39, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#gg8073a97504867f4c3e5515312956ab464f6f4c31a462bbea774a3db2e2a49615">PMLOG_MAX_SENSORS_REAL</a>
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#gcf1c5dc90f6b57e3aa741b1e53a7a5c5">_ADL_THROTTLE_NOTIFICATION</a> { <a class="el" href="group__DEFINES.html#ggcf1c5dc90f6b57e3aa741b1e53a7a5c561e5146709e55b64006eadbda1610533">ADL_PMLOG_THROTTLE_POWER</a> =  1 &lt;&lt; 0, 
+<a class="el" href="group__DEFINES.html#ggcf1c5dc90f6b57e3aa741b1e53a7a5c52adc3673665236a3ff5d138c71670e81">ADL_PMLOG_THROTTLE_THERMAL</a> =  1 &lt;&lt; 1, 
+<a class="el" href="group__DEFINES.html#ggcf1c5dc90f6b57e3aa741b1e53a7a5c51d5233bb5585ffb5c4abe902df210bb7">ADL_PMLOG_THROTTLE_CURRENT</a> =  1 &lt;&lt; 2
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DEFINES.html#gf6d6f77f520be4456f46f528c1a86dec">_ADL_PMLOG_SENSORS</a> { <br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec29b3cd5d4592104ffc4cdb94796377f2">ADL_SENSOR_MAXTYPES</a> =  0, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec4ef49ee6b144c1004bf2470a9e54f176">ADL_PMLOG_CLK_GFXCLK</a> =  1, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec88e38e42c3c050db9576c2e0dd87685a">ADL_PMLOG_CLK_MEMCLK</a> =  2, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec787ff43996445037a116dcf762ed1978">ADL_PMLOG_CLK_SOCCLK</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec15dbe52218d27e28b5e4cd050fd6b4f3">ADL_PMLOG_CLK_UVDCLK1</a> =  4, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86deca4186d1ceabde84fa598f7a052a87a34">ADL_PMLOG_CLK_UVDCLK2</a> =  5, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec9f6110ba185cda4f6c9c5e2a84697bb0">ADL_PMLOG_CLK_VCECLK</a> =  6, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dece747c3b9db76416a23cfd6ac6822208f">ADL_PMLOG_CLK_VCNCLK</a> =  7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decf04be5c93893bb280e09a92bcbb2b05c">ADL_PMLOG_TEMPERATURE_EDGE</a> =  8, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decf1a02da73622205561d0235a61599be9">ADL_PMLOG_TEMPERATURE_MEM</a> =  9, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec9b2854536f1bf2ce8f9903b339bc6906">ADL_PMLOG_TEMPERATURE_VRVDDC</a> =  10, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec13968d36fbf49f51ab07681193f4b39f">ADL_PMLOG_TEMPERATURE_VRMVDD</a> =  11, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dece7892d09778fe0141dffb387cc28ca33">ADL_PMLOG_TEMPERATURE_LIQUID</a> =  12, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec0e4dd79e8b8558f763f8e38713426344">ADL_PMLOG_TEMPERATURE_PLX</a> =  13, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec7aa52f5f0282dc8f20d0b94159948bf4">ADL_PMLOG_FAN_RPM</a> =  14, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decb0532080fb59b945b3938be8042dc1cf">ADL_PMLOG_FAN_PERCENTAGE</a> =  15, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec9617e74ce2b5548f544e49374eb34c96">ADL_PMLOG_SOC_VOLTAGE</a> =  16, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dece42ab3a99c814702e8cc4035e71d64ed">ADL_PMLOG_SOC_POWER</a> =  17, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec8587683c786e9c9e785a09d09979a644">ADL_PMLOG_SOC_CURRENT</a> =  18, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86deca46e7007e598848eb2f632a5f0742a27">ADL_PMLOG_INFO_ACTIVITY_GFX</a> =  19, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec728aca66de9dc134588533a7dfea46b8">ADL_PMLOG_INFO_ACTIVITY_MEM</a> =  20, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86deca6cf817bbf2240cddc90251450a7bd78">ADL_PMLOG_GFX_VOLTAGE</a> =  21, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec1fe8455b922214a2f50232ebe298b4be">ADL_PMLOG_MEM_VOLTAGE</a> =  22, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec341c50f52e34ac09a7a14792b83edc02">ADL_PMLOG_ASIC_POWER</a> =  23, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec9c92a81a19fa5e4bef3b3811c3957e69">ADL_PMLOG_TEMPERATURE_VRSOC</a> =  24, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec2157f8fef112722cc52e3db4ad2d22d6">ADL_PMLOG_TEMPERATURE_VRMVDD0</a> =  25, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decf4209a6819749a1ad02ad757d3ec090d">ADL_PMLOG_TEMPERATURE_VRMVDD1</a> =  26, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decaf06c22f57c6afb30f617d388e2d2c81">ADL_PMLOG_TEMPERATURE_HOTSPOT</a> =  27, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec4ff7494422843765b30a523eff4b93df">ADL_PMLOG_TEMPERATURE_GFX</a> =  28, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec80faa2d00092c24f6c22e1fede1495ce">ADL_PMLOG_TEMPERATURE_SOC</a> =  29, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec1b11532618b6a69fbc3e5752adb8b5ad">ADL_PMLOG_GFX_POWER</a> =  30, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec69358e7075d802b3b6574cbdf7404ad9">ADL_PMLOG_GFX_CURRENT</a> =  31, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decb40c0d55bd9eca4447eae1128375ab17">ADL_PMLOG_TEMPERATURE_CPU</a> =  32, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec0fdd38eda7d83cbc88f651ee23933956">ADL_PMLOG_CPU_POWER</a> =  33, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decd3678494f3bb6d583750b2b5bed3bc34">ADL_PMLOG_CLK_CPUCLK</a> =  34, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decb0f652fb925fe6058c4594daa5fdeef0">ADL_PMLOG_THROTTLER_STATUS</a> =  35, 
+<br>
+&nbsp;&nbsp;<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec294748f8fbd70afdca0fdbe918adaf3c">ADL_PMLOG_CLK_VCN1CLK1</a> =  36, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec65ae059301742d61cac732706cdaa557">ADL_PMLOG_CLK_VCN1CLK2</a> =  37, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86dec5e1d5c19212bf9c3eec9b07b0e9c0d31">ADL_PMLOG_SMART_POWERSHIFT_CPU</a> =  38, 
+<a class="el" href="group__DEFINES.html#ggf6d6f77f520be4456f46f528c1a86decbe6f4b2553ea6c33fb1089a162f5af39">ADL_PMLOG_SMART_POWERSHIFT_DGPU</a> =  39
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3a">_ADL_RAS_ERROR_INJECTION_MODE</a> { <a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3ab8bf9c5f04c74ee3ac2099e2e188f484">ADL_RAS_ERROR_INJECTION_MODE_SINGLE</a> =  1, 
+<a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3a64db70d868dca70e2e01aa7a59b219dd">ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE</a> =  2
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350">_ADL_RAS_BLOCK_ID</a> { <br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f786535043bbe3b99fa702062471ea0e9b3c34d8">ADL_RAS_BLOCK_ID_UMC</a> =  0, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350e7d87e1ea7475f715f6f5dcbbe5309a3">ADL_RAS_BLOCK_ID_SDMA</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350614889aa52c8aacdd9042116f8b633f1">ADL_RAS_BLOCK_ID_GFX_HUB</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f786535039ea6a4a934679c5dbe9ffd650c9d07b">ADL_RAS_BLOCK_ID_MMHUB</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350e7c9e9e434937caa5d4a662064be7cba">ADL_RAS_BLOCK_ID_ATHUB</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350990262e67ed5f38563243837e9c21654">ADL_RAS_BLOCK_ID_PCIE_BIF</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f78653505c186b07db42af3c1ab773ffdc1372ea">ADL_RAS_BLOCK_ID_HDP</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f786535010b057c54955ed180d646a01572fb74e">ADL_RAS_BLOCK_ID_XGMI_WAFL</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350a3593f744c59651cc523c411d5af4c1d">ADL_RAS_BLOCK_ID_DF</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350b3a457a912264c5e3204401be68ff795">ADL_RAS_BLOCK_ID_SMN</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f78653504e12fb32f57d3913111a509b9705496e">ADL_RAS_BLOCK_ID_SEM</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f786535014a44091e1b3bb3936ebcf11a54cb0f9">ADL_RAS_BLOCK_ID_MP0</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f78653502408f652b2c9861d04a2b7bf15dd0184">ADL_RAS_BLOCK_ID_MP1</a>, 
+<a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350f147fcb4abf6741f83eb95e9ae63bbb2">ADL_RAS_BLOCK_ID_FUSE</a>
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f">_ADL_MEM_SUB_BLOCK_ID</a> { <a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f3360313a72b1618f7e84924f14866938">ADL_RAS__UMC_HBM</a> =  0, 
+<a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f7dd7bf416739951d555d0f38dc03769f">ADL_RAS__UMC_SRAM</a> =  1
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9">_ADL_RAS_ERROR_TYPE</a> { <br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9246fbafb21954cde62d4d03e94d9d531">ADL_RAS_ERROR__NONE</a> =  0, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e99616f7adcfbec829c92ffeeab1d55f8d">ADL_RAS_ERROR__PARITY</a> =  1, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e959a7970e431ce22014f7b9206cbad935">ADL_RAS_ERROR__SINGLE_CORRECTABLE</a> =  2, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e919f270295e7d265f2dda4a86e4c1db63">ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e99e8da9e10dd82455859991dfccef77a1">ADL_RAS_ERROR__MULTI_UNCORRECTABLE</a> =  4, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9f0510592d194668b88f7bf86d8346ab7">ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE</a> =  5, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9882ccae3dc4f4a3195db278453e9a785">ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE</a> =  6, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e96e8ece8e5e419545441fc7d49d06c52e">ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE</a> =  7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9e779c0af3c46d6f41fdca33838f45455">ADL_RAS_ERROR__POISON</a> =  8, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9513a89c0f628f485819afa52821a76ef">ADL_RAS_ERROR__PARITY_POISON</a> =  9, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9096c5001a2ae6e3bca57cd55760539c5">ADL_RAS_ERROR__SINGLE_CORRECTABLE_POISON</a> =  10, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9ceda3a79f3d00c4488d499f21a61ba73">ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_POISON</a> =  11, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9c598add3e64be3b8670d42d0a59560cf">ADL_RAS_ERROR__MULTI_UNCORRECTABLE_POISON</a> =  12, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9ed13b14fba2e10197a736fa92b6d8852">ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE_POISON</a> =  13, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e95eb8b1aa76a017df37bcfa7fc2bd5f1c">ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON</a> =  14, 
+<a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9d6b2beb1933319f1deec51516f504a48">ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON</a> =  15
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e6870">_ADL_RAS_INJECTION_METHOD</a> { <a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e687002e125fb5b1dbe9e470e5553da0e9c40">ADL_RAS_ERROR__UMC_METH_COHERENT</a> =  0, 
+<a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e68707b663b70b92df7520ada6e85d530c738">ADL_RAS_ERROR__UMC_METH_SINGLE_SHOT</a> =  1, 
+<a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e6870d307040afbc962dd5d2f9fb2d840064d">ADL_RAS_ERROR__UMC_METH_PERSISTENT</a> =  2, 
+<a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e68709f40f22cbf70db5fa0b6a838347101a7">ADL_RAS_ERROR__UMC_METH_PERSISTENT_DISABLE</a> =  3
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b3">_ADL_DRIVER_EVENT_TYPE</a> { <a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b3a7a7366a7454c4ac4195176994572e21">ADL_EVENT_ID_AUTO_FEATURE_COMPLETED</a> =  30, 
+<a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b35c4be11560267c8ca887473590ed544f">ADL_EVENT_ID_FEATURE_AVAILABILITY</a> =  31
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c">_ADL_UIFEATURES_GROUP</a> { <br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c65189e690d8fe76b8c1e4d2ef5803ef8">ADL_UIFEATURES_GROUP_DVR</a> =  0, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95cb42206c6c508860566c56e9a1c779982">ADL_UIFEATURES_GROUP_TURBOSYNC</a> =  1, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c71315423ca165cd939ca6450f5451d9c">ADL_UIFEATURES_GROUP_FRAMEMETRICSMONITOR</a> =  2, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c9d835e239813134b53e26178024e9fbe">ADL_UIFEATURES_GROUP_FRTC</a> =  3, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c68ac1c3fa422be8a6850da3a34de4bf8">ADL_UIFEATURES_GROUP_XVISION</a> =  4, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95ce5fec645df7fc070f861f18a488ba284">ADL_UIFEATURES_GROUP_BLOCKCHAIN</a> =  5, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c8262906d094e0d9fe42988d7c1f2c0c4">ADL_UIFEATURES_GROUP_GAMEINTELLIGENCE</a> =  6, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c2eb1c57a4b4051f95632b457d6f2c32d">ADL_UIFEATURES_GROUP_CHILL</a> =  7, 
+<br>
+&nbsp;&nbsp;<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c199190d7c8ca97f4a5b848f894167414">ADL_UIFEATURES_GROUP_DELAG</a> =  8, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c4ce8831c3705574f8ed4064f95052591">ADL_UIFEATURES_GROUP_BOOST</a> =  9, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c64cc2746651b8546873c759d43fc63b4">ADL_UIFEATURES_GROUP_USU</a> =  10, 
+<a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95ccd384e06188d554150fd93a8e1d8c276">ADL_UIFEATURES_GROUP_XGMI</a> =  11
 <br>
  }</td></tr>
 
@@ -2261,6 +2488,350 @@ This file contains all definitions used by ADL. The ADL definitions include the 
 <li>Enumerations for the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> structure </li>
 <li>Maximum limits </li>
 </ul>
+<hr><h2>Typedef Documentation</h2>
+<a class="anchor" name="4c8e1d30b7cfde086cb0df2d2ecdeb5b"></a><!-- doxytag: member="adl_defines.h::ADL_RAS_ERROR_INJECTION_MODE" ref="4c8e1d30b7cfde086cb0df2d2ecdeb5b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3a">_ADL_RAS_ERROR_INJECTION_MODE</a> <a class="el" href="adl__defines_8h.html#4c8e1d30b7cfde086cb0df2d2ecdeb5b">ADL_RAS_ERROR_INJECTION_MODE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="357791818b4565784b558f448258058d"></a><!-- doxytag: member="adl_defines.h::ADL_RAS_BLOCK_ID" ref="357791818b4565784b558f448258058d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350">_ADL_RAS_BLOCK_ID</a> <a class="el" href="adl__defines_8h.html#357791818b4565784b558f448258058d">ADL_RAS_BLOCK_ID</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="691941af10cc2d2cc369d6f2337a5f72"></a><!-- doxytag: member="adl_defines.h::ADL_MEM_SUB_BLOCK_ID" ref="691941af10cc2d2cc369d6f2337a5f72" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f">_ADL_MEM_SUB_BLOCK_ID</a> <a class="el" href="adl__defines_8h.html#691941af10cc2d2cc369d6f2337a5f72">ADL_MEM_SUB_BLOCK_ID</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1cdc8a2a08727f49c790fdceeda0e30f"></a><!-- doxytag: member="adl_defines.h::ADL_RAS_ERROR_TYPE" ref="1cdc8a2a08727f49c790fdceeda0e30f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9">_ADL_RAS_ERROR_TYPE</a> <a class="el" href="adl__defines_8h.html#1cdc8a2a08727f49c790fdceeda0e30f">ADL_RAS_ERROR_TYPE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2429950366e2429fb1d31086e8058be4"></a><!-- doxytag: member="adl_defines.h::ADL_RAS_INJECTION_METHOD" ref="2429950366e2429fb1d31086e8058be4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e6870">_ADL_RAS_INJECTION_METHOD</a> <a class="el" href="adl__defines_8h.html#2429950366e2429fb1d31086e8058be4">ADL_RAS_INJECTION_METHOD</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f74c4bce0cab24e8c78bef2439724d72"></a><!-- doxytag: member="adl_defines.h::ADL_DRIVER_EVENT_TYPE" ref="f74c4bce0cab24e8c78bef2439724d72" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b3">_ADL_DRIVER_EVENT_TYPE</a>  <a class="el" href="adl__defines_8h.html#f74c4bce0cab24e8c78bef2439724d72">ADL_DRIVER_EVENT_TYPE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="21b05a3a76f787f8bb9ff5b9fb62184b"></a><!-- doxytag: member="adl_defines.h::ADL_UIFEATURES_GROUP" ref="21b05a3a76f787f8bb9ff5b9fb62184b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c">_ADL_UIFEATURES_GROUP</a> <a class="el" href="adl__defines_8h.html#21b05a3a76f787f8bb9ff5b9fb62184b">ADL_UIFEATURES_GROUP</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Enumeration Type Documentation</h2>
+<a class="anchor" name="67b8c88c594975c1ecdd547295344b3a"></a><!-- doxytag: member="adl_defines.h::_ADL_RAS_ERROR_INJECTION_MODE" ref="67b8c88c594975c1ecdd547295344b3a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#67b8c88c594975c1ecdd547295344b3a">_ADL_RAS_ERROR_INJECTION_MODE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="67b8c88c594975c1ecdd547295344b3ab8bf9c5f04c74ee3ac2099e2e188f484"></a><!-- doxytag: member="ADL_RAS_ERROR_INJECTION_MODE_SINGLE" ref="67b8c88c594975c1ecdd547295344b3ab8bf9c5f04c74ee3ac2099e2e188f484" args="" -->ADL_RAS_ERROR_INJECTION_MODE_SINGLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="67b8c88c594975c1ecdd547295344b3a64db70d868dca70e2e01aa7a59b219dd"></a><!-- doxytag: member="ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE" ref="67b8c88c594975c1ecdd547295344b3a64db70d868dca70e2e01aa7a59b219dd" args="" -->ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350"></a><!-- doxytag: member="adl_defines.h::_ADL_RAS_BLOCK_ID" ref="621b4fcb8ffddd92151a4e81f7865350" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#621b4fcb8ffddd92151a4e81f7865350">_ADL_RAS_BLOCK_ID</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f786535043bbe3b99fa702062471ea0e9b3c34d8"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_UMC" ref="621b4fcb8ffddd92151a4e81f786535043bbe3b99fa702062471ea0e9b3c34d8" args="" -->ADL_RAS_BLOCK_ID_UMC</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350e7d87e1ea7475f715f6f5dcbbe5309a3"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_SDMA" ref="621b4fcb8ffddd92151a4e81f7865350e7d87e1ea7475f715f6f5dcbbe5309a3" args="" -->ADL_RAS_BLOCK_ID_SDMA</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350614889aa52c8aacdd9042116f8b633f1"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_GFX_HUB" ref="621b4fcb8ffddd92151a4e81f7865350614889aa52c8aacdd9042116f8b633f1" args="" -->ADL_RAS_BLOCK_ID_GFX_HUB</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f786535039ea6a4a934679c5dbe9ffd650c9d07b"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_MMHUB" ref="621b4fcb8ffddd92151a4e81f786535039ea6a4a934679c5dbe9ffd650c9d07b" args="" -->ADL_RAS_BLOCK_ID_MMHUB</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350e7c9e9e434937caa5d4a662064be7cba"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_ATHUB" ref="621b4fcb8ffddd92151a4e81f7865350e7c9e9e434937caa5d4a662064be7cba" args="" -->ADL_RAS_BLOCK_ID_ATHUB</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350990262e67ed5f38563243837e9c21654"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_PCIE_BIF" ref="621b4fcb8ffddd92151a4e81f7865350990262e67ed5f38563243837e9c21654" args="" -->ADL_RAS_BLOCK_ID_PCIE_BIF</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f78653505c186b07db42af3c1ab773ffdc1372ea"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_HDP" ref="621b4fcb8ffddd92151a4e81f78653505c186b07db42af3c1ab773ffdc1372ea" args="" -->ADL_RAS_BLOCK_ID_HDP</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f786535010b057c54955ed180d646a01572fb74e"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_XGMI_WAFL" ref="621b4fcb8ffddd92151a4e81f786535010b057c54955ed180d646a01572fb74e" args="" -->ADL_RAS_BLOCK_ID_XGMI_WAFL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350a3593f744c59651cc523c411d5af4c1d"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_DF" ref="621b4fcb8ffddd92151a4e81f7865350a3593f744c59651cc523c411d5af4c1d" args="" -->ADL_RAS_BLOCK_ID_DF</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350b3a457a912264c5e3204401be68ff795"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_SMN" ref="621b4fcb8ffddd92151a4e81f7865350b3a457a912264c5e3204401be68ff795" args="" -->ADL_RAS_BLOCK_ID_SMN</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f78653504e12fb32f57d3913111a509b9705496e"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_SEM" ref="621b4fcb8ffddd92151a4e81f78653504e12fb32f57d3913111a509b9705496e" args="" -->ADL_RAS_BLOCK_ID_SEM</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f786535014a44091e1b3bb3936ebcf11a54cb0f9"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_MP0" ref="621b4fcb8ffddd92151a4e81f786535014a44091e1b3bb3936ebcf11a54cb0f9" args="" -->ADL_RAS_BLOCK_ID_MP0</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f78653502408f652b2c9861d04a2b7bf15dd0184"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_MP1" ref="621b4fcb8ffddd92151a4e81f78653502408f652b2c9861d04a2b7bf15dd0184" args="" -->ADL_RAS_BLOCK_ID_MP1</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="621b4fcb8ffddd92151a4e81f7865350f147fcb4abf6741f83eb95e9ae63bbb2"></a><!-- doxytag: member="ADL_RAS_BLOCK_ID_FUSE" ref="621b4fcb8ffddd92151a4e81f7865350f147fcb4abf6741f83eb95e9ae63bbb2" args="" -->ADL_RAS_BLOCK_ID_FUSE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="dbed2978efb742828b577730e7a2264f"></a><!-- doxytag: member="adl_defines.h::_ADL_MEM_SUB_BLOCK_ID" ref="dbed2978efb742828b577730e7a2264f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#dbed2978efb742828b577730e7a2264f">_ADL_MEM_SUB_BLOCK_ID</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="dbed2978efb742828b577730e7a2264f3360313a72b1618f7e84924f14866938"></a><!-- doxytag: member="ADL_RAS__UMC_HBM" ref="dbed2978efb742828b577730e7a2264f3360313a72b1618f7e84924f14866938" args="" -->ADL_RAS__UMC_HBM</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="dbed2978efb742828b577730e7a2264f7dd7bf416739951d555d0f38dc03769f"></a><!-- doxytag: member="ADL_RAS__UMC_SRAM" ref="dbed2978efb742828b577730e7a2264f7dd7bf416739951d555d0f38dc03769f" args="" -->ADL_RAS__UMC_SRAM</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9"></a><!-- doxytag: member="adl_defines.h::_ADL_RAS_ERROR_TYPE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#45bdaad0b49ec7adeb3c637c7d7ae9e9">_ADL_RAS_ERROR_TYPE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9246fbafb21954cde62d4d03e94d9d531"></a><!-- doxytag: member="ADL_RAS_ERROR__NONE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9246fbafb21954cde62d4d03e94d9d531" args="" -->ADL_RAS_ERROR__NONE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e99616f7adcfbec829c92ffeeab1d55f8d"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY" ref="45bdaad0b49ec7adeb3c637c7d7ae9e99616f7adcfbec829c92ffeeab1d55f8d" args="" -->ADL_RAS_ERROR__PARITY</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e959a7970e431ce22014f7b9206cbad935"></a><!-- doxytag: member="ADL_RAS_ERROR__SINGLE_CORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e959a7970e431ce22014f7b9206cbad935" args="" -->ADL_RAS_ERROR__SINGLE_CORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e919f270295e7d265f2dda4a86e4c1db63"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e919f270295e7d265f2dda4a86e4c1db63" args="" -->ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e99e8da9e10dd82455859991dfccef77a1"></a><!-- doxytag: member="ADL_RAS_ERROR__MULTI_UNCORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e99e8da9e10dd82455859991dfccef77a1" args="" -->ADL_RAS_ERROR__MULTI_UNCORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9f0510592d194668b88f7bf86d8346ab7"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9f0510592d194668b88f7bf86d8346ab7" args="" -->ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9882ccae3dc4f4a3195db278453e9a785"></a><!-- doxytag: member="ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9882ccae3dc4f4a3195db278453e9a785" args="" -->ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e96e8ece8e5e419545441fc7d49d06c52e"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE" ref="45bdaad0b49ec7adeb3c637c7d7ae9e96e8ece8e5e419545441fc7d49d06c52e" args="" -->ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9e779c0af3c46d6f41fdca33838f45455"></a><!-- doxytag: member="ADL_RAS_ERROR__POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9e779c0af3c46d6f41fdca33838f45455" args="" -->ADL_RAS_ERROR__POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9513a89c0f628f485819afa52821a76ef"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9513a89c0f628f485819afa52821a76ef" args="" -->ADL_RAS_ERROR__PARITY_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9096c5001a2ae6e3bca57cd55760539c5"></a><!-- doxytag: member="ADL_RAS_ERROR__SINGLE_CORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9096c5001a2ae6e3bca57cd55760539c5" args="" -->ADL_RAS_ERROR__SINGLE_CORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9ceda3a79f3d00c4488d499f21a61ba73"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9ceda3a79f3d00c4488d499f21a61ba73" args="" -->ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9c598add3e64be3b8670d42d0a59560cf"></a><!-- doxytag: member="ADL_RAS_ERROR__MULTI_UNCORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9c598add3e64be3b8670d42d0a59560cf" args="" -->ADL_RAS_ERROR__MULTI_UNCORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9ed13b14fba2e10197a736fa92b6d8852"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9ed13b14fba2e10197a736fa92b6d8852" args="" -->ADL_RAS_ERROR__PARITY_MULTI_UNCORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e95eb8b1aa76a017df37bcfa7fc2bd5f1c"></a><!-- doxytag: member="ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e95eb8b1aa76a017df37bcfa7fc2bd5f1c" args="" -->ADL_RAS_ERROR__SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="45bdaad0b49ec7adeb3c637c7d7ae9e9d6b2beb1933319f1deec51516f504a48"></a><!-- doxytag: member="ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON" ref="45bdaad0b49ec7adeb3c637c7d7ae9e9d6b2beb1933319f1deec51516f504a48" args="" -->ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8a35a532ecddc3fb9295be27065e6870"></a><!-- doxytag: member="adl_defines.h::_ADL_RAS_INJECTION_METHOD" ref="8a35a532ecddc3fb9295be27065e6870" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#8a35a532ecddc3fb9295be27065e6870">_ADL_RAS_INJECTION_METHOD</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="8a35a532ecddc3fb9295be27065e687002e125fb5b1dbe9e470e5553da0e9c40"></a><!-- doxytag: member="ADL_RAS_ERROR__UMC_METH_COHERENT" ref="8a35a532ecddc3fb9295be27065e687002e125fb5b1dbe9e470e5553da0e9c40" args="" -->ADL_RAS_ERROR__UMC_METH_COHERENT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8a35a532ecddc3fb9295be27065e68707b663b70b92df7520ada6e85d530c738"></a><!-- doxytag: member="ADL_RAS_ERROR__UMC_METH_SINGLE_SHOT" ref="8a35a532ecddc3fb9295be27065e68707b663b70b92df7520ada6e85d530c738" args="" -->ADL_RAS_ERROR__UMC_METH_SINGLE_SHOT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8a35a532ecddc3fb9295be27065e6870d307040afbc962dd5d2f9fb2d840064d"></a><!-- doxytag: member="ADL_RAS_ERROR__UMC_METH_PERSISTENT" ref="8a35a532ecddc3fb9295be27065e6870d307040afbc962dd5d2f9fb2d840064d" args="" -->ADL_RAS_ERROR__UMC_METH_PERSISTENT</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8a35a532ecddc3fb9295be27065e68709f40f22cbf70db5fa0b6a838347101a7"></a><!-- doxytag: member="ADL_RAS_ERROR__UMC_METH_PERSISTENT_DISABLE" ref="8a35a532ecddc3fb9295be27065e68709f40f22cbf70db5fa0b6a838347101a7" args="" -->ADL_RAS_ERROR__UMC_METH_PERSISTENT_DISABLE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="d02e55fbd4a43f37d971a9f0a26e23b3"></a><!-- doxytag: member="adl_defines.h::_ADL_DRIVER_EVENT_TYPE" ref="d02e55fbd4a43f37d971a9f0a26e23b3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#d02e55fbd4a43f37d971a9f0a26e23b3">_ADL_DRIVER_EVENT_TYPE</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="d02e55fbd4a43f37d971a9f0a26e23b3a7a7366a7454c4ac4195176994572e21"></a><!-- doxytag: member="ADL_EVENT_ID_AUTO_FEATURE_COMPLETED" ref="d02e55fbd4a43f37d971a9f0a26e23b3a7a7366a7454c4ac4195176994572e21" args="" -->ADL_EVENT_ID_AUTO_FEATURE_COMPLETED</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="d02e55fbd4a43f37d971a9f0a26e23b35c4be11560267c8ca887473590ed544f"></a><!-- doxytag: member="ADL_EVENT_ID_FEATURE_AVAILABILITY" ref="d02e55fbd4a43f37d971a9f0a26e23b35c4be11560267c8ca887473590ed544f" args="" -->ADL_EVENT_ID_FEATURE_AVAILABILITY</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="8f2507757880362c390244b6ec25e95c"></a><!-- doxytag: member="adl_defines.h::_ADL_UIFEATURES_GROUP" ref="8f2507757880362c390244b6ec25e95c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="adl__defines_8h.html#8f2507757880362c390244b6ec25e95c">_ADL_UIFEATURES_GROUP</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c65189e690d8fe76b8c1e4d2ef5803ef8"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_DVR" ref="8f2507757880362c390244b6ec25e95c65189e690d8fe76b8c1e4d2ef5803ef8" args="" -->ADL_UIFEATURES_GROUP_DVR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95cb42206c6c508860566c56e9a1c779982"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_TURBOSYNC" ref="8f2507757880362c390244b6ec25e95cb42206c6c508860566c56e9a1c779982" args="" -->ADL_UIFEATURES_GROUP_TURBOSYNC</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c71315423ca165cd939ca6450f5451d9c"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_FRAMEMETRICSMONITOR" ref="8f2507757880362c390244b6ec25e95c71315423ca165cd939ca6450f5451d9c" args="" -->ADL_UIFEATURES_GROUP_FRAMEMETRICSMONITOR</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c9d835e239813134b53e26178024e9fbe"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_FRTC" ref="8f2507757880362c390244b6ec25e95c9d835e239813134b53e26178024e9fbe" args="" -->ADL_UIFEATURES_GROUP_FRTC</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c68ac1c3fa422be8a6850da3a34de4bf8"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_XVISION" ref="8f2507757880362c390244b6ec25e95c68ac1c3fa422be8a6850da3a34de4bf8" args="" -->ADL_UIFEATURES_GROUP_XVISION</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95ce5fec645df7fc070f861f18a488ba284"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_BLOCKCHAIN" ref="8f2507757880362c390244b6ec25e95ce5fec645df7fc070f861f18a488ba284" args="" -->ADL_UIFEATURES_GROUP_BLOCKCHAIN</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c8262906d094e0d9fe42988d7c1f2c0c4"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_GAMEINTELLIGENCE" ref="8f2507757880362c390244b6ec25e95c8262906d094e0d9fe42988d7c1f2c0c4" args="" -->ADL_UIFEATURES_GROUP_GAMEINTELLIGENCE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c2eb1c57a4b4051f95632b457d6f2c32d"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_CHILL" ref="8f2507757880362c390244b6ec25e95c2eb1c57a4b4051f95632b457d6f2c32d" args="" -->ADL_UIFEATURES_GROUP_CHILL</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c199190d7c8ca97f4a5b848f894167414"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_DELAG" ref="8f2507757880362c390244b6ec25e95c199190d7c8ca97f4a5b848f894167414" args="" -->ADL_UIFEATURES_GROUP_DELAG</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c4ce8831c3705574f8ed4064f95052591"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_BOOST" ref="8f2507757880362c390244b6ec25e95c4ce8831c3705574f8ed4064f95052591" args="" -->ADL_UIFEATURES_GROUP_BOOST</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95c64cc2746651b8546873c759d43fc63b4"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_USU" ref="8f2507757880362c390244b6ec25e95c64cc2746651b8546873c759d43fc63b4" args="" -->ADL_UIFEATURES_GROUP_USU</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="8f2507757880362c390244b6ec25e95ccd384e06188d554150fd93a8e1d8c276"></a><!-- doxytag: member="ADL_UIFEATURES_GROUP_XGMI" ref="8f2507757880362c390244b6ec25e95ccd384e06188d554150fd93a8e1d8c276" args="" -->ADL_UIFEATURES_GROUP_XGMI</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
 </div>
 <hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2016 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>

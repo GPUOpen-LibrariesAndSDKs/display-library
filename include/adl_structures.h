@@ -1749,6 +1749,27 @@ typedef struct ADLPXConfigCaps
 
 } ADLPXConfigCaps, *LPADLPXConfigCaps;
 
+/////////////////////////////////////////////////////////////////////////////////////////
+///\brief Enum containing PX or HG type
+///
+/// This enum is used to get PX or hG type
+/// 
+/// \nosubgrouping
+//////////////////////////////////////////////////////////////////////////////////////////
+enum ADLPxType
+{
+	//Not AMD related PX/HG or not PX or HG at all
+	ADL_PX_NONE = 0,
+	//A+A PX
+	ADL_SWITCHABLE_AMDAMD = 1,
+	// A+A HG
+	ADL_HG_AMDAMD = 2,
+	//A+I PX
+	ADL_SWITCHABLE_AMDOTHER = 3,
+	//A+I HG
+	ADL_HG_AMDOTHER = 4,
+};
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about an application
@@ -2606,11 +2627,21 @@ typedef struct ADLGraphicCoreInfo
     /// indicate the graphic core generation
     int iGCGen;
 
-    /// Total number of CUs. Valid for GCN (iGCGen == GCN)
-    int iNumCUs;
+    union
+    {
+        /// Total number of CUs. Valid for GCN (iGCGen == GCN)
+        int iNumCUs;
+        /// Total number of WGPs. Valid for RDNA (iGCGen == RDNA)
+        int iNumWGPs;
+    };
 
-    /// Number of processing elements per CU. Valid for GCN (iGCGen == GCN)
-    int iNumPEsPerCU;
+    union
+    {
+        /// Number of processing elements per CU. Valid for GCN (iGCGen == GCN)
+        int iNumPEsPerCU;
+        /// Number of processing elements per WGP. Valid for RDNA (iGCGen == RDNA)
+        int iNumPEsPerWGP;
+    };
 
     /// Total number of SIMDs. Valid for Pre GCN (iGCGen == Pre-GCN)
     int iNumSIMDs;
@@ -2954,38 +2985,6 @@ typedef struct _ADLPMLogDataOutput
     ADLSingleSensorData sensors[ADL_PMLOG_MAX_SENSORS];
 }ADLPMLogDataOutput;
 
-typedef enum _ADLSensorType
-{
-    SENSOR_MAXTYPES = 0,
-    PMLOG_CLK_GFXCLK = 1,
-    PMLOG_CLK_MEMCLK = 2,
-    PMLOG_CLK_SOCCLK = 3,
-    PMLOG_CLK_UVDCLK1 = 4,
-    PMLOG_CLK_UVDCLK2 = 5,
-    PMLOG_CLK_VCECLK = 6,
-    PMLOG_CLK_VCNCLK = 7,
-    PMLOG_TEMPERATURE_EDGE = 8,
-    PMLOG_TEMPERATURE_MEM = 9,
-    PMLOG_TEMPERATURE_VRVDDC = 10,
-    PMLOG_TEMPERATURE_VRMVDD = 11,
-    PMLOG_TEMPERATURE_LIQUID = 12,
-    PMLOG_TEMPERATURE_PLX = 13,
-    PMLOG_FAN_RPM = 14,
-    PMLOG_FAN_PERCENTAGE = 15,
-    PMLOG_SOC_VOLTAGE = 16,
-    PMLOG_SOC_POWER = 17,
-    PMLOG_SOC_CURRENT = 18,
-    PMLOG_INFO_ACTIVITY_GFX = 19,
-    PMLOG_INFO_ACTIVITY_MEM = 20,
-    PMLOG_GFX_VOLTAGE       = 21,
-    PMLOG_MEM_VOLTAGE       = 22,
-    PMLOG_ASIC_POWER        = 23,
-    PMLOG_TEMPERATURE_VRSOC  = 24,
-    PMLOG_TEMPERATURE_VRMVDD0= 25,
-    PMLOG_TEMPERATURE_VRMVDD1= 26,
-	PMLOG_TEMPERATURE_HOTSPOT= 27
-} ADLSensorType;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about PPLog settings.
@@ -3073,38 +3072,6 @@ typedef struct _ADLPMLogSupportInfo
     int ulReserved[16];
 
 } ADLPMLogSupportInfo;
-
-typedef enum _ADL_PMLOG_SENSORS
-{
-    ADL_SENSOR_MAXTYPES           = 0,
-    ADL_PMLOG_CLK_GFXCLK          = 1,
-    ADL_PMLOG_CLK_MEMCLK          = 2,
-    ADL_PMLOG_CLK_SOCCLK          = 3,
-    ADL_PMLOG_CLK_UVDCLK1         = 4,
-    ADL_PMLOG_CLK_UVDCLK2         = 5,
-    ADL_PMLOG_CLK_VCECLK          = 6,
-    ADL_PMLOG_CLK_VCNCLK          = 7,
-    ADL_PMLOG_TEMPERATURE_EDGE    = 8,
-    ADL_PMLOG_TEMPERATURE_MEM     = 9,
-    ADL_PMLOG_TEMPERATURE_VRVDDC  = 10,
-    ADL_PMLOG_TEMPERATURE_VRMVDD  = 11,
-    ADL_PMLOG_TEMPERATURE_LIQUID  = 12,
-    ADL_PMLOG_TEMPERATURE_PLX     = 13,
-    ADL_PMLOG_FAN_RPM             = 14,
-    ADL_PMLOG_FAN_PERCENTAGE      = 15,
-    ADL_PMLOG_SOC_VOLTAGE         = 16,
-    ADL_PMLOG_SOC_POWER           = 17,
-    ADL_PMLOG_SOC_CURRENT         = 18,
-    ADL_PMLOG_INFO_ACTIVITY_GFX   = 19,
-    ADL_PMLOG_INFO_ACTIVITY_MEM   = 20,
-    ADL_PMLOG_GFX_VOLTAGE         = 21,
-    ADL_PMLOG_MEM_VOLTAGE         = 22,
-    ADL_PMLOG_ASIC_POWER          = 23,
-    ADL_PMLOG_TEMPERATURE_VRSOC   = 24,
-    ADL_PMLOG_TEMPERATURE_VRMVDD0 = 25,
-    ADL_PMLOG_TEMPERATURE_VRMVDD1 = 26,
-    ADL_PMLOG_TEMPERATURE_HOTSPOT = 27
-} ADL_PMLOG_SENSORS;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3245,27 +3212,6 @@ typedef struct _ADLRASResetErrorCounts
 } ADLRASResetErrorCounts;
 
 
-typedef enum _ADL_RAS_ERROR_INJECTION_MODE
-{
-    ADL_RAS_ERROR_INJECTION_MODE_SINGLE      = 1,
-    ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE    = 2
-}ADL_RAS_ERROR_INJECTION_MODE;
-
-
-typedef enum _ADL_RAS_BLOCK_ID
-{
-    ADL_RAS_BLOCK_ID_UMC = 0,
-	ADL_RAS_BLOCK_ID_SDMA,
-	ADL_RAS_BLOCK_ID_GFX_HUB,
-	ADL_RAS_BLOCK_ID_MMHUB,
-	ADL_RAS_BLOCK_ID_ATHUB,
-	ADL_RAS_BLOCK_ID_PCIE_BIF,
-	ADL_RAS_BLOCK_ID_HDP,
-	ADL_RAS_BLOCK_ID_XGMI_WAFL,
-	ADL_RAS_BLOCK_ID_DF,
-	ADL_RAS_BLOCK_ID_SMN,
-	ADL_RAS_BLOCK_ID_GFX	
-}ADL_RAS_BLOCK_ID;
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information related RAS Error Injection information
 ///
@@ -3276,10 +3222,10 @@ typedef enum _ADL_RAS_BLOCK_ID
 typedef struct _ADLRASErrorInjectonInput
 {
     unsigned long long Address;
-    unsigned long long Value;
-    unsigned int BlockId;
-    unsigned int InjectErrorType;
-    unsigned int SubBlockIndex;
+    ADL_RAS_INJECTION_METHOD Value;
+    ADL_RAS_BLOCK_ID BlockId;
+    ADL_RAS_ERROR_TYPE InjectErrorType;
+    ADL_MEM_SUB_BLOCK_ID SubBlockIndex;
     unsigned int padding[9];
 } ADLRASErrorInjectonInput;
 
@@ -3337,5 +3283,158 @@ typedef struct _ADLSGApplicationInfo
     ADLBdf GPUBdf;
 } ADLSGApplicationInfo;
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related Frames Per Second for AC and DC.
+///
+/// This structure is used to store information related AC and DC Frames Per Second settings
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+enum { ADLPreFlipPostProcessingInfoInvalidLUTIndex = 0xFFFFFFFF };
 
+enum ADLPreFlipPostProcessingLUTAlgorithm
+{
+    ADLPreFlipPostProcessingLUTAlgorithm_Default = 0,
+    ADLPreFlipPostProcessingLUTAlgorithm_Full,
+    ADLPreFlipPostProcessingLUTAlgorithm_Approximation
+};
+
+typedef struct _ADLPreFlipPostProcessingInfo
+{
+    /// size
+    int ulSize;
+    /// Current active state
+    int bEnabled;
+    /// Current selected LUT index.  0xFFFFFFF returned if nothing selected.
+    int ulSelectedLUTIndex;
+    /// Current selected LUT Algorithm
+    int ulSelectedLUTAlgorithm;
+    /// Reserved
+    int ulReserved[12];
+
+} ADLPreFlipPostProcessingInfo;
+
+
+
+typedef struct _ADL_ERROR_REASON
+{
+	int boost; //ON, when boost is Enabled
+	int delag; //ON, when delag is Enabled
+	int chill; //ON, when chill is Enabled
+}ADL_ERROR_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about DELAG Settings change reason
+///
+///  Elements of DELAG settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_DELAG_NOTFICATION_REASON
+{
+	int HotkeyChanged; //Set when Hotkey value is changed
+	int GlobalEnableChanged; //Set when Global enable value is changed
+	int GlobalLimitFPSChanged; //Set when Global enable value is changed
+}ADL_DELAG_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about DELAG Settings
+///
+///  Elements of DELAG settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_DELAG_SETTINGS
+{
+	int Hotkey; // Hotkey value
+	int GlobalEnable; //Global enable value
+	int GlobalLimitFPS; //Global Limit FPS
+	int GlobalLimitFPS_MinLimit; //Gloabl Limit FPS slider min limit value
+	int GlobalLimitFPS_MaxLimit; //Gloabl Limit FPS slider max limit value
+	int GlobalLimitFPS_Step; //Gloabl Limit FPS step  value
+}ADL_DELAG_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about BOOST Settings change reason
+///
+///  Elements of BOOST settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_BOOST_NOTFICATION_REASON
+{
+	int HotkeyChanged; //Set when Hotkey value is changed
+	int GlobalEnableChanged; //Set when Global enable value is changed
+	int GlobalMinResChanged; //Set when Global min resolution value is changed
+}ADL_BOOST_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about BOOST Settings
+///
+///  Elements of BOOST settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_BOOST_SETTINGS
+{
+	int Hotkey; // Hotkey value
+	int GlobalEnable; //Global enable value
+	int GlobalMinRes; //Gloabl Min Resolution value
+	int GlobalMinRes_MinLimit; //Gloabl Min Resolution slider min limit value
+	int GlobalMinRes_MaxLimit; //Gloabl Min Resolution slider max limit value
+	int GlobalMinRes_Step; //Gloabl Min Resolution step  value
+}ADL_BOOST_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about RIS Settings change reason
+///
+///  Elements of RIS settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_RIS_NOTFICATION_REASON
+{
+	unsigned int GlobalEnableChanged; //Set when Global enable value is changed
+	unsigned int GlobalSharpeningDegreeChanged; //Set when Global sharpening Degree value is changed
+}ADL_RIS_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about RIS Settings
+///
+///  Elements of RIS settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_RIS_SETTINGS
+{
+	int GlobalEnable; //Global enable value
+	int GlobalSharpeningDegree; //Global sharpening value
+	int GlobalSharpeningDegree_MinLimit; //Gloabl sharpening slider min limit value
+	int GlobalSharpeningDegree_MaxLimit; //Gloabl sharpening slider max limit value
+	int GlobalSharpeningDegree_Step; //Gloabl sharpening step  value
+}ADL_RIS_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about CHILL Settings change reason
+///
+///  Elements of Chiil settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_CHILL_NOTFICATION_REASON
+{
+	int HotkeyChanged; //Set when Hotkey value is changed
+	int GlobalEnableChanged; //Set when Global enable value is changed
+	int GlobalMinFPSChanged; //Set when Global min FPS value is changed
+	int GlobalMaxFPSChanged; //Set when Global max FPS value is changed
+}ADL_CHILL_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about CHILL Settings
+///
+///  Elements of Chiil settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct _ADL_CHILL_SETTINGS
+{
+	int Hotkey; // Hotkey value
+	int GlobalEnable; //Global enable value
+	int GlobalMinFPS; //Global Min FPS value
+	int GlobalMaxFPS; //Global Max FPS value
+	int GlobalFPS_MinLimit; //Gloabl FPS slider min limit value
+	int GlobalFPS_MaxLimit; //Gloabl FPS slider max limit value
+	int GlobalFPS_Step; //Gloabl FPS Slider step  value
+}ADL_CHILL_SETTINGS;
 #endif /* ADL_STRUCTURES_H_ */
