@@ -1337,7 +1337,6 @@ int resetODSettings()
 
 int ODNSettingExtGet()
 {
-    int iSupported, iEnabled, iVersion;
     int i, ret = 1;
     for (i = 0; i < iNumberAdapters; i++)
     {
