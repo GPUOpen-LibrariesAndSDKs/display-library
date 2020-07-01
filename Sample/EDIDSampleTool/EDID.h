@@ -8,10 +8,11 @@
 /// \file EDID.h
 
 #include <windows.h>
-#include "..\..\include\adl_sdk.h"
+#include "..\..\include\ADL_sdk.h"
 #include <stdio.h>
 
 extern int initializeADL();
+extern int unInitializeADL();
 extern void deinitializeADL();
 extern void printSyntax();
 extern void getEmulationStatus(int iAdapterIndex);

@@ -103,6 +103,7 @@ int main (int c,char* args[],char* s[])
 				printSyntax();
 			}
 		}
+		unInitializeADL();
 	}
 	 return 0;
 }
