@@ -87,6 +87,7 @@ int InitADL ()
 	#if defined (LINUX)
     hDLL = dlopen( "libatiadlxx.so", RTLD_LAZY|RTLD_GLOBAL);
 #else
+
     hDLL = LoadLibrary("atiadlxx.dll");
     if (hDLL == NULL)
         // A 32 bit calling application on 64 bit OS will fail to LoadLIbrary.

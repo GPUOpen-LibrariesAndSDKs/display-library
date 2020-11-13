@@ -16,7 +16,7 @@
 int main (int c,char* args[],char* s[])
 {
 	
-	int iAdapterIndex, iConnectorIndex, iConnectionType, iEmulationMode, validArgs = 0;
+	int iAdapterIndex, iConnectionType, iEmulationMode, validArgs = 0;
 	ADLDevicePort devicePort;
 	
 	
