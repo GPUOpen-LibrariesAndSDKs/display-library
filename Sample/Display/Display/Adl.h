@@ -29,6 +29,7 @@ typedef int(*ADL2_DISPLAY_DISPLAYINFO_GET)      (ADL_CONTEXT_HANDLE context, int
 //Virtual Resolution ADL2 calls
 typedef int(*ADL2_DISPLAY_PROPERTY_GET)         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDisplayProperty * lpDisplayProperty);
 typedef int(*ADL2_DISPLAY_PROPERTY_SET)         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDisplayProperty * lpDisplayProperty);
+typedef int(*ADL2_ADAPTER_MEMORYINFO3_GET)       (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLMemoryInfo3 *);
 
 
 //Declaring pointers to ADL Methods. 
@@ -43,6 +44,7 @@ extern ADL2_DISPLAY_PROPERTY_GET                ADL2_Display_Property_Get;
 extern ADL2_DISPLAY_PROPERTY_SET                ADL2_Display_Property_Set;
 
 extern ADL2_DISPLAY_DISPLAYINFO_GET             ADL2_Display_DisplayInfo_Get;
+extern ADL2_ADAPTER_MEMORYINFO3_GET         ADL2_Adapter_MemoryInfo3_Get;
 
 void __stdcall ADL_Main_Memory_Free(void** lpBuffer);
 

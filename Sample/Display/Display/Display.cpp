@@ -28,6 +28,8 @@ void printSyntax()
     printf("\t\t \t Ex: display g\n\n\n");
     printf("Method to set VSR ON/OFF \t\t\t display s X;  X - (0: OFF, 1: ON)\n");
     printf("\t\t \t Ex: display s 0\n\n\n");
+	printf("Method to set Integer Scaling ON/OFF \t\t\t display si X;  X - (0: OFF, 1: ON)\n");
+	printf("\t\t \t Ex: display si 0\n\n\n");
 }
 
 //Sample entry point
@@ -39,7 +41,7 @@ int _tmain(int argc, _TCHAR* argv[])
         {         
             if (1==argc)
             {
-                printSyntax();
+				printSyntax();
             }
             else
             {
@@ -68,6 +70,14 @@ int _tmain(int argc, _TCHAR* argv[])
                         displaySetting.SetVirtualResolutionState(displayID.second, isOnOff);
                     }
                 }
+				else if (_tcscmp(argv[1], _T("si")) == 0)
+				{
+					bool isOnOff = _wtoi(argv[2]);
+					for (auto displayID : DisplayID_)
+					{
+						displaySetting.SetIntegerScalingState(displayID.second, isOnOff);
+					}
+				}
             }
         }
         DestroyADL();

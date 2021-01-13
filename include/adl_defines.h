@@ -34,13 +34,13 @@
 #define ADL_DEFINES_H_
 
 /// \defgroup DEFINES Constants and Definitions
-// @{
+/// @{
 
 /// \defgroup define_misc Miscellaneous Constant Definitions
-// @{
+/// @{
 
 /// \name General Definitions
-// @{
+/// @{
 
 /// Defines ADL_TRUE
 #define ADL_TRUE    1
@@ -61,11 +61,11 @@
 #define ADL_ADAPTER_INDEX_ALL                            -1
 ///    Defines APIs with iOption none
 #define ADL_MAIN_API_OPTION_NONE                        0
-// @}
+/// @}
 
 /// \name Definitions for iOption parameter used by
 /// ADL_Display_DDCBlockAccess_Get()
-// @{
+/// @{
 
 /// Switch to DDC line 2 before sending the command to the display.
 #define ADL_DDC_OPTION_SWITCHDDC2              0x00000001
@@ -77,23 +77,23 @@
 /// MST with this option set: DDC command is sent to first branch.
 /// MST with this option not set: DDC command is sent to the end node sink device.
 #define ADL_DDC_OPTION_SENDTOIMMEDIATEDEVICE 0x00000020
-// @}
+/// @}
 
 /// \name Values for
 /// ADLI2C.iAction used with ADL_Display_WriteAndReadI2C()
-// @{
+/// @{
 
 #define ADL_DL_I2C_ACTIONREAD                                    0x00000001
 #define ADL_DL_I2C_ACTIONWRITE                                0x00000002
 #define ADL_DL_I2C_ACTIONREAD_REPEATEDSTART    0x00000003
-// @}
+/// @}
 
 
-// @}        //Misc
+/// @}        //Misc
 
 /// \defgroup define_adl_results Result Codes
 /// This group of definitions are the various results returned by all ADL functions \n
-// @{
+/// @{
 /// All OK, but need to wait
 #define ADL_OK_WAIT                4
 /// All OK, but need restart
@@ -133,12 +133,12 @@
 /// There's no Linux XDisplay in Linux Console environment
 #define ADL_ERR_NO_XDISPLAY                    -21
 
-// @}
+/// @}
 /// </A>
 
 /// \defgroup define_display_type Display Type
 /// Define Monitor/CRT display type
-// @{
+/// @{
 /// Define Monitor display type
 #define ADL_DT_MONITOR                  0
 /// Define TV display type
@@ -151,10 +151,10 @@
 #define ADL_DT_COMPONENT_VIDEO               4
 /// Define Projector display type
 #define ADL_DT_PROJECTOR                       5
-// @}
+/// @}
 
 /// \defgroup define_display_connection_type Display Connection Type
-// @{
+/// @{
 /// Define unknown display output type
 #define ADL_DOT_UNKNOWN                0
 /// Define composite display output type
@@ -165,11 +165,11 @@
 #define ADL_DOT_ANALOG                3
 /// Define digital display output type
 #define ADL_DOT_DIGITAL                4
-// @}
+/// @}
 
 /// \defgroup define_color_type Display Color Type and Source
 /// Define  Display Color Type and Source
-// @{
+/// @{
 #define ADL_DISPLAY_COLOR_BRIGHTNESS    (1 << 0)
 #define ADL_DISPLAY_COLOR_CONTRAST    (1 << 1)
 #define ADL_DISPLAY_COLOR_SATURATION    (1 << 2)
@@ -180,11 +180,11 @@
 #define ADL_DISPLAY_COLOR_TEMPERATURE_SOURCE_EDID    (1 << 5)
 /// Color Temperature Source is User
 #define ADL_DISPLAY_COLOR_TEMPERATURE_SOURCE_USER    (1 << 6)
-// @}
+/// @}
 
 /// \defgroup define_adjustment_capabilities Display Adjustment Capabilities
 /// Display adjustment capabilities values.  Returned by ADL_Display_AdjustCaps_Get
-// @{
+/// @{
 #define ADL_DISPLAY_ADJUST_OVERSCAN        (1 << 0)
 #define ADL_DISPLAY_ADJUST_VERT_POS        (1 << 1)
 #define ADL_DISPLAY_ADJUST_HOR_POS        (1 << 2)
@@ -193,7 +193,7 @@
 #define ADL_DISPLAY_ADJUST_SIZEPOS        (ADL_DISPLAY_ADJUST_VERT_POS | ADL_DISPLAY_ADJUST_HOR_POS | ADL_DISPLAY_ADJUST_VERT_SIZE | ADL_DISPLAY_ADJUST_HOR_SIZE)
 #define ADL_DISPLAY_CUSTOMMODES            (1<<5)
 #define ADL_DISPLAY_ADJUST_UNDERSCAN        (1<<6)
-// @}
+/// @}
 
 ///Down-scale support
 #define ADL_DISPLAY_CAPS_DOWNSCALE        (1 << 0)
@@ -204,7 +204,7 @@
 /// \defgroup define_desktop_config Desktop Configuration Flags
 /// These flags are used by ADL_DesktopConfig_xxx
 /// \deprecated This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.
-// @{
+/// @{
 #define ADL_DESKTOPCONFIG_UNKNOWN    0          /* UNKNOWN desktop config   */
 #define ADL_DESKTOPCONFIG_SINGLE     (1 <<  0)    /* Single                   */
 #define ADL_DESKTOPCONFIG_CLONE      (1 <<  2)    /* Clone                    */
@@ -213,14 +213,14 @@
 #define ADL_DESKTOPCONFIG_BIGDESK_HR (1 <<  6)    /* Big Desktop Reverse Horz */
 #define ADL_DESKTOPCONFIG_BIGDESK_VR (1 <<  7)    /* Big Desktop Reverse Vert */
 #define ADL_DESKTOPCONFIG_RANDR12    (1 <<  8)    /* RandR 1.2 Multi-display */
-// @}
+/// @}
 
 /// needed for ADLDDCInfo structure
 #define ADL_MAX_DISPLAY_NAME                                256
 
 /// \defgroup define_edid_flags Values for ulDDCInfoFlag
 /// defines for ulDDCInfoFlag EDID flag
-// @{
+/// @{
 #define ADL_DISPLAYDDCINFOEX_FLAG_PROJECTORDEVICE       (1 << 0)
 #define ADL_DISPLAYDDCINFOEX_FLAG_EDIDEXTENSION         (1 << 1)
 #define ADL_DISPLAYDDCINFOEX_FLAG_DIGITALDEVICE         (1 << 2)
@@ -228,11 +228,11 @@
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORTS_AI           (1 << 4)
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORT_xvYCC601      (1 << 5)
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORT_xvYCC709      (1 << 6)
-// @}
+/// @}
 
 /// \defgroup define_displayinfo_connector Display Connector Type
 /// defines for ADLDisplayInfo.iDisplayConnector
-// @{
+/// @{
 #define ADL_DISPLAY_CONTYPE_UNKNOWN                 0
 #define ADL_DISPLAY_CONTYPE_VGA                     1
 #define ADL_DISPLAY_CONTYPE_DVI_D                   2
@@ -250,12 +250,13 @@
 #define ADL_DISPLAY_CONTYPE_DISPLAYPORT             15
 #define ADL_DISPLAY_CONTYPE_EDP                     16
 #define ADL_DISPLAY_CONTYPE_WIRELESSDISPLAY         17
-// @}
+#define ADL_DISPLAY_CONTYPE_USB_TYPE_C              18
+/// @}
 
 /// TV Capabilities and Standards
 /// \defgroup define_tv_caps TV Capabilities and Standards
 /// \deprecated Dropping support for TV displays
-// @{
+/// @{
 #define ADL_TV_STANDARDS            (1 << 0)
 #define ADL_TV_SCART                (1 << 1)
 
@@ -278,22 +279,22 @@
 #define ADL_STANDARD_PAL_SECAM_K    (1 << 15)
 #define ADL_STANDARD_PAL_SECAM_K1    (1 << 16)
 #define ADL_STANDARD_PAL_SECAM_L    (1 << 17)
-// @}
+/// @}
 
 
 /// \defgroup define_video_custom_mode Video Custom Mode flags
 /// Component Video Custom Mode flags.  This is used by the iFlags parameter in ADLCustomMode
-// @{
+/// @{
 #define ADL_CUSTOMIZEDMODEFLAG_MODESUPPORTED    (1 << 0)
 #define ADL_CUSTOMIZEDMODEFLAG_NOTDELETETABLE    (1 << 1)
 #define ADL_CUSTOMIZEDMODEFLAG_INSERTBYDRIVER    (1 << 2)
 #define ADL_CUSTOMIZEDMODEFLAG_INTERLACED    (1 << 3)
 #define ADL_CUSTOMIZEDMODEFLAG_BASEMODE        (1 << 4)
-// @}
+/// @}
 
 /// \defgroup define_ddcinfoflag Values used for DDCInfoFlag
 /// ulDDCInfoFlag field values used by the ADLDDCInfo structure
-// @{
+/// @{
 #define ADL_DISPLAYDDCINFOEX_FLAG_PROJECTORDEVICE    (1 << 0)
 #define ADL_DISPLAYDDCINFOEX_FLAG_EDIDEXTENSION        (1 << 1)
 #define ADL_DISPLAYDDCINFOEX_FLAG_DIGITALDEVICE        (1 << 2)
@@ -301,12 +302,12 @@
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORTS_AI        (1 << 4)
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORT_xvYCC601    (1 << 5)
 #define ADL_DISPLAYDDCINFOEX_FLAG_SUPPORT_xvYCC709    (1 << 6)
-// @}
+/// @}
 
 /// \defgroup define_cv_dongle Values used by ADL_CV_DongleSettings_xxx
 /// The following is applicable to ADL_DISPLAY_CONTYPE_ATICVDONGLE_JP and ADL_DISPLAY_CONTYPE_ATICVDONGLE_NONI2C_D only
 /// \deprecated Dropping support for Component Video displays
-// @{
+/// @{
 #define ADL_DISPLAY_CV_DONGLE_D1          (1 << 0)
 #define ADL_DISPLAY_CV_DONGLE_D2          (1 << 1)
 #define ADL_DISPLAY_CV_DONGLE_D3          (1 << 2)
@@ -330,11 +331,11 @@
 #define ADL_DISPLAY_CV_DONGLE_1080P25      (1 << 12)
 #define ADL_DISPLAY_CV_DONGLE_1080P30      (1 << 13)
 #define ADL_DISPLAY_CV_DONGLE_1080P50      (1 << 14)
-// @}
+/// @}
 
 /// \defgroup define_formats_ovr    Formats Override Settings
 /// Display force modes flags
-// @{
+/// @{
 ///
 #define ADL_DISPLAY_FORMAT_FORCE_720P        0x00000001
 #define ADL_DISPLAY_FORMAT_FORCE_1080I        0x00000002
@@ -357,24 +358,24 @@
 #define ADL_DISPLAY_FORMAT_SETASPECRATIO 0x00000010
 #define ADL_DISPLAY_FORMAT_FORCEMODES    0x00000020
 #define ADL_DISPLAY_FORMAT_LCDRTCCOEFF   0x00000040
-// @}
+/// @}
 
 /// Defines used by OD5
 #define ADL_PM_PARAM_DONT_CHANGE    0
 
 /// The following defines Bus types
-// @{
+/// @{
 #define ADL_BUSTYPE_PCI           0       /* PCI bus                          */
 #define ADL_BUSTYPE_AGP           1       /* AGP bus                          */
 #define ADL_BUSTYPE_PCIE          2       /* PCI Express bus                  */
 #define ADL_BUSTYPE_PCIE_GEN2     3       /* PCI Express 2nd generation bus   */
 #define ADL_BUSTYPE_PCIE_GEN3     4       /* PCI Express 3rd generation bus   */
 #define ADL_BUSTYPE_PCIE_GEN4     5       /* PCI Express 4th generation bus   */
-// @}
+/// @}
 
 /// \defgroup define_ws_caps    Workstation Capabilities
 /// Workstation values
-// @{
+/// @{
 
 /// This value indicates that the workstation card supports active stereo though stereo output connector
 #define ADL_STEREO_SUPPORTED        (1 << 2)
@@ -418,20 +419,20 @@
 
 
 
-// @}
+/// @}
 
 /// \defgroup define_adapterspeed speed setting from the adapter
-// @{
+/// @{
 #define ADL_CONTEXT_SPEED_UNFORCED        0        /* default asic running speed */
 #define ADL_CONTEXT_SPEED_FORCEHIGH        1        /* asic running speed is forced to high */
 #define ADL_CONTEXT_SPEED_FORCELOW        2        /* asic running speed is forced to low */
 
 #define ADL_ADAPTER_SPEEDCAPS_SUPPORTED        (1 << 0)    /* change asic running speed setting is supported */
-// @}
+/// @}
 
 /// \defgroup define_glsync Genlock related values
 /// GL-Sync port types (unique values)
-// @{
+/// @{
 /// Unknown port of GL-Sync module
 #define ADL_GLSYNC_PORT_UNKNOWN        0
 /// BNC port of of GL-Sync module
@@ -646,10 +647,10 @@
 #define ADL_MAX_GLSYNC_PORTS                            8
 #define ADL_MAX_GLSYNC_PORT_LEDS                        8
 
-// @}
+/// @}
 
 /// \defgroup define_crossfirestate CrossfireX state of a particular adapter CrossfireX combination
-// @{
+/// @{
 #define ADL_XFIREX_STATE_NOINTERCONNECT            ( 1 << 0 )    /* Dongle / cable is missing */
 #define ADL_XFIREX_STATE_DOWNGRADEPIPES            ( 1 << 1 )    /* CrossfireX can be enabled if pipes are downgraded */
 #define ADL_XFIREX_STATE_DOWNGRADEMEM            ( 1 << 2 )    /* CrossfireX cannot be enabled unless mem downgraded */
@@ -679,7 +680,7 @@
 #define ADL_XFIREX_STATE_DRV_HANDLE_DOWNGRADE_KEY    ( 1 << 29 )    /* Indicate base driver handles the downgrade key updating */
 #define ADL_XFIREX_STATE_CF_RECONFIG_REQUIRED        ( 1 << 30 )    /* CrossfireX need to be reconfigured by CCC because of a LDA chain broken */
 #define ADL_XFIREX_STATE_ERRORGETTINGSTATUS        ( 1 << 31 )    /* Could not obtain current status */
-// @}
+/// @}
 
 ///////////////////////////////////////////////////////////////////////////
 // ADL_DISPLAY_ADJUSTMENT_PIXELFORMAT adjustment values
@@ -688,7 +689,7 @@
 /// \defgroup define_pixel_formats Pixel Formats values
 /// This group defines the various Pixel Formats that a particular digital display can support. \n
 /// Since a display can support multiple formats, these values can be bit-or'ed to indicate the various formats \n
-// @{
+/// @{
 #define ADL_DISPLAY_PIXELFORMAT_UNKNOWN             0
 #define ADL_DISPLAY_PIXELFORMAT_RGB                       (1 << 0)
 #define ADL_DISPLAY_PIXELFORMAT_YCRCB444                  (1 << 1)    //Limited range
@@ -696,11 +697,11 @@
 #define ADL_DISPLAY_PIXELFORMAT_RGB_LIMITED_RANGE      (1 << 3)
 #define ADL_DISPLAY_PIXELFORMAT_RGB_FULL_RANGE    ADL_DISPLAY_PIXELFORMAT_RGB  //Full range
 #define ADL_DISPLAY_PIXELFORMAT_YCRCB420              (1 << 4)
-// @}
+/// @}
 
 /// \defgroup define_contype Connector Type Values
 /// ADLDisplayConfig.ulConnectorType defines
-// @{
+/// @{
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_UNKNOWN      0
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_CV_NONI2C_JP 1
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_CV_JPN       2
@@ -712,7 +713,7 @@
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_HDMI_TYPE_A  8
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_HDMI_TYPE_B  9
 #define ADL_DL_DISPLAYCONFIG_CONTYPE_DISPLAYPORT  10
-// @}
+/// @}
 
 ///////////////////////////////////////////////////////////////////////////
 // ADL_DISPLAY_DISPLAYINFO_ Definitions
@@ -720,7 +721,7 @@
 // (bit-vector)
 ///////////////////////////////////////////////////////////////////////////
 /// \defgroup define_displayinfomask Display Info Mask Values
-// @{
+/// @{
 #define ADL_DISPLAY_DISPLAYINFO_DISPLAYCONNECTED            0x00000001
 #define ADL_DISPLAY_DISPLAYINFO_DISPLAYMAPPED                0x00000002
 #define ADL_DISPLAY_DISPLAYINFO_NONLOCAL                    0x00000004
@@ -747,7 +748,7 @@
 /// Projector display type
 #define ADL_DISPLAY_DISPLAYINFO_SHOWTYPE_PROJECTOR                0x00100000
 
-// @}
+/// @}
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -756,7 +757,7 @@
 // (bit-vector)
 ///////////////////////////////////////////////////////////////////////////
 /// \defgroup define_adaptermanner Adapter Manner Support Values
-// @{
+/// @{
 #define ADL_ADAPTER_DISPLAYCAP_MANNER_SUPPORTED_NOTACTIVE        0x00000001
 #define ADL_ADAPTER_DISPLAYCAP_MANNER_SUPPORTED_SINGLE            0x00000002
 #define ADL_ADAPTER_DISPLAYCAP_MANNER_SUPPORTED_CLONE            0x00000004
@@ -786,7 +787,7 @@
 #define ADL_DISPLAY_DISPLAYMAP_MANNER_VSTRETCH            0x00000040
 #define ADL_DISPLAY_DISPLAYMAP_MANNER_VLD                0x00000080
 
-// @}
+/// @}
 
 ///////////////////////////////////////////////////////////////////////////
 // ADL_DISPLAY_DISPLAYMAP_OPTION_ Definitions
@@ -817,7 +818,7 @@
 // (bit-vector)
 ///////////////////////////////////////////////////////////////////////////
 /// \defgroup define_displaymode Display Mode Values
-// @{
+/// @{
 #define ADL_DISPLAY_MODE_COLOURFORMAT_565                0x00000001
 #define ADL_DISPLAY_MODE_COLOURFORMAT_8888                0x00000002
 #define ADL_DISPLAY_MODE_ORIENTATION_SUPPORTED_000        0x00000004
@@ -829,13 +830,13 @@
 
 #define ADL_DISPLAY_MODE_PROGRESSIVE_FLAG    0
 #define ADL_DISPLAY_MODE_INTERLACED_FLAG    2
-// @}
+/// @}
 
 ///////////////////////////////////////////////////////////////////////////
 // ADL_OSMODEINFO Definitions
 ///////////////////////////////////////////////////////////////////////////
 /// \defgroup define_osmode OS Mode Values
-// @{
+/// @{
 #define ADL_OSMODEINFOXPOS_DEFAULT                -640
 #define ADL_OSMODEINFOYPOS_DEFAULT                0
 #define ADL_OSMODEINFOXRES_DEFAULT                640
@@ -850,7 +851,7 @@
 #define ADL_OSMODEINFOORIENTATION_DEFAULT        0
 #define ADL_OSMODEINFOORIENTATION_DEFAULT_WIN7    DISPLAYCONFIG_ROTATION_FORCE_UINT32
 #define ADL_OSMODEFLAG_DEFAULT                    0
-// @}
+/// @}
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -859,14 +860,14 @@
 /// \defgroup thread_model
 /// Used with \ref ADL_Main_ControlX2_Create and \ref ADL2_Main_ControlX2_Create to specify how ADL handles API calls when executed by multiple threads concurrently.
 /// \brief Declares ADL threading behavior.
-// @{
+/// @{
 typedef enum ADLThreadingModel
 {
     ADL_THREADING_UNLOCKED    = 0, /*!< Default behavior. ADL will not enforce serialization of ADL API executions by multiple threads.  Multiple threads will be allowed to enter to ADL at the same time. Note that ADL library is not guaranteed to be thread-safe. Client that calls ADL_Main_Control_Create have to provide its own mechanism for ADL calls serialization. */
     ADL_THREADING_LOCKED     /*!< ADL will enforce serialization of ADL API when called by multiple threads.  Only single thread will be allowed to enter ADL API at the time. This option makes ADL calls thread-safe. You shouldn't use this option if ADL calls will be executed on Linux on x-server rendering thread. It can cause the application to hung.  */
 }ADLThreadingModel;
 
-// @}
+/// @}
 ///////////////////////////////////////////////////////////////////////////
 // ADLPurposeCode Enumeration
 ///////////////////////////////////////////////////////////////////////////
@@ -992,7 +993,7 @@ enum ADLGraphicCoreGeneration
 
 
 ///\defgroup define_dither_states Dithering options
-// @{
+/// @{
 /// Dithering disabled.
 #define ADL_DL_DISPLAY_DITHER_DISABLED              0
 /// Use default driver settings for dithering. Note that the default setting could be dithering disabled.
@@ -1042,7 +1043,7 @@ enum ADLGraphicCoreGeneration
 /// Spatial dithering to 8 bpc followed by temporal dithering to 6 bpc.
 #define ADL_DL_DISPLAY_DITHER_DITH8_FM6             23
 #define ADL_DL_DISPLAY_DITHER_LAST                  ADL_DL_DISPLAY_DITHER_DITH8_FM6
-// @}
+/// @}
 
 
 /// Display Get Cached EDID flag
@@ -1058,13 +1059,13 @@ enum ADLGraphicCoreGeneration
 #define ADL_DL_DISPLAY_DATA_PACKET__INFO_PACKET_SCAN       0x00000002
 
 ///\defgroup define_display_packet Display Data Packet Types
-// @{
+/// @{
 #define ADL_DL_DISPLAY_DATA_PACKET__TYPE__AVI              0x00000001
 #define ADL_DL_DISPLAY_DATA_PACKET__TYPE__GAMMUT           0x00000002
 #define ADL_DL_DISPLAY_DATA_PACKET__TYPE__VENDORINFO       0x00000004
 #define ADL_DL_DISPLAY_DATA_PACKET__TYPE__HDR              0x00000008
 #define ADL_DL_DISPLAY_DATA_PACKET__TYPE__SPD              0x00000010
-// @}
+/// @}
 
 // matrix types
 #define ADL_GAMUT_MATRIX_SD         1   // SD matrix i.e. BT601
@@ -1072,12 +1073,12 @@ enum ADLGraphicCoreGeneration
 
 ///\defgroup define_clockinfo_flags Clock flags
 /// Used by ADLAdapterODClockInfo.iFlag
-// @{
+/// @{
 #define ADL_DL_CLOCKINFO_FLAG_FULLSCREEN3DONLY         0x00000001
 #define ADL_DL_CLOCKINFO_FLAG_ALWAYSFULLSCREEN3D       0x00000002
 #define ADL_DL_CLOCKINFO_FLAG_VPURECOVERYREDUCED       0x00000004
 #define ADL_DL_CLOCKINFO_FLAG_THERMALPROTECTION        0x00000008
-// @}
+/// @}
 
 // Supported GPUs
 // ADL_Display_PowerXpressActiveGPU_Get()
@@ -1108,12 +1109,12 @@ enum ADLGraphicCoreGeneration
 
 ///\defgroup define_fanctrl Fan speed cotrol
 /// Values for ADLFanSpeedInfo.iFlags
-// @{
+/// @{
 #define ADL_DL_FANCTRL_SUPPORTS_PERCENT_READ     1
 #define ADL_DL_FANCTRL_SUPPORTS_PERCENT_WRITE    2
 #define ADL_DL_FANCTRL_SUPPORTS_RPM_READ         4
 #define ADL_DL_FANCTRL_SUPPORTS_RPM_WRITE        8
-// @}
+/// @}
 
 //values for ADLFanSpeedValue.iSpeedType
 #define ADL_DL_FANCTRL_SPEED_TYPE_PERCENT    1
@@ -1137,21 +1138,23 @@ enum ADLGraphicCoreGeneration
 // values for ASIC family
 ///\defgroup define_Asic_type Detailed asic types
 /// Defines for Adapter ASIC family type
-// @{
-#define ADL_ASIC_UNDEFINED    0
-#define ADL_ASIC_DISCRETE    (1 << 0)
-#define ADL_ASIC_INTEGRATED    (1 << 1)
-#define ADL_ASIC_FIREGL        (1 << 2)
-#define ADL_ASIC_FIREMV        (1 << 3)
-#define ADL_ASIC_XGP        (1 << 4)
-#define ADL_ASIC_FUSION        (1 << 5)
-#define ADL_ASIC_FIRESTREAM (1 << 6)
-#define ADL_ASIC_EMBEDDED   (1 << 7)
-// @}
+/// @{
+#define ADL_ASIC_UNDEFINED      0
+#define ADL_ASIC_DISCRETE       (1 << 0)
+#define ADL_ASIC_INTEGRATED     (1 << 1)
+#define ADL_ASIC_WORKSTATION    (1 << 2)
+#define ADL_ASIC_FIREMV         (1 << 3)
+#define ADL_ASIC_XGP            (1 << 4)
+#define ADL_ASIC_FUSION         (1 << 5)
+#define ADL_ASIC_FIRESTREAM     (1 << 6)
+#define ADL_ASIC_EMBEDDED       (1 << 7)
+// Backward compatibility
+#define ADL_ASIC_FIREGL  ADL_ASIC_WORKSTATION
+/// @}
 
 ///\defgroup define_detailed_timing_flags Detailed Timimg Flags
 /// Defines for ADLDetailedTiming.sTimingFlags field
-// @{
+/// @{
 #define ADL_DL_TIMINGFLAG_DOUBLE_SCAN              0x0001
 //sTimingFlags is set when the mode is INTERLACED, if not PROGRESSIVE
 #define ADL_DL_TIMINGFLAG_INTERLACED               0x0002
@@ -1159,18 +1162,18 @@ enum ADLGraphicCoreGeneration
 #define ADL_DL_TIMINGFLAG_H_SYNC_POLARITY          0x0004
 //sTimingFlags is set when the Vertical Sync is POSITIVE, if not NEGATIVE
 #define ADL_DL_TIMINGFLAG_V_SYNC_POLARITY          0x0008
-// @}
+/// @}
 
 ///\defgroup define_modetiming_standard Timing Standards
 /// Defines for ADLDisplayModeInfo.iTimingStandard field
-// @{
+/// @{
 #define ADL_DL_MODETIMING_STANDARD_CVT             0x00000001 // CVT Standard
 #define ADL_DL_MODETIMING_STANDARD_GTF             0x00000002 // GFT Standard
 #define ADL_DL_MODETIMING_STANDARD_DMT             0x00000004 // DMT Standard
 #define ADL_DL_MODETIMING_STANDARD_CUSTOM          0x00000008 // User-defined standard
 #define ADL_DL_MODETIMING_STANDARD_DRIVER_DEFAULT  0x00000010 // Remove Mode from overriden list
 #define ADL_DL_MODETIMING_STANDARD_CVT_RB           0x00000020 // CVT-RB Standard
-// @}
+/// @}
 
 // \defgroup define_xserverinfo driver x-server info
 /// These flags are used by ADL_XServerInfo_Get()
@@ -1187,7 +1190,7 @@ enum ADLGraphicCoreGeneration
 
 
 ///\defgroup define_eyefinity_constants Eyefinity Definitions
-// @{
+/// @{
 
 #define ADL_CONTROLLERVECTOR_0        1    // ADL_CONTROLLERINDEX_0 = 0, (1 << ADL_CONTROLLERINDEX_0)
 #define ADL_CONTROLLERVECTOR_1        2    // ADL_CONTROLLERINDEX_1 = 1, (1 << ADL_CONTROLLERINDEX_1)
@@ -1255,28 +1258,31 @@ enum ADLGraphicCoreGeneration
 #define ADL_DISPLAY_BEZELOFFSET_STEPBYSTEPSET            0x00000004
 #define ADL_DISPLAY_BEZELOFFSET_COMMIT                    0x00000008
 
-typedef enum _SLS_ImageCropType {
+typedef enum SLS_ImageCropType {
     Fit = 1,
     Fill = 2,
     Expand = 3
 }SLS_ImageCropType;
 
 
-typedef enum _DceSettingsType {
+typedef enum DceSettingsType {
     DceSetting_HdmiLq,
     DceSetting_DpSettings,
     DceSetting_Protection
 } DceSettingsType;
 
-typedef enum _DpLinkRate {
+typedef enum DpLinkRate {
     DPLinkRate_Unknown,
     DPLinkRate_RBR,
+	DPLinkRate_2_16Gbps,
+	DPLinkRate_2_43Gbps,
     DPLinkRate_HBR,
+	DPLinkRate_4_32Gbps,
     DPLinkRate_HBR2,
     DPLinkRate_HBR3
 } DpLinkRate;
 
-// @}
+/// @}
 
 ///\defgroup define_powerxpress_constants PowerXpress Definitions
 /// @{
@@ -1296,7 +1302,7 @@ typedef enum _DpLinkRate {
 #define ADL_PX_SCHEMEMASK_DYNAMIC                    0x0002
 
 /// PX Schemes
-typedef enum _ADLPXScheme
+typedef enum ADLPXScheme
 {
     ADL_PX_SCHEME_INVALID   = 0,
     ADL_PX_SCHEME_FIXED     = ADL_PX_SCHEMEMASK_FIXED,
@@ -1332,7 +1338,7 @@ enum ApplicationListType
     ADL_PX40_TOTAL
 };
 
-typedef enum _ADLProfilePropertyType
+typedef enum ADLProfilePropertyType
 {
     ADL_PROFILEPROPERTY_TYPE_BINARY        = 0,
     ADL_PROFILEPROPERTY_TYPE_BOOLEAN,
@@ -1342,6 +1348,15 @@ typedef enum _ADLProfilePropertyType
     ADL_PROFILEPROPERTY_TYPE_STRING
 }ADLProfilePropertyType;
 
+
+//Virtual display type returning virtual display type and for request for creating a dummy target ID (xInput or remote play)
+typedef enum ADL_VIRTUALDISPLAY_TYPE
+{
+	ADL_VIRTUALDISPLAY_NONE = 0,
+	ADL_VIRTUALDISPLAY_XINPUT = 1,			//Requested for xInput
+	ADL_VIRTUALDISPLAY_REMOTEPLAY = 2,		//Requested for emulated display during remote play
+	ADL_VIRTUALDISPLAY_GENERIC = 10			//Generic virtual display, af a type different than any of the above special ones
+}ADL_VIRTUALDISPLAY_TYPE;
 
 /// @}
 
@@ -1624,7 +1639,7 @@ enum ADLSampleRate
 
 /// \defgroup define_overdrive6_capabilities
 /// These defines the capabilities supported by Overdrive 6. It is used by \ref ADL_Overdrive6_Capabilities_Get
-// @{
+/// @{
 /// Indicate that core (engine) clock can be changed.
 #define ADL_OD6_CAPABILITY_SCLK_CUSTOMIZATION               0x00000001
 /// Indicate that memory clock can be changed.
@@ -1641,20 +1656,20 @@ enum ADLSampleRate
 #define ADL_OD6_CAPABILITY_THERMAL_LIMIT_UNLOCK             0x00000040
 ///Indicate that Fan speed needs to be displayed in RPM
 #define ADL_OD6_CAPABILITY_FANSPEED_IN_RPM                    0x00000080
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_supported_states
 /// These defines the power states supported by Overdrive 6. It is used by \ref ADL_Overdrive6_Capabilities_Get
-// @{
+/// @{
 /// Indicate that overdrive is supported in the performance state.  This is currently the only state supported.
 #define ADL_OD6_SUPPORTEDSTATE_PERFORMANCE                  0x00000001
 /// Do not use.  Reserved for future use.
 #define ADL_OD6_SUPPORTEDSTATE_POWER_SAVING                 0x00000002
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_getstateinfo
 /// These defines the power states to get information about. It is used by \ref ADL_Overdrive6_StateInfo_Get
-// @{
+/// @{
 /// Get default clocks for the performance state.
 #define ADL_OD6_GETSTATEINFO_DEFAULT_PERFORMANCE            0x00000001
 /// Do not use.  Reserved for future use.
@@ -1667,27 +1682,27 @@ enum ADLSampleRate
 #define ADL_OD6_GETSTATEINFO_CUSTOM_PERFORMANCE             0x00000004
 /// Do not use.  Reserved for future use.
 #define ADL_OD6_GETSTATEINFO_CUSTOM_POWER_SAVING            0x00000005
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_getstate and define_overdrive6_getmaxclockadjust
 /// These defines the power states to get information about. It is used by \ref ADL_Overdrive6_StateEx_Get and \ref ADL_Overdrive6_MaxClockAdjust_Get
-// @{
+/// @{
 /// Get default clocks for the performance state.  Only performance state is currently supported.
 #define ADL_OD6_STATE_PERFORMANCE            0x00000001
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_setstate
 /// These define which power state to set customized clocks on. It is used by \ref ADL_Overdrive6_State_Set
-// @{
+/// @{
 /// Set customized clocks for the performance state.
 #define ADL_OD6_SETSTATE_PERFORMANCE                        0x00000001
 /// Do not use.  Reserved for future use.
 #define ADL_OD6_SETSTATE_POWER_SAVING                       0x00000002
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_thermalcontroller_caps
 /// These defines the capabilities of the GPU thermal controller. It is used by \ref ADL_Overdrive6_ThermalController_Caps
-// @{
+/// @{
 /// GPU thermal controller is supported.
 #define ADL_OD6_TCCAPS_THERMAL_CONTROLLER                   0x00000001
 /// GPU fan speed control is supported.
@@ -1700,25 +1715,25 @@ enum ADLSampleRate
 #define ADL_OD6_TCCAPS_FANSPEED_RPM_READ                    0x00000400
 /// Fan speed can be set by specifying an RPM value.
 #define ADL_OD6_TCCAPS_FANSPEED_RPM_WRITE                   0x00000800
-// @}
+/// @}
 
 /// \defgroup define_overdrive6_fanspeed_type
 /// These defines the fan speed type being reported. It is used by \ref ADL_Overdrive6_FanSpeed_Get
-// @{
+/// @{
 /// Fan speed reported in percentage.
 #define ADL_OD6_FANSPEED_TYPE_PERCENT                       0x00000001
 /// Fan speed reported in RPM.
 #define ADL_OD6_FANSPEED_TYPE_RPM                           0x00000002
 /// Fan speed has been customized by the user, and fan is not running in automatic mode.
 #define ADL_OD6_FANSPEED_USER_DEFINED                       0x00000100
-// @}
+/// @}
 
 /// \defgroup define_overdrive_EventCounter_type
 /// These defines the EventCounter type being reported. It is used by \ref ADL2_OverdriveN_CountOfEvents_Get ,can be used on older OD version supported ASICs also.
-// @{
+/// @{
 #define ADL_ODN_EVENTCOUNTER_THERMAL        0
 #define ADL_ODN_EVENTCOUNTER_VPURECOVERY    1
-// @}
+/// @}
 
 ///////////////////////////////////////////////////////////////////////////
 // ADLODNControlType Enumeration
@@ -1815,11 +1830,14 @@ enum ADLOD8FeatureControl
 	ADL_OD8_AUTO_OC_MEMORY = 1 << 12,  //Auto overclock memory
 	ADL_OD8_FAN_CURVE = 1 << 13,   //Fan curve
 	ADL_OD8_WS_AUTO_FAN_ACOUSTIC_LIMIT = 1 << 14, //Workstation Manual Fan controller
-    ADL_OD8_POWER_GAUGE = 1 << 15 //Power Gauge
+    ADL_OD8_GFXCLK_QUADRATIC_CURVE = 1 << 15,
+    ADL_OD8_OPTIMIZED_GPU_POWER_MODE = 1 << 16,
+    ADL_OD8_ODVOLTAGE_LIMIT = 1 << 17,
+    ADL_OD8_POWER_GAUGE = 1 << 18 //Power Gauge
 };
 
 
-typedef enum _ADLOD8SettingId
+typedef enum ADLOD8SettingId
 {
 	OD8_GFXCLK_FMAX = 0,
 	OD8_GFXCLK_FMIN,
@@ -1851,15 +1869,23 @@ typedef enum _ADLOD8SettingId
 	OD8_FAN_CURVE_TEMPERATURE_5,
 	OD8_FAN_CURVE_SPEED_5,
 	OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT,
+    RESERVED_1,
+    RESERVED_2,
+    RESERVED_3,
+    RESERVED_4,
+    OD8_UCLK_FMIN,
+    OD8_FAN_ZERO_RPM_STOP_TEMPERATURE,
+    OD8_OPTIMZED_POWER_MODE,
+    OD8_OD_VOLTAGE,
     OD8_POWER_GAUGE, //Starting from this is new features with new capabilities and new interface for limits.
-	OD8_COUNT
+    OD8_COUNT
 } ADLOD8SettingId;
 
 
 //Define Performance Metrics Log max sensors number
 #define ADL_PMLOG_MAX_SENSORS  256
 
-typedef enum _ADLSensorType
+typedef enum ADLSensorType
 {
 	SENSOR_MAXTYPES = 0,
 	PMLOG_CLK_GFXCLK = 1,
@@ -1901,19 +1927,21 @@ typedef enum _ADLSensorType
         PMLOG_CLK_VCN1CLK2 = 37,
         PMLOG_SMART_POWERSHIFT_CPU = 38,
         PMLOG_SMART_POWERSHIFT_DGPU = 39,
+        PMLOG_BUS_SPEED = 40,
+        PMLOG_BUS_LANES = 41,
 	PMLOG_MAX_SENSORS_REAL
 } ADLSensorType;
 
 
 //Throttle Status
-typedef enum _ADL_THROTTLE_NOTIFICATION
+typedef enum ADL_THROTTLE_NOTIFICATION
 {
 	ADL_PMLOG_THROTTLE_POWER = 1 << 0,
 	ADL_PMLOG_THROTTLE_THERMAL = 1 << 1,
 	ADL_PMLOG_THROTTLE_CURRENT = 1 << 2,
 } ADL_THROTTLE_NOTIFICATION;
 
-typedef enum _ADL_PMLOG_SENSORS
+typedef enum ADL_PMLOG_SENSORS
 {
 	ADL_SENSOR_MAXTYPES = 0,
 	ADL_PMLOG_CLK_GFXCLK = 1,
@@ -1954,23 +1982,25 @@ typedef enum _ADL_PMLOG_SENSORS
     ADL_PMLOG_CLK_VCN1CLK1 = 36,
     ADL_PMLOG_CLK_VCN1CLK2 = 37,
     ADL_PMLOG_SMART_POWERSHIFT_CPU	= 38,
-    ADL_PMLOG_SMART_POWERSHIFT_DGPU = 39
+    ADL_PMLOG_SMART_POWERSHIFT_DGPU = 39,
+    ADL_PMLOG_BUS_SPEED = 40,
+    ADL_PMLOG_BUS_LANES = 41,
 } ADL_PMLOG_SENSORS;
 
 /// \defgroup define_ecc_mode_states
 /// These defines the ECC(Error Correction Code) state. It is used by \ref ADL_Workstation_ECC_Get,ADL_Workstation_ECC_Set
-// @{
+/// @{
 /// Error Correction is OFF.
 #define ECC_MODE_OFF 0
 /// Error Correction is ECCV2.
 #define ECC_MODE_ON 2
 /// Error Correction is HBM.
 #define ECC_MODE_HBM 3
-// @}
+/// @}
 
 /// \defgroup define_board_layout_flags
 /// These defines are the board layout flags state which indicates what are the valid properties of \ref ADLBoardLayoutInfo . It is used by \ref ADL_Adapter_BoardLayout_Get
-// @{
+/// @{
 /// Indicates the number of slots is valid.
 #define ADL_BLAYOUT_VALID_NUMBER_OF_SLOTS 0x1
 /// Indicates the slot sizes are valid. Size of the slot consists of the length and width.
@@ -1979,11 +2009,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_BLAYOUT_VALID_CONNECTOR_OFFSETS 0x4
 /// Indicates the connector lengths is valid.
 #define ADL_BLAYOUT_VALID_CONNECTOR_LENGTHS 0x8
-// @}
+/// @}
 
 /// \defgroup define_max_constants
 /// These defines are the maximum value constants.
-// @{
+/// @{
 /// Indicates the Maximum supported slots on board.
 #define ADL_ADAPTER_MAX_SLOTS 4
 /// Indicates the Maximum supported connectors on slot.
@@ -1998,11 +2028,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_MAX_ERROR_RECORDS_COUNT  256
 /// Indicates the maximum number of power states supported
 #define ADL_MAX_POWER_POLICY    6
-// @}
+/// @}
 
 /// \defgroup define_connection_types
 /// These defines are the connection types constants which indicates  what are the valid connection type of given connector. It is used by \ref ADL_Adapter_SupportedConnections_Get
-// @{
+/// @{
 /// Indicates the VGA connection type is valid.
 #define ADL_CONNECTION_TYPE_VGA 0
 /// Indicates the DVI_I connection type is valid.
@@ -2033,11 +2063,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_CONNECTION_TYPE_VIRTUAL    13
 /// Macros for generating bitmask from index.
 #define ADL_CONNECTION_BITMAST_FROM_INDEX(index) (1 << index)
-// @}
+/// @}
 
 /// \defgroup define_connection_properties
 /// These defines are the connection properties which indicates what are the valid properties of given connection type. It is used by \ref ADL_Adapter_SupportedConnections_Get
-// @{
+/// @{
 /// Indicates the property Bitrate is valid.
 #define ADL_CONNECTION_PROPERTY_BITRATE 0x1
 /// Indicates the property number of lanes is valid.
@@ -2048,11 +2078,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_CONNECTION_PROPERTY_OUTPUT_BANDWIDTH 0x8
 /// Indicates the property colordepth is valid.
 #define ADL_CONNECTION_PROPERTY_COLORDEPTH  0x10
-// @}
+/// @}
 
 /// \defgroup define_lanecount_constants
 /// These defines are the Lane count constants which will be used in DP & etc.
-// @{
+/// @{
 /// Indicates if lane count is unknown
 #define ADL_LANECOUNT_UNKNOWN 0
 /// Indicates if lane count is 1
@@ -2065,11 +2095,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_LANECOUNT_EIGHT 8
 /// Indicates default value of lane count
 #define ADL_LANECOUNT_DEF ADL_LANECOUNT_FOUR
-// @}
+/// @}
 
 /// \defgroup define_linkrate_constants
 /// These defines are the link rate constants which will be used in DP & etc.
-// @{
+/// @{
 /// Indicates if link rate is unknown
 #define ADL_LINK_BITRATE_UNKNOWN 0
 /// Indicates if link rate is 1.62Ghz
@@ -2083,18 +2113,18 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_LINK_BITRATE_8_1_GHZ 0x1E
 /// Indicates default value of link rate
 #define ADL_LINK_BITRATE_DEF ADL_LINK_BITRATE_2_7_GHZ
-// @}
+/// @}
 
 /// \defgroup define_colordepth_constants
 /// These defines are the color depth constants which will be used in DP & etc.
-// @{
+/// @{
 #define ADL_CONNPROP_S3D_ALTERNATE_TO_FRAME_PACK            0x00000001
-// @}
+/// @}
 
 
 /// \defgroup define_colordepth_constants
 /// These defines are the color depth constants which will be used in DP & etc.
-// @{
+/// @{
 /// Indicates if color depth is unknown
 #define ADL_COLORDEPTH_UNKNOWN 0
 /// Indicates if color depth is 666
@@ -2111,12 +2141,12 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_COLORDEPTH_161616 6
 /// Indicates default value of color depth
 #define ADL_COLOR_DEPTH_DEF ADL_COLORDEPTH_888
-// @}
+/// @}
 
 
 /// \defgroup define_emulation_status
 /// These defines are the status of emulation
-// @{
+/// @{
 /// Indicates if real device is connected.
 #define ADL_EMUL_STATUS_REAL_DEVICE_CONNECTED 0x1
 /// Indicates if emulated device is presented.
@@ -2125,11 +2155,11 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_EMUL_STATUS_EMULATED_DEVICE_USED  0x4
 /// In case when last active real/emulated device used (when persistence is enabled but no emulation enforced then persistence will use last connected/emulated device).
 #define ADL_EMUL_STATUS_LAST_ACTIVE_DEVICE_USED 0x8
-// @}
+/// @}
 
 /// \defgroup define_emulation_mode
 /// These defines are the modes of emulation
-// @{
+/// @{
 /// Indicates if no emulation is used
 #define ADL_EMUL_MODE_OFF 0
 /// Indicates if emulation is used when display connected
@@ -2138,31 +2168,31 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_EMUL_MODE_ON_DISCONNECTED 2
 /// Indicates if emulation is used always
 #define ADL_EMUL_MODE_ALWAYS 3
-// @}
+/// @}
 
 /// \defgroup define_emulation_query
 /// These defines are the modes of emulation
-// @{
+/// @{
 /// Indicates Data from real device
 #define ADL_QUERY_REAL_DATA 0
 /// Indicates Emulated data
 #define ADL_QUERY_EMULATED_DATA 1
 /// Indicates Data currently in use
 #define ADL_QUERY_CURRENT_DATA 2
-// @}
+/// @}
 
 /// \defgroup define_persistence_state
 /// These defines are the states of persistence
-// @{
+/// @{
 /// Indicates persistence is disabled
 #define ADL_EDID_PERSISTANCE_DISABLED 0
 /// Indicates persistence is enabled
 #define ADL_EDID_PERSISTANCE_ENABLED 1
-// @}
+/// @}
 
 /// \defgroup define_connector_types Connector Type
 /// defines for ADLConnectorInfo.iType
-// @{
+/// @{
 /// Indicates unknown Connector type
 #define ADL_CONNECTOR_TYPE_UNKNOWN                 0
 /// Indicates VGA Connector type
@@ -2191,26 +2221,28 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_CONNECTOR_TYPE_MINI_DISPLAYPORT        12
 /// Indicates Virtual Connector type
 #define ADL_CONNECTOR_TYPE_VIRTUAL                   13
-// @}
+/// Indicates USB type C Connector type
+#define ADL_CONNECTOR_TYPE_USB_TYPE_C              14
+/// @}
 
 /// \defgroup define_freesync_usecase
 /// These defines are to specify use cases in which FreeSync should be enabled
 /// They are a bit mask. To specify FreeSync for more than one use case, the input value
 /// should be set to include multiple bits set
-// @{
+/// @{
 /// Indicates FreeSync is enabled for Static Screen case
 #define ADL_FREESYNC_USECASE_STATIC                 0x1
 /// Indicates FreeSync is enabled for Video use case
 #define ADL_FREESYNC_USECASE_VIDEO                  0x2
 /// Indicates FreeSync is enabled for Gaming use case
 #define ADL_FREESYNC_USECASE_GAMING                 0x4
-// @}
+/// @}
 
 /// \defgroup define_freesync_caps
 /// These defines are used to retrieve FreeSync display capabilities.
 /// GPU support flag also indicates whether the display is
 /// connected to a GPU that actually supports FreeSync
-// @{
+/// @{
 #define ADL_FREESYNC_CAP_SUPPORTED                      (1 << 0)
 #define ADL_FREESYNC_CAP_GPUSUPPORTED                   (1 << 1)
 #define ADL_FREESYNC_CAP_DISPLAYSUPPORTED               (1 << 2)
@@ -2218,48 +2250,65 @@ typedef enum _ADL_PMLOG_SENSORS
 #define ADL_FREESYNC_CAP_NOCFXORCFXSUPPORTED            (1 << 4)
 #define ADL_FREESYNC_CAP_NOGENLOCKORGENLOCKSUPPORTED    (1 << 5)
 #define ADL_FREESYNC_CAP_BORDERLESSWINDOWSUPPORTED      (1 << 6)
-// @}
+/// @}
 
+/// \defgroup define_freesync_labelIndex
+/// These defines are used to retrieve which FreeSync label to use
+/// @{
+#define ADL_FREESYNC_LABEL_UNSUPPORTED            0
+#define ADL_FREESYNC_LABEL_FREESYNC               1
+#define ADL_FREESYNC_LABEL_ADAPTIVE_SYNC          2
+#define ADL_FREESYNC_LABEL_VRR                    3
+#define ADL_FREESYNC_LABEL_FREESYNC_PREMIUM       4
+#define ADL_FREESYNC_LABEL_FREESYNC_PREMIUM_PRO   5
+/// @}
+
+/// Freesync Power optimization masks
+/// @{
+#define ADL_FREESYNC_POWEROPTIMIZATION_SUPPORTED_MASK		(1 << 0)
+#define ADL_FREESYNC_POWEROPTIMIZATION_ENABLED_MASK			(1 << 1)
+#define ADL_FREESYNC_POWEROPTIMIZATION_DEFAULT_VALUE_MASK	(1 << 2)
+/// @}
 
 /// \defgroup define_MST_CommandLine_execute
-// @{
+/// @{
 /// Indicates the MST command line for branch message if the bit is set. Otherwise, it is display message
 #define ADL_MST_COMMANDLINE_PATH_MSG                 0x1
 /// Indicates the MST command line to send message in broadcast way it the bit is set
 #define ADL_MST_COMMANDLINE_BROADCAST                  0x2
 
-// @}
+/// @}
 
 
 /// \defgroup define_Adapter_CloneTypes_Get
-// @{
+/// @{
 /// Indicates there is crossGPU clone with non-AMD dispalys
 #define ADL_CROSSGPUDISPLAYCLONE_AMD_WITH_NONAMD                 0x1
 /// Indicates there is crossGPU clone
 #define ADL_CROSSGPUDISPLAYCLONE                  0x2
 
-// @}
+/// @}
 
 /// \defgroup define_D3DKMT_HANDLE
-// @{
+/// @{
 /// Handle can be used to create Device Handle when using CreateDevice()
 typedef unsigned int ADL_D3DKMT_HANDLE;
-// @}
+/// @}
 
 
 // End Bracket for Constants and Definitions. Add new groups ABOVE this line!
 
-// @}
+/// @}
 
 
-typedef enum _ADL_RAS_ERROR_INJECTION_MODE
+typedef enum ADL_RAS_ERROR_INJECTION_MODE
 {
 	ADL_RAS_ERROR_INJECTION_MODE_SINGLE = 1,
 	ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE = 2
 }ADL_RAS_ERROR_INJECTION_MODE;
 
 
-typedef enum _ADL_RAS_BLOCK_ID
+typedef enum ADL_RAS_BLOCK_ID
 {
 	ADL_RAS_BLOCK_ID_UMC = 0,
 	ADL_RAS_BLOCK_ID_SDMA,
@@ -2277,7 +2326,7 @@ typedef enum _ADL_RAS_BLOCK_ID
 	ADL_RAS_BLOCK_ID_FUSE
 }ADL_RAS_BLOCK_ID;
 
-typedef enum _ADL_MEM_SUB_BLOCK_ID
+typedef enum ADL_MEM_SUB_BLOCK_ID
 {
 	ADL_RAS__UMC_HBM = 0,
 	ADL_RAS__UMC_SRAM = 1
@@ -2303,7 +2352,7 @@ typedef enum  _ADL_RAS_ERROR_TYPE
 	ADL_RAS_ERROR__PARITY_SINGLE_CORRECTABLE_MULTI_UNCORRECTABLE_POISON = 15
 }ADL_RAS_ERROR_TYPE;
 
-typedef enum _ADL_RAS_INJECTION_METHOD
+typedef enum ADL_RAS_INJECTION_METHOD
 {
 	ADL_RAS_ERROR__UMC_METH_COHERENT = 0,
 	ADL_RAS_ERROR__UMC_METH_SINGLE_SHOT = 1,
@@ -2312,7 +2361,7 @@ typedef enum _ADL_RAS_INJECTION_METHOD
 }ADL_RAS_INJECTION_METHOD;
 
 // Driver event types
-typedef enum _ADL_DRIVER_EVENT_TYPE
+typedef enum ADL_DRIVER_EVENT_TYPE
 {
 	ADL_EVENT_ID_AUTO_FEATURE_COMPLETED = 30,
 	ADL_EVENT_ID_FEATURE_AVAILABILITY = 31,
@@ -2321,7 +2370,7 @@ typedef enum _ADL_DRIVER_EVENT_TYPE
 
 
 //UIFeature Ids
-typedef enum _ADL_UIFEATURES_GROUP
+typedef enum ADL_UIFEATURES_GROUP
 {
 	ADL_UIFEATURES_GROUP_DVR = 0,
 	ADL_UIFEATURES_GROUP_TURBOSYNC = 1,
@@ -2335,8 +2384,99 @@ typedef enum _ADL_UIFEATURES_GROUP
 	ADL_UIFEATURES_GROUP_BOOST = 9,
 	ADL_UIFEATURES_GROUP_USU = 10,
 	ADL_UIFEATURES_GROUP_XGMI = 11
-}ADL_UIFEATURES_GROUP;
+} ADL_UIFEATURES_GROUP;
 
+
+
+/// Maximum brightness supported by Radeon LED interface
+#define ADL_RADEON_LED_MAX_BRIGHTNESS		2
+
+/// Maximum speed supported by Radeon LED interface
+#define ADL_RADEON_LED_MAX_SPEED	        4
+
+/// Maximum RGB supported by Radeon LED interface
+#define ADL_RADEON_LED_MAX_RGB	            255
+
+/// Maximum MORSE code supported string
+#define ADL_RADEON_LED_MAX_MORSE_CODE       260
+
+/// Maximum LED ROW ON GRID
+#define ADL_RADEON_LED_MAX_LED_ROW_ON_GRID      7
+
+/// Maximum LED COLUMN ON GRID
+#define ADL_RADEON_LED_MAX_LED_COLUMN_ON_GRID   24
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief 
+///
+/// 
+/// 
+/// 
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef enum ADL_RADEON_USB_LED_BAR_CONTROLS
+{
+   RadeonLEDBarControl_OFF = 0,
+   RadeonLEDBarControl_Static,
+   RadeonLEDBarControl_Rainbow,
+   RadeonLEDBarControl_Swirl,
+   RadeonLEDBarControl_Chase,
+   RadeonLEDBarControl_Bounce,
+   RadeonLEDBarControl_MorseCode,
+   RadeonLEDBarControl_ColorCycle,
+   RadeonLEDBarControl_Breathing,
+   RadeonLEDBarControl_CustomPattern,
+   RadeonLEDBarControl_MAX
+}ADL_RADEON_USB_LED_BAR_CONTROLS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief 
+///
+/// 
+/// 
+/// 
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef unsigned int RadeonLEDBARSupportedControl;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief 
+///
+/// 
+/// 
+/// 
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef enum ADL_RADEON_USB_LED_CONTROL_CONFIGS
+{
+   RadeonLEDPattern_Speed = 0,
+   RadeonLEDPattern_Brightness,
+   RadeonLEDPattern_Direction,
+   RadeonLEDPattern_Color,
+   RadeonLEDPattern_MAX
+}ADL_RADEON_USB_LED_CONTROL_CONFIGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief 
+///
+/// 
+/// 
+/// 
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef unsigned int RadeonLEDBARSupportedConfig;
+
+//User blob feature settings
+typedef enum ADL_USER_SETTINGS
+{
+    ADL_USER_SETTINGS_ENHANCEDSYNC = 1 << 0,          //notify Enhanced Sync settings change
+    ADL_USER_SETTINGS_CHILL_PROFILE = 1 << 1,          //notify Chill settings change
+    ADL_USER_SETTINGS_DELAG_PROFILE = 1 << 2,          //notify Delag settings change
+    ADL_USER_SETTINGS_BOOST_PROFILE = 1 << 3,			//notify Boost settings change
+    ADL_USER_SETTINGS_USU_PROFILE = 1 << 4			//notify USU settings change
+
+} ADL_USER_SETTINGS;
 #endif /* ADL_DEFINES_H_ */
 
 

@@ -298,7 +298,8 @@ int PrintAllSupportedSensors()
 				j++;
 			}
 
-
+			j = 0;
+			
 		}
 
 	}

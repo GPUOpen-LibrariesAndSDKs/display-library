@@ -15,5 +15,6 @@ public:
 
     //Method to write VSR states
     bool SetVirtualResolutionState(const ADLDisplayID& displayID_, bool OnOff);
+	bool SetIntegerScalingState(const ADLDisplayID& displayID_, bool OnOff);
 };
 
