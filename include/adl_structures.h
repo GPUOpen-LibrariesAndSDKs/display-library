@@ -161,6 +161,51 @@ typedef struct ADLMemoryInfo2
 } ADLMemoryInfo2, *LPADLMemoryInfo2;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing additional information about the ASIC memory
+///
+/// This structure is used to store additional information about the ASIC memory.  This
+/// information can be returned to the user.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLMemoryInfo3
+{
+    /// Memory size in bytes.
+    long long iMemorySize;
+    /// Memory type in string.
+    char strMemoryType[ADL_MAX_PATH];
+    /// Highest default performance level Memory bandwidth in Mbytes/s
+    long long iMemoryBandwidth;
+    /// HyperMemory size in bytes.
+    long long iHyperMemorySize;
+
+    /// Invisible Memory size in bytes.
+    long long iInvisibleMemorySize;
+    /// Visible Memory size in bytes.
+    long long iVisibleMemorySize;
+    /// Vram vendor ID
+    long long iVramVendorRevId;
+} ADLMemoryInfo3, *LPADLMemoryInfo3;
+
+///////////////////////////////////////////////////////////////////////////
+// ADLvRamVendor Enumeration
+///////////////////////////////////////////////////////////////////////////
+enum ADLvRamVendors
+{
+    ADLvRamVendor_Unsupported = 0x0,
+    ADLvRamVendor_SAMSUNG,
+    ADLvRamVendor_INFINEON,
+    ADLvRamVendor_ELPIDA,
+    ADLvRamVendor_ETRON,
+    ADLvRamVendor_NANYA,
+    ADLvRamVendor_HYNIX,
+    ADLvRamVendor_MOSEL,
+    ADLvRamVendor_WINBOND,
+    ADLvRamVendor_ESMT,
+    ADLvRamVendor_MICRON = 0xF,
+    ADLvRamVendor_Undefined
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about components of ASIC GCN architecture
 ///
 ///  Elements of GCN info are compute units, number of Tex (Texture filtering units)  , number of ROPs (render back-ends).

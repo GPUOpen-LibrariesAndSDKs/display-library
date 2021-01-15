@@ -14,7 +14,6 @@
 
 //ADL_INCLUDE_DIR environment variable has to be set to location of ADL SDK header files in order to successfuly include adl headers.
 #include "..\..\..\include\adl_sdk.h"
-#include "..\..\..\include\customer\oem_structures.h"
 
 #include <map>
 //Declaring ADL Methods. 

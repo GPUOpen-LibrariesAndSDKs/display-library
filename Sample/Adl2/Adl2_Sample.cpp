@@ -19,7 +19,6 @@
 
 #if defined (LINUX)
 #include "../../include/adl_sdk.h"
-#include "../../include/customer/oem_structures.h"
 #include <dlfcn.h>	//dyopen, dlsym, dlclose
 #include <stdlib.h>	
 #include <string.h>	//memeset

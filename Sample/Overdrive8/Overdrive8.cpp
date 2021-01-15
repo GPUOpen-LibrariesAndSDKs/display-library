@@ -3,7 +3,7 @@
 #include <vector>
 
 ///
-///  Copyright (c) 2018 - 2020 Advanced Micro Devices, Inc.
+///  Copyright (c) 2018 - 2021 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -14,7 +14,6 @@
 #include <windows.h>
 #include "..\..\include\adl_sdk.h"
 #include "..\..\include\adl_structures.h"
-#include "..\..\include\customer\oem_structures.h"
 #include <stdio.h>
 
 // #define PRINTF

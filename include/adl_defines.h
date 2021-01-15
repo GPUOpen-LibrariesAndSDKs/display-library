@@ -2477,6 +2477,8 @@ typedef enum ADL_USER_SETTINGS
     ADL_USER_SETTINGS_USU_PROFILE = 1 << 4			//notify USU settings change
 
 } ADL_USER_SETTINGS;
+
+#define ADL_REG_DEVICE_FUNCTION_1            0x00000001
 #endif /* ADL_DEFINES_H_ */
 
 
