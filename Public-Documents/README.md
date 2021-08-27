@@ -9,7 +9,6 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ### ADL 16.0 - Release Notes
 *  Added samples:
-	* <a href="SmartDC-example.html">SmartDC</a>: Added sample to illustrate how to control SmartDC from ADL.
 	* <a href="SideBySide-example.html">SideBySide</a>: Added sample to illustrate how to use Side by Side from ADL.
 
 ---
