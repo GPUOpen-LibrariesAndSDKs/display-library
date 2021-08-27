@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -201,7 +201,7 @@ Functions</h2></td></tr>
 <p>This function retrieves information for passed adapter or -1 for all GPUs. <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter(one of GPU adapter index) or -1 if all GPUs are desired. For A+I system, please pass -1 only. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpHasAMDAndNonAMDDIsplays</td><td>pointer to an integer. It is 1 if there is any AMd and non-AMD displays cloned in the GPU or the system </td></tr>
   </table>
@@ -211,7 +211,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves special clone types information for passed adapter or -1 for all GPUs. Currently, cross-GPU-clone and corss-GPU-clone-AMDWithNonAMD <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter(one of GPU adapter index) or -1 if all GPUs are desired. For A+I system, please pass -1 only. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpCloneTypes</td><td>pointer to an integer. It is bit vector. If the first bit is 1, the clone is cross-GPU-clone. It is may AMD with AMD or AMD with non-AMD. If The second bit is 1, the clone is cross-GPU-clone, but with non-AMD displays. It is available in WIN10 and WIN 8.1 PX A+I system </td></tr>
   </table>
@@ -301,7 +301,7 @@ if the iAdapertIndex is -1 and if there is one of cross-GPU clones found in the 
 <p>This function disables the cross-GPU clone for passed adapter(GPU) or -1 for all GPUs. <br  />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter(one of GPU adapter index) or -1 if all GPUs are desired. For A+I system, please pass -1 only. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iOptions</td><td>is an integer, which decides the displays from other GPUs will be disabled or changed to extended mode. Currently, the API only supports the "disabled". This filed is just for extension for future useage. </td></tr>
   </table>
@@ -355,7 +355,7 @@ if the iAdapertIndex is -1 and if there is one of cross-GPU clones found in the 
 <p>This function retrieves the adapter display manner capabilities (e.g., single, clone, extended desktop, and stretch mode). </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. A value of -1 returns all adapter manner information for the system across all GPUs. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumDisplayCaps</td><td>The Number of display manner capabilities. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lppAdapterDisplayCaps</td><td>The lists of display manner capabilities across all GPUs. Refer to the <a class="el" href="structADLAdapterDisplayCap.html" title="Structure containing information about the adapter display manner.">ADLAdapterDisplayCap</a> structure for more information. </td></tr>
@@ -365,7 +365,7 @@ if the iAdapertIndex is -1 and if there is one of cross-GPU clones found in the 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -411,7 +411,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves the activatable sources list for a specified input adapter. <b>ActivatableSources</b> is the number of displays that can be turned on simultaneously for the same GPU. For example, for AMD Radeon HD 4xxx Series and earlier this number is 2 while for ATI Radeon HD 5xxx Series the number could be 6 or 4. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumSources</td><td>The pointer to the number of sources that can be activated. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lppSources</td><td>The pointer to the pointer to the retrieved activatable sources buffer. Refer to the <a class="el" href="structADLActivatableSource.html" title="Structure containing information about the activatable source.">ADLActivatableSource</a> structure for more information. </td></tr>
@@ -421,7 +421,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -485,7 +485,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves the current display map configurations, including the controllers and adapters mapped to each display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. A value of -1 returns all display configurations for the system across multiple GPUs. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumDisplayMap</td><td>The pointer to the number of retrieved display maps. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lppDisplayMap</td><td>The pointer to the pointer to the display manner information. Refer to the <a class="el" href="structADLDisplayMap.html" title="Structure containing information about display mapping.">ADLDisplayMap</a> structure for more information. </td></tr>
@@ -498,7 +498,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -580,7 +580,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function allows the user to input a potential displays map and its targets. The function can also be used to obtain a list of display targets that can be added to this given topology and a list of display targets that can be removed from this given topology. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. This function does not support the -1 value to test topologies across multiple GPUs. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumDisplayMap</td><td>The number of display maps in this configuration. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">lpDisplayMap</td><td>The pointer to the display map information. Refer to the <a class="el" href="structADLDisplayMap.html">ADLDisplayMap</a> structure for more information. </td></tr>
@@ -596,7 +596,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -654,7 +654,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function sets the current display configurations for each display, including the controller and adapter mapped to each display. Possible display configurations are single, clone, extended desktop, and stretch mode. If clone mode is desired and the current display configuration is extended desktop mode, the function disables extended desktop mode in order to enable clone mode. If extended display mode is desired and the current display configuration is single mode, this function enables extended desktop. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. A value of -1 sets the displays in the system across multiple GPUs. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumDisplayMap</td><td>The number of display maps to be set. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">lpDisplayMap</td><td>The pointer to the retrieved display map information. Refer to the <a class="el" href="structADLDisplayMap.html" title="Structure containing information about display mapping.">ADLDisplayMap</a> structure for more information. </td></tr>
@@ -668,7 +668,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dd>
 Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -726,7 +726,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function validate the list of the display configurations for a specified input adapter. This function is applicable to all OS platforms. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumPossibleMap</td><td>The number of possible maps to be validated. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">lpPossibleMaps</td><td>The list of possible maps to be validated. Refer to the <a class="el" href="structADLPossibleMap.html" title="Structure containing information about the display device possible map for one GPU.">ADLPossibleMap</a> structure for more information. </td></tr>
@@ -738,7 +738,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -784,7 +784,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function determines whether or not a display (i.e. CV) is set to be forcibly connected. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpStatus</td><td>The forcible connected status of the display. <a class="el" href="group__define__misc.html#ga4075eb5b8e4e10b540b3c849899f9bc4">ADL_TRUE</a> : forced connected; <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">ADL_FALSE</a> : otherwise. </td></tr>
@@ -794,7 +794,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>A display can be <b>forcibly</b> <b>connected</b> without being actually connected or not recognized as connected. For example, some old 50 ohm TVs are not detected properly and need to be forcibly connected in order to be turned on. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -840,7 +840,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function sets a display (i.e. TV) to be either forcibly connected or not forcibly connected. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iStatus</td><td>The desired connection status. <a class="el" href="group__define__misc.html#ga4075eb5b8e4e10b540b3c849899f9bc4">ADL_TRUE</a> : forced connected; <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">ADL_FALSE</a> : otherwise. </td></tr>
@@ -852,7 +852,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dd>
 Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -904,7 +904,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves the current display mode information. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. A value of -1 retrieves all modes for the system across multiple GPUs. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. If the index is -1, this field is ignored. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumModes</td><td>The pointer to the number of modes retrieved. </td></tr>
@@ -917,7 +917,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dd>
 On Linux platform iXPos,iYPos,iColourDepth,iOrientation &amp; iModeFlag are not supported. iXPos and iYPos can be retrieved from xrandr. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -969,7 +969,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function sets the current display mode information. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. A value of -1 sets the modes across multiple GPUs. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. If the index is -1, this field is ignored. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumModes</td><td>The number of modes to be set. </td></tr>
@@ -980,7 +980,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -1044,7 +1044,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves possible display mappings for an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumberOfPresetMapping</td><td>The current number of preset mappings from the lpPresetMappings array. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">lpPresetMappings</td><td>The pointer to the buffer storing the current preset mappings. Refer to the <a class="el" href="structADLPossibleMapping.html" title="Structure containing information about display possible mapping.">ADLPossibleMapping</a> structure for more information. </td></tr>
@@ -1057,7 +1057,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -1103,7 +1103,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function retrieves the OS possible modes list for a specified input adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumModes</td><td>The pointer to the number of display modes from the lppModes array. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lppModes</td><td>The pointer to the pointer to the retrieved possible display modes buffer. Refer to the <a class="el" href="structADLMode.html" title="Structure containing information about display mode.">ADLMode</a> structure for more information. </td></tr>
@@ -1113,7 +1113,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
-Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -1147,14 +1147,14 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 <p>This function sets the above registry key to 1. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>\Win7 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>

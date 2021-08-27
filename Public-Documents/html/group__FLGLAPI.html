@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -180,7 +180,7 @@ Functions</h2></td></tr>
 <p>This function determines whether a specified display can be used for Framelock/Genlock. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index, which can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpCanGenlock</td><td>The pointer to the retrieved Genlock capabilities. 1: the display is Genlock-capable; 0: the display is not Genlock-capable. </td></tr>
@@ -189,7 +189,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -235,7 +235,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function implements the DI call to retrieve the GL-Sync mode for a specified display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpGlSyncMode</td><td>The pointer to the <a class="el" href="structADLGlSyncMode.html" title="Structure containing GL-Sync mode of a display.">ADLGlSyncMode</a> structure storing the GL-Sync mode of the specified display. </td></tr>
@@ -244,7 +244,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -290,7 +290,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function implements the DI call to set the GL-Sync mode for a specified display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">glSyncMode</td><td>The <a class="el" href="structADLGlSyncMode.html" title="Structure containing GL-Sync mode of a display.">ADLGlSyncMode</a> structure describing the GL-Sync mode to set for the specified display. </td></tr>
@@ -299,7 +299,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. <a class="el" href="group__define__adl__results.html#ga92322ebddf17967a90c279e615602d1c">ADL_OK_MODE_CHANGE</a> if success but need mode change,<br  />
 If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned. If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define_
 <p>This function retrieves the Genlock configuration settings of a specific GPU connector on a GL-Sync module attached to a specified adapter on a GL-Sync connector. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlValidMask</td><td>The mask indicating the Genlock settings to be retrieved (bit field of ADL_GLSYNC_CONFIGMASK_*). <a class="el" href="group__define__glsync.html">Genlock related values</a> </td></tr>
@@ -361,7 +361,7 @@ If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define_
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -407,7 +407,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function sets the Genlock configuration settings of a specific GPU connector on a GL-Sync module attached to a specified adapter on a GL-Sync connector. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">glSyncGenlockConfig</td><td>The Genlock settings to be set in <a class="el" href="structADLGLSyncGenlockConfig.html" title="Structure containing GL-Sync Genlock settings.">ADLGLSyncGenlockConfig</a> structure </td></tr>
@@ -416,7 +416,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -462,7 +462,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function detects the GL-Sync module attached to a specified adapter and GL-Sync connector. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpGlSyncModuleID</td><td>The pointer to the retrieved GL-Sync module information. If no GL-Sync module is attached, lpGlSyncModuleID-&gt;ulModuleID is set to 0. </td></tr>
@@ -471,7 +471,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -542,7 +542,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 This API uses the Caller's Memory Allocation Callback Function to allocate memory pointed by ppGlSyncPorts. Caller is responsible to de-alocate the memory. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumGLSyncGPUPorts</td><td>The pointer to the number of GPU ports on the specified GL-Sync module. </td></tr>
@@ -556,7 +556,7 @@ The user passes a memory allocation callback to allocate memory for this and to 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -620,7 +620,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function implements the DI call to retrieve the information about a GL-Sync port of a specified GL-Sync module and adapter. This API uses the Caller's Memory Allocation Callback Function to allocate memory pointed by ppGlSyncLEDs. Caller is responsible to de-alocate the memory. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncPortType</td><td>The desired GL-Sync port (ADL_GLSYNC_PORT_*). <a class="el" href="group__define__glsync.html">Genlock related values</a> </td></tr>
@@ -633,7 +633,7 @@ The user must pass a memory allocation callback to allocate memory for this and 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -679,7 +679,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function implements the DI call to enable or disable an output signal on the RJ-45 ports of a specified GL-Sync module and adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iGlSyncConnector</td><td>The index of the desired GL-Sync connector. The index can range from 0 to NumOfGLSyncConnectors - 1. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">glSyncPortControl</td><td>The <a class="el" href="structADLGlSyncPortControl.html" title="Structure containing GL-Sync port control settings.">ADLGlSyncPortControl</a> structure to be set. </td></tr>
@@ -688,7 +688,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned. If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned.<br  />
 If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>
@@ -746,7 +746,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 <p>This function implements the DI call to set the GL-Sync mode for a specified display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iNumSyncModes</td><td></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">glSyncModes</td><td></td></tr>
@@ -757,7 +757,7 @@ If the function is not supported, <a class="el" href="group__define__adl__result
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function is successful, <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> is returned.<br  />
 If iAdapterIndex is an invalid adapter index, <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">ADL_ERR_INVALID_ADL_IDX</a> is returned. If the function is not supported, <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a> is returned. For all other errors, <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a> is returned. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>

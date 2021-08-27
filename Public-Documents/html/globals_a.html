@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -995,6 +995,9 @@ $(function() {
 <li>ADL2_DisplayEnable_Set()
 : <a class="el" href="group__LINUX.html#gaa8b2205454c061cfa1fb43be4cf2358b">lnx.h</a>
 </li>
+<li>ADL2_Driver_Path_Get()
+: <a class="el" href="group__GRAPHICSAPI.html#ga5fc5b15c6359f52a320432ca73d2311d">graphics.h</a>
+</li>
 <li>ADL2_ElmCompatibilityMode_Caps()
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#ga5454e0daf50a811589437272748d5da2">adapter.h</a>
 </li>
@@ -1052,26 +1055,35 @@ $(function() {
 <li>ADL2_Graphics_VersionsX2_Get()
 : <a class="el" href="group__GRAPHICSAPI.html#gacf582d211c57f32b68e642397f8d4620">graphics.h</a>
 </li>
+<li>ADL2_Graphics_VersionsX3_Get()
+: <a class="el" href="group__GRAPHICSAPI.html#ga91dc09a0fce46985c0c8a2ab7a53be96">graphics.h</a>
+</li>
 <li>ADL2_Graphics_VulkanVersion_Get()
 : <a class="el" href="group__GRAPHICSAPI.html#gaac0455e37180854c04ff5e19ac654509">graphics.h</a>
 </li>
 <li>ADL2_Graphics_VulkanVersionX2_Get()
 : <a class="el" href="group__GRAPHICSAPI.html#ga18d0a7973fe97b49eb0dc1389889a43b">graphics.h</a>
 </li>
+<li>ADL2_Graphics_VulkanVersionX3_Get()
+: <a class="el" href="group__GRAPHICSAPI.html#ga9824d4877a501abcf8b990553258571c">graphics.h</a>
+</li>
 <li>ADL2_Main_Control_Create()
-: <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">adl.h</a>
+: <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">adl.h</a>
 </li>
 <li>ADL2_Main_Control_Destroy()
-: <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">adl.h</a>
+: <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">adl.h</a>
 </li>
 <li>ADL2_Main_Control_GetProcAddress()
-: <a class="el" href="group__MAINAPI.html#gae8d35e7c941345fb93ebbb2a37e72777">adl.h</a>
+: <a class="el" href="adl_8h.html#ae8d35e7c941345fb93ebbb2a37e72777">adl.h</a>
 </li>
 <li>ADL2_Main_Control_Refresh()
-: <a class="el" href="group__MAINAPI.html#ga31e94a3427b8b29d80d2142ec7396914">adl.h</a>
+: <a class="el" href="adl_8h.html#a31e94a3427b8b29d80d2142ec7396914">adl.h</a>
 </li>
 <li>ADL2_Main_ControlX2_Create()
-: <a class="el" href="group__MAINAPI.html#ga7385661046f1a9b78f4867077f5bffb2">adl.h</a>
+: <a class="el" href="adl_8h.html#a7385661046f1a9b78f4867077f5bffb2">adl.h</a>
+</li>
+<li>ADL2_Main_ControlX3_Create()
+: <a class="el" href="adl_8h.html#ad18bf49fc3c520d1578b4681a0c49f38">adl.h</a>
 </li>
 <li>ADL2_MGPUSLS_Status_Set()
 : <a class="el" href="group__EYEFINITYAPI.html#ga378dac0d85bb70bdcac4cb76f8a5e3d3">displaysmanager.h</a>
@@ -1374,10 +1386,10 @@ $(function() {
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#ga9c7ad7a1eff1d62d16eb45a7361234ef">adapter.h</a>
 </li>
 <li>ADL2_PerGPU_GDEvent_Register()
-: <a class="el" href="group__MAINAPI.html#ga8f17e36ae7ab27573e24cd72fdf8b7d3">adl.h</a>
+: <a class="el" href="adl_8h.html#a8f17e36ae7ab27573e24cd72fdf8b7d3">adl.h</a>
 </li>
 <li>ADL2_PerGPU_GDEvent_UnRegister()
-: <a class="el" href="group__MAINAPI.html#gae3286c3f0b1aa3cdae3a812f4370727f">adl.h</a>
+: <a class="el" href="adl_8h.html#ae3286c3f0b1aa3cdae3a812f4370727f">adl.h</a>
 </li>
 <li>ADL2_PowerXpress_AncillaryDevices_Get()
 : <a class="el" href="group__POWERXAPI.html#gaef26eba21ad07119fad8b5daa19a3cfe">powerxpress.h</a>
@@ -1403,11 +1415,17 @@ $(function() {
 <li>ADL2_PPW_Status_Set()
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#ga0637b63e237535e5967540ede809af1a">adapter.h</a>
 </li>
+<li>ADL2_PROVSR_Settings_Get()
+: <a class="el" href="group__POWERMANAGEMANTAPI.html#gacddd7b257dbf7c96f7233ee4b8d5dfec">adapter.h</a>
+</li>
+<li>ADL2_PROVSR_Settings_Set()
+: <a class="el" href="group__POWERMANAGEMANTAPI.html#ga8a5d658976d7dab65273929aad567698">adapter.h</a>
+</li>
 <li>ADL2_RegisterEvent()
-: <a class="el" href="group__MAINAPI.html#ga61e9e90c0dd2f672f7c298869812cfce">adl.h</a>
+: <a class="el" href="adl_8h.html#a61e9e90c0dd2f672f7c298869812cfce">adl.h</a>
 </li>
 <li>ADL2_RegisterEventX2()
-: <a class="el" href="group__MAINAPI.html#ga05ca113588bc3353f01abfba40a8231b">adl.h</a>
+: <a class="el" href="adl_8h.html#a05ca113588bc3353f01abfba40a8231b">adl.h</a>
 </li>
 <li>ADL2_RIS_Settings_Get()
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#ga1f9f924f584a91860af8855ebde3398d">adapter.h</a>
@@ -1415,8 +1433,23 @@ $(function() {
 <li>ADL2_RIS_Settings_Set()
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#gacab49c66fcafbf8289c658137f4279bd">adapter.h</a>
 </li>
+<li>ADL2_SmartDC_Caps()
+: <a class="el" href="group__GRAPHICSAPI.html#ga81f1f95e699d441c2a44a0c12a4754b1">graphics.h</a>
+</li>
+<li>ADL2_SmartDC_Status_Get()
+: <a class="el" href="group__GRAPHICSAPI.html#ga50a3f9b191e609ce629132e572fd6ca1">graphics.h</a>
+</li>
+<li>ADL2_SmartDC_Status_Set()
+: <a class="el" href="group__GRAPHICSAPI.html#gaafc75858316a9c19f1d9b61cdaee3847">graphics.h</a>
+</li>
+<li>ADL2_Stress_Test_Cap()
+: <a class="el" href="group__ADAPTERMAINAPI.html#ga1b59fe27b88a391c581c2aa76f8d4e64">adapter.h</a>
+</li>
 <li>ADL2_SwitchableGraphics_Applications_Get()
 : <a class="el" href="group__POWERXAPI.html#ga780d0958859051c72af7101a75d30757">powerxpress.h</a>
+</li>
+<li>ADL2_Throttle_Notification_Cap()
+: <a class="el" href="group__ADAPTERMAINAPI.html#gaa1813b0645f218a80c593840d15e5c59">adapter.h</a>
 </li>
 <li>ADL2_TurboSyncSupport_Get()
 : <a class="el" href="display_8h.html#ab6a2bec75b80b353dca8184d165eced4">display.h</a>
@@ -1428,10 +1461,10 @@ $(function() {
 : <a class="el" href="group__TVAPI.html#ga6d534f7a078ee1951ff362cdbb7165f0">display.h</a>
 </li>
 <li>ADL2_UnRegisterEvent()
-: <a class="el" href="group__MAINAPI.html#gabcb79f1e01f9868837b64b3011eca3aa">adl.h</a>
+: <a class="el" href="adl_8h.html#abcb79f1e01f9868837b64b3011eca3aa">adl.h</a>
 </li>
 <li>ADL2_UnRegisterEventX2()
-: <a class="el" href="group__MAINAPI.html#ga589c8e91aee401f06a978802b4a3b807">adl.h</a>
+: <a class="el" href="adl_8h.html#a589c8e91aee401f06a978802b4a3b807">adl.h</a>
 </li>
 <li>ADL2_User_Settings_Notify()
 : <a class="el" href="display_8h.html#a25c7ac0726bb41154cafbd2d35241d07">display.h</a>
@@ -3612,7 +3645,7 @@ $(function() {
 : <a class="el" href="group__define__display__connection__type.html#ga268d5b5e41ac31f95acfdbee7af171bc">adl_defines.h</a>
 </li>
 <li>ADL_DRIVER_EVENT_TYPE
-: <a class="el" href="adl__defines_8h.html#a0335eb3aa896fa413e9e2547abaf80e1">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#a31f66e712c6ca45ca42723d7077f0e6a">adl_defines.h</a>
 </li>
 <li>ADL_DT_COMPONENT_VIDEO
 : <a class="el" href="group__define__display__type.html#gac74c3da6d61ff307297f83f44b5bbe2b">adl_defines.h</a>
@@ -3636,7 +3669,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a4a6218ef7d8d1feec365dc97bd202138">adl_structures.h</a>
 </li>
 <li>ADL_EDC_BLOCK_ID
-: <a class="el" href="adl__structures_8h.html#adb5a7ad51e87583f74bad9292421f1c4">adl_structures.h</a>
+: <a class="el" href="adl__structures_8h.html#af08eb13f0b53eda00f83eeea901fa421">adl_structures.h</a>
 </li>
 <li>ADL_EDC_BLOCK_ID_GDS
 : <a class="el" href="adl__structures_8h.html#adb5a7ad51e87583f74bad9292421f1c4a342ea51a96ee1f30657d8b475ba1bab1">adl_structures.h</a>
@@ -3719,6 +3752,9 @@ $(function() {
 <li>ADL_ERR
 : <a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">adl_defines.h</a>
 </li>
+<li>ADL_ERR_CALL_TO_INCOMPATIABLE_DRIVER
+: <a class="el" href="group__define__adl__results.html#gaf0735b88164f5dfddf6cafbc1cd50f77">adl_defines.h</a>
+</li>
 <li>ADL_ERR_DISABLED_ADAPTER
 : <a class="el" href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">adl_defines.h</a>
 </li>
@@ -3790,6 +3826,7 @@ $(function() {
 </li>
 <li>ADL_EXTERNC
 : <a class="el" href="adapter_8h.html#a24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
+, <a class="el" href="appprofiles_8h.html#a24a14773b8978b7ef0fb45451fcc495e">appprofiles.h</a>
 , <a class="el" href="controller_8h.html#a24a14773b8978b7ef0fb45451fcc495e">controller.h</a>
 , <a class="el" href="crossdisplay_8h.html#a24a14773b8978b7ef0fb45451fcc495e">crossdisplay.h</a>
 , <a class="el" href="display_8h.html#a24a14773b8978b7ef0fb45451fcc495e">display.h</a>
@@ -3799,11 +3836,10 @@ $(function() {
 , <a class="el" href="overdrive8_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive8.h</a>
 , <a class="el" href="overdriveN_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdriveN.h</a>
 , <a class="el" href="powerxpress_8h.html#a24a14773b8978b7ef0fb45451fcc495e">powerxpress.h</a>
-, <a class="el" href="radeonusbled_8h.html#a24a14773b8978b7ef0fb45451fcc495e">radeonusbled.h</a>
 , <a class="el" href="workstation_8h.html#a24a14773b8978b7ef0fb45451fcc495e">workstation.h</a>
+, <a class="el" href="radeonusbled_8h.html#a24a14773b8978b7ef0fb45451fcc495e">radeonusbled.h</a>
 , <a class="el" href="overdrive6_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive6.h</a>
 , <a class="el" href="displaysmanager_8h.html#a24a14773b8978b7ef0fb45451fcc495e">displaysmanager.h</a>
-, <a class="el" href="appprofiles_8h.html#a24a14773b8978b7ef0fb45451fcc495e">appprofiles.h</a>
 </li>
 <li>ADL_FALSE
 : <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">adl_defines.h</a>
@@ -4213,6 +4249,12 @@ $(function() {
 <li>ADL_I2C_MINOR_OEM_API_REV
 : <a class="el" href="group__DEFINES.html#ga37e737e98d989e6ea0cb71c0d0cca813">adl_defines.h</a>
 </li>
+<li>ADL_IMAGE_BOOST_NOTFICATION_REASON
+: <a class="el" href="adl__structures_8h.html#a07c49709ee22468e7fae7ac548837a45">adl_structures.h</a>
+</li>
+<li>ADL_IMAGE_BOOST_SETTINGS
+: <a class="el" href="adl__structures_8h.html#a8aa3f358f77c8cf22c07a50ebf4f2bd6">adl_structures.h</a>
+</li>
 <li>ADL_IMAGEFILEFORMAT
 : <a class="el" href="adl__structures_8h.html#a91d7fda4d4d331b027c7ace67806f0aaaf337cb687fad08ed644b09c6fa307b09">adl_structures.h</a>
 </li>
@@ -4271,19 +4313,19 @@ $(function() {
 : <a class="el" href="group__define__misc.html#ga04349eb6dbd0048fb462b4c4307e10cf">adl_defines.h</a>
 </li>
 <li>ADL_Main_Control_Create()
-: <a class="el" href="group__MAINAPI.html#gabd3262ed253d0f47e41a6983ed3645c9">adl.h</a>
+: <a class="el" href="adl_8h.html#abd3262ed253d0f47e41a6983ed3645c9">adl.h</a>
 </li>
 <li>ADL_Main_Control_Destroy()
-: <a class="el" href="group__MAINAPI.html#ga6109d29a69f5e52c28f7e5ede0afb38c">adl.h</a>
+: <a class="el" href="adl_8h.html#a6109d29a69f5e52c28f7e5ede0afb38c">adl.h</a>
 </li>
 <li>ADL_Main_Control_GetProcAddress()
-: <a class="el" href="group__MAINAPI.html#gaff114770983c8b2551eb618a9662b15d">adl.h</a>
+: <a class="el" href="adl_8h.html#aff114770983c8b2551eb618a9662b15d">adl.h</a>
 </li>
 <li>ADL_Main_Control_Refresh()
-: <a class="el" href="group__MAINAPI.html#ga5fe821892b2eaa2484a0041aa16e82cb">adl.h</a>
+: <a class="el" href="adl_8h.html#a5fe821892b2eaa2484a0041aa16e82cb">adl.h</a>
 </li>
 <li>ADL_Main_ControlX2_Create()
-: <a class="el" href="group__MAINAPI.html#ga90122325b51069c19533aaa040c23991">adl.h</a>
+: <a class="el" href="adl_8h.html#a90122325b51069c19533aaa040c23991">adl.h</a>
 </li>
 <li>ADL_MAIN_MALLOC_CALLBACK
 : <a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">adl_sdk.h</a>
@@ -4873,6 +4915,9 @@ $(function() {
 <li>ADL_PMLOG_CLK_CPUCLK
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dad3678494f3bb6d583750b2b5bed3bc34">adl_defines.h</a>
 </li>
+<li>ADL_PMLOG_CLK_FCLK
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da30e7f4c4e11754105355e545ed811b40">adl_defines.h</a>
+</li>
 <li>ADL_PMLOG_CLK_GFXCLK
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da4ef49ee6b144c1004bf2470a9e54f176">adl_defines.h</a>
 </li>
@@ -4934,7 +4979,7 @@ $(function() {
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da1fe8455b922214a2f50232ebe298b4be">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_SENSORS
-: <a class="el" href="group__DEFINES.html#gaefdb8372946cb09d1633f729d692ff6d">adl_defines.h</a>
+: <a class="el" href="group__DEFINES.html#ga7647e36d1d7b3f4dde63aae83c502d1e">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_SMART_POWERSHIFT_CPU
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da5e1d5c19212bf9c3eec9b07b0e9c0d31">adl_defines.h</a>
@@ -4965,6 +5010,12 @@ $(function() {
 </li>
 <li>ADL_PMLOG_TEMPERATURE_LIQUID
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dae7892d09778fe0141dffb387cc28ca33">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_TEMPERATURE_LIQUID0
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da3d9c89900fefb80e5d8111067ede1b7e">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_TEMPERATURE_LIQUID1
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2a68528a223bc892436899b291484c3c">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_TEMPERATURE_MEM
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daf1a02da73622205561d0235a61599be9">adl_defines.h</a>
@@ -5002,6 +5053,9 @@ $(function() {
 <li>ADL_PMLOG_THROTTLER_STATUS
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dab0f652fb925fe6058c4594daa5fdeef0">adl_defines.h</a>
 </li>
+<li>ADL_PMLOG_THROTTLER_STATUS_CPU
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da49e313f9b2f9067a156f844ff3971532">adl_defines.h</a>
+</li>
 <li>ADL_PowerXpress_AncillaryDevices_Get()
 : <a class="el" href="group__POWERXAPI.html#gaa420d628378f14799a2b712d903157f1">powerxpress.h</a>
 </li>
@@ -5031,6 +5085,12 @@ $(function() {
 </li>
 <li>ADL_PROFILEPROPERTY_TYPE_STRING
 : <a class="el" href="group__define__appprofiles.html#ggac52192a9239287dec516948d03463da2a62b5bcd60ab0bf55269a7f8cf00994f0">adl_defines.h</a>
+</li>
+<li>ADL_PROVSR_NOTFICATION_REASON
+: <a class="el" href="adl__structures_8h.html#ac584f57440ef6bfe37244ff6c51e8a27">adl_structures.h</a>
+</li>
+<li>ADL_PROVSR_SETTINGS
+: <a class="el" href="adl__structures_8h.html#a33ba09d7d46bc219b291de3fd8d6bb60">adl_structures.h</a>
 </li>
 <li>ADL_PURPOSECODE_ATI_ROTATION
 : <a class="el" href="group__DEFINES.html#gga50ca4e1e7652f0b8d1fc764e1fcf5b83a4693f5e8e2d88ac1a5b23597882c2909">adl_defines.h</a>
@@ -5156,7 +5216,7 @@ $(function() {
 : <a class="el" href="adl__defines_8h.html#a2bbacdd962ef5ce1b36fa78212e726b7">adl_defines.h</a>
 </li>
 <li>ADL_RADEON_USB_LED_CONTROL_CONFIGS
-: <a class="el" href="adl__defines_8h.html#a1a9baf49e8807a8753dfe6d562749abf">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#a55b65ba35b3ec5add3a9b32448ee542e">adl_defines.h</a>
 </li>
 <li>ADL_RAS__UMC_HBM
 : <a class="el" href="adl__defines_8h.html#a80ec1e5b576b4ae54eceb829c24e55eea3360313a72b1618f7e84924f14866938">adl_defines.h</a>
@@ -5270,7 +5330,7 @@ $(function() {
 : <a class="el" href="adl__defines_8h.html#ad2cd728e1e9c644e82eebdbf0df88c77a7b663b70b92df7520ada6e85d530c738">adl_defines.h</a>
 </li>
 <li>ADL_RAS_ERROR_INJECTION_MODE
-: <a class="el" href="adl__defines_8h.html#a387d7f4721d5007891a22c63611a5511">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#a06734bf7d08835a9371b7c7b9f74f13c">adl_defines.h</a>
 </li>
 <li>ADL_RAS_ERROR_INJECTION_MODE_MULTIPLE
 : <a class="el" href="adl__defines_8h.html#a387d7f4721d5007891a22c63611a5511a64db70d868dca70e2e01aa7a59b219dd">adl_defines.h</a>
@@ -5282,7 +5342,7 @@ $(function() {
 : <a class="el" href="adl__defines_8h.html#a1cdc8a2a08727f49c790fdceeda0e30f">adl_defines.h</a>
 </li>
 <li>ADL_RAS_INJECTION_METHOD
-: <a class="el" href="adl__defines_8h.html#ad2cd728e1e9c644e82eebdbf0df88c77">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#afdd65ef90ebbfc628c69ec7c1b859f28">adl_defines.h</a>
 </li>
 <li>ADL_REG_DEVICE_FUNCTION_1
 : <a class="el" href="adl__defines_8h.html#abe2c281f2507bfbae881565b81c98804">adl_defines.h</a>
@@ -5506,6 +5566,12 @@ $(function() {
 <li>ADL_UIFEATURES_GROUP_GAMEINTELLIGENCE
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea8262906d094e0d9fe42988d7c1f2c0c4">adl_defines.h</a>
 </li>
+<li>ADL_UIFEATURES_GROUP_PROVSR
+: <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceac6a23a0b0bfe92b77203c65458503945">adl_defines.h</a>
+</li>
+<li>ADL_UIFEATURES_GROUP_SMA
+: <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea66107064520b1772e6afa451f3dfd158">adl_defines.h</a>
+</li>
 <li>ADL_UIFEATURES_GROUP_TURBOSYNC
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceab42206c6c508860566c56e9a1c779982">adl_defines.h</a>
 </li>
@@ -5530,11 +5596,20 @@ $(function() {
 <li>ADL_USER_SETTINGS_CHILL_PROFILE
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7aa635ca9c0e594edabc641eb9a7603fc8">adl_defines.h</a>
 </li>
+<li>ADL_USER_SETTINGS_CVDC_PROFILE
+: <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a5ea774ae6ee882541880fd9fabf7f6d5">adl_defines.h</a>
+</li>
 <li>ADL_USER_SETTINGS_DELAG_PROFILE
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a2336659edb3e5e500a1dba73d9db651d">adl_defines.h</a>
 </li>
 <li>ADL_USER_SETTINGS_ENHANCEDSYNC
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a40789f933231aff3d35b387d720e9029">adl_defines.h</a>
+</li>
+<li>ADL_USER_SETTINGS_PROVSR
+: <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a3254c88784e5a6c1a2e6e7a58d71c473">adl_defines.h</a>
+</li>
+<li>ADL_USER_SETTINGS_SCE_PROFILE
+: <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a996bf29e333ff763d1dbc1bfe0a95a7f">adl_defines.h</a>
 </li>
 <li>ADL_USER_SETTINGS_USU_PROFILE
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7af736c131667d834b8dbb045355b90a31">adl_defines.h</a>
@@ -5549,7 +5624,7 @@ $(function() {
 : <a class="el" href="group__define__appprofiles.html#gga3bc1938745dff8a4b9d769ac04986329a221ccb4a36abe7462110c4228eb2fc02">adl_defines.h</a>
 </li>
 <li>ADL_VIRTUALDISPLAY_TYPE
-: <a class="el" href="group__define__appprofiles.html#ga7ad310bf1263a2cb356bf0917118d07b">adl_defines.h</a>
+: <a class="el" href="group__define__appprofiles.html#ga3bc1938745dff8a4b9d769ac04986329">adl_defines.h</a>
 </li>
 <li>ADL_VIRTUALDISPLAY_XINPUT
 : <a class="el" href="group__define__appprofiles.html#gga3bc1938745dff8a4b9d769ac04986329a3663066c13a4a639a294f515640c072d">adl_defines.h</a>
@@ -5807,7 +5882,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a8347319f2b4d5d3aef3242199d11b13c">adl_structures.h</a>
 </li>
 <li>ADLAppInterceptionListType
-: <a class="el" href="adl__structures_8h.html#a91d7fda4d4d331b027c7ace67806f0aa">adl_structures.h</a>
+: <a class="el" href="adl__structures_8h.html#ac04c266318d7ccd84811866fcc49fd6c">adl_structures.h</a>
 </li>
 <li>ADLApplicationData
 : <a class="el" href="adl__structures_8h.html#a710bd7a390c1e56b2120f03d83d6d1c5">adl_structures.h</a>
@@ -6362,7 +6437,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a4db457c731c35dcf3a5bbc78154914d9">adl_structures.h</a>
 </li>
 <li>ADLSensorType
-: <a class="el" href="group__DEFINES.html#gadf1d3429069f905588cfebd56cc6858b">adl_defines.h</a>
+: <a class="el" href="group__DEFINES.html#gad06f53fd97d66846124df8094ab8904d">adl_defines.h</a>
 </li>
 <li>ADLSGApplicationInfo
 : <a class="el" href="adl__structures_8h.html#a8bd0915ae48c01b22300c422addbcce5">adl_structures.h</a>
@@ -6398,7 +6473,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#aa28ee823fc5d0abd67936aeb59a9fb42">adl_structures.h</a>
 </li>
 <li>ADLThreadingModel
-: <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">adl_defines.h</a>
+: <a class="el" href="group__thread__model.html#ga4394dc5b3af89164fa14a5e574341a73">adl_defines.h</a>
 </li>
 <li>ADLVersionsInfo
 : <a class="el" href="adl__structures_8h.html#af554a6a5e00ba200d54e6f8b2367a0d3">adl_structures.h</a>
@@ -6448,12 +6523,6 @@ $(function() {
 <li>ADLvRamVendors
 : <a class="el" href="adl__structures_8h.html#a757ccc2df1156413320fb3c846db9b34">adl_structures.h</a>
 </li>
-<li>AggregateSizeOfTheValues
-: <a class="el" href="structures_8h.html#a86c6eb36bc7d236f1271f779a65bc352">structures.h</a>
-</li>
-<li>AP_KEY
-: <a class="el" href="structures_8h.html#ac411ad0287aea27c55cff126d4801ae3">structures.h</a>
-</li>
 <li>APP_PROC_CREATION
 : <a class="el" href="adl__structures_8h.html#af15cbd063e82331e39587e64c74ef5e3acb2805ca6a777a36c0208eaadd8f103f">adl_structures.h</a>
 </li>
@@ -6475,26 +6544,8 @@ $(function() {
 <li>APP_PROC_WAIT
 : <a class="el" href="adl__structures_8h.html#af15cbd063e82331e39587e64c74ef5e3a1b29de05a3ecdf8eacf480e7fddc6013">adl_structures.h</a>
 </li>
-<li>Application
-: <a class="el" href="structures_8h.html#a59b2d39491b6eb54a58522f3452c086b">structures.h</a>
-</li>
-<li>APPLICATION
-: <a class="el" href="structures_8h.html#abdc17119f35f813fdadd876721f7f131">structures.h</a>
-</li>
 <li>ApplicationListType
 : <a class="el" href="group__define__appprofiles.html#ga345861f6384c58df2cce392f4f004ee6">adl_defines.h</a>
-</li>
-<li>ApplicationsAndProfiles
-: <a class="el" href="structures_8h.html#a0b984741c3343be74d0b9501cdc12d96a82c982d68507aeeed6f5cedee2a9465a">structures.h</a>
-</li>
-<li>ApplicationsOnly
-: <a class="el" href="structures_8h.html#a0b984741c3343be74d0b9501cdc12d96a71f4c11d31b3f78d568d2bb7efb949a8">structures.h</a>
-</li>
-<li>Area
-: <a class="el" href="structures_8h.html#a950a398be292e29815b931aa12153f2d">structures.h</a>
-</li>
-<li>AREA
-: <a class="el" href="structures_8h.html#a6e39b8640f2ef7d29e2ea759ffde4695">structures.h</a>
 </li>
 </ul>
 </div><!-- contents -->

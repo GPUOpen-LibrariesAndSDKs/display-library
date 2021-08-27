@@ -7,20 +7,32 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 
+### ADL 16.0 - Release Notes
+*  Added samples:
+	* <a href="SmartDC-example.html">SmartDC</a>: Added sample to illustrate how to control SmartDC from ADL.
+	* <a href="SideBySide-example.html">SideBySide</a>: Added sample to illustrate how to use Side by Side from ADL.
+
+---
+
 ### ADL 15.0 - Release Notes
-* SDK is renewed with improved layout and documentation
+* SDK is renewed with improved layout and documentation.
 * ADL APIs are further restructured based on specific functionality.
+* <a href="group__WATTMANAPI.html">Wattman Related APIs</a>: Add note for ADL2_Overdrive_Caps.
 * <a href="LatestAPIS.html">New APIs</a>:
 	More than 100 ADL APIs are exposed to Public section.
 * New samples:
 	* <a href="AMDDisplayTool-example.html">AMDDisplayTool</a>: This user interface sample demonstrates configuring different Display specific features. The list includes Virtual Super Resolution, FreeSync, GPU Scaling, Color Depth, Pixel Format and Color (Brightness, Hue, Saturation and Contrast) specific features. This sample also provides way to configure global Chill toggle functionality. This UI interface is localized based on the default UI language if it is in the supported language list.
 	* <a href="PXRunningApps-example.html">PXRunningApps</a>: This sample demonstrates listing currently running applications on PowerXpress/Hybrid Graphics platform.
+  * Upgraded samples:
+	* <a href="Overdrive8-example.html">Overdrive8</a>: Updated sample to illustrate how to set Auto Tuning.
 * Bug Fixes:
 	* SWDEV-196568 - ADL Call Error With WX7100
 	* SWDEV-202786 - Navi 10 ADL Fan Percentage API ADLSensorType (PMLOG_FAN_PERCENTAGE) value incorrect
 	* SWDEV-217167 - GPU activity always reported 65535 in RX 5500 with ADL SDK OD8
 	* SWDEV-244219 - An error about "LoadLibrary failed with error 87:parameter error" popup when do multi display test with "Onboard VGA/DP/HDMI+add-on VGA".
-	
+	* SWDEV-256913 - Factory Reset "Reboot Later" Unexpectedly Changes GECC Setting
+	* SWDEV-253674 - Add missed link rate for getting link info.
+
 ---
 
 ### ADL 14.0 - Release Notes
@@ -80,7 +92,7 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 * Supported Driver:
-	Requires Radeon Software Adrenalin Edition 20.5.1 or later.
+	Requires Radeon Software Adrenalin Edition 21.5.3 or later.
 
 ---
 ### End User License Agreement

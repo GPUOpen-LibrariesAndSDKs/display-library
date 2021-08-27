@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -83,48 +83,806 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga4f2f1b006fa2c4d22089876fb09aece7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *context)</td></tr>
-<tr class="memdesc:ga4f2f1b006fa2c4d22089876fb09aece7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL2 interface and to obtain client's context handle.  <a href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">More...</a><br /></td></tr>
-<tr class="separator:ga4f2f1b006fa2c4d22089876fb09aece7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf964ad5e099e958eb2856f238df19327"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
-<tr class="memdesc:gaf964ad5e099e958eb2856f238df19327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy client's ADL context.  <a href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">More...</a><br /></td></tr>
-<tr class="separator:gaf964ad5e099e958eb2856f238df19327"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae8d35e7c941345fb93ebbb2a37e72777"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gae8d35e7c941345fb93ebbb2a37e72777">ADL2_Main_Control_GetProcAddress</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, void *lpModule, char *lpProcName)</td></tr>
-<tr class="memdesc:gae8d35e7c941345fb93ebbb2a37e72777"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function.  <a href="group__MAINAPI.html#gae8d35e7c941345fb93ebbb2a37e72777">More...</a><br /></td></tr>
-<tr class="separator:gae8d35e7c941345fb93ebbb2a37e72777"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31e94a3427b8b29d80d2142ec7396914"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga31e94a3427b8b29d80d2142ec7396914">ADL2_Main_Control_Refresh</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
-<tr class="memdesc:ga31e94a3427b8b29d80d2142ec7396914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system.  <a href="group__MAINAPI.html#ga31e94a3427b8b29d80d2142ec7396914">More...</a><br /></td></tr>
-<tr class="separator:ga31e94a3427b8b29d80d2142ec7396914"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7385661046f1a9b78f4867077f5bffb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga7385661046f1a9b78f4867077f5bffb2">ADL2_Main_ControlX2_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *context, <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> threadingModel)</td></tr>
-<tr class="memdesc:ga7385661046f1a9b78f4867077f5bffb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL2 interface and issue client's context handle.  <a href="group__MAINAPI.html#ga7385661046f1a9b78f4867077f5bffb2">More...</a><br /></td></tr>
-<tr class="separator:ga7385661046f1a9b78f4867077f5bffb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8f17e36ae7ab27573e24cd72fdf8b7d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga8f17e36ae7ab27573e24cd72fdf8b7d3">ADL2_PerGPU_GDEvent_Register</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:ga8f17e36ae7ab27573e24cd72fdf8b7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae3286c3f0b1aa3cdae3a812f4370727f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gae3286c3f0b1aa3cdae3a812f4370727f">ADL2_PerGPU_GDEvent_UnRegister</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:gae3286c3f0b1aa3cdae3a812f4370727f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61e9e90c0dd2f672f7c298869812cfce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga61e9e90c0dd2f672f7c298869812cfce">ADL2_RegisterEvent</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:ga61e9e90c0dd2f672f7c298869812cfce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga05ca113588bc3353f01abfba40a8231b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga05ca113588bc3353f01abfba40a8231b">ADL2_RegisterEventX2</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:ga05ca113588bc3353f01abfba40a8231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabcb79f1e01f9868837b64b3011eca3aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gabcb79f1e01f9868837b64b3011eca3aa">ADL2_UnRegisterEvent</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:gabcb79f1e01f9868837b64b3011eca3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga589c8e91aee401f06a978802b4a3b807"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga589c8e91aee401f06a978802b4a3b807">ADL2_UnRegisterEventX2</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
-<tr class="separator:ga589c8e91aee401f06a978802b4a3b807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd3262ed253d0f47e41a6983ed3645c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gabd3262ed253d0f47e41a6983ed3645c9">ADL_Main_Control_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters)</td></tr>
-<tr class="memdesc:gabd3262ed253d0f47e41a6983ed3645c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL interface. This function should be called first.  <a href="group__MAINAPI.html#gabd3262ed253d0f47e41a6983ed3645c9">More...</a><br /></td></tr>
-<tr class="separator:gabd3262ed253d0f47e41a6983ed3645c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6109d29a69f5e52c28f7e5ede0afb38c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga6109d29a69f5e52c28f7e5ede0afb38c">ADL_Main_Control_Destroy</a> ()</td></tr>
-<tr class="memdesc:ga6109d29a69f5e52c28f7e5ede0afb38c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to destroy ADL global pointers. This function should be called last.  <a href="group__MAINAPI.html#ga6109d29a69f5e52c28f7e5ede0afb38c">More...</a><br /></td></tr>
-<tr class="separator:ga6109d29a69f5e52c28f7e5ede0afb38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff114770983c8b2551eb618a9662b15d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#gaff114770983c8b2551eb618a9662b15d">ADL_Main_Control_GetProcAddress</a> (void *lpModule, char *lpProcName)</td></tr>
-<tr class="memdesc:gaff114770983c8b2551eb618a9662b15d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function.  <a href="group__MAINAPI.html#gaff114770983c8b2551eb618a9662b15d">More...</a><br /></td></tr>
-<tr class="separator:gaff114770983c8b2551eb618a9662b15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5fe821892b2eaa2484a0041aa16e82cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga5fe821892b2eaa2484a0041aa16e82cb">ADL_Main_Control_Refresh</a> ()</td></tr>
-<tr class="memdesc:ga5fe821892b2eaa2484a0041aa16e82cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system.  <a href="group__MAINAPI.html#ga5fe821892b2eaa2484a0041aa16e82cb">More...</a><br /></td></tr>
-<tr class="separator:ga5fe821892b2eaa2484a0041aa16e82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga90122325b51069c19533aaa040c23991"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__MAINAPI.html#ga90122325b51069c19533aaa040c23991">ADL_Main_ControlX2_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> threadingModel)</td></tr>
-<tr class="separator:ga90122325b51069c19533aaa040c23991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f2f1b006fa2c4d22089876fb09aece7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *context)</td></tr>
+<tr class="memdesc:a4f2f1b006fa2c4d22089876fb09aece7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL2 interface and to obtain client's context handle.  <a href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">More...</a><br /></td></tr>
+<tr class="separator:a4f2f1b006fa2c4d22089876fb09aece7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af964ad5e099e958eb2856f238df19327"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
+<tr class="memdesc:af964ad5e099e958eb2856f238df19327"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy client's ADL context.  <a href="adl_8h.html#af964ad5e099e958eb2856f238df19327">More...</a><br /></td></tr>
+<tr class="separator:af964ad5e099e958eb2856f238df19327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d35e7c941345fb93ebbb2a37e72777"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#ae8d35e7c941345fb93ebbb2a37e72777">ADL2_Main_Control_GetProcAddress</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, void *lpModule, char *lpProcName)</td></tr>
+<tr class="memdesc:ae8d35e7c941345fb93ebbb2a37e72777"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function.  <a href="adl_8h.html#ae8d35e7c941345fb93ebbb2a37e72777">More...</a><br /></td></tr>
+<tr class="separator:ae8d35e7c941345fb93ebbb2a37e72777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e94a3427b8b29d80d2142ec7396914"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a31e94a3427b8b29d80d2142ec7396914">ADL2_Main_Control_Refresh</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
+<tr class="memdesc:a31e94a3427b8b29d80d2142ec7396914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system.  <a href="adl_8h.html#a31e94a3427b8b29d80d2142ec7396914">More...</a><br /></td></tr>
+<tr class="separator:a31e94a3427b8b29d80d2142ec7396914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7385661046f1a9b78f4867077f5bffb2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a7385661046f1a9b78f4867077f5bffb2">ADL2_Main_ControlX2_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *context, <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> threadingModel)</td></tr>
+<tr class="memdesc:a7385661046f1a9b78f4867077f5bffb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL2 interface and issue client's context handle.  <a href="adl_8h.html#a7385661046f1a9b78f4867077f5bffb2">More...</a><br /></td></tr>
+<tr class="separator:a7385661046f1a9b78f4867077f5bffb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad18bf49fc3c520d1578b4681a0c49f38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#ad18bf49fc3c520d1578b4681a0c49f38">ADL2_Main_ControlX3_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *context, <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> threadingModel, int adlCreateOptions)</td></tr>
+<tr class="memdesc:ad18bf49fc3c520d1578b4681a0c49f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL2 interface and issue client's context handle.  <a href="adl_8h.html#ad18bf49fc3c520d1578b4681a0c49f38">More...</a><br /></td></tr>
+<tr class="separator:ad18bf49fc3c520d1578b4681a0c49f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f17e36ae7ab27573e24cd72fdf8b7d3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a8f17e36ae7ab27573e24cd72fdf8b7d3">ADL2_PerGPU_GDEvent_Register</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:a8f17e36ae7ab27573e24cd72fdf8b7d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3286c3f0b1aa3cdae3a812f4370727f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#ae3286c3f0b1aa3cdae3a812f4370727f">ADL2_PerGPU_GDEvent_UnRegister</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:ae3286c3f0b1aa3cdae3a812f4370727f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61e9e90c0dd2f672f7c298869812cfce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a61e9e90c0dd2f672f7c298869812cfce">ADL2_RegisterEvent</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:a61e9e90c0dd2f672f7c298869812cfce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ca113588bc3353f01abfba40a8231b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a05ca113588bc3353f01abfba40a8231b">ADL2_RegisterEventX2</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:a05ca113588bc3353f01abfba40a8231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcb79f1e01f9868837b64b3011eca3aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#abcb79f1e01f9868837b64b3011eca3aa">ADL2_UnRegisterEvent</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:abcb79f1e01f9868837b64b3011eca3aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a589c8e91aee401f06a978802b4a3b807"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a589c8e91aee401f06a978802b4a3b807">ADL2_UnRegisterEventX2</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int clientID, int eventID, void *evntHandle)</td></tr>
+<tr class="separator:a589c8e91aee401f06a978802b4a3b807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3262ed253d0f47e41a6983ed3645c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#abd3262ed253d0f47e41a6983ed3645c9">ADL_Main_Control_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters)</td></tr>
+<tr class="memdesc:abd3262ed253d0f47e41a6983ed3645c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL interface. This function should be called first.  <a href="adl_8h.html#abd3262ed253d0f47e41a6983ed3645c9">More...</a><br /></td></tr>
+<tr class="separator:abd3262ed253d0f47e41a6983ed3645c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6109d29a69f5e52c28f7e5ede0afb38c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a6109d29a69f5e52c28f7e5ede0afb38c">ADL_Main_Control_Destroy</a> ()</td></tr>
+<tr class="memdesc:a6109d29a69f5e52c28f7e5ede0afb38c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to destroy ADL global pointers. This function should be called last.  <a href="adl_8h.html#a6109d29a69f5e52c28f7e5ede0afb38c">More...</a><br /></td></tr>
+<tr class="separator:a6109d29a69f5e52c28f7e5ede0afb38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff114770983c8b2551eb618a9662b15d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#aff114770983c8b2551eb618a9662b15d">ADL_Main_Control_GetProcAddress</a> (void *lpModule, char *lpProcName)</td></tr>
+<tr class="memdesc:aff114770983c8b2551eb618a9662b15d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function.  <a href="adl_8h.html#aff114770983c8b2551eb618a9662b15d">More...</a><br /></td></tr>
+<tr class="separator:aff114770983c8b2551eb618a9662b15d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fe821892b2eaa2484a0041aa16e82cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a5fe821892b2eaa2484a0041aa16e82cb">ADL_Main_Control_Refresh</a> ()</td></tr>
+<tr class="memdesc:a5fe821892b2eaa2484a0041aa16e82cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system.  <a href="adl_8h.html#a5fe821892b2eaa2484a0041aa16e82cb">More...</a><br /></td></tr>
+<tr class="separator:a5fe821892b2eaa2484a0041aa16e82cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90122325b51069c19533aaa040c23991"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl_8h.html#a90122325b51069c19533aaa040c23991">ADL_Main_ControlX2_Create</a> (<a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a> callback, int iEnumConnectedAdapters, <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a> threadingModel)</td></tr>
+<tr class="memdesc:a90122325b51069c19533aaa040c23991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the ADL interface. This function should be called first.  <a href="adl_8h.html#a90122325b51069c19533aaa040c23991">More...</a><br /></td></tr>
+<tr class="separator:a90122325b51069c19533aaa040c23991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a4f2f1b006fa2c4d22089876fb09aece7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f2f1b006fa2c4d22089876fb09aece7">&#9670;&nbsp;</a></span>ADL2_Main_Control_Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Main_Control_Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iEnumConnectedAdapters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *&#160;</td>
+          <td class="paramname"><em>context</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the ADL2 interface and to obtain client's context handle. </p>
+<p>Clients can use ADL2 versions of ADL APIs to assure that there is no interference with other ADL clients that are running in the same process. Such clients have to call ADL2_Main_Control_Create first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. ADL initialized using ADL2_Main_Control_Create will not enforce serialization of ADL API executions by multiple threads. Multiple threads will be allowed to enter to ADL at the same time. Note that ADL library is not guaranteed to be thread-safe. Client that calls ADL2_Main_Control_Create have to provide its own mechanism for ADL calls serialization. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>The memory allocation function for memory buffer allocation. This must be provided by the user. ADL internally uses this callback to allocate memory for the output parameters returned to the user and user is responsible to free the memory once used for these parameters. ADL internal takes care of allocating and de allocating the memory for its local variables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnumConnectedAdapters</td><td>Specify a value of 0 to retrieve adapter information for all adapters that have ever been present in the system. Specify a value of 1 to retrieve adapter information only for adapters that are physically present and enabled in the system. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">context</td><td><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="af964ad5e099e958eb2856f238df19327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af964ad5e099e958eb2856f238df19327">&#9670;&nbsp;</a></span>ADL2_Main_Control_Destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Main_Control_Destroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destroy client's ADL context. </p>
+<p>Clients can use ADL2 versions of ADL APIs to assure that there is no interference with other ADL clients that are running in the same process and to assure that ADL APIs are thread-safe. Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using ADL2_Main_Control_Destroy. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance to destroy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="ae8d35e7c941345fb93ebbb2a37e72777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8d35e7c941345fb93ebbb2a37e72777">&#9670;&nbsp;</a></span>ADL2_Main_Control_GetProcAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* ADL2_Main_Control_GetProcAddress </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>lpModule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>lpProcName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function. </p>
+<p>This function returns the function pointer of a specified function if it is valid (defined and exposed in a DLL module). Call this function to ensure that a function is valid before calling it. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lpModule</td><td>The pointer to the desired handle of the DLL. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lpProcName</td><td>The pointer to the desired function name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If the specified function is valid, the return value is a function pointer. Otherwise it is NULL. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a31e94a3427b8b29d80d2142ec7396914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e94a3427b8b29d80d2142ec7396914">&#9670;&nbsp;</a></span>ADL2_Main_Control_Refresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Main_Control_Refresh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system. </p>
+<p>This function updates the adapter information based on the logical adapters currently in the system. The adapter index and UDID mappings remain unchanged for each refresh call. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a7385661046f1a9b78f4867077f5bffb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7385661046f1a9b78f4867077f5bffb2">&#9670;&nbsp;</a></span>ADL2_Main_ControlX2_Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Main_ControlX2_Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iEnumConnectedAdapters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a>&#160;</td>
+          <td class="paramname"><em>threadingModel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the ADL2 interface and issue client's context handle. </p>
+<p>Clients can use ADL2 versions of ADL APIs to assure that there is no interference with other ADL clients that are running in the same process. Such clients have to call ADL2_Main_Control_Create first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. ADL2_Main_ControlX2_Create allows the client to specify desired threading behavior of ADL APIs. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>The memory allocation function for memory buffer allocation. This must be provided by the user. This must be provided by the user. ADL internally uses this callback to allocate memory for the output parameters returned to the user and user is responsible to free the memory once used for these parameters. ADL internal takes care of allocating and de allocating the memory for its local variables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnumConnectedAdapters</td><td>Specify a value of 0 to retrieve adapter information for all adapters that have ever been present in the system. Specify a value of 1 to retrieve adapter information only for adapters that are physically present and enabled in the system. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">context</td><td><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">threadingModel</td><td>Specify ADL threading behavior. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="ad18bf49fc3c520d1578b4681a0c49f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad18bf49fc3c520d1578b4681a0c49f38">&#9670;&nbsp;</a></span>ADL2_Main_ControlX3_Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Main_ControlX3_Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iEnumConnectedAdapters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> *&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a>&#160;</td>
+          <td class="paramname"><em>threadingModel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>adlCreateOptions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the ADL2 interface and issue client's context handle. </p>
+<p>Clients can use ADL2 versions of ADL APIs to assure that there is no interference with other ADL clients that are running in the same process. Such clients have to call ADL2_Main_Control_Create first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. ADL2_Main_ControlX3_Create allows customizing ADL GPU behavior by allowing to caller to pass a set of 32 bits integer </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>The memory allocation function for memory buffer allocation. This must be provided by the user. This must be provided by the user. ADL internally uses this callback to allocate memory for the output parameters returned to the user and user is responsible to free the memory once used for these parameters. ADL internal takes care of allocating and de allocating the memory for its local variables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnumConnectedAdapters</td><td>Specify a value of 0 to retrieve adapter information for all adapters that have ever been present in the system. Specify a value of 1 to retrieve adapter information only for adapters that are physically present and enabled in the system. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">context</td><td><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">threadingModel</td><td>Specify ADL threading behavior. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adlCreateOptions</td><td>it will allow customizing ADL GPU behavior by allowing to caller to pass a set of 32 bits. Each bit customizes particular behavior. First usage of the flags is to customize how ADL will report adapters that are AMD but have incompatible driver installed. Setting 0 to first bit will force ADL to report such adapters as none-AMD (vendor -1002) , setting 1 to first bit will force AMD to report such adapters vendor as AMD (1002) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8f17e36ae7ab27573e24cd72fdf8b7d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f17e36ae7ab27573e24cd72fdf8b7d3">&#9670;&nbsp;</a></span>ADL2_PerGPU_GDEvent_Register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_PerGPU_GDEvent_Register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to register to specific graphics driver event for given GPU for each GPU<p>Client calls the function passing id of the event it listens to and handle of the event object. The graphics driver sets the event object when corresponding event occurs in the system. If the event is registered for a given GPU, unregister also needs for a given GPU. If the event is registered for each GPU, unregister is also for each GPU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adapterIndex</td><td>an integer indicates a GPU. If is -1, then the API will register the event to each GPU </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clientID</td><td>An integer indicate who register the event. It is optional , for third part it is 0 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will be set by the driver when corresponding event occurs in the system. Client obtains the handle using Win32 Create event API. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ae3286c3f0b1aa3cdae3a812f4370727f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3286c3f0b1aa3cdae3a812f4370727f">&#9670;&nbsp;</a></span>ADL2_PerGPU_GDEvent_UnRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_PerGPU_GDEvent_UnRegister </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to un-register to specific graphics driver event for a given GPU or for each GPU<p>Client calls the function passing id of the event and un-register event. If the event is registered for a given GPU, unregister also needs for a given GPU. If the event is registered for each GPU, unregister is also for each GPU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">adapterIndex</td><td>an integer indicate a GPU. If is -1, then need to unregister to each GPU. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clientID</td><td>An integer indicate who register the event. It is optional , for third part it is 0 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will be set by the driver when corresponding event occurs in the system. Client obtains the handle using Win32 Create Event API. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a61e9e90c0dd2f672f7c298869812cfce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e9e90c0dd2f672f7c298869812cfce">&#9670;&nbsp;</a></span>ADL2_RegisterEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_RegisterEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to register to specific graphics driver event.<p>Client calls the function passing id of the event it listens to and handle of the event object. The graphics driver sets the event object when corresponding event occurs in the system. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will be set by the driver when corresponding event occurs in the system. Client obtains the handle using Win32 CreateEvent API. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a05ca113588bc3353f01abfba40a8231b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05ca113588bc3353f01abfba40a8231b">&#9670;&nbsp;</a></span>ADL2_RegisterEventX2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_RegisterEventX2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to register to specific graphics driver event.<p>Client calls the function passing id of the event it listens to and handle of the event object. The graphics driver sets the event object when corresponding event occurs in the system. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will be set by the driver when corresponding event occurs in the system. Client obtains the handle using Win32 CreateEvent API. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="abcb79f1e01f9868837b64b3011eca3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcb79f1e01f9868837b64b3011eca3aa">&#9670;&nbsp;</a></span>ADL2_UnRegisterEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_UnRegisterEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to un-register from specific graphics driver event.<p>Client calls the function passing id of the event it listens to and handle of the event object. The graphics driver will stop seting the event object when corresponding event occurs in the system. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will need to be unregistered. Client obtains the handle using Win32 CreateEvent API. Client has to call CloseHandle Win32 API after it unregisters the handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a589c8e91aee401f06a978802b4a3b807"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a589c8e91aee401f06a978802b4a3b807">&#9670;&nbsp;</a></span>ADL2_UnRegisterEventX2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_UnRegisterEventX2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>clientID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>eventID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>evntHandle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Allows the client to un-register from specific graphics driver event.<p>Client calls the function passing id of the event it listens to and handle of the event object. The graphics driver will stop seting the event object when corresponding event occurs in the system. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">eventId</td><td>Numeric value that represents the event ID the client listens to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">evntHandle</td><td>Reference to the event object that will need to be unregistered. Client obtains the handle using Win32 CreateEvent API. Client has to call CloseHandle Win32 API after it unregisters the handle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="abd3262ed253d0f47e41a6983ed3645c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3262ed253d0f47e41a6983ed3645c9">&#9670;&nbsp;</a></span>ADL_Main_Control_Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Main_Control_Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iEnumConnectedAdapters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the ADL interface. This function should be called first. </p>
+<p>This function initializes the ADL library. ADL initialized using ADL_Main_Control_Create will not enforce serialization of ADL API executions by multiple threads. Multiple threads will be allowed to enter to ADL at the same time. Note that ADL library is not guaranteed to be thread-safe. Client that calls ADL_Main_Control_Create have to provide its own mechanism for ADL calls serialization. It also initializes global pointers and, at the same time, calls the ADL_Main_Control_Refresh function. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>The memory allocation function for memory buffer allocation. This must be provided by the user. ADL internally uses this callback to allocate memory for the output parameters returned to the user and user is responsible to free the memory once used for these parameters. ADL internal takes care of allocating and de allocating the memory for its local variables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnumConnectedAdapters</td><td>Specify a value of 0 to retrieve adapter information for all adapters that have ever been present in the system. Specify a value of 1 to retrieve adapter information only for adapters that are physically present and enabled in the system. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="a6109d29a69f5e52c28f7e5ede0afb38c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6109d29a69f5e52c28f7e5ede0afb38c">&#9670;&nbsp;</a></span>ADL_Main_Control_Destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Main_Control_Destroy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to destroy ADL global pointers. This function should be called last. </p>
+<p>All ADL global buffers and resources are released after this function is called. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="aff114770983c8b2551eb618a9662b15d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff114770983c8b2551eb618a9662b15d">&#9670;&nbsp;</a></span>ADL_Main_Control_GetProcAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* ADL_Main_Control_GetProcAddress </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>lpModule</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>lpProcName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ADL local interface. Function to determine the validity of and retrieve the function pointer (similar to the GetProcAdress API) for a specified function. </p>
+<p>This function returns the function pointer of a specified function if it is valid (defined and exposed in a DLL module). Call this function to ensure that a function is valid before calling it. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">lpModule</td><td>The pointer to the desired handle of the DLL. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">lpProcName</td><td>The pointer to the desired function name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If the specified function is valid, the return value is a function pointer. Otherwise it is NULL. </dd></dl>
+
+</div>
+</div>
+<a id="a5fe821892b2eaa2484a0041aa16e82cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fe821892b2eaa2484a0041aa16e82cb">&#9670;&nbsp;</a></span>ADL_Main_Control_Refresh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Main_Control_Refresh </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to refresh adapter information. This function generates an adapter index value for all logical adapters that have ever been present in the system. </p>
+<p>This function updates the adapter information based on the logical adapters currently in the system. The adapter index and UDID mappings remain unchanged for each refresh call. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="a90122325b51069c19533aaa040c23991"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90122325b51069c19533aaa040c23991">&#9670;&nbsp;</a></span>ADL_Main_ControlX2_Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Main_ControlX2_Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iEnumConnectedAdapters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">ADLThreadingModel</a>&#160;</td>
+          <td class="paramname"><em>threadingModel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to initialize the ADL interface. This function should be called first. </p>
+<p>This function initializes the ADL library. Allows the client to specify desired threading behavior of ADL APIs. It also initializes global pointers and, at the same time, calls the ADL_Main_Control_Refresh function. </p><dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>The memory allocation function for memory buffer allocation. This must be provided by the user. This must be provided by the user. ADL internally uses this callback to allocate memory for the output parameters returned to the user and user is responsible to free the memory once used for these parameters. ADL internal takes care of allocating and de allocating the memory for its local variables. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnumConnectedAdapters</td><td>Specify a value of 0 to retrieve adapter information for all adapters that have ever been present in the system. Specify a value of 1 to retrieve adapter information only for adapters that are physically present and enabled in the system. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">threadingModel</td><td>Specify ADL threading behavior. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>

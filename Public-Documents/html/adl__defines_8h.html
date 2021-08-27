@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -1141,6 +1141,9 @@ Macros</h2></td></tr>
 <tr class="memitem:ga917345ca58ec6b4d7c73865fdb611fd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">ADL_ERR</a>&#160;&#160;&#160;-1</td></tr>
 <tr class="memdesc:ga917345ca58ec6b4d7c73865fdb611fd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic Error. Most likely one or more of the Escape calls to the driver failed!  <a href="group__define__adl__results.html#ga917345ca58ec6b4d7c73865fdb611fd7">More...</a><br /></td></tr>
 <tr class="separator:ga917345ca58ec6b4d7c73865fdb611fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf0735b88164f5dfddf6cafbc1cd50f77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__adl__results.html#gaf0735b88164f5dfddf6cafbc1cd50f77">ADL_ERR_CALL_TO_INCOMPATIABLE_DRIVER</a>&#160;&#160;&#160;-22</td></tr>
+<tr class="memdesc:gaf0735b88164f5dfddf6cafbc1cd50f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">escape call failed becuse of incompatiable driver found in driver store  <a href="group__define__adl__results.html#gaf0735b88164f5dfddf6cafbc1cd50f77">More...</a><br /></td></tr>
+<tr class="separator:gaf0735b88164f5dfddf6cafbc1cd50f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga66bb6f3f87d35eb8bd7549ab98b5c971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">ADL_ERR_DISABLED_ADAPTER</a>&#160;&#160;&#160;-10</td></tr>
 <tr class="memdesc:ga66bb6f3f87d35eb8bd7549ab98b5c971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call can't be made due to disabled adapter.  <a href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">More...</a><br /></td></tr>
 <tr class="separator:ga66bb6f3f87d35eb8bd7549ab98b5c971"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2198,7 +2201,12 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dabe6f4b2553ea6c33fb1089a162f5af39">ADL_PMLOG_SMART_POWERSHIFT_DGPU</a> = 39, 
 <br />
 &#160;&#160;<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dabbd45abb97928172f77ac28d6a24e14e">ADL_PMLOG_BUS_SPEED</a> = 40, 
-<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daff4dd8ad642c5b882d1268345908e652">ADL_PMLOG_BUS_LANES</a> = 41
+<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daff4dd8ad642c5b882d1268345908e652">ADL_PMLOG_BUS_LANES</a> = 41, 
+<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da3d9c89900fefb80e5d8111067ede1b7e">ADL_PMLOG_TEMPERATURE_LIQUID0</a> = 42, 
+<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2a68528a223bc892436899b291484c3c">ADL_PMLOG_TEMPERATURE_LIQUID1</a> = 43, 
+<br />
+&#160;&#160;<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da30e7f4c4e11754105355e545ed811b40">ADL_PMLOG_CLK_FCLK</a> = 44, 
+<a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da49e313f9b2f9067a156f844ff3971532">ADL_PMLOG_THROTTLER_STATUS_CPU</a> = 45
 <br />
  }</td></tr>
 <tr class="separator:gaefdb8372946cb09d1633f729d692ff6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2279,7 +2287,10 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea199190d7c8ca97f4a5b848f894167414">ADL_UIFEATURES_GROUP_DELAG</a> = 8, 
 <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea4ce8831c3705574f8ed4064f95052591">ADL_UIFEATURES_GROUP_BOOST</a> = 9, 
 <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea64cc2746651b8546873c759d43fc63b4">ADL_UIFEATURES_GROUP_USU</a> = 10, 
-<a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceacd384e06188d554150fd93a8e1d8c276">ADL_UIFEATURES_GROUP_XGMI</a> = 11
+<a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceacd384e06188d554150fd93a8e1d8c276">ADL_UIFEATURES_GROUP_XGMI</a> = 11, 
+<br />
+&#160;&#160;<a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceac6a23a0b0bfe92b77203c65458503945">ADL_UIFEATURES_GROUP_PROVSR</a> = 12, 
+<a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea66107064520b1772e6afa451f3dfd158">ADL_UIFEATURES_GROUP_SMA</a> = 13
 <br />
  }</td></tr>
 <tr class="separator:af437e78a1cb455496ae3c17a399babce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2289,7 +2300,10 @@ Enumerations</h2></td></tr>
 <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a2336659edb3e5e500a1dba73d9db651d">ADL_USER_SETTINGS_DELAG_PROFILE</a> = 1 &lt;&lt; 2, 
 <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a86baef1696026237af8579a560d3f302">ADL_USER_SETTINGS_BOOST_PROFILE</a> = 1 &lt;&lt; 3, 
 <br />
-&#160;&#160;<a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7af736c131667d834b8dbb045355b90a31">ADL_USER_SETTINGS_USU_PROFILE</a> = 1 &lt;&lt; 4
+&#160;&#160;<a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7af736c131667d834b8dbb045355b90a31">ADL_USER_SETTINGS_USU_PROFILE</a> = 1 &lt;&lt; 4, 
+<a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a5ea774ae6ee882541880fd9fabf7f6d5">ADL_USER_SETTINGS_CVDC_PROFILE</a> = 1 &lt;&lt; 5, 
+<a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a996bf29e333ff763d1dbc1bfe0a95a7f">ADL_USER_SETTINGS_SCE_PROFILE</a> = 1 &lt;&lt; 6, 
+<a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a3254c88784e5a6c1a2e6e7a58d71c473">ADL_USER_SETTINGS_PROVSR</a> = 1 &lt;&lt; 7
 <br />
  }</td></tr>
 <tr class="separator:a9717bff45bf588163caa14ab994a88b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2588,6 +2602,11 @@ Enumerations</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dac45624c054dd3797a412968c62ad05be">PMLOG_BUS_SPEED</a> = 40, 
 <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904daa734571559ad0e5e1aba4353e2b8f26a">PMLOG_BUS_LANES</a> = 41, 
+<a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da751017655a1d9524464354c9d18bb2ac">PMLOG_TEMPERATURE_LIQUID0</a> = 42, 
+<a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dab8031e7b44cff32311b7422a30c795b5">PMLOG_TEMPERATURE_LIQUID1</a> = 43, 
+<br />
+&#160;&#160;<a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dafbfbc59b8195c4031937dca796e19ea2">PMLOG_CLK_FCLK</a> = 44, 
+<a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dab60a7b5f4b4cc9c5c92e64705a516c77">PMLOG_THROTTLER_STATUS_CPU</a> = 45, 
 <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da4f6f4c31a462bbea774a3db2e2a49615">PMLOG_MAX_SENSORS_REAL</a>
 <br />
  }</td></tr>
@@ -3134,6 +3153,8 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="af437e78a1cb455496ae3c17a399babcea4ce8831c3705574f8ed4064f95052591"></a>ADL_UIFEATURES_GROUP_BOOST&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af437e78a1cb455496ae3c17a399babcea64cc2746651b8546873c759d43fc63b4"></a>ADL_UIFEATURES_GROUP_USU&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="af437e78a1cb455496ae3c17a399babceacd384e06188d554150fd93a8e1d8c276"></a>ADL_UIFEATURES_GROUP_XGMI&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af437e78a1cb455496ae3c17a399babceac6a23a0b0bfe92b77203c65458503945"></a>ADL_UIFEATURES_GROUP_PROVSR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af437e78a1cb455496ae3c17a399babcea66107064520b1772e6afa451f3dfd158"></a>ADL_UIFEATURES_GROUP_SMA&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -3155,6 +3176,9 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7a2336659edb3e5e500a1dba73d9db651d"></a>ADL_USER_SETTINGS_DELAG_PROFILE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7a86baef1696026237af8579a560d3f302"></a>ADL_USER_SETTINGS_BOOST_PROFILE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7af736c131667d834b8dbb045355b90a31"></a>ADL_USER_SETTINGS_USU_PROFILE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7a5ea774ae6ee882541880fd9fabf7f6d5"></a>ADL_USER_SETTINGS_CVDC_PROFILE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7a996bf29e333ff763d1dbc1bfe0a95a7f"></a>ADL_USER_SETTINGS_SCE_PROFILE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9717bff45bf588163caa14ab994a88b7a3254c88784e5a6c1a2e6e7a58d71c473"></a>ADL_USER_SETTINGS_PROVSR&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

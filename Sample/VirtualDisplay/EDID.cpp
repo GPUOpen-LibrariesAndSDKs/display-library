@@ -38,6 +38,9 @@ typedef int(*ADL2_DISPLAY_MODETIMINGOVERRIDE_SET) (ADL_CONTEXT_HANDLE, int, int,
 typedef int(*ADL2_ADAPTER_MODETIMINGOVERRIDE_CAPS) (ADL_CONTEXT_HANDLE, int, int*);
 typedef int(*ADL2_DISPLAY_MODETIMINGOVERRIDE_DELETE) (ADL_CONTEXT_HANDLE, int, ADLDisplayID, ADLDisplayModeX2*, int);
 typedef int(*ADL2_ADAPTER_ACTIVE_GET) (ADL_CONTEXT_HANDLE, int, int*);
+typedef int(*ADL2_DISPLAY_DISPLAYINFO_GET) (ADL_CONTEXT_HANDLE, int, int*, ADLDisplayInfo **, int);
+typedef int(*ADL2_WORKSTATION_DISPLAYGLSYNCMODE_GET) (ADL_CONTEXT_HANDLE, int, int, ADLGlSyncMode* );
+
 HINSTANCE hADLDll;
 
 ADL2_MAIN_CONTROL_CREATE                 ADL2_Main_Control_Create = NULL;
@@ -60,7 +63,9 @@ ADL2_DISPLAY_MODETIMINGOVERRIDE_SET      ADL2_Display_ModeTimingOverride_Set = N
 ADL2_ADAPTER_MODETIMINGOVERRIDE_CAPS     ADL2_Adapter_ModeTimingOverride_Caps = NULL;
 ADL2_DISPLAY_MODETIMINGOVERRIDE_DELETE   ADL2_Display_ModeTimingOverride_Delete = NULL;
 ADL2_ADAPTER_BOARDLAYOUT_GET			 ADL2_Adapter_BoardLayout_Get = NULL;
-ADL2_ADAPTER_ACTIVE_GET				ADL2_Adapter_Active_Get;
+ADL2_ADAPTER_ACTIVE_GET				     ADL2_Adapter_Active_Get = NULL;
+ADL2_DISPLAY_DISPLAYINFO_GET             ADL2_Display_DisplayInfo_Get = NULL;
+ADL2_WORKSTATION_DISPLAYGLSYNCMODE_GET   ADL2_Workstation_DisplayGLSyncMode_Get = NULL;
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -120,7 +125,10 @@ int initializeADL()
 		ADL2_Display_ModeTimingOverride_Delete = (ADL2_DISPLAY_MODETIMINGOVERRIDE_DELETE)GetProcAddress(hADLDll, "ADL2_Display_ModeTimingOverride_Delete");
 		ADL2_Adapter_BoardLayout_Get = (ADL2_ADAPTER_BOARDLAYOUT_GET)GetProcAddress(hADLDll, "ADL2_Adapter_BoardLayout_Get");
 		ADL2_Adapter_EDIDManagement_Caps = (ADL2_ADAPTER_EDIDMANAGEMENT_CAPS)GetProcAddress(hADLDll, "ADL2_Adapter_EDIDManagement_Caps");
-		ADL2_Adapter_Active_Get = (ADL2_ADAPTER_ACTIVE_GET)GetProcAddress(hADLDll, "ADL2_Adapter_Active_Get");
+        ADL2_Adapter_Active_Get = (ADL2_ADAPTER_ACTIVE_GET)GetProcAddress(hADLDll, "ADL2_Adapter_Active_Get");
+        ADL2_Display_DisplayInfo_Get = (ADL2_DISPLAY_DISPLAYINFO_GET)GetProcAddress(hADLDll, "ADL2_Display_DisplayInfo_Get");
+        ADL2_Workstation_DisplayGLSyncMode_Get = (ADL2_WORKSTATION_DISPLAYGLSYNCMODE_GET)GetProcAddress(hADLDll, "ADL2_Workstation_DisplayGLSyncMode_Get");
+        
 		if (NULL == ADL2_Main_Control_Create ||
 			NULL == ADL2_Main_Control_Destroy ||
 			NULL == ADL2_Display_PossibleMode_Get ||
@@ -138,7 +146,9 @@ int initializeADL()
 			NULL == ADL2_Display_ModeTimingOverride_Set ||
 			NULL == ADL2_Adapter_ModeTimingOverride_Caps ||
 			NULL == ADL2_Display_ModeTimingOverride_Delete ||
-			NULL == ADL2_Adapter_BoardLayout_Get)		
+			NULL == ADL2_Adapter_BoardLayout_Get ||
+            NULL == ADL2_Display_DisplayInfo_Get ||
+            NULL == ADL2_Workstation_DisplayGLSyncMode_Get)
 		{
 			PRINTF("Failed to get ADL function pointers\n");
 			return FALSE;
@@ -1064,8 +1074,8 @@ void setEmulation(int iAdapterIndex, ADLDevicePort devicePort, int iEmulationMod
 		PRINTF (" Emulation Activation Successfully \n");				
 	else
 		PRINTF (" Emulation Activation failed \n");		
-
-	PRINTF (" --------------------------------------------------------- \n");
+		
+		PRINTF (" --------------------------------------------------------- \n");
 }
 
 void removeEmulation(int iAdapterIndex, ADLDevicePort devicePort)
@@ -1111,48 +1121,68 @@ void applyMode(int iAdapterIndex, int iDisplayIndex, int xRes, int yRes, float f
 		if (iModeFound == 0 && force == 1)
 		{
 			int iOverrideSupported = 0;
-			if (ADL_OK == ADL2_Adapter_ModeTimingOverride_Caps(g_adlContext, iAdapterIndex, &iOverrideSupported))
+    		int numDisplays = 0;
+            ADLDisplayInfo* allDisplaysBuffer = NULL;
+            ADLGlSyncMode glSyncMode;
+            glSyncMode.iControlVector = ADL_GLSYNC_PORT_UNKNOWN;
+            if (ADL_OK == ADL2_Workstation_DisplayGLSyncMode_Get(g_adlContext, iAdapterIndex, iDisplayIndex, &glSyncMode))
+            {            
+                // Check the Override timming support on this adapter
+                if(ADL_GLSYNC_PORT_UNKNOWN != glSyncMode.iControlVector)
+                    PRINTF("FLGL is enabled now, FLGL not enabled on this display is the necessary prerequisite to support adding custom resolutions.");
+            }
+            if (ADL_OK == ADL2_Adapter_ModeTimingOverride_Caps(g_adlContext, iAdapterIndex, &iOverrideSupported))
 			{
-				if (ADL_FALSE == iOverrideSupported)
+				if (ADL_FALSE == iOverrideSupported) 
+					PRINTF("Requested adapter does not support adding custom resolutions!");					
+				else if (ADL_OK == ADL2_Display_DisplayInfo_Get(g_adlContext, iAdapterIndex, &numDisplays, &allDisplaysBuffer, 1))
 				{
-					PRINTF("Requested display mode is not supported and adapter does not support adding custom resolutions!");					
-				}
-				else
-				{
-					ADLDisplayModeX2 customDisplayMode;
-					customDisplayMode.iWidth = xRes;
-					customDisplayMode.iHeight = yRes;
-					customDisplayMode.iRefreshRate = fRefreshRate;
-					customDisplayMode.iScanType = 0; // 0 = progressive / ADL_DL_TIMINGFLAG_INTERLACED = interlaced
-					customDisplayMode.iTimingStandard = ADL_DL_MODETIMING_STANDARD_CVT;
-					//customDisplayID = mode.displayID;
+                    // Check the Override timming support on this monitor
+                    for (int i = 0; i < numDisplays; i++)
+                    {
+                        ADLDisplayInfo* oneDis = &(allDisplaysBuffer[i]);
+                        if (iDisplayIndex == oneDis->displayID.iDisplayLogicalIndex)
+                        {
+                            if ((oneDis->iDisplayInfoValue  & ADL_DISPLAY_DISPLAYINFO_MODETIMING_OVERRIDESSUPPORTED) == ADL_DISPLAY_DISPLAYINFO_MODETIMING_OVERRIDESSUPPORTED)
+                            {
+					            ADLDisplayModeX2 customDisplayMode;
+					            customDisplayMode.iWidth = xRes;
+					            customDisplayMode.iHeight = yRes;
+					            customDisplayMode.iRefreshRate = fRefreshRate;
+					            customDisplayMode.iScanType = 0; // 0 = progressive / ADL_DL_TIMINGFLAG_INTERLACED = interlaced
+					            customDisplayMode.iTimingStandard = ADL_DL_MODETIMING_STANDARD_CVT;
 
-					ADLDisplayModeInfo dspModeInfo = {};
+					            ADLDisplayModeInfo dspModeInfo = {};
 
-					if (ADL_OK != ADL2_Display_ModeTimingOverrideX2_Get(g_adlContext, iAdapterIndex, lpADLModes[0].displayID, &customDisplayMode, &dspModeInfo))
-					{
-						PRINTF("ADL_Display_ModeTimingOverrideX2_Get failed!");						
-					}
-					else
-					{
-						if (ADL_OK != ADL2_Display_ModeTimingOverride_Set(g_adlContext, iAdapterIndex, iDisplayIndex, &dspModeInfo, 1))
-						{
-							PRINTF(NULL, "ADL_Display_ModeTimingOverride_Set failed!", "ADL Error", MB_ICONERROR | MB_OK);
-						}						
-						else
-						{
-                            mode = lpADLModes[0];
-							mode.iXRes = xRes;
-							mode.iYRes = yRes;
-							mode.fRefreshRate = fRefreshRate;
+					            if (ADL_OK != ADL2_Display_ModeTimingOverrideX2_Get(g_adlContext, iAdapterIndex, lpADLModes[0].displayID, &customDisplayMode, &dspModeInfo))
+					            {
+						            PRINTF("ADL_Display_ModeTimingOverrideX2_Get failed!");						
+					            }
+					            else
+					            {
+                                    if (ADL_OK != ADL2_Display_ModeTimingOverride_Set(g_adlContext, iAdapterIndex, iDisplayIndex, &dspModeInfo, 1))
+						            {
+							            PRINTF("ADL_Display_ModeTimingOverride_Set failed!");
+						            }						
+						            else
+						            {
+                                        mode = lpADLModes[0];
+							            mode.iXRes = xRes;
+							            mode.iYRes = yRes;
+							            mode.fRefreshRate = fRefreshRate;
                             
-							iModeFound = 1;
-						}
-					}
-				}			
-			}
-			else
-				PRINTF("ADL_Adapter_ModeTimingOverride_Caps failed! \n");
+							            iModeFound = 1;
+						            }
+					            }
+                            }
+                        }
+                    }
+			    }
+			    else
+				    PRINTF("ADL2_Display_DisplayInfo_Get failed! \n");
+            }
+            else
+                PRINTF("ADL2_Adapter_ModeTimingOverride_Caps failed! \n");
 		}
 
 		if (iModeFound == 1)

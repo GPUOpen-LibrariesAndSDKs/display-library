@@ -28,26 +28,27 @@
 #include <windows.h>
 #include <tchar.h>
 #include "..\..\include\adl_sdk.h"
+#include <map>
 #endif
 
 #include <stdio.h>
 
 // Definitions of the used function pointers. Add more if you use other ADL APIs. Note that that sample will use mixture of legacy ADL and ADL2 APIs.
-typedef int (*ADL_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int );
-typedef int (*ADL_MAIN_CONTROL_DESTROY )();
-typedef int (*ADL_ADAPTER_NUMBEROFADAPTERS_GET ) ( int* );
-typedef int (*ADL2_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int, ADL_CONTEXT_HANDLE*);
+typedef int(*ADL2_MAIN_CONTROL_CREATE)(ADL_MAIN_MALLOC_CALLBACK, int, ADL_CONTEXT_HANDLE*);
+typedef int(*ADL2_ADAPTER_NUMBEROFADAPTERS_GET)(ADL_CONTEXT_HANDLE, int*);
 typedef int (*ADL2_MAIN_CONTROL_DESTROY )( ADL_CONTEXT_HANDLE);
 typedef int (*ADL2_ADAPTER_ACTIVE_GET ) (ADL_CONTEXT_HANDLE, int, int* );
 typedef int (*ADL2_DISPLAY_MODES_GET )(ADL_CONTEXT_HANDLE, int iAdapterIndex, int iDisplayIndex, int* lpNumModes, ADLMode** lppModes);
+typedef int (*ADL2_GRAPHICS_VERSIONSX2_GET)(ADL_CONTEXT_HANDLE context, ADLVersionsInfoX2 * lpVersionsInfo);
 
-ADL_MAIN_CONTROL_CREATE				ADL_Main_Control_Create;
-ADL_MAIN_CONTROL_DESTROY			ADL_Main_Control_Destroy;
-ADL_ADAPTER_NUMBEROFADAPTERS_GET	ADL_Adapter_NumberOfAdapters_Get;
 ADL2_MAIN_CONTROL_CREATE			ADL2_Main_Control_Create;
 ADL2_MAIN_CONTROL_DESTROY			ADL2_Main_Control_Destroy;
+ADL2_ADAPTER_NUMBEROFADAPTERS_GET	ADL2_Adapter_NumberOfAdapters_Get;
 ADL2_DISPLAY_MODES_GET				ADL2_Display_Modes_Get;
 ADL2_ADAPTER_ACTIVE_GET				ADL2_Adapter_Active_Get;
+ADL2_GRAPHICS_VERSIONSX2_GET        ADL2_Graphics_VersionsX2_Get;
+
+ADL_CONTEXT_HANDLE context = NULL;
 
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
@@ -99,22 +100,18 @@ int InitADL ()
 		return ADL_ERR;
     }
 
-	ADL_Main_Control_Create = (ADL_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL_Main_Control_Create");
-    ADL_Main_Control_Destroy = (ADL_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL_Main_Control_Destroy");
-    ADL_Adapter_NumberOfAdapters_Get = (ADL_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL_Adapter_NumberOfAdapters_Get");
-
+    ADL2_Adapter_NumberOfAdapters_Get = (ADL2_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL2_Adapter_NumberOfAdapters_Get");
 	ADL2_Main_Control_Create = (ADL2_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL2_Main_Control_Create");
     ADL2_Main_Control_Destroy = (ADL2_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL2_Main_Control_Destroy");
     ADL2_Display_Modes_Get = (ADL2_DISPLAY_MODES_GET) GetProcAddress(hDLL,"ADL2_Display_Modes_Get");
 	ADL2_Adapter_Active_Get = (ADL2_ADAPTER_ACTIVE_GET)GetProcAddress(hDLL, "ADL2_Adapter_Active_Get");
-
-	if (NULL == ADL_Main_Control_Create ||
-        NULL == ADL_Main_Control_Destroy ||
-        NULL == ADL_Adapter_NumberOfAdapters_Get ||
-		NULL == ADL2_Main_Control_Create ||
+    ADL2_Graphics_VersionsX2_Get = (ADL2_GRAPHICS_VERSIONSX2_GET)GetProcAddress(hDLL, "ADL2_Graphics_VersionsX2_Get");
+	if (NULL == ADL2_Main_Control_Create ||
         NULL == ADL2_Main_Control_Destroy ||
+        NULL == ADL2_Adapter_NumberOfAdapters_Get ||
         NULL == ADL2_Display_Modes_Get ||
-		NULL == ADL2_Adapter_Active_Get)
+		NULL == ADL2_Adapter_Active_Get ||
+        NULL == ADL2_Graphics_VersionsX2_Get)
 	{
 	    printf("ADL's API is missing!\n");
 		return ADL_ERR; 
@@ -129,25 +126,11 @@ int InitADL ()
 //In real application it would be much more efficient to share the same context with the parent transaction by passing the context handle in the function argument list.   
 int GetAdapterActiveStatus (int adapterId, int& active)
 {
-	ADL_CONTEXT_HANDLE context = NULL;	
 	active = 0;
-    
-	if (ADL_OK != ADL2_Main_Control_Create (ADL_Main_Memory_Alloc, 1, &context))
-	{
-		printf ("Failed to initialize nested ADL2 context");
-		return ADL_ERR;
-	}
 
-	
 	if (ADL_OK != ADL2_Adapter_Active_Get(context, adapterId , &active))
 	{
 		printf ("Failed to get adapter status");
-	}
-
-	if (ADL_OK != ADL2_Main_Control_Destroy (context))
-	{
-		printf ("Failed to destroy nested ADL2 context");
-		return ADL_ERR;
 	}
 	return ADL_OK;
 }
@@ -156,14 +139,6 @@ int GetAdapterActiveStatus (int adapterId, int& active)
 //Uncoordinated ADL2 transactions can be also executed on separate thread. 
 int PrintAdapterInfo (int adapterId)
 {
-	ADL_CONTEXT_HANDLE context = NULL;	
-    
-	if (ADL_OK != ADL2_Main_Control_Create (ADL_Main_Memory_Alloc, 1, &context))
-	{
-		printf ("Failed to initialize ADL2 context");
-		return ADL_ERR;
-	}
-
 	int active = 0;
 
 	//Invoking additional nested ADL2 based transaction on the same thread to demonstrate that multiple ADL2 transactions can be executed at the same time inside 
@@ -189,12 +164,7 @@ int PrintAdapterInfo (int adapterId)
 			}
 		}
 	}
-
-	if (ADL_OK != ADL2_Main_Control_Destroy (context))
-	{
-		printf ("Failed to destroy ADL2 context");
-		return ADL_ERR;
-	}
+	
 	return ADL_OK;
 }
 
@@ -209,16 +179,18 @@ int main (int c,char* k[],char* s[])
 	// transaction that uses legacy ADL APIs exists at any given time in the process. Numer of ADL2 transactions is not limited.  
 	// The second parameter is 1, which means:
     // retrieve adapter information only for adapters that are physically present and enabled in the system
-    if ( ADL_OK != ADL_Main_Control_Create (ADL_Main_Memory_Alloc, 1) )
+    if ( ADL_OK != ADL2_Main_Control_Create (ADL_Main_Memory_Alloc, 1, &context) )
 	{
 	    printf("ADL Initialization Error!\n");
 		return 0;
 	}
+    ADLVersionsInfoX2 versionsInfo;
+    ADL2_Graphics_VersionsX2_Get(context, &versionsInfo);
 
 	int  iNumberAdapters;
 
     // Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
+    if ( ADL_OK != ADL2_Adapter_NumberOfAdapters_Get(context, &iNumberAdapters) )
 	{
 	    printf("Cannot get the number of adapters!\n");
 		return 0;
@@ -231,7 +203,7 @@ int main (int c,char* k[],char* s[])
 	}
 
 	//Finishing legacy ADL transaction
-	 if ( ADL_OK != ADL_Main_Control_Destroy ())
+	 if ( ADL_OK != ADL2_Main_Control_Destroy(context))
 	 {
 		 printf ("Failed to destroy ADL context");
 	 }

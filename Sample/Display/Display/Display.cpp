@@ -78,6 +78,42 @@ int _tmain(int argc, _TCHAR* argv[])
 						displaySetting.SetIntegerScalingState(displayID.second, isOnOff);
 					}
 				}
+                else if (_tcscmp(argv[1], _T("l")) == 0)
+                {
+                    //read VSR of display
+                    for (auto displayID : DisplayID_)
+                    {
+                        ADLDceSettings dceSettings_;
+                        std::cout << "Display[" << displayID.second.iDisplayLogicalAdapterIndex << "]" << std::endl;
+                        bool state = displaySetting.GetVirtualResolutionState(displayID.second);
+                        // Get Display Connectivty Experience Settings
+                        dceSettings_.type = DceSettingsType::DceSetting_HdmiLq;
+
+                        if(true == displaySetting.GetDCESettings(displayID.second, dceSettings_))
+                        {
+                            std::cout << "\tQuality Detection " << ((dceSettings_.Settings.HdmiLq.qualityDetectionEnabled == true) ? "Enabled" : "Disabled") << std::endl;
+                        }
+                        dceSettings_.type = DceSettingsType::DceSetting_DpSettings;
+                        if (true == displaySetting.GetDCESettings(displayID.second, dceSettings_))
+                        {
+                            std::cout << "\tDP Total Lanes : " << dceSettings_.Settings.DpLink.numberofTotalLanes << std::endl;
+                            std::cout << "\tDP Active Lanes : " << dceSettings_.Settings.DpLink.numberOfActiveLanes << std::endl;
+                            std::cout << "\tDP Link Rate : " << displaySetting.GetLinkRate(dceSettings_.Settings.DpLink.linkRate) << " Gbps" << std::endl;
+                            dceSettings_.Settings.DpLink.relativePreEmphasis = dceSettings_.Settings.DpLink.relativePreEmphasis == 2 ? -2 : dceSettings_.Settings.DpLink.relativePreEmphasis + 1;
+                            dceSettings_.Settings.DpLink.relativeVoltageSwing = dceSettings_.Settings.DpLink.relativeVoltageSwing == 2 ? -2 : dceSettings_.Settings.DpLink.relativeVoltageSwing + 1;
+                            if (true == displaySetting.SetDCESettings(displayID.second, dceSettings_))
+                            {
+                                std::cout << "\tDP Voltage swing: " << dceSettings_.Settings.DpLink.relativeVoltageSwing << std::endl;
+                                std::cout << "\tDP Pre-Emphasis : " << dceSettings_.Settings.DpLink.relativePreEmphasis << std::endl;
+                            }
+                        }
+                        dceSettings_.type = DceSettingsType::DceSetting_Protection;
+                        if (true == displaySetting.GetDCESettings(displayID.second, dceSettings_))
+                        {
+                            std::cout << "\tLink Protection: " << ((dceSettings_.Settings.Protection.linkProtectionEnabled == true ) ? "Enabled " : "Disabled ") << std::endl;
+                        }
+                    }
+                }
             }
         }
         DestroyADL();

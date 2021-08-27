@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -80,6 +80,7 @@ $(function() {
  <b>Included in ADL SDK</b>  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="adl__defines_8h_source.html">adl_defines.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 </div>
 <p><a href="adl__structures_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -116,6 +117,18 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__ERROR__INJECTION__DATA.html">ADL_ERROR_INJECTION_DATA</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__ERROR__REASON.html">ADL_ERROR_REASON</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__IMAGE__BOOST__NOTFICATION__REASON.html">ADL_IMAGE_BOOST_NOTFICATION_REASON</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about Image Boost(OGL) Settings change reason.  <a href="structADL__IMAGE__BOOST__NOTFICATION__REASON.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__IMAGE__BOOST__SETTINGS.html">ADL_IMAGE_BOOST_SETTINGS</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about OGL IMAGE BOOST Settings.  <a href="structADL__IMAGE__BOOST__SETTINGS.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__PROVSR__NOTFICATION__REASON.html">ADL_PROVSR_NOTFICATION_REASON</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about ProVSR Settings change reason.  <a href="structADL__PROVSR__NOTFICATION__REASON.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__PROVSR__SETTINGS.html">ADL_PROVSR_SETTINGS</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about Pro VSR Settings.  <a href="structADL__PROVSR__SETTINGS.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADL__RADEON__LED__COLOR__CONFIG.html">ADL_RADEON_LED_COLOR_CONFIG</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure Containing R G B values for Radeon USB LED Bar.  <a href="structADL__RADEON__LED__COLOR__CONFIG.html#details">More...</a><br /></td></tr>
@@ -688,6 +701,18 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a5aa5e10b2aa8a8ea9fd2e31fef0fe8a8"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#a5aa5e10b2aa8a8ea9fd2e31fef0fe8a8">ADL_FRAME_DURATION_HANDLE</a></td></tr>
 <tr class="memdesc:a5aa5e10b2aa8a8ea9fd2e31fef0fe8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to ADL Frame Monitor Token.  <a href="adl__structures_8h.html#a5aa5e10b2aa8a8ea9fd2e31fef0fe8a8">More...</a><br /></td></tr>
 <tr class="separator:a5aa5e10b2aa8a8ea9fd2e31fef0fe8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07c49709ee22468e7fae7ac548837a45"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structADL__IMAGE__BOOST__NOTFICATION__REASON.html">ADL_IMAGE_BOOST_NOTFICATION_REASON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#a07c49709ee22468e7fae7ac548837a45">ADL_IMAGE_BOOST_NOTFICATION_REASON</a></td></tr>
+<tr class="memdesc:a07c49709ee22468e7fae7ac548837a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about Image Boost(OGL) Settings change reason.  <a href="adl__structures_8h.html#a07c49709ee22468e7fae7ac548837a45">More...</a><br /></td></tr>
+<tr class="separator:a07c49709ee22468e7fae7ac548837a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aa3f358f77c8cf22c07a50ebf4f2bd6"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structADL__IMAGE__BOOST__SETTINGS.html">ADL_IMAGE_BOOST_SETTINGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#a8aa3f358f77c8cf22c07a50ebf4f2bd6">ADL_IMAGE_BOOST_SETTINGS</a></td></tr>
+<tr class="memdesc:a8aa3f358f77c8cf22c07a50ebf4f2bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about OGL IMAGE BOOST Settings.  <a href="adl__structures_8h.html#a8aa3f358f77c8cf22c07a50ebf4f2bd6">More...</a><br /></td></tr>
+<tr class="separator:a8aa3f358f77c8cf22c07a50ebf4f2bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac584f57440ef6bfe37244ff6c51e8a27"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structADL__PROVSR__NOTFICATION__REASON.html">ADL_PROVSR_NOTFICATION_REASON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#ac584f57440ef6bfe37244ff6c51e8a27">ADL_PROVSR_NOTFICATION_REASON</a></td></tr>
+<tr class="memdesc:ac584f57440ef6bfe37244ff6c51e8a27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about ProVSR Settings change reason.  <a href="adl__structures_8h.html#ac584f57440ef6bfe37244ff6c51e8a27">More...</a><br /></td></tr>
+<tr class="separator:ac584f57440ef6bfe37244ff6c51e8a27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ba09d7d46bc219b291de3fd8d6bb60"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structADL__PROVSR__SETTINGS.html">ADL_PROVSR_SETTINGS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#a33ba09d7d46bc219b291de3fd8d6bb60">ADL_PROVSR_SETTINGS</a></td></tr>
+<tr class="memdesc:a33ba09d7d46bc219b291de3fd8d6bb60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure containing information about Pro VSR Settings.  <a href="adl__structures_8h.html#a33ba09d7d46bc219b291de3fd8d6bb60">More...</a><br /></td></tr>
+<tr class="separator:a33ba09d7d46bc219b291de3fd8d6bb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6161db6938f6fcc9debf5612cb51232"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structADL__RADEON__LED__COLOR__CONFIG.html">ADL_RADEON_LED_COLOR_CONFIG</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__structures_8h.html#ae6161db6938f6fcc9debf5612cb51232">ADL_RADEON_LED_COLOR_CONFIG</a></td></tr>
 <tr class="memdesc:ae6161db6938f6fcc9debf5612cb51232"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure Containing R G B values for Radeon USB LED Bar.  <a href="adl__structures_8h.html#ae6161db6938f6fcc9debf5612cb51232">More...</a><br /></td></tr>
 <tr class="separator:ae6161db6938f6fcc9debf5612cb51232"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1559,7 +1584,7 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle to ADL client context. </p>
-<p>ADL clients obtain context handle from initial call to <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. Clients have to pass the handle to each subsequent ADL call and finally destroy the context with call to <a class="el" href="group__MAINAPI.html#gaf964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a> </p>
+<p>ADL clients obtain context handle from initial call to <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. Clients have to pass the handle to each subsequent ADL call and finally destroy the context with call to <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a> </p>
 
 </div>
 </div>
@@ -1709,6 +1734,74 @@ Enumerations</h2></td></tr>
 
 <p>Handle to ADL Frame Monitor Token. </p>
 <p>Frame Monitor clients obtain handle from initial call to <a class="el" href="group__PERFORMANCEAPI.html#ga58a3c40acb8e709f60a4ab51e771afd8">ADL2_Adapter_FrameMetrics_FrameDuration_Enable</a> Clients have to pass the handle to each subsequent ADL call to <a class="el" href="group__PERFORMANCEAPI.html#ga09a57bcf4d3d257f1b2c8bed1944e549">ADL2_Adapter_FrameMetrics_FrameDuration_Get</a> and finally destroy the token with call to <a class="el" href="group__PERFORMANCEAPI.html#ga4c13593e4210f15bedc281138eb25dd4">ADL2_Adapter_FrameMetrics_FrameDuration_Disable</a> </p>
+
+</div>
+</div>
+<a id="a07c49709ee22468e7fae7ac548837a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07c49709ee22468e7fae7ac548837a45">&#9670;&nbsp;</a></span>ADL_IMAGE_BOOST_NOTFICATION_REASON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structADL__IMAGE__BOOST__NOTFICATION__REASON.html">ADL_IMAGE_BOOST_NOTFICATION_REASON</a> <a class="el" href="structADL__IMAGE__BOOST__NOTFICATION__REASON.html">ADL_IMAGE_BOOST_NOTFICATION_REASON</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure containing information about Image Boost(OGL) Settings change reason. </p>
+<p>Elements of Image Boost settings changed reason. </p>
+
+</div>
+</div>
+<a id="a8aa3f358f77c8cf22c07a50ebf4f2bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aa3f358f77c8cf22c07a50ebf4f2bd6">&#9670;&nbsp;</a></span>ADL_IMAGE_BOOST_SETTINGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structADL__IMAGE__BOOST__SETTINGS.html">ADL_IMAGE_BOOST_SETTINGS</a> <a class="el" href="structADL__IMAGE__BOOST__SETTINGS.html">ADL_IMAGE_BOOST_SETTINGS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure containing information about OGL IMAGE BOOST Settings. </p>
+<p>Elements of OGL IMAGE BOOST settings. </p>
+
+</div>
+</div>
+<a id="ac584f57440ef6bfe37244ff6c51e8a27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac584f57440ef6bfe37244ff6c51e8a27">&#9670;&nbsp;</a></span>ADL_PROVSR_NOTFICATION_REASON</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structADL__PROVSR__NOTFICATION__REASON.html">ADL_PROVSR_NOTFICATION_REASON</a> <a class="el" href="structADL__PROVSR__NOTFICATION__REASON.html">ADL_PROVSR_NOTFICATION_REASON</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure containing information about ProVSR Settings change reason. </p>
+<p>Elements of ProVSR settings changed reason. </p>
+
+</div>
+</div>
+<a id="a33ba09d7d46bc219b291de3fd8d6bb60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33ba09d7d46bc219b291de3fd8d6bb60">&#9670;&nbsp;</a></span>ADL_PROVSR_SETTINGS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structADL__PROVSR__SETTINGS.html">ADL_PROVSR_SETTINGS</a> <a class="el" href="structADL__PROVSR__SETTINGS.html">ADL_PROVSR_SETTINGS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Structure containing information about Pro VSR Settings. </p>
+<p>Elements of ProVSR settings. </p>
 
 </div>
 </div>

@@ -132,6 +132,8 @@
 #define ADL_ERR_SET_INCOMPLETE                 -20
 /// There's no Linux XDisplay in Linux Console environment
 #define ADL_ERR_NO_XDISPLAY                    -21
+/// escape call failed becuse of incompatiable driver found in driver store
+#define ADL_ERR_CALL_TO_INCOMPATIABLE_DRIVER            -22
 
 /// @}
 /// </A>
@@ -852,7 +854,6 @@
 #define ADL_OSMODEINFOORIENTATION_DEFAULT_WIN7    DISPLAYCONFIG_ROTATION_FORCE_UINT32
 #define ADL_OSMODEFLAG_DEFAULT                    0
 /// @}
-
 
 ///////////////////////////////////////////////////////////////////////////
 // ADLThreadingModel Enumeration
@@ -1887,49 +1888,53 @@ typedef enum ADLOD8SettingId
 
 typedef enum ADLSensorType
 {
-	SENSOR_MAXTYPES = 0,
-	PMLOG_CLK_GFXCLK = 1,
-	PMLOG_CLK_MEMCLK = 2,
-	PMLOG_CLK_SOCCLK = 3,
-	PMLOG_CLK_UVDCLK1 = 4,
-	PMLOG_CLK_UVDCLK2 = 5,
-	PMLOG_CLK_VCECLK = 6,
-	PMLOG_CLK_VCNCLK = 7,
-	PMLOG_TEMPERATURE_EDGE = 8,
-	PMLOG_TEMPERATURE_MEM = 9,
-	PMLOG_TEMPERATURE_VRVDDC = 10,
-	PMLOG_TEMPERATURE_VRMVDD = 11,
-	PMLOG_TEMPERATURE_LIQUID = 12,
-	PMLOG_TEMPERATURE_PLX = 13,
-	PMLOG_FAN_RPM = 14,
-	PMLOG_FAN_PERCENTAGE = 15,
-	PMLOG_SOC_VOLTAGE = 16,
-	PMLOG_SOC_POWER = 17,
-	PMLOG_SOC_CURRENT = 18,
-	PMLOG_INFO_ACTIVITY_GFX = 19,
-	PMLOG_INFO_ACTIVITY_MEM = 20,
-	PMLOG_GFX_VOLTAGE = 21,
-	PMLOG_MEM_VOLTAGE = 22,
-	PMLOG_ASIC_POWER = 23,
-	PMLOG_TEMPERATURE_VRSOC = 24,
-	PMLOG_TEMPERATURE_VRMVDD0 = 25,
-	PMLOG_TEMPERATURE_VRMVDD1 = 26,
-	PMLOG_TEMPERATURE_HOTSPOT = 27,    
-        PMLOG_TEMPERATURE_GFX = 28,
-        PMLOG_TEMPERATURE_SOC = 29,
-        PMLOG_GFX_POWER = 30,
-        PMLOG_GFX_CURRENT = 31,
-        PMLOG_TEMPERATURE_CPU = 32,
-        PMLOG_CPU_POWER = 33,
-        PMLOG_CLK_CPUCLK = 34,
-        PMLOG_THROTTLER_STATUS = 35,
-        PMLOG_CLK_VCN1CLK1 = 36,
-        PMLOG_CLK_VCN1CLK2 = 37,
-        PMLOG_SMART_POWERSHIFT_CPU = 38,
-        PMLOG_SMART_POWERSHIFT_DGPU = 39,
-        PMLOG_BUS_SPEED = 40,
-        PMLOG_BUS_LANES = 41,
-	PMLOG_MAX_SENSORS_REAL
+    SENSOR_MAXTYPES             = 0,
+    PMLOG_CLK_GFXCLK            = 1,    // Current graphic clock value in MHz
+    PMLOG_CLK_MEMCLK            = 2,    // Current memory clock value in MHz
+    PMLOG_CLK_SOCCLK            = 3,
+    PMLOG_CLK_UVDCLK1           = 4,
+    PMLOG_CLK_UVDCLK2           = 5,
+    PMLOG_CLK_VCECLK            = 6,
+    PMLOG_CLK_VCNCLK            = 7,
+    PMLOG_TEMPERATURE_EDGE      = 8,    // Current edge of the die temperature value in C
+    PMLOG_TEMPERATURE_MEM       = 9,
+    PMLOG_TEMPERATURE_VRVDDC    = 10,
+    PMLOG_TEMPERATURE_VRMVDD    = 11,
+    PMLOG_TEMPERATURE_LIQUID    = 12,
+    PMLOG_TEMPERATURE_PLX       = 13,
+    PMLOG_FAN_RPM               = 14,   // Current fan RPM value
+    PMLOG_FAN_PERCENTAGE        = 15,   // Current ratio of fan RPM and max RPM
+    PMLOG_SOC_VOLTAGE           = 16,
+    PMLOG_SOC_POWER             = 17,
+    PMLOG_SOC_CURRENT           = 18,
+    PMLOG_INFO_ACTIVITY_GFX     = 19,   // Current graphic activity level in percentage
+    PMLOG_INFO_ACTIVITY_MEM     = 20,   // Current memory activity level in percentage
+    PMLOG_GFX_VOLTAGE           = 21,   // Current graphic voltage in mV
+    PMLOG_MEM_VOLTAGE           = 22,
+    PMLOG_ASIC_POWER            = 23,   // Current ASIC power draw in Watt
+    PMLOG_TEMPERATURE_VRSOC     = 24,
+    PMLOG_TEMPERATURE_VRMVDD0   = 25,
+    PMLOG_TEMPERATURE_VRMVDD1   = 26,
+    PMLOG_TEMPERATURE_HOTSPOT   = 27,   // Current center of the die temperature value in C
+    PMLOG_TEMPERATURE_GFX       = 28,
+    PMLOG_TEMPERATURE_SOC       = 29,
+    PMLOG_GFX_POWER             = 30,
+    PMLOG_GFX_CURRENT           = 31,
+    PMLOG_TEMPERATURE_CPU       = 32,
+    PMLOG_CPU_POWER             = 33,
+    PMLOG_CLK_CPUCLK            = 34,
+    PMLOG_THROTTLER_STATUS      = 35,   // A bit map of GPU throttle information. If a bit is set, the bit represented type of thorttling occurred in the last metrics sampling period
+    PMLOG_CLK_VCN1CLK1          = 36,
+    PMLOG_CLK_VCN1CLK2          = 37,
+    PMLOG_SMART_POWERSHIFT_CPU  = 38,
+    PMLOG_SMART_POWERSHIFT_DGPU = 39,
+    PMLOG_BUS_SPEED             = 40,   // Current PCIE bus speed running
+    PMLOG_BUS_LANES             = 41,   // Current PCIE bus lanes using
+    PMLOG_TEMPERATURE_LIQUID0   = 42,
+    PMLOG_TEMPERATURE_LIQUID1   = 43,
+    PMLOG_CLK_FCLK              = 44,
+    PMLOG_THROTTLER_STATUS_CPU  = 45,
+    PMLOG_MAX_SENSORS_REAL
 } ADLSensorType;
 
 
@@ -1943,48 +1948,52 @@ typedef enum ADL_THROTTLE_NOTIFICATION
 
 typedef enum ADL_PMLOG_SENSORS
 {
-	ADL_SENSOR_MAXTYPES = 0,
-	ADL_PMLOG_CLK_GFXCLK = 1,
-	ADL_PMLOG_CLK_MEMCLK = 2,
-	ADL_PMLOG_CLK_SOCCLK = 3,
-	ADL_PMLOG_CLK_UVDCLK1 = 4,
-	ADL_PMLOG_CLK_UVDCLK2 = 5,
-	ADL_PMLOG_CLK_VCECLK = 6,
-	ADL_PMLOG_CLK_VCNCLK = 7,
-	ADL_PMLOG_TEMPERATURE_EDGE = 8,
-	ADL_PMLOG_TEMPERATURE_MEM = 9,
-	ADL_PMLOG_TEMPERATURE_VRVDDC = 10,
-	ADL_PMLOG_TEMPERATURE_VRMVDD = 11,
-	ADL_PMLOG_TEMPERATURE_LIQUID = 12,
-	ADL_PMLOG_TEMPERATURE_PLX = 13,
-	ADL_PMLOG_FAN_RPM = 14,
-	ADL_PMLOG_FAN_PERCENTAGE = 15,
-	ADL_PMLOG_SOC_VOLTAGE = 16,
-	ADL_PMLOG_SOC_POWER = 17,
-	ADL_PMLOG_SOC_CURRENT = 18,
-	ADL_PMLOG_INFO_ACTIVITY_GFX = 19,
-	ADL_PMLOG_INFO_ACTIVITY_MEM = 20,
-	ADL_PMLOG_GFX_VOLTAGE = 21,
-	ADL_PMLOG_MEM_VOLTAGE = 22,
-	ADL_PMLOG_ASIC_POWER = 23,
-	ADL_PMLOG_TEMPERATURE_VRSOC = 24,
-	ADL_PMLOG_TEMPERATURE_VRMVDD0 = 25,
-	ADL_PMLOG_TEMPERATURE_VRMVDD1 = 26,
-	ADL_PMLOG_TEMPERATURE_HOTSPOT = 27,
-	ADL_PMLOG_TEMPERATURE_GFX = 28,
-	ADL_PMLOG_TEMPERATURE_SOC = 29,
-	ADL_PMLOG_GFX_POWER = 30,
-	ADL_PMLOG_GFX_CURRENT = 31,
-	ADL_PMLOG_TEMPERATURE_CPU = 32,
-	ADL_PMLOG_CPU_POWER = 33,
-	ADL_PMLOG_CLK_CPUCLK = 34,
-	ADL_PMLOG_THROTTLER_STATUS = 35,
-    ADL_PMLOG_CLK_VCN1CLK1 = 36,
-    ADL_PMLOG_CLK_VCN1CLK2 = 37,
-    ADL_PMLOG_SMART_POWERSHIFT_CPU	= 38,
+    ADL_SENSOR_MAXTYPES             = 0,
+    ADL_PMLOG_CLK_GFXCLK            = 1,
+    ADL_PMLOG_CLK_MEMCLK            = 2,
+    ADL_PMLOG_CLK_SOCCLK            = 3,
+    ADL_PMLOG_CLK_UVDCLK1           = 4,
+    ADL_PMLOG_CLK_UVDCLK2           = 5,
+    ADL_PMLOG_CLK_VCECLK            = 6,
+    ADL_PMLOG_CLK_VCNCLK            = 7,
+    ADL_PMLOG_TEMPERATURE_EDGE      = 8,
+    ADL_PMLOG_TEMPERATURE_MEM       = 9,
+    ADL_PMLOG_TEMPERATURE_VRVDDC    = 10,
+    ADL_PMLOG_TEMPERATURE_VRMVDD    = 11,
+    ADL_PMLOG_TEMPERATURE_LIQUID    = 12,
+    ADL_PMLOG_TEMPERATURE_PLX       = 13,
+    ADL_PMLOG_FAN_RPM               = 14,
+    ADL_PMLOG_FAN_PERCENTAGE        = 15,
+    ADL_PMLOG_SOC_VOLTAGE           = 16,
+    ADL_PMLOG_SOC_POWER             = 17,
+    ADL_PMLOG_SOC_CURRENT           = 18,
+    ADL_PMLOG_INFO_ACTIVITY_GFX     = 19,
+    ADL_PMLOG_INFO_ACTIVITY_MEM     = 20,
+    ADL_PMLOG_GFX_VOLTAGE           = 21,
+    ADL_PMLOG_MEM_VOLTAGE           = 22,
+    ADL_PMLOG_ASIC_POWER            = 23,
+    ADL_PMLOG_TEMPERATURE_VRSOC     = 24,
+    ADL_PMLOG_TEMPERATURE_VRMVDD0   = 25,
+    ADL_PMLOG_TEMPERATURE_VRMVDD1   = 26,
+    ADL_PMLOG_TEMPERATURE_HOTSPOT   = 27,
+    ADL_PMLOG_TEMPERATURE_GFX       = 28,
+    ADL_PMLOG_TEMPERATURE_SOC       = 29,
+    ADL_PMLOG_GFX_POWER             = 30,
+    ADL_PMLOG_GFX_CURRENT           = 31,
+    ADL_PMLOG_TEMPERATURE_CPU       = 32,
+    ADL_PMLOG_CPU_POWER             = 33,
+    ADL_PMLOG_CLK_CPUCLK            = 34,
+    ADL_PMLOG_THROTTLER_STATUS      = 35,   // GFX
+    ADL_PMLOG_CLK_VCN1CLK1          = 36,
+    ADL_PMLOG_CLK_VCN1CLK2          = 37,
+    ADL_PMLOG_SMART_POWERSHIFT_CPU  = 38,
     ADL_PMLOG_SMART_POWERSHIFT_DGPU = 39,
-    ADL_PMLOG_BUS_SPEED = 40,
-    ADL_PMLOG_BUS_LANES = 41,
+    ADL_PMLOG_BUS_SPEED             = 40,
+    ADL_PMLOG_BUS_LANES             = 41,
+    ADL_PMLOG_TEMPERATURE_LIQUID0   = 42,
+    ADL_PMLOG_TEMPERATURE_LIQUID1   = 43,
+    ADL_PMLOG_CLK_FCLK              = 44,
+    ADL_PMLOG_THROTTLER_STATUS_CPU  = 45,
 } ADL_PMLOG_SENSORS;
 
 /// \defgroup define_ecc_mode_states
@@ -2217,7 +2226,7 @@ typedef enum ADL_PMLOG_SENSORS
 #define ADL_CONNECTOR_TYPE_DISPLAYPORT             10
 /// Indicates EDP Connector type
 #define ADL_CONNECTOR_TYPE_EDP                     11
-/// Indicates MiniDP Connector type
+/// Indicates MiniDP Connector type 
 #define ADL_CONNECTOR_TYPE_MINI_DISPLAYPORT        12
 /// Indicates Virtual Connector type
 #define ADL_CONNECTOR_TYPE_VIRTUAL                   13
@@ -2383,7 +2392,9 @@ typedef enum ADL_UIFEATURES_GROUP
 	ADL_UIFEATURES_GROUP_DELAG = 8,
 	ADL_UIFEATURES_GROUP_BOOST = 9,
 	ADL_UIFEATURES_GROUP_USU = 10,
-	ADL_UIFEATURES_GROUP_XGMI = 11
+	ADL_UIFEATURES_GROUP_XGMI = 11,
+	ADL_UIFEATURES_GROUP_PROVSR = 12,
+    ADL_UIFEATURES_GROUP_SMA = 13
 } ADL_UIFEATURES_GROUP;
 
 
@@ -2474,9 +2485,11 @@ typedef enum ADL_USER_SETTINGS
     ADL_USER_SETTINGS_CHILL_PROFILE = 1 << 1,          //notify Chill settings change
     ADL_USER_SETTINGS_DELAG_PROFILE = 1 << 2,          //notify Delag settings change
     ADL_USER_SETTINGS_BOOST_PROFILE = 1 << 3,			//notify Boost settings change
-    ADL_USER_SETTINGS_USU_PROFILE = 1 << 4			//notify USU settings change
-
-} ADL_USER_SETTINGS;
+    ADL_USER_SETTINGS_USU_PROFILE = 1 << 4,  		//notify USU settings change
+    ADL_USER_SETTINGS_CVDC_PROFILE = 1 << 5,			//notify Color Vision Deficiency Corretion settings change
+    ADL_USER_SETTINGS_SCE_PROFILE = 1 << 6,
+	ADL_USER_SETTINGS_PROVSR = 1 << 7
+   } ADL_USER_SETTINGS;
 
 #define ADL_REG_DEVICE_FUNCTION_1            0x00000001
 #endif /* ADL_DEFINES_H_ */

@@ -29,7 +29,8 @@ ADL2_DISPLAY_DISPLAYINFO_GET                                        ADL2_Display
 ADL2_DISPLAY_PROPERTY_GET											ADL2_Display_Property_Get = nullptr;
 ADL2_DISPLAY_PROPERTY_SET											ADL2_Display_Property_Set = nullptr;
 ADL2_ADAPTER_MEMORYINFO3_GET         ADL2_Adapter_MemoryInfo3_Get = nullptr;
-
+ADL2_DISPLAY_DCE_GET         ADL2_Display_DCE_Get = nullptr;
+ADL2_DISPLAY_DCE_SET         ADL2_Display_DCE_Set = nullptr;
 // ADL module handle
 HINSTANCE hDLL = NULL;
 ADL_CONTEXT_HANDLE context_ = NULL;
@@ -82,6 +83,8 @@ int InitADL()
         ADL2_Display_Property_Get = (ADL2_DISPLAY_PROPERTY_GET)GetProcAddress(hDLL, "ADL2_Display_Property_Get");
         ADL2_Display_Property_Set = (ADL2_DISPLAY_PROPERTY_SET)GetProcAddress(hDLL, "ADL2_Display_Property_Set");
         ADL2_Adapter_MemoryInfo3_Get = (ADL2_ADAPTER_MEMORYINFO3_GET)GetProcAddress(hDLL, "ADL2_Adapter_MemoryInfo3_Get");
+        ADL2_Display_DCE_Get = (ADL2_DISPLAY_DCE_GET)GetProcAddress(hDLL, "ADL2_Display_DCE_Get");
+        ADL2_Display_DCE_Set = (ADL2_DISPLAY_DCE_SET)GetProcAddress(hDLL, "ADL2_Display_DCE_Set");
 
         if (nullptr == ADL2_Main_Control_Create ||
             nullptr == ADL2_Main_Control_Destroy ||
@@ -92,7 +95,9 @@ int InitADL()
             nullptr == ADL2_Display_Property_Get ||
             nullptr == ADL2_Display_Property_Set ||
             nullptr == ADL2_Display_DisplayInfo_Get ||
-            nullptr == ADL2_Adapter_MemoryInfo3_Get
+            nullptr == ADL2_Adapter_MemoryInfo3_Get ||
+            nullptr == ADL2_Display_DCE_Get ||
+            nullptr == ADL2_Display_DCE_Set
             )
         {
             std::cout << "ADL's API is missing!" << std::endl;

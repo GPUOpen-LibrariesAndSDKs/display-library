@@ -30,7 +30,7 @@
 #define ADL_STRUCTURES_H_
 
 #include "adl_defines.h"
-
+#include <stdbool.h>
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the graphics adapter.
 ///
@@ -3575,6 +3575,7 @@ typedef struct ADL_ERROR_REASON
 	int boost; //ON, when boost is Enabled
 	int delag; //ON, when delag is Enabled
 	int chill; //ON, when chill is Enabled
+	int proVsr; //ON, when proVsr is Enabled
 }ADL_ERROR_REASON;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3634,6 +3635,57 @@ typedef struct ADL_BOOST_SETTINGS
 	int GlobalMinRes_MaxLimit; //Gloabl Min Resolution slider max limit value
 	int GlobalMinRes_Step; //Gloabl Min Resolution step  value
 }ADL_BOOST_SETTINGS;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about ProVSR Settings change reason
+///
+///  Elements of ProVSR settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_PROVSR_NOTFICATION_REASON
+{
+	int HotkeyChanged; //Set when Hotkey value is changed
+	int GlobalEnableChanged; //Set when Global enable value is changed 
+}ADL_PROVSR_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about Pro VSR Settings
+///
+///  Elements of ProVSR settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_PROVSR_SETTINGS
+{
+	int Hotkey; // Hotkey value
+	int GlobalEnable; //Global enable value
+}ADL_PROVSR_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about Image Boost(OGL) Settings change reason
+///
+///  Elements of Image Boost settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_IMAGE_BOOST_NOTFICATION_REASON
+{
+    int HotkeyChanged; //Set when Hotkey value is changed
+    int GlobalEnableChanged; //Set when Global enable value is changed
+}ADL_IMAGE_BOOST_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about OGL IMAGE BOOST Settings
+///
+///  Elements of OGL IMAGE BOOST settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_IMAGE_BOOST_SETTINGS
+{
+    int Hotkey; // Hotkey value
+    int GlobalEnable; //Global enable value
+}ADL_IMAGE_BOOST_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about RIS Settings change reason

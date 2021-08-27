@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 15.0</span>
+   &#160;<span id="projectnumber">Version 16.0</span>
    </div>
   </td>
  </tr>
@@ -98,7 +98,7 @@ Functions</h2></td></tr>
 Function to Checks if given GPU (identified by adapter id) supports Frame Monitoring Metrics or not.<p>Checks if given GPU (identified by adapter id) supports Frame Monitoring Metrics or not. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">iIsFrameMonitorSupported</td><td>The pointer to the structure storing the retrieved adapter capability information. </td></tr>
   </table>
@@ -174,7 +174,7 @@ Function to Checks if given GPU (identified by adapter id) supports Frame Monito
 Function to Disable frame metrics time stamp recording on any GPU.<p>Will try to deallocate memory that was previously allocated for Frame Metrics Duration recording inside supplied Handle. This handle is required to start, Get and stop Frame Metrics Duration recording and must be supplied in all future calls. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frameDurationHandle</td><td>Handle containing information used inside Get calls to know how many Time stamp elements to read. Will be allocated by the enable call within ADL and then released after Disable call. </td></tr>
   </table>
   </dd>
@@ -217,7 +217,7 @@ Function to Disable frame metrics time stamp recording on any GPU.<p>Will try to
 Function to Enable frame metrics time stamp recording on any GPU.<p>Will try to allocate memory required for Frame Metrics Duration recording inside supplied Handle. This handle is required to start, Get and stop Frame Metrics Duration recording and must be supplied in all future calls. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frameDurationHandle</td><td>Handle containing information used inside Get calls to know how many Time stamp elements to read. Will be allocated by the enable call within ADL and then released after Disable call. Value must be set to null before being passed in. </td></tr>
   </table>
   </dd>
@@ -272,7 +272,7 @@ Function to Enable frame metrics time stamp recording on any GPU.<p>Will try to 
 Function to retrieve frame metrics frame duration information on GPU (identified by adapter id).<p>Get frame metrics frame duration Data on GPU (identified by adapter id). ADL2_Adapter_FrameMetrics_FrameDuration_Enable (at least once) &amp; then ADL2_Adapter_FrameMetrics_FrameDuration_Start must be called and succeed before Get will function. This function does not take adapterindex/vidPnSourceId so it will return the information on the adapter previously Started on. Will detect if in crossfire and Get data from all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frameDurationHandle</td><td>Handle containing information used inside Get calls to know how many Time stamp elements to read. Will be allocated by the enable call within ADL and then released after Disable call. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">pFrameDurationsArr</td><td>Array that will be filled with the new frame durations since the last call. Durations in Microseconds </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">frameDurationsArrSize</td><td>size of pFrameTimeStampsArr array to avoid overflow. </td></tr>
@@ -318,7 +318,7 @@ Function to retrieve frame metrics frame duration information on GPU (identified
 Function to start frame metrics time stamp recording on GPU (identified by adapter id).<p>Start frame metrics time stamp/frame duration recording on GPU (identified by adapter id). Will try to enable TimeStamp/FrameDuration recording (ADL2_Adapter_FrameMetrics_Start will be called inside and must succeed). Will detect if in crossfire and start all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">VidPnSourceId</td><td>The Source ID of the Display FPS metrics will be started from. </td></tr>
   </table>
@@ -362,7 +362,7 @@ Function to start frame metrics time stamp recording on GPU (identified by adapt
 Function to stop frame metrics time stamp recording on GPU (identified by adapter id).<p>Stop frame metrics time stamp recording on GPU (identified by adapter id). Will try to stop time stamp/Frame duration recording. (ADL2_Adapter_FrameMetrics_Stop will be called inside upon successful stop) Will detect if in crossfire and stop all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">VidPnSourceId</td><td>The Source ID of the Display FPS metrics will be stopped from. </td></tr>
   </table>
@@ -412,7 +412,7 @@ Function to stop frame metrics time stamp recording on GPU (identified by adapte
 Function to retrieve frame metrics information on GPU (identified by adapter id).<p>Get frame metrics monitoring Data on GPU (identified by adapter id). Will detect if in crossfire and Get data from all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">VidPnSourceId</td><td>The Source ID of the Display FPS metrics will be gathered from. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">iFramesPerSecond</td><td>The FPS presented by the GPU. This is the average of all FPS presented since the last time the function was called. </td></tr>
@@ -457,7 +457,7 @@ Function to retrieve frame metrics information on GPU (identified by adapter id)
 Function to start frame metrics monitoring on GPU (identified by adapter id).<p>Start frame metrics monitoring on GPU (identified by adapter id). Will detect if in crossfire and start all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">VidPnSourceId</td><td>The Source ID of the Display FPS metrics will be started from. </td></tr>
   </table>
@@ -501,7 +501,7 @@ Function to start frame metrics monitoring on GPU (identified by adapter id).<p>
 Function to stop frame metrics monitoring on GPU (identified by adapter id).<p>Stop frame metrics monitoring on GPU (identified by adapter id). Will detect if in crossfire and stop all slaves as well. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="group__MAINAPI.html#ga4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">VidPnSourceId</td><td>The Source ID of the Display FPS metrics will be stopped from. </td></tr>
   </table>

@@ -25,6 +25,54 @@ bool DisplaySetting::GetVirtualResolutionState(const ADLDisplayID& displayID_)
     }
     return false;
 }
+double DisplaySetting::GetLinkRate(int linkRateIndex)
+{
+    double res = -1;
+
+    switch (linkRateIndex)
+    {
+    case DPLinkRate_RBR:
+        res = 1.62;
+        break;
+    case DPLinkRate_2_16Gbps:
+        res = 2.16;
+        break;
+    case DPLinkRate_2_43Gbps:
+        res = 2.43;
+        break;
+    case DPLinkRate_HBR:
+        res = 2.70;
+        break;
+    case DPLinkRate_4_32Gbps:
+        res = 4.32;
+        break;
+    case DPLinkRate_HBR2:
+        res = 5.40;
+        break;
+    case DPLinkRate_HBR3:
+        res = 8.10;
+        break;
+    }
+    return res;
+}
+
+bool DisplaySetting::GetDCESettings(const ADLDisplayID& displayID_, ADLDceSettings& dceSettings_)
+{
+    if (ADL_OK == ADL2_Display_DCE_Get(context_, displayID_.iDisplayLogicalAdapterIndex, displayID_.iDisplayLogicalIndex, &dceSettings_))
+    {
+        return true;
+    }
+    return false;
+
+}
+bool DisplaySetting::SetDCESettings(const ADLDisplayID& displayID_, ADLDceSettings& dceSettings_)
+{
+    if (ADL_OK == ADL2_Display_DCE_Set(context_, displayID_.iDisplayLogicalAdapterIndex, displayID_.iDisplayLogicalIndex, &dceSettings_))
+    {
+        return true;
+    }
+    return false;
+}
 
 bool DisplaySetting::SetIntegerScalingState(const ADLDisplayID& displayID_, bool OnOff)
 {
