@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Copyright (c) 2018 - 2021 Advanced Micro Devices, Inc.  
+<p>Copyright (c) 2018 - 2022 Advanced Micro Devices, Inc.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;..\adl_structures.h&quot;</code><br />
 </div>
@@ -123,6 +123,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga3818b5bc38c0027ef7306a1aa9f16d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings. This is new version of ADL2_Overdrive8_Current_SettingX3_Get. It supports the availability of each item.  <a href="group__OVERDRIVE8API.html#ga3818b5bc38c0027ef7306a1aa9f16d23">More...</a><br /></td></tr>
 <tr class="separator:ga3818b5bc38c0027ef7306a1aa9f16d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac13bd3ad924670ddf0766537581304f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8API.html#gac13bd3ad924670ddf0766537581304f9">ADL2_Overdrive8_Init_Setting_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLOD8InitSetting.html">ADLOD8InitSetting</a> *lpInitSetting)</td></tr>
+<tr class="memdesc:gac13bd3ad924670ddf0766537581304f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 initial settings.  <a href="group__OVERDRIVE8API.html#gac13bd3ad924670ddf0766537581304f9">More...</a><br /></td></tr>
 <tr class="separator:gac13bd3ad924670ddf0766537581304f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38d76f552e19db90cd56dd466eb2484c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8API.html#ga38d76f552e19db90cd56dd466eb2484c">ADL2_Overdrive8_Init_SettingX2_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpOverdrive8Capabilities, int *lpNumberOfFeatures, <a class="el" href="structADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **lppInitSettingList)</td></tr>
 <tr class="memdesc:ga38d76f552e19db90cd56dd466eb2484c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 current range settings. This is new version of ADL2_Overdrive8_Init_Setting_Get. It supports new features and does not need to change the API.  <a href="group__OVERDRIVE8API.html#ga38d76f552e19db90cd56dd466eb2484c">More...</a><br /></td></tr>
@@ -150,7 +151,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga82db905465f4acaec95c4a7a8ea8a2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Copyright (c) 2018 - 2021 Advanced Micro Devices, Inc. </p>
+<div class="textblock"><p>Copyright (c) 2018 - 2022 Advanced Micro Devices, Inc. </p>
 <p>THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</p>
 <p>Contains all OverdriveN-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms.</p>
 <p>This file contains all OverdriveN-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions found in this file can be used as a reference to ensure the specified function pointers can be used by the appropriate runtime dynamic library loaders. </p>

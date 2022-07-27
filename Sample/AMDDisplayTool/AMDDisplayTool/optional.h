@@ -1,7 +1,7 @@
 #ifndef _OPTIONAL_H_
 #define _OPTIONAL_H_
 /*******************************************************************************
-  Copyright(c) 2014-2018 Advanced Micro Devices, Inc. All Rights Reserved.
+  Copyright(c) 2014-2022 Advanced Micro Devices, Inc. All Rights Reserved.
 
   THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
   EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED

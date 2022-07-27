@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2008 - 2013 Advanced Micro Devices, Inc.
+///  Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -16,7 +16,7 @@
 int main (int c,char* args[],char* s[])
 {
 	
-	int iAdapterIndex, iConnectorIndex, iConnectionType, iEmulationMode, validArgs = 0;
+	int iAdapterIndex, iConnectorIndex, iConnectionType, iDisplayIndex, iEmulationMode, validArgs = 0;
 	ADLDevicePort devicePort;
 	
 	
@@ -46,6 +46,16 @@ int main (int c,char* args[],char* s[])
 					iAdapterIndex = atoi(args[2]);
 					getDevicePort(args[3], &devicePort);
 					saveEDIDData(iAdapterIndex, devicePort, args[4]);
+				}
+				else
+					validArgs = -1;
+				break;
+			case 'S':
+				if (c == 4)
+				{
+					iAdapterIndex = atoi(args[2]);
+					iDisplayIndex = atoi(args[3]);
+					ReadEDIDDataByDisplayIndex(iAdapterIndex, iDisplayIndex);
 				}
 				else
 					validArgs = -1;
@@ -118,6 +128,8 @@ void printSyntax()
 	printf ("\t\t \t\t\t Ex: EDIDSampleTool c 0\n\n\n");
 	printf ("Store EDID Data in binary format \t EDIDSampleTool s <AdapterIndex> <RAD Address> <output filename>\n");
 	printf ("\t\t \t\t\t Ex: EDIDSampleTool s 0 0.1 test.bin\n\n\n");
+	printf ("Dump EDID Data through DisplayIndex in Hex \t EDIDSampleTool S <AdapterIndex> <DisplayIndex>\n");
+	printf ("\t\t \t\t\t Ex: EDIDSampleTool S 0 0\n\n\n");
 	printf ("Set EDID Data \t\t\t\t EDIDSampleTool d <AdapterIndex> <RAD Address> <connectionType> <input filename> \n");
 	printf ("\t\t \t\t\t Ex: EDIDSampleTool d 0 0 4 test.bin\n\n\n");
 	printf ("Branch emulation \t\t\t\t EDIDSampleTool b <AdapterIndex> <RAD Address> <No of child ports> \n");

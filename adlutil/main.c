@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2010 Advanced Micro Devices, Inc.
+///  Copyright (c) 2010 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -931,7 +931,7 @@ int DisplayErrorAndPause( char * sError )
 
 void ShowHelp(void)
 {
-		printf ( "\nADL Utility, Ver 3.0        Copyright(c) 2010 Advanced Micro Devices, Inc.\n\n" );
+		printf ( "\nADL Utility, Ver 3.0        Copyright(c) 2022 Advanced Micro Devices, Inc.\n\n" );
 		printf ( "adlutil get [file]        : Get the display settings of all\n" );
 		printf ( "                            active adapters [and saves them to file]\n" );
 		printf ( "adlutil set file          : Set the display with the parameters from file\n" );

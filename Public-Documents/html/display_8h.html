@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Copyright (c) 2008 - 2021 Advanced Micro Devices, Inc.  
+<p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="adl__structures_8h_source.html">adl_structures.h</a>&quot;</code><br />
 </div>
@@ -168,6 +168,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga850df281cefdac70b97d363b690042d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga850df281cefdac70b97d363b690042d5">ADL2_Display_ColorDepth_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int iColorDepth)</td></tr>
 <tr class="memdesc:ga850df281cefdac70b97d363b690042d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set color depth. <b>HDMI</b> and DP<b>only</b>.  <a href="group__DISPLAYAPI.html#ga850df281cefdac70b97d363b690042d5">More...</a><br /></td></tr>
 <tr class="separator:ga850df281cefdac70b97d363b690042d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga79077c3fecfa75105f9b1a13c9151ff1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga79077c3fecfa75105f9b1a13c9151ff1">ADL2_Display_ColorDepthDefault_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpColorDepthDefault)</td></tr>
+<tr class="separator:ga79077c3fecfa75105f9b1a13c9151ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacdbbd15c1fc4273e9a6108db5af3f4d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__COLORAPI.html#gacdbbd15c1fc4273e9a6108db5af3f4d5">ADL2_Display_ColorTemperatureSource_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpTempSource)</td></tr>
 <tr class="memdesc:gacdbbd15c1fc4273e9a6108db5af3f4d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get color temperature source.  <a href="group__COLORAPI.html#gacdbbd15c1fc4273e9a6108db5af3f4d5">More...</a><br /></td></tr>
 <tr class="separator:gacdbbd15c1fc4273e9a6108db5af3f4d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,6 +251,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9b02b7ce782fdebba473a0f42bdb6458"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8h.html#a9b02b7ce782fdebba473a0f42bdb6458">ADL2_Display_Downscaling_Caps</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayID, int *lpCaps)</td></tr>
 <tr class="memdesc:a9b02b7ce782fdebba473a0f42bdb6458"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the Down-scaling Caps display information.  <a href="display_8h.html#a9b02b7ce782fdebba473a0f42bdb6458">More...</a><br /></td></tr>
 <tr class="separator:a9b02b7ce782fdebba473a0f42bdb6458"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d91f0218cc35855636f254886836e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8h.html#aa0d91f0218cc35855636f254886836e1">ADL2_Display_DPDceSupport_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, <a class="el" href="adl__structures_8h.html#ab0b205c7db2feb03183fc89182fe402d">ADLDCESupport</a> *pDPDceSupportInfo)</td></tr>
+<tr class="memdesc:aa0d91f0218cc35855636f254886836e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the Function to get caps of display DEC support flags This caps of display DCE includes voltage swing and PreEmphasis  <a href="display_8h.html#aa0d91f0218cc35855636f254886836e1">More...</a><br /></td></tr>
+<tr class="separator:aa0d91f0218cc35855636f254886836e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga82c42a9fdd078ec5f718c4f7f0d0a26b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga82c42a9fdd078ec5f718c4f7f0d0a26b">ADL2_Display_DpMstInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpNumDisplays, <a class="el" href="structADLDisplayDPMSTInfo.html">ADLDisplayDPMSTInfo</a> **lppDisplayDPMstInfo, int iForceDetect)</td></tr>
 <tr class="memdesc:ga82c42a9fdd078ec5f718c4f7f0d0a26b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Display Port MST information.  <a href="group__DISPLAYAPI.html#ga82c42a9fdd078ec5f718c4f7f0d0a26b">More...</a><br /></td></tr>
 <tr class="separator:ga82c42a9fdd078ec5f718c4f7f0d0a26b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -313,7 +318,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga0f22f0f9bbf3167b561a97d3cc4cc1de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#ga0f22f0f9bbf3167b561a97d3cc4cc1de">ADL2_Display_ModeTimingOverride_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, <a class="el" href="structADLDisplayModeInfo.html">ADLDisplayModeInfo</a> *lpMode, int iForceUpdate)</td></tr>
 <tr class="memdesc:ga0f22f0f9bbf3167b561a97d3cc4cc1de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set display mode timing override information.  <a href="group__T__OVERRIDEAPI.html#ga0f22f0f9bbf3167b561a97d3cc4cc1de">More...</a><br /></td></tr>
 <tr class="separator:ga0f22f0f9bbf3167b561a97d3cc4cc1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacbac22b609e2e52d5270789e4bed0eef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#gacbac22b609e2e52d5270789e4bed0eef">ADL2_Display_ModeTimingOverrideInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, ADL_DL_DISPLAY_MODE *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</td></tr>
+<tr class="memitem:gacbac22b609e2e52d5270789e4bed0eef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#gacbac22b609e2e52d5270789e4bed0eef">ADL2_Display_ModeTimingOverrideInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, <a class="el" href="structADL__DL__DISPLAY__MODE.html">ADL_DL_DISPLAY_MODE</a> *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</td></tr>
 <tr class="memdesc:gacbac22b609e2e52d5270789e4bed0eef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve display mode timing override information.  <a href="group__T__OVERRIDEAPI.html#gacbac22b609e2e52d5270789e4bed0eef">More...</a><br /></td></tr>
 <tr class="separator:gacbac22b609e2e52d5270789e4bed0eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0ef429f14e5bc7d764e652401c884ac5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#ga0ef429f14e5bc7d764e652401c884ac5">ADL2_Display_ModeTimingOverrideList_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int iMaxNumOfOverrides, <a class="el" href="structADLDisplayModeInfo.html">ADLDisplayModeInfo</a> *lpModeInfoList, int *lpNumOfOverrides)</td></tr>
@@ -676,7 +681,7 @@ Functions</h2></td></tr>
 <tr class="memitem:ga87f760940c6af5afbf4e1c9325d6bdc2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#ga87f760940c6af5afbf4e1c9325d6bdc2">ADL_Display_ModeTimingOverride_Set</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, <a class="el" href="structADLDisplayModeInfo.html">ADLDisplayModeInfo</a> *lpMode, int iForceUpdate)</td></tr>
 <tr class="memdesc:ga87f760940c6af5afbf4e1c9325d6bdc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set display mode timing override information.  <a href="group__T__OVERRIDEAPI.html#ga87f760940c6af5afbf4e1c9325d6bdc2">More...</a><br /></td></tr>
 <tr class="separator:ga87f760940c6af5afbf4e1c9325d6bdc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8e13a253cec0c325615357311ce943a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#gaa8e13a253cec0c325615357311ce943a">ADL_Display_ModeTimingOverrideInfo_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, ADL_DL_DISPLAY_MODE *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</td></tr>
+<tr class="memitem:gaa8e13a253cec0c325615357311ce943a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#gaa8e13a253cec0c325615357311ce943a">ADL_Display_ModeTimingOverrideInfo_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, <a class="el" href="structADL__DL__DISPLAY__MODE.html">ADL_DL_DISPLAY_MODE</a> *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</td></tr>
 <tr class="memdesc:gaa8e13a253cec0c325615357311ce943a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve display mode timing override information.  <a href="group__T__OVERRIDEAPI.html#gaa8e13a253cec0c325615357311ce943a">More...</a><br /></td></tr>
 <tr class="separator:gaa8e13a253cec0c325615357311ce943a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga36198353896ed34b3eeb6c044fa8830f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__T__OVERRIDEAPI.html#ga36198353896ed34b3eeb6c044fa8830f">ADL_Display_ModeTimingOverrideList_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int iMaxNumOfOverrides, <a class="el" href="structADLDisplayModeInfo.html">ADLDisplayModeInfo</a> *lpModeInfoList, int *lpNumOfOverrides)</td></tr>
@@ -797,7 +802,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga457fbd988af8f50c54979349f1616b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Copyright (c) 2008 - 2021 Advanced Micro Devices, Inc. </p>
+<div class="textblock"><p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc. </p>
 <p>THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</p>
 <p>Contains all Display functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms</p>
 <p>This file contains all display-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders. </p>
@@ -908,7 +913,7 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. It can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lpFreeSyncCaps</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpADLDceSettings</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -962,7 +967,7 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. It can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lpFreeSyncCaps</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpADLDceSettings</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1326,6 +1331,60 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> <br  />
  </dd></dl>
+
+</div>
+</div>
+<a id="aa0d91f0218cc35855636f254886836e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0d91f0218cc35855636f254886836e1">&#9670;&nbsp;</a></span>ADL2_Display_DPDceSupport_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Display_DPDceSupport_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iDisplayIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#ab0b205c7db2feb03183fc89182fe402d">ADLDCESupport</a> *&#160;</td>
+          <td class="paramname"><em>pDPDceSupportInfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the Function to get caps of display DEC support flags This caps of display DCE includes voltage swing and PreEmphasis </p>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The index of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The index of the desired display. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">pDPDceSupportInfo</td><td>Support info, bitmap,voltage swing and PreEmphasis support or not. 1 is support,0 is not support. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the </dd></dl>
 
 </div>
 </div>
@@ -2124,7 +2183,7 @@ Function to notify KMD that user settings have changed. This function is called 
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. It can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lpFreeSyncCaps</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpADLDceSettings</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
   </table>
   </dd>
 </dl>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -127,6 +127,8 @@ Functions</h2></td></tr>
 <tr class="separator:gaf51188482158a07922fea2ae566dbd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf52143d588adede310eea6a31b3bc14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gabf52143d588adede310eea6a31b3bc14">ADL2_Adapter_MemoryInfo2_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfo2.html">ADLMemoryInfo2</a> *lpMemoryInfo2)</td></tr>
 <tr class="separator:gabf52143d588adede310eea6a31b3bc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3db3dca5ef79c271b6c06d731a6c6617"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga3db3dca5ef79c271b6c06d731a6c6617">ADL2_Adapter_MemoryInfoX4_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfoX4.html">ADLMemoryInfoX4</a> *lpMemoryInfoX4)</td></tr>
+<tr class="separator:ga3db3dca5ef79c271b6c06d731a6c6617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf2eff0b81bd247d73fa3e540a0cbd4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gacf2eff0b81bd247d73fa3e540a0cbd4d">ADL2_Adapter_Modes_ReEnumerate</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
 <tr class="separator:gacf2eff0b81bd247d73fa3e540a0cbd4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8123cca3eef17e457c99cb383b1a2383"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga8123cca3eef17e457c99cb383b1a2383">ADL2_Adapter_ModeSwitch</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>)</td></tr>
@@ -136,6 +138,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga1fe40c3da175bf722cc5094e024b5afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the number of OS-known adapters.  <a href="group__ADAPTERMAINAPI.html#ga1fe40c3da175bf722cc5094e024b5afb">More...</a><br /></td></tr>
 <tr class="separator:ga1fe40c3da175bf722cc5094e024b5afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6069d8bd1245d8742ec3fbf142c99805"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga6069d8bd1245d8742ec3fbf142c99805">ADL2_Adapter_ObservedClockInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpCoreClock, int *lpMemoryClock)</td></tr>
+<tr class="memdesc:ga6069d8bd1245d8742ec3fbf142c99805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;Specific logic is used to select appropriate clock for display in current configuration.  <a href="group__ADAPTERMAINAPI.html#ga6069d8bd1245d8742ec3fbf142c99805">More...</a><br /></td></tr>
 <tr class="separator:ga6069d8bd1245d8742ec3fbf142c99805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa6efb0f48a056ced472e6b4524c899e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaaa6efb0f48a056ced472e6b4524c899e">ADL2_Adapter_Primary_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int *lpPrimaryAdapterIndex)</td></tr>
 <tr class="memdesc:gaaa6efb0f48a056ced472e6b4524c899e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the primary display adapter index.  <a href="group__ADAPTERMAINAPI.html#gaaa6efb0f48a056ced472e6b4524c899e">More...</a><br /></td></tr>
@@ -190,6 +193,12 @@ Functions</h2></td></tr>
 <tr class="separator:gae3c8682eef0b670ed7822a9814eaa952"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1ef6ab5f2377c541d4c237df5795f70f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga1ef6ab5f2377c541d4c237df5795f70f">ADL2_GPUVMPageSize_Info_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iVMPageSizeType)</td></tr>
 <tr class="separator:ga1ef6ab5f2377c541d4c237df5795f70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4df5793ccb752b986abae5b7ecf392ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga4df5793ccb752b986abae5b7ecf392ee">ADL2_SmartShift_DeltaGain_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iMode, int iValue)</td></tr>
+<tr class="separator:ga4df5793ccb752b986abae5b7ecf392ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a9d7dcb3155a5583296377ba738c0ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga3a9d7dcb3155a5583296377ba738c0ed">ADL2_SmartShift_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLSmartShiftSettings.html">ADLSmartShiftSettings</a> *lpCurrent)</td></tr>
+<tr class="separator:ga3a9d7dcb3155a5583296377ba738c0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d7e6edbad77e07e864f33dfb88f3471"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga2d7e6edbad77e07e864f33dfb88f3471">ADL2_SmartShift_Support</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpSupported, int *lpVersion)</td></tr>
+<tr class="separator:ga2d7e6edbad77e07e864f33dfb88f3471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b59fe27b88a391c581c2aa76f8d4e64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga1b59fe27b88a391c581c2aa76f8d4e64">ADL2_Stress_Test_Cap</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iSupported, int *iEnabled, int *iVersion)</td></tr>
 <tr class="separator:ga1b59fe27b88a391c581c2aa76f8d4e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1813b0645f218a80c593840d15e5c59"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaa1813b0645f218a80c593840d15e5c59">ADL2_Throttle_Notification_Cap</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iSupported, int *iEnabled, int *iVersion)</td></tr>
@@ -284,15 +293,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group outlines Graphics version and architechture specific APIs. </p>
-<p>Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;Specific logic is used to select appropriate clock for display in current configuration.</p>
-<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname"></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga994d754bbf4268c421f420eeb19928e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga994d754bbf4268c421f420eeb19928e3">&#9670;&nbsp;</a></span>ADL2_Adapter_Accessibility_Get()</h2>
@@ -412,7 +412,7 @@ ADL local interface Function to restore all the ACE's INF registry defaults.<p>T
 </div><div class="memdoc">
 
 <p>Function to determine if the adapter is active or not. </p>
-<p>The function is used to check if the adapter associated with iAdapterIndex is active. Logic is different for Windows and Linux! </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>The function is used to check if the adapter associated with iAdapterIndex is active which has enabled desktop mapped on it. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1394,6 +1394,51 @@ Function to retrieve memory information from the adapter. Version 2<p>This funct
 
 </div>
 </div>
+<a id="ga3db3dca5ef79c271b6c06d731a6c6617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3db3dca5ef79c271b6c06d731a6c6617">&#9670;&nbsp;</a></span>ADL2_Adapter_MemoryInfoX4_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_MemoryInfoX4_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLMemoryInfoX4.html">ADLMemoryInfoX4</a> *&#160;</td>
+          <td class="paramname"><em>lpMemoryInfoX4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to retrieve memory information from the adapter. Version 4<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpMemoryInfoX4</td><td>The pointer to the structure storing the retrieved memory information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
 <a id="gacf2eff0b81bd247d73fa3e540a0cbd4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gacf2eff0b81bd247d73fa3e540a0cbd4d">&#9670;&nbsp;</a></span>ADL2_Adapter_Modes_ReEnumerate()</h2>
 
@@ -1541,6 +1586,16 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;Specific logic is used to select appropriate clock for display in current configuration. </p>
+<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -2585,6 +2640,157 @@ Function to sets the GPU VM PageSize info.<p>This function sets the GPU VM PageS
 
 </div>
 </div>
+<a id="ga4df5793ccb752b986abae5b7ecf392ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4df5793ccb752b986abae5b7ecf392ee">&#9670;&nbsp;</a></span>ADL2_SmartShift_DeltaGain_Set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_SmartShift_DeltaGain_Set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to set the Smart shift Delta gain settings.<p>This function set the smart shift Delta gain settings for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iMode</td><td>Smart shift Mode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iValue</td><td>Smart shift value <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ga3a9d7dcb3155a5583296377ba738c0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3a9d7dcb3155a5583296377ba738c0ed">&#9670;&nbsp;</a></span>ADL2_SmartShift_Settings_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_SmartShift_Settings_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLSmartShiftSettings.html">ADLSmartShiftSettings</a> *&#160;</td>
+          <td class="paramname"><em>lpCurrent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to get the Smart shift Settings.<p>This function retrieves the smart shift settings for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpCurrent</td><td>Smart shift settings <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ga2d7e6edbad77e07e864f33dfb88f3471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2d7e6edbad77e07e864f33dfb88f3471">&#9670;&nbsp;</a></span>ADL2_SmartShift_Support()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_SmartShift_Support </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpSupported</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpVersion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to get the Smart shift support.<p>This function retrieves the smart shift support for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpSupported</td><td>Smart shift supported state </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpVersion</td><td>Smart shift supported version </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
 <a id="ga1b59fe27b88a391c581c2aa76f8d4e64"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1b59fe27b88a391c581c2aa76f8d4e64">&#9670;&nbsp;</a></span>ADL2_Stress_Test_Cap()</h2>
 
@@ -2772,7 +2978,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to determine if the adapter is active or not. </p>
-<p>The function is used to check if the adapter associated with iAdapterIndex is active. Logic is different for Windows and Linux! </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>The function is used to check if the adapter associated with iAdapterIndex is active which has enabled desktop mapped on it. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>

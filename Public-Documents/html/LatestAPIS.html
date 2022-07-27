@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ADL (AMD Display Library) Public APIs: 16.0 APIs List</title>
+<title>ADL (AMD Display Library) Public APIs: 17.0 APIs List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -63,20 +63,14 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">16.0 APIs List </div>  </div>
+<div class="title">17.0 APIs List </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga91dc09a0fce46985c0c8a2ab7a53be96">ADL2_Graphics_VersionsX3_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLVersionsInfoX2.html" title="Structure containing version information.">ADLVersionsInfoX2</a> *lpVersionsInfo)</dt>
-<dd><a class="anchor" id="_LatestAPIS000001"></a> Function to retrieve version information for graphics driver installed on specific GPU. </dd>
-<dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga81f1f95e699d441c2a44a0c12a4754b1">ADL2_SmartDC_Caps</a>  (ADL_CONTEXT_HANDLE context, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_LatestAPIS000002"></a> Function to retrieve SmartDC capabilities information. </dd>
-<dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga50a3f9b191e609ce629132e572fd6ca1">ADL2_SmartDC_Status_Get</a>  (ADL_CONTEXT_HANDLE context, int *lpSmartDCState)</dt>
-<dd><a class="anchor" id="_LatestAPIS000003"></a> Function to retrieve the SmartDC status information. </dd>
-<dt>Global <a class="el" href="group__GRAPHICSAPI.html#gaafc75858316a9c19f1d9b61cdaee3847">ADL2_SmartDC_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int enable, int *lpSmartDCState)</dt>
-<dd><a class="anchor" id="_LatestAPIS000004"></a> Function to set SmartDC status. </dd>
-<dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga5fc5b15c6359f52a320432ca73d2311d">ADL2_Driver_Path_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSize, char *lpDriverPath)</dt>
-<dd><a class="anchor" id="_LatestAPIS000005"></a> return disk location of graphics driver that corresponds to given adapter index.</dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga79077c3fecfa75105f9b1a13c9151ff1">ADL2_Display_ColorDepthDefault_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpColorDepthDefault)</dt>
+<dd><a class="anchor" id="_LatestAPIS000001"></a> Function to get color depth default value. <b>HDMI</b> and <b>DP</b> only </dd>
+<dt>Global <a class="el" href="group__GRAPHICSAPI.html#gaf60a265fb5464d4e10bb491d61fb76de">ADL2_SmartDC_Active_State_Get</a>  (ADL_CONTEXT_HANDLE context, int *lpSmartDCActiveState)</dt>
+<dd><a class="anchor" id="_LatestAPIS000002"></a> Function to retrieve the SmartDC active state information.</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -108,6 +108,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga3818b5bc38c0027ef7306a1aa9f16d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 current settings. This is new version of ADL2_Overdrive8_Current_SettingX3_Get. It supports the availability of each item.  <a href="group__OVERDRIVE8API.html#ga3818b5bc38c0027ef7306a1aa9f16d23">More...</a><br /></td></tr>
 <tr class="separator:ga3818b5bc38c0027ef7306a1aa9f16d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac13bd3ad924670ddf0766537581304f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8API.html#gac13bd3ad924670ddf0766537581304f9">ADL2_Overdrive8_Init_Setting_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLOD8InitSetting.html">ADLOD8InitSetting</a> *lpInitSetting)</td></tr>
+<tr class="memdesc:gac13bd3ad924670ddf0766537581304f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 initial settings.  <a href="group__OVERDRIVE8API.html#gac13bd3ad924670ddf0766537581304f9">More...</a><br /></td></tr>
 <tr class="separator:gac13bd3ad924670ddf0766537581304f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga38d76f552e19db90cd56dd466eb2484c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__OVERDRIVE8API.html#ga38d76f552e19db90cd56dd466eb2484c">ADL2_Overdrive8_Init_SettingX2_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpOverdrive8Capabilities, int *lpNumberOfFeatures, <a class="el" href="structADLOD8SingleInitSetting.html">ADLOD8SingleInitSetting</a> **lppInitSettingList)</td></tr>
 <tr class="memdesc:ga38d76f552e19db90cd56dd466eb2484c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the Overdrive8 current range settings. This is new version of ADL2_Overdrive8_Init_Setting_Get. It supports new features and does not need to change the API.  <a href="group__OVERDRIVE8API.html#ga38d76f552e19db90cd56dd466eb2484c">More...</a><br /></td></tr>
@@ -136,18 +137,6 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group describes the Wattman APIs. </p>
-<p>Function to retrieve the Overdrive8 initial settings.</p>
-<p>This function retrieves the Overdrive8 initial settings for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lpInitSetting</td><td>The pointer to the initial settings structure storing the retrieved Overdrive8 parameters. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000040">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga294b9eeb37af0978c2823777b446b593"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga294b9eeb37af0978c2823777b446b593">&#9670;&nbsp;</a></span>ADL2_Adapter_PMLog_SensorLimits_Get()</h2>
@@ -524,7 +513,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000041">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000042">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -727,6 +716,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function to retrieve the Overdrive8 initial settings. </p>
+<p>This function retrieves the Overdrive8 initial settings for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpInitSetting</td><td>The pointer to the initial settings structure storing the retrieved Overdrive8 parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000041">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>

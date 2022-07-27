@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -105,294 +105,296 @@ $(function() {
 <dd><a class="anchor" id="_APIS15000018"></a> Function to retrieve memory information from the adapter. Version 2 </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga9b8da9ceb241e5bf4bcace069e4c611f">ADL_Adapter_MemoryInfo2_Get</a>  (int iAdapterIndex, <a class="el" href="structADLMemoryInfo2.html" title="Structure containing additional information about the ASIC memory.">ADLMemoryInfo2</a> *lpMemoryInfo2)</dt>
 <dd><a class="anchor" id="_APIS15000019"></a> Function to retrieve memory information from the adapter. Version 2 </dd>
+<dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga3db3dca5ef79c271b6c06d731a6c6617">ADL2_Adapter_MemoryInfoX4_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLMemoryInfoX4.html" title="Structure containing additional information about the ASIC memory.">ADLMemoryInfoX4</a> *lpMemoryInfoX4)</dt>
+<dd><a class="anchor" id="_APIS15000020"></a> Function to retrieve memory information from the adapter. Version 4 </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga8883103ac408ff20c2f4fe861ef32bcd">ADL2_Adapter_TRNG_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iTRNGSize, int iTRNGBufferSize, char *lpTRNGBuffer)</dt>
-<dd><a class="anchor" id="_APIS15000020"></a> Function to retrieve true Hardware generated random number. </dd>
+<dd><a class="anchor" id="_APIS15000021"></a> Function to retrieve true Hardware generated random number. </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gacf2eff0b81bd247d73fa3e540a0cbd4d">ADL2_Adapter_Modes_ReEnumerate</a>  (ADL_CONTEXT_HANDLE context)</dt>
-<dd><a class="anchor" id="_APIS15000021"></a> Function to re-enumerate adapter modes.  </dd>
-<dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gac13eb05c2aee2fcb9d4bea63cbdf9b67">ADL_Adapter_Modes_ReEnumerate</a>  ()</dt>
 <dd><a class="anchor" id="_APIS15000022"></a> Function to re-enumerate adapter modes.  </dd>
+<dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gac13eb05c2aee2fcb9d4bea63cbdf9b67">ADL_Adapter_Modes_ReEnumerate</a>  ()</dt>
+<dd><a class="anchor" id="_APIS15000023"></a> Function to re-enumerate adapter modes.  </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gaa184399bf59fcc0a533a6caa6ae95d30">ADL2_Feature_Settings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_UIFEATURES_GROUP iFeatureID, int *iCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000023"></a> Function to retrieve the current value of given feature on a given adapter </dd>
+<dd><a class="anchor" id="_APIS15000024"></a> Function to retrieve the current value of given feature on a given adapter </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gae15b9fb527111591039f59ecf8d5d704">ADL2_Feature_Settings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_UIFEATURES_GROUP iFeatureID, int iCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000024"></a> Function sets the current value to driver of given adapter </dd>
+<dd><a class="anchor" id="_APIS15000025"></a> Function sets the current value to driver of given adapter </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gac3af32d4929dd1d21dc147bb36fcd99b">ADL2_GcnAsicInfo_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLGcnInfo.html" title="Structure containing information about components of ASIC GCN architecture.">ADLGcnInfo</a> *gcnInfo)</dt>
-<dd><a class="anchor" id="_APIS15000025"></a> For given ASIC returns information about components of ASIC GCN architecture. Such as number of compute units, number of Tex (Texture filtering units) , number of ROPs (render back-ends).  </dd>
+<dd><a class="anchor" id="_APIS15000026"></a> For given ASIC returns information about components of ASIC GCN architecture. Such as number of compute units, number of Tex (Texture filtering units) , number of ROPs (render back-ends).  </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gae3c8682eef0b670ed7822a9814eaa952">ADL2_GPUVMPageSize_Info_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iVMPageSizeSupport, int *iVMPageSizeType)</dt>
-<dd><a class="anchor" id="_APIS15000026"></a> Function to gets the GPU VM PageSize info. </dd>
+<dd><a class="anchor" id="_APIS15000027"></a> Function to gets the GPU VM PageSize info. </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga1ef6ab5f2377c541d4c237df5795f70f">ADL2_GPUVMPageSize_Info_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iVMPageSizeType)</dt>
-<dd><a class="anchor" id="_APIS15000027"></a> Function to sets the GPU VM PageSize info. </dd>
+<dd><a class="anchor" id="_APIS15000028"></a> Function to sets the GPU VM PageSize info. </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga9c41c3740ddd76ee4f8a33a3ccc55e7f">ADL2_Adapter_VRAMUsage_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iVRAMUsageInMB)</dt>
-<dd><a class="anchor" id="_APIS15000028"></a> function retrieves the VRAM usage of given adapter  </dd>
+<dd><a class="anchor" id="_APIS15000029"></a> function retrieves the VRAM usage of given adapter  </dd>
 <dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#ga706e064b6ff564eeb61eee072e4443fb">ADL2_Adapter_DedicatedVRAMUsage_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iVRAMUsageInMB)</dt>
-<dd><a class="anchor" id="_APIS15000029"></a> function retrieves the Dedicated VRAM usage of given adapter </dd>
+<dd><a class="anchor" id="_APIS15000030"></a> function retrieves the Dedicated VRAM usage of given adapter </dd>
 <dt>Global <a class="el" href="group__VIDEOAPI.html#gaf63752710f318ac24c06e95cd8a08401">ADL2_MMD_Features_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLFeatureCaps.html" title="Structure containing information about MM Feature Capabilities.">ADLFeatureCaps</a> **lppFeatureCaps, int *lpFeatureCount)</dt>
-<dd><a class="anchor" id="_APIS15000030"></a> Function to obtain capabilities of Multi-Media features </dd>
-<dt>Global <a class="el" href="group__VIDEOAPI.html#ga2ed5572fbec47059c78e1bc92807b08d">ADL_MMD_Features_Caps</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureCaps.html" title="Structure containing information about MM Feature Capabilities.">ADLFeatureCaps</a> **lppFeatureCaps, int *lpFeatureCount)</dt>
 <dd><a class="anchor" id="_APIS15000031"></a> Function to obtain capabilities of Multi-Media features </dd>
+<dt>Global <a class="el" href="group__VIDEOAPI.html#ga2ed5572fbec47059c78e1bc92807b08d">ADL_MMD_Features_Caps</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureCaps.html" title="Structure containing information about MM Feature Capabilities.">ADLFeatureCaps</a> **lppFeatureCaps, int *lpFeatureCount)</dt>
+<dd><a class="anchor" id="_APIS15000032"></a> Function to obtain capabilities of Multi-Media features </dd>
 <dt>Global <a class="el" href="group__VIDEOAPI.html#ga4c7be6909d72e6b94b942f715c4e86c4">ADL2_MMD_FeatureValues_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> **lppFeatureValues, int *lpFeatureCount)</dt>
-<dd><a class="anchor" id="_APIS15000032"></a> Function to obtain the values and state of a Multi-Media feature </dd>
-<dt>Global <a class="el" href="group__VIDEOAPI.html#ga5e04bbcb203a9bf87060206b7050921a">ADL_MMD_FeatureValues_Get</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> **lppFeatureValues, int *lpFeatureCount)</dt>
 <dd><a class="anchor" id="_APIS15000033"></a> Function to obtain the values and state of a Multi-Media feature </dd>
+<dt>Global <a class="el" href="group__VIDEOAPI.html#ga5e04bbcb203a9bf87060206b7050921a">ADL_MMD_FeatureValues_Get</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> **lppFeatureValues, int *lpFeatureCount)</dt>
+<dd><a class="anchor" id="_APIS15000034"></a> Function to obtain the values and state of a Multi-Media feature </dd>
 <dt>Global <a class="el" href="group__VIDEOAPI.html#ga9a528e71701a682339dc411d80ae7b97">ADL2_MMD_FeatureValues_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> *lpFeatureValues, int iFeatureCount, int ClientID)</dt>
-<dd><a class="anchor" id="_APIS15000034"></a> Function to set the current value of a Multi-Media feature </dd>
-<dt>Global <a class="el" href="group__VIDEOAPI.html#ga2bea65e216feb9bd3dbc6a295057bd26">ADL_MMD_FeatureValues_Set</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> *lpFeatureValues, int iFeatureCount, int ClientID)</dt>
 <dd><a class="anchor" id="_APIS15000035"></a> Function to set the current value of a Multi-Media feature </dd>
+<dt>Global <a class="el" href="group__VIDEOAPI.html#ga2bea65e216feb9bd3dbc6a295057bd26">ADL_MMD_FeatureValues_Set</a>  (int iAdapterIndex, <a class="el" href="structADLFeatureValues.html" title="Structure containing information about MM Feature Values.">ADLFeatureValues</a> *lpFeatureValues, int iFeatureCount, int ClientID)</dt>
+<dd><a class="anchor" id="_APIS15000036"></a> Function to set the current value of a Multi-Media feature </dd>
 <dt>Global <a class="el" href="group__PAGEMIGRATIONAPI.html#ga3f88227f4c797729cd88910c7d6065f0">ADL2_PageMigration_Settings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLVirtualSegmentSettingsOutput.html" title="Structure containing information related virtual segment config information.">ADLVirtualSegmentSettingsOutput</a> *lpVirtualSegSettings)</dt>
-<dd><a class="anchor" id="_APIS15000036"></a> Function to retrieve PageMigration Global Settings. </dd>
+<dd><a class="anchor" id="_APIS15000037"></a> Function to retrieve PageMigration Global Settings. </dd>
 <dt>Global <a class="el" href="group__PAGEMIGRATIONAPI.html#ga0f95be30dfd217a69fbb68cc494f7175">ADL2_PageMigration_Settings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iEnabled, int iNewSize)</dt>
-<dd><a class="anchor" id="_APIS15000037"></a> Function to update PageMigration Global Settings. </dd>
+<dd><a class="anchor" id="_APIS15000038"></a> Function to update PageMigration Global Settings. </dd>
 <dt>Global <a class="el" href="group__CROSSFIREAPI.html#ga61d2208be151a7695f3b36f55a849b16">ADL2_Adapter_Crossfire_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLCrossfireComb.html" title="Structure containing information about the proper CrossfireX chains combinations.">ADLCrossfireComb</a> *lpCrossfireComb, <a class="el" href="structADLCrossfireInfo.html" title="Structure containing CrossfireX state and error information.">ADLCrossfireInfo</a> *lpCrossfireInfo)</dt>
-<dd><a class="anchor" id="_APIS15000038"></a> Function to get current CrossfireX combination settings. </dd>
-<dt>Global <a class="el" href="group__CROSSFIREAPI.html#gad60835f5d737e3e36d8a22a5b8cf4171">ADL_Adapter_Crossfire_Get</a>  (int iAdapterIndex, <a class="el" href="structADLCrossfireComb.html" title="Structure containing information about the proper CrossfireX chains combinations.">ADLCrossfireComb</a> *lpCrossfireComb, <a class="el" href="structADLCrossfireInfo.html" title="Structure containing CrossfireX state and error information.">ADLCrossfireInfo</a> *lpCrossfireInfo)</dt>
 <dd><a class="anchor" id="_APIS15000039"></a> Function to get current CrossfireX combination settings. </dd>
+<dt>Global <a class="el" href="group__CROSSFIREAPI.html#gad60835f5d737e3e36d8a22a5b8cf4171">ADL_Adapter_Crossfire_Get</a>  (int iAdapterIndex, <a class="el" href="structADLCrossfireComb.html" title="Structure containing information about the proper CrossfireX chains combinations.">ADLCrossfireComb</a> *lpCrossfireComb, <a class="el" href="structADLCrossfireInfo.html" title="Structure containing CrossfireX state and error information.">ADLCrossfireInfo</a> *lpCrossfireInfo)</dt>
+<dd><a class="anchor" id="_APIS15000040"></a> Function to get current CrossfireX combination settings. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga5454e0daf50a811589437272748d5da2">ADL2_ElmCompatibilityMode_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_APIS15000040"></a> Function to retrieve Compatibility Mode setting capability. </dd>
+<dd><a class="anchor" id="_APIS15000041"></a> Function to retrieve Compatibility Mode setting capability. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga50e084e317b3e6f9e1ce393c2610987f">ADL2_ElmCompatibilityMode_Status_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpValue)</dt>
-<dd><a class="anchor" id="_APIS15000041"></a> Function to retrieve Compatibility Mode status whether it is On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000042"></a> Function to retrieve Compatibility Mode status whether it is On or Off. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga4393392a8c0ad43f47efb5a464d16f10">ADL2_ElmCompatibilityMode_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iValue)</dt>
-<dd><a class="anchor" id="_APIS15000042"></a> Function to update Compatibility Mode status to either On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000043"></a> Function to update Compatibility Mode status to either On or Off. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga0767fcc4f1ade61568f68a06c0ee2135">ADL2_Chill_Settings_Notify</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iChanged)</dt>
-<dd><a class="anchor" id="_APIS15000043"></a> Function to notify DX via KMD that Chill settings have changed. This function communicates DX via KMD that user changed chill settings.  </dd>
+<dd><a class="anchor" id="_APIS15000044"></a> Function to notify DX via KMD that Chill settings have changed. This function communicates DX via KMD that user changed chill settings.  </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga2c129ff8bf0a1af64bb5b7726613b8eb">ADL2_Chill_Settings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000044"></a> Function to enable or disable Global Chill This function enables or disables Global Chill for a specified display adapter.  </dd>
+<dd><a class="anchor" id="_APIS15000045"></a> Function to enable or disable Global Chill This function enables or disables Global Chill for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga41eee16e7d6dd47b6ec96197b30db6eb">ADL2_Chill_Settings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000045"></a> Function to get the Global Chill capabilities This function retrieves the Global Chill capabilities for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga3113c554ff92ac9cd47577faec3b96a9">ADL2_Chill_Caps_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iCheckCaps)</dt>
 <dd><a class="anchor" id="_APIS15000046"></a> Function to get the Global Chill capabilities This function retrieves the Global Chill capabilities for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga3113c554ff92ac9cd47577faec3b96a9">ADL2_Chill_Caps_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iCheckCaps)</dt>
+<dd><a class="anchor" id="_APIS15000047"></a> Function to get the Global Chill capabilities This function retrieves the Global Chill capabilities for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga496caf79c732f8a4475b336dea236cc0">ADL2_PerformanceTuning_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_APIS15000047"></a> Function to retrieve Performance Tuning capability. </dd>
+<dd><a class="anchor" id="_APIS15000048"></a> Function to retrieve Performance Tuning capability. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#gaa50d0b723ab37b5892103faadda507c5">ADL2_PerfTuning_Status_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpPTuningValue)</dt>
-<dd><a class="anchor" id="_APIS15000048"></a> Function to retrieve Performance ui tunning status whether it is On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000049"></a> Function to retrieve Performance ui tunning status whether it is On or Off. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga9c7ad7a1eff1d62d16eb45a7361234ef">ADL2_PerfTuning_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int lpPTuningValue)</dt>
-<dd><a class="anchor" id="_APIS15000049"></a> Function to update Performance ui tunning status to either On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000050"></a> Function to update Performance ui tunning status to either On or Off. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga832fea9afcaf91c4d0795c5d299a3b9d">ADL2_PPW_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_APIS15000050"></a> Function to retrieve Performance Per Watt setting capability. </dd>
+<dd><a class="anchor" id="_APIS15000051"></a> Function to retrieve Performance Per Watt setting capability. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga6908fe63f0db2021e15fe1a177b28aa0">ADL2_PPW_Status_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpFPWValue)</dt>
-<dd><a class="anchor" id="_APIS15000051"></a> Function to retrieve Performance Per Watt status whether it is On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000052"></a> Function to retrieve Performance Per Watt status whether it is On or Off. </dd>
 <dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga0637b63e237535e5967540ede809af1a">ADL2_PPW_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iFPWValue)</dt>
-<dd><a class="anchor" id="_APIS15000052"></a> Function to update Performance Per Watt status to either On or Off. </dd>
+<dd><a class="anchor" id="_APIS15000053"></a> Function to update Performance Per Watt status to either On or Off. </dd>
 <dt>Module <a class="el" href="group__PERFORMANCEAPI.html">PERFORMANCEAPI</a>  </dt>
-<dd><a class="anchor" id="_APIS15000053"></a> Function to Checks if given GPU (identified by adapter id) supports Frame Monitoring Metrics or not. </dd>
+<dd><a class="anchor" id="_APIS15000054"></a> Function to Checks if given GPU (identified by adapter id) supports Frame Monitoring Metrics or not. </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#gadb8d2c587a156be2f11280c3acc3fd5f">ADL2_Adapter_FrameMetrics_Start</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int VidPnSourceId)</dt>
-<dd><a class="anchor" id="_APIS15000054"></a> Function to start frame metrics monitoring on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000055"></a> Function to start frame metrics monitoring on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#gae43560a9aa5c3d025dce35ee94978eb2">ADL2_Adapter_FrameMetrics_Stop</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int VidPnSourceId)</dt>
-<dd><a class="anchor" id="_APIS15000055"></a> Function to stop frame metrics monitoring on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000056"></a> Function to stop frame metrics monitoring on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga47ecaa634833db79224225b11c90b667">ADL2_Adapter_FrameMetrics_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int VidPnSourceId, float *iFramesPerSecond)</dt>
-<dd><a class="anchor" id="_APIS15000056"></a> Function to retrieve frame metrics information on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000057"></a> Function to retrieve frame metrics information on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga58a3c40acb8e709f60a4ab51e771afd8">ADL2_Adapter_FrameMetrics_FrameDuration_Enable</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_FRAME_DURATION_HANDLE *frameDurationHandle)</dt>
-<dd><a class="anchor" id="_APIS15000057"></a> Function to Enable frame metrics time stamp recording on any GPU. </dd>
+<dd><a class="anchor" id="_APIS15000058"></a> Function to Enable frame metrics time stamp recording on any GPU. </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga4c13593e4210f15bedc281138eb25dd4">ADL2_Adapter_FrameMetrics_FrameDuration_Disable</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_FRAME_DURATION_HANDLE *frameDurationHandle)</dt>
-<dd><a class="anchor" id="_APIS15000058"></a> Function to Disable frame metrics time stamp recording on any GPU. </dd>
+<dd><a class="anchor" id="_APIS15000059"></a> Function to Disable frame metrics time stamp recording on any GPU. </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga71fa2d9f3931bf90352c184d5bdc5e7e">ADL2_Adapter_FrameMetrics_FrameDuration_Start</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int VidPnSourceId)</dt>
-<dd><a class="anchor" id="_APIS15000059"></a> Function to start frame metrics time stamp recording on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000060"></a> Function to start frame metrics time stamp recording on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga23f036dcaed7d4d4f89a80f9f30c9646">ADL2_Adapter_FrameMetrics_FrameDuration_Stop</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int VidPnSourceId)</dt>
-<dd><a class="anchor" id="_APIS15000060"></a> Function to stop frame metrics time stamp recording on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000061"></a> Function to stop frame metrics time stamp recording on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="group__PERFORMANCEAPI.html#ga09a57bcf4d3d257f1b2c8bed1944e549">ADL2_Adapter_FrameMetrics_FrameDuration_Get</a>  (ADL_CONTEXT_HANDLE context, ADL_FRAME_DURATION_HANDLE frameDurationHandle, unsigned long long *pFrameDurationsArr, unsigned int frameDurationsArrSize, unsigned int *elementsCopied)</dt>
-<dd><a class="anchor" id="_APIS15000061"></a> Function to retrieve frame metrics frame duration information on GPU (identified by adapter id). </dd>
+<dd><a class="anchor" id="_APIS15000062"></a> Function to retrieve frame metrics frame duration information on GPU (identified by adapter id). </dd>
 <dt>Global <a class="el" href="adl_8h.html#a61e9e90c0dd2f672f7c298869812cfce">ADL2_RegisterEvent</a>  (ADL_CONTEXT_HANDLE context, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000062"></a> Allows the client to register to specific graphics driver event. </dd>
+<dd><a class="anchor" id="_APIS15000063"></a> Allows the client to register to specific graphics driver event. </dd>
 <dt>Global <a class="el" href="adl_8h.html#abcb79f1e01f9868837b64b3011eca3aa">ADL2_UnRegisterEvent</a>  (ADL_CONTEXT_HANDLE context, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000063"></a> Allows the client to un-register from specific graphics driver event. </dd>
+<dd><a class="anchor" id="_APIS15000064"></a> Allows the client to un-register from specific graphics driver event. </dd>
 <dt>Global <a class="el" href="adl_8h.html#a05ca113588bc3353f01abfba40a8231b">ADL2_RegisterEventX2</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int clientID, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000064"></a> Allows the client to register to specific graphics driver event. </dd>
+<dd><a class="anchor" id="_APIS15000065"></a> Allows the client to register to specific graphics driver event. </dd>
 <dt>Global <a class="el" href="adl_8h.html#a589c8e91aee401f06a978802b4a3b807">ADL2_UnRegisterEventX2</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int clientID, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000065"></a> Allows the client to un-register from specific graphics driver event. </dd>
+<dd><a class="anchor" id="_APIS15000066"></a> Allows the client to un-register from specific graphics driver event. </dd>
 <dt>Global <a class="el" href="adl_8h.html#a8f17e36ae7ab27573e24cd72fdf8b7d3">ADL2_PerGPU_GDEvent_Register</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int clientID, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000066"></a> Allows the client to register to specific graphics driver event for given GPU for each GPU </dd>
+<dd><a class="anchor" id="_APIS15000067"></a> Allows the client to register to specific graphics driver event for given GPU for each GPU </dd>
 <dt>Global <a class="el" href="adl_8h.html#ae3286c3f0b1aa3cdae3a812f4370727f">ADL2_PerGPU_GDEvent_UnRegister</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int clientID, int eventID, void *evntHandle)</dt>
-<dd><a class="anchor" id="_APIS15000067"></a> Allows the client to un-register to specific graphics driver event for a given GPU or for each GPU </dd>
+<dd><a class="anchor" id="_APIS15000068"></a> Allows the client to un-register to specific graphics driver event for a given GPU or for each GPU </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga0c4c8582cd9e630bc2f4c9a1db19a57c">ADL2_ApplicationProfiles_AppInterception_Set</a>  (ADL_CONTEXT_HANDLE context, int iAppType, unsigned int iProcId, int iEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000068"></a> Function to enable/disable application profile KMD interception </dd>
+<dd><a class="anchor" id="_APIS15000069"></a> Function to enable/disable application profile KMD interception </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gafd0216b893fc3571550abdaa711480e1">ADL2_ApplicationProfiles_AppInterceptionList_Set</a>  (ADL_CONTEXT_HANDLE context, int iAppType, int iNumberOfApps, <a class="el" href="structADLAppInterceptionInfo.html">ADLAppInterceptionInfo</a> *lpAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000069"></a> Function to set the list of application that KMD needs to intercept </dd>
+<dd><a class="anchor" id="_APIS15000070"></a> Function to set the list of application that KMD needs to intercept </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga95492844e7a957ad08c11a4e2361d1de">ADL2_ApplicationProfiles_Applications_Get</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *driverArea, int *numApps, <a class="el" href="structADLApplicationRecord.html" title="Structure containing information info for an application record.">ADLApplicationRecord</a> **adlApplications)</dt>
-<dd><a class="anchor" id="_APIS15000070"></a> Function to return list of applications declared in given driver area </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga3032059c108866feaae826ab2b12cc0d">ADL_ApplicationProfiles_Applications_Get</a>  (const wchar_t *driverArea, int *numApps, <a class="el" href="structADLApplicationRecord.html" title="Structure containing information info for an application record.">ADLApplicationRecord</a> **adlApplications)</dt>
 <dd><a class="anchor" id="_APIS15000071"></a> Function to return list of applications declared in given driver area </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga3032059c108866feaae826ab2b12cc0d">ADL_ApplicationProfiles_Applications_Get</a>  (const wchar_t *driverArea, int *numApps, <a class="el" href="structADLApplicationRecord.html" title="Structure containing information info for an application record.">ADLApplicationRecord</a> **adlApplications)</dt>
+<dd><a class="anchor" id="_APIS15000072"></a> Function to return list of applications declared in given driver area </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga2276895784e3f220222897eef50f3fc0">ADL2_ApplicationProfiles_AppStartStop_Resume</a>  (ADL_CONTEXT_HANDLE context, int iAppType, unsigned int ProcessId)</dt>
-<dd><a class="anchor" id="_APIS15000072"></a> Function to resume a KMD suspended process </dd>
+<dd><a class="anchor" id="_APIS15000073"></a> Function to resume a KMD suspended process </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf0d915fdacc8fb6ac090cea6b80b8cd5">ADL2_ApplicationProfiles_AppStartStopInfo_Get</a>  (ADL_CONTEXT_HANDLE context, int iAppType, <a class="el" href="structADLAppInterceptionInfo.html">ADLAppInterceptionInfo</a> *lpAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000073"></a> Function to retrieve information about the recent App Start/Stop event </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5f792129f1869f65cdb9297220ad3f5e">ADL2_ApplicationProfiles_ConvertToCompact</a>  (ADL_CONTEXT_HANDLE context, CUSTOMISATIONS *pCustomisation, BINFILE *outCompact, int *outSize)</dt>
-<dd><a class="anchor" id="_APIS15000074"></a> Function to convert C style structures into Compact style for writing a blob file </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf02ceed78f2a8b5e9ae3330f06c594ab">ADL_ApplicationProfiles_ConvertToCompact</a>  (CUSTOMISATIONS *pCustomisation, BINFILE *outCompact, int *outSize)</dt>
+<dd><a class="anchor" id="_APIS15000074"></a> Function to retrieve information about the recent App Start/Stop event </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5f792129f1869f65cdb9297220ad3f5e">ADL2_ApplicationProfiles_ConvertToCompact</a>  (ADL_CONTEXT_HANDLE context, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomisation, <a class="el" href="structBINFILE.html">BINFILE</a> *outCompact, int *outSize)</dt>
 <dd><a class="anchor" id="_APIS15000075"></a> Function to convert C style structures into Compact style for writing a blob file </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf02ceed78f2a8b5e9ae3330f06c594ab">ADL_ApplicationProfiles_ConvertToCompact</a>  (<a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomisation, <a class="el" href="structBINFILE.html">BINFILE</a> *outCompact, int *outSize)</dt>
+<dd><a class="anchor" id="_APIS15000076"></a> Function to convert C style structures into Compact style for writing a blob file </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga69eb241d612ae3b062528e8a0d978eea">ADL2_ApplicationProfiles_DriverAreaPrivacy_Get</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *DriverArea, PRIVACYTYPES *outDriverAreaPrivacy)</dt>
-<dd><a class="anchor" id="_APIS15000076"></a> Function to retrieve privacy type for the specified area </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5ac5b2b55817fa1ddbd02db249dcfc93">ADL_ApplicationProfiles_DriverAreaPrivacy_Get</a>  (const wchar_t *DriverArea, PRIVACYTYPES *outDriverAreaPrivacy)</dt>
 <dd><a class="anchor" id="_APIS15000077"></a> Function to retrieve privacy type for the specified area </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7d68d0d16715a8cbde1743cf08fd69f0">ADL2_ApplicationProfiles_GetCustomization</a>  (ADL_CONTEXT_HANDLE context, ADL_AP_DATABASE Databaseln, CUSTOMISATIONS *pCustomizationOut)</dt>
-<dd><a class="anchor" id="_APIS15000078"></a> Function to retrieve the pointer to Customization structure of the specified blob file </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gab84564b6eef7a5c09a193f64b68319e3">ADL_ApplicationProfiles_GetCustomization</a>  (ADL_AP_DATABASE Databaseln, CUSTOMISATIONS *pCustomizationOut)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5ac5b2b55817fa1ddbd02db249dcfc93">ADL_ApplicationProfiles_DriverAreaPrivacy_Get</a>  (const wchar_t *DriverArea, PRIVACYTYPES *outDriverAreaPrivacy)</dt>
+<dd><a class="anchor" id="_APIS15000078"></a> Function to retrieve privacy type for the specified area </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7d68d0d16715a8cbde1743cf08fd69f0">ADL2_ApplicationProfiles_GetCustomization</a>  (ADL_CONTEXT_HANDLE context, ADL_AP_DATABASE Databaseln, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomizationOut)</dt>
 <dd><a class="anchor" id="_APIS15000079"></a> Function to retrieve the pointer to Customization structure of the specified blob file </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gab84564b6eef7a5c09a193f64b68319e3">ADL_ApplicationProfiles_GetCustomization</a>  (ADL_AP_DATABASE Databaseln, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomizationOut)</dt>
+<dd><a class="anchor" id="_APIS15000080"></a> Function to retrieve the pointer to Customization structure of the specified blob file </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7c728340879671d4dda0486fad285226">ADL2_ApplicationProfiles_Profile_Create</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *driverArea, const wchar_t *profileName, int numProperties, const <a class="el" href="structADLPropertyRecordCreate.html" title="Structure containing information info for a property record in a profile.">ADLPropertyRecordCreate</a> *propertyRecords)</dt>
-<dd><a class="anchor" id="_APIS15000080"></a> Function to create new application profile. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac12a5944f504edccbc24003ef0f43b6e">ADL_ApplicationProfiles_Profile_Create</a>  (const wchar_t *driverArea, const wchar_t *profileName, int numProperties, const <a class="el" href="structADLPropertyRecordCreate.html" title="Structure containing information info for a property record in a profile.">ADLPropertyRecordCreate</a> *propertyRecords)</dt>
 <dd><a class="anchor" id="_APIS15000081"></a> Function to create new application profile. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac12a5944f504edccbc24003ef0f43b6e">ADL_ApplicationProfiles_Profile_Create</a>  (const wchar_t *driverArea, const wchar_t *profileName, int numProperties, const <a class="el" href="structADLPropertyRecordCreate.html" title="Structure containing information info for a property record in a profile.">ADLPropertyRecordCreate</a> *propertyRecords)</dt>
+<dd><a class="anchor" id="_APIS15000082"></a> Function to create new application profile. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga1c06fac0083b56e7e742f8f39612c214">ADL2_ApplicationProfiles_Profile_Exist</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *DriverArea, const wchar_t *ProfileName, BOOL *outExists)</dt>
-<dd><a class="anchor" id="_APIS15000082"></a> Function to check if the specified profile exist or not in system blob. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga23e9f08cd4041a0dc2b72fc1bc17eb90">ADL_ApplicationProfiles_Profile_Exist</a>  (const wchar_t *DriverArea, const wchar_t *ProfileName, BOOL *outExists)</dt>
 <dd><a class="anchor" id="_APIS15000083"></a> Function to check if the specified profile exist or not in system blob. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga23e9f08cd4041a0dc2b72fc1bc17eb90">ADL_ApplicationProfiles_Profile_Exist</a>  (const wchar_t *DriverArea, const wchar_t *ProfileName, BOOL *outExists)</dt>
+<dd><a class="anchor" id="_APIS15000084"></a> Function to check if the specified profile exist or not in system blob. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf03fefc08738458bcdc60a9782e1941a">ADL2_ApplicationProfiles_Profile_Remove</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *driverArea, const wchar_t *profileName)</dt>
-<dd><a class="anchor" id="_APIS15000084"></a> Function to remove the specified profile from the User blb. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gae2607be16fa6dbdcc3aa1093c78dcb35">ADL_ApplicationProfiles_Profile_Remove</a>  (const wchar_t *driverArea, const wchar_t *profileName)</dt>
 <dd><a class="anchor" id="_APIS15000085"></a> Function to remove the specified profile from the User blb. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gae2607be16fa6dbdcc3aa1093c78dcb35">ADL_ApplicationProfiles_Profile_Remove</a>  (const wchar_t *driverArea, const wchar_t *profileName)</dt>
+<dd><a class="anchor" id="_APIS15000086"></a> Function to remove the specified profile from the User blb. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga927678376ba4fb1d99a23eb526fdbf0c">ADL2_ApplicationProfiles_ProfileApplication_Assign</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
-<dd><a class="anchor" id="_APIS15000086"></a> Function to assign a profile in a new or existing application record. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga15d54c1b93904022e82027b95c5100e3">ADL_ApplicationProfiles_ProfileApplication_Assign</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
 <dd><a class="anchor" id="_APIS15000087"></a> Function to assign a profile in a new or existing application record. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7814bc182f5483a0b4eb4a73433ff441">ADL2_ApplicationProfiles_ProfileApplicationX2_Assign</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *Title, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga15d54c1b93904022e82027b95c5100e3">ADL_ApplicationProfiles_ProfileApplication_Assign</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
 <dd><a class="anchor" id="_APIS15000088"></a> Function to assign a profile in a new or existing application record. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga87d3e2cd0984b48b5e19be8afc30cd5d">ADL_ApplicationProfiles_ProfileApplicationX2_Assign</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *Title, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7814bc182f5483a0b4eb4a73433ff441">ADL2_ApplicationProfiles_ProfileApplicationX2_Assign</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *Title, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
 <dd><a class="anchor" id="_APIS15000089"></a> Function to assign a profile in a new or existing application record. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga87d3e2cd0984b48b5e19be8afc30cd5d">ADL_ApplicationProfiles_ProfileApplicationX2_Assign</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *Title, const wchar_t *DriverArea, const wchar_t *ProfileName)</dt>
+<dd><a class="anchor" id="_APIS15000090"></a> Function to assign a profile in a new or existing application record. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga51bd7ef33892ebcfdb0369df4054ec01">ADL2_ApplicationProfiles_ProfileOfAnApplication_InMemorySearch</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *fileName, const wchar_t *path, const wchar_t *version, const wchar_t *appProfileArea, <a class="el" href="structADLApplicationProfile.html" title="Structure containing information about an application profile.">ADLApplicationProfile</a> **lppProfile)</dt>
-<dd><a class="anchor" id="_APIS15000090"></a> Function to retrieve the profile of an application defined in driver. </dd>
+<dd><a class="anchor" id="_APIS15000091"></a> Function to retrieve the profile of an application defined in driver. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gadb77ccbc115cfdb658127fbaac32f6d8">ADL_ApplicationProfiles_ProfileOfAnApplication_InMemorySearch</a>  (const wchar_t *fileName, const wchar_t *path, const wchar_t *version, const wchar_t *appProfileArea, <a class="el" href="structADLApplicationProfile.html" title="Structure containing information about an application profile.">ADLApplicationProfile</a> **lppProfile)</dt>
-<dd><a class="anchor" id="_APIS15000091"></a> This API uses the Caller's Memory Allocation Callback Function to allocate memory pointed by lppProfile. Caller is responsible to de-allocate the memory.  </dd>
+<dd><a class="anchor" id="_APIS15000092"></a> This API uses the Caller's Memory Allocation Callback Function to allocate memory pointed by lppProfile. Caller is responsible to de-allocate the memory.  </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga70302e1e2e188d090487b68e506596c8">ADL2_ApplicationProfiles_ProfileOfAnApplicationX2_Search</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *AppProfileArea, <a class="el" href="structADLApplicationProfile.html" title="Structure containing information about an application profile.">ADLApplicationProfile</a> **lppProfile)</dt>
-<dd><a class="anchor" id="_APIS15000092"></a> Function to retrieve the profile of an application defined in driver. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac911e732129f6e97a6a2415010468132">ADL_ApplicationProfiles_ProfileOfAnApplicationX2_Search</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *AppProfileArea, <a class="el" href="structADLApplicationProfile.html" title="Structure containing information about an application profile.">ADLApplicationProfile</a> **lppProfile)</dt>
 <dd><a class="anchor" id="_APIS15000093"></a> Function to retrieve the profile of an application defined in driver. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac911e732129f6e97a6a2415010468132">ADL_ApplicationProfiles_ProfileOfAnApplicationX2_Search</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *AppProfileArea, <a class="el" href="structADLApplicationProfile.html" title="Structure containing information about an application profile.">ADLApplicationProfile</a> **lppProfile)</dt>
+<dd><a class="anchor" id="_APIS15000094"></a> Function to retrieve the profile of an application defined in driver. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga53077acf0c260af2b3ee93422c268e62">ADL2_ApplicationProfiles_PropertyType_Get</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *DriverArea, const wchar_t *PropertyName, DATATYPES *outType)</dt>
-<dd><a class="anchor" id="_APIS15000094"></a> Function to retrieve data type for the specified property. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5c97241d9e07cc4db2b7fe0360ef6134">ADL_ApplicationProfiles_PropertyType_Get</a>  (const wchar_t *DriverArea, const wchar_t *PropertyName, DATATYPES *outType)</dt>
 <dd><a class="anchor" id="_APIS15000095"></a> Function to retrieve data type for the specified property. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5c97241d9e07cc4db2b7fe0360ef6134">ADL_ApplicationProfiles_PropertyType_Get</a>  (const wchar_t *DriverArea, const wchar_t *PropertyName, DATATYPES *outType)</dt>
+<dd><a class="anchor" id="_APIS15000096"></a> Function to retrieve data type for the specified property. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga67eaa9a719fc26e7049db14e0ef6b133">ADL2_ApplicationProfiles_Release_Get</a>  (ADL_CONTEXT_HANDLE context, wchar_t **strRelease)</dt>
-<dd><a class="anchor" id="_APIS15000096"></a> Function to return release of installed system application profile blob file. </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaab44ccf48e985a6fd505152dfed64c77">ADL_ApplicationProfiles_Release_Get</a>  (wchar_t **strRelease)</dt>
 <dd><a class="anchor" id="_APIS15000097"></a> Function to return release of installed system application profile blob file. </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaab44ccf48e985a6fd505152dfed64c77">ADL_ApplicationProfiles_Release_Get</a>  (wchar_t **strRelease)</dt>
+<dd><a class="anchor" id="_APIS15000098"></a> Function to return release of installed system application profile blob file. </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga1ff5ce0c9aa9580eb99ca2a74c254724">ADL2_ApplicationProfiles_RemoveApplication</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea)</dt>
-<dd><a class="anchor" id="_APIS15000098"></a> Function to remove the specified application record  </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac9357695bff52f49393f53d2fdb16be7">ADL_ApplicationProfiles_RemoveApplication</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea)</dt>
 <dd><a class="anchor" id="_APIS15000099"></a> Function to remove the specified application record  </dd>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gac9357695bff52f49393f53d2fdb16be7">ADL_ApplicationProfiles_RemoveApplication</a>  (const wchar_t *FileName, const wchar_t *Path, const wchar_t *Version, const wchar_t *DriverArea)</dt>
+<dd><a class="anchor" id="_APIS15000100"></a> Function to remove the specified application record  </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga3c039bb1981ac4f6cbbc34615d9a23d7">ADL2_ApplicationProfilesX2_AppInterceptionList_Set</a>  (ADL_CONTEXT_HANDLE context, int iAppType, int iNumberOfApps, <a class="el" href="structADLAppInterceptionInfoX2.html">ADLAppInterceptionInfoX2</a> *lpAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000100"></a> Second Version of function to set the application properties provided to KMD along with possible interception requirements </dd>
+<dd><a class="anchor" id="_APIS15000101"></a> Second Version of function to set the application properties provided to KMD along with possible interception requirements </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf0d915fdacc8fb6ac090cea6b80b8cd5">ADL2_ApplicationProfiles_AppStartStopInfo_Get</a>  (ADL_CONTEXT_HANDLE context, int iAppType, <a class="el" href="structADLAppInterceptionInfo.html">ADLAppInterceptionInfo</a> *lpAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000101"></a> Function to retrieve information about the recent App Start/Stop event </dd>
+<dd><a class="anchor" id="_APIS15000102"></a> Function to retrieve information about the recent App Start/Stop event </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga7a680705624062b931e02a4b7043ef23">ADL2_Display_VirtualType_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADL_VIRTUALDISPLAY_TYPE *iVirtualType)</dt>
-<dd><a class="anchor" id="_APIS15000102"></a> Function to query what sort of virtual display is this </dd>
+<dd><a class="anchor" id="_APIS15000103"></a> Function to query what sort of virtual display is this </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gaa01c22c9d6c07714ee272f7d2c7169b7">ADL2_Display_WriteAndReadI2CLargePayload</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLI2CLargePayload.html" title="Structure containing information about I2C.">ADLI2CLargePayload</a> *plI2C)</dt>
-<dd><a class="anchor" id="_APIS15000103"></a> Function to write and read large I2C packets up to ADL_DL_I2C_MAXLARGEPAYLOADSIZE </dd>
-<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga937d5d1e766b4445a401312c2e86f4a1">ADL_Display_WriteAndReadI2CLargePayload</a>  (int iAdapterIndex, <a class="el" href="structADLI2CLargePayload.html" title="Structure containing information about I2C.">ADLI2CLargePayload</a> *plI2C)</dt>
 <dd><a class="anchor" id="_APIS15000104"></a> Function to write and read large I2C packets up to ADL_DL_I2C_MAXLARGEPAYLOADSIZE </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga937d5d1e766b4445a401312c2e86f4a1">ADL_Display_WriteAndReadI2CLargePayload</a>  (int iAdapterIndex, <a class="el" href="structADLI2CLargePayload.html" title="Structure containing information about I2C.">ADLI2CLargePayload</a> *plI2C)</dt>
+<dd><a class="anchor" id="_APIS15000105"></a> Function to write and read large I2C packets up to ADL_DL_I2C_MAXLARGEPAYLOADSIZE </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga49fa43aa5e4e88a6cee346c476f06e7e">ADL2_Display_HDCP_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLHDCPSettings.html" title="Structure containing HDCP Settings info.">ADLHDCPSettings</a> *lpHDCPSettings)</dt>
-<dd><a class="anchor" id="_APIS15000105"></a> Function to retrieve per display HDCP information.  </dd>
+<dd><a class="anchor" id="_APIS15000106"></a> Function to retrieve per display HDCP information.  </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gabce5743ff07f4dbd0bd3cdd77c4ea536">ADL2_Display_HDCP_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iSetToDefault, int iEnable)</dt>
-<dd><a class="anchor" id="_APIS15000106"></a> Function to set per display HDCP settings.  </dd>
+<dd><a class="anchor" id="_APIS15000107"></a> Function to set per display HDCP settings.  </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga158cd1ed4030c8689067d4a95580b908">ADL2_Display_HDRState_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLDisplayID.html" title="Structure containing information about the display device.">ADLDisplayID</a> displayID, int *iSupport, int *iEnable)</dt>
-<dd><a class="anchor" id="_APIS15000107"></a> Function to query whether a display is HDR Supported and Enabled </dd>
+<dd><a class="anchor" id="_APIS15000108"></a> Function to query whether a display is HDR Supported and Enabled </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga1f5a6aecf8f7425bca2921a0086abdb7">ADL2_Display_HDRState_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLDisplayID.html" title="Structure containing information about the display device.">ADLDisplayID</a> displayID, int iEnable)</dt>
-<dd><a class="anchor" id="_APIS15000108"></a> Function to set HDR state to display </dd>
+<dd><a class="anchor" id="_APIS15000109"></a> Function to set HDR state to display </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gae6d9d82fa012585819cc25e58e9febba">ADL2_Display_Limits_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpMaxHRes, int *lpMaxVRes, int *lpMaxRefresh)</dt>
-<dd><a class="anchor" id="_APIS15000109"></a> ADL local interface. Function to retrieve the maximum resolution* and maximum refresh rate* information for a display.<ul>
+<dd><a class="anchor" id="_APIS15000110"></a> ADL local interface. Function to retrieve the maximum resolution* and maximum refresh rate* information for a display.<ul>
 <li>Note: These values may not be valid combinations in some applications. </li>
 </ul>
 </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gab4d2a57d7af350736fe0decf3f92a151">ADL2_Display_PreferredMode_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpNumModes, <a class="el" href="structADLMode.html" title="Structure containing information about display mode.">ADLMode</a> **lppModes)</dt>
-<dd><a class="anchor" id="_APIS15000110"></a> Function to retrieve the display preferred mode information. </dd>
+<dd><a class="anchor" id="_APIS15000111"></a> Function to retrieve the display preferred mode information. </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gaead3a0ab4586ae6848e712e1f90c3068">ADL_Display_Limits_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpMaxHRes, int *lpMaxVRes, int *lpMaxRefresh)</dt>
-<dd><a class="anchor" id="_APIS15000111"></a> ADL local interface. Function to retrieve the maximum resolution* and maximum refresh rate* information for a display.<ul>
+<dd><a class="anchor" id="_APIS15000112"></a> ADL local interface. Function to retrieve the maximum resolution* and maximum refresh rate* information for a display.<ul>
 <li>Note: These values may not be valid combinations in some applications. </li>
 </ul>
 </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga7528cdad8e4b6c8b8ed00c7c42af0e0f">ADL2_Display_DummyVirtual_Get</a>  (ADL_CONTEXT_HANDLE context, int iVirtualDisplayType, int *iTargetID)</dt>
-<dd><a class="anchor" id="_APIS15000112"></a> Function to enable or get the dummy monitor </dd>
+<dd><a class="anchor" id="_APIS15000113"></a> Function to enable or get the dummy monitor </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gac892a4b929a315e63c11c1cd4b014dde">ADL2_Display_DummyVirtual_Destroy</a>  (ADL_CONTEXT_HANDLE context, int iTargetID)</dt>
-<dd><a class="anchor" id="_APIS15000113"></a> Function to destroy the dummy monitor </dd>
+<dd><a class="anchor" id="_APIS15000114"></a> Function to destroy the dummy monitor </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga5e8fd8d8b68c8fff219b4e7d26effa81">ADL2_Adapter_VariBright_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
-<dd><a class="anchor" id="_APIS15000114"></a> Function to get the VariBright capabilities This function retrieves the VariBright capabilities for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__DISPLAYAPI.html#gab25aa915d58338ab05b4d51c5f52731e">ADL_Adapter_VariBright_Caps</a>  (int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
 <dd><a class="anchor" id="_APIS15000115"></a> Function to get the VariBright capabilities This function retrieves the VariBright capabilities for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#gab25aa915d58338ab05b4d51c5f52731e">ADL_Adapter_VariBright_Caps</a>  (int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
+<dd><a class="anchor" id="_APIS15000116"></a> Function to get the VariBright capabilities This function retrieves the VariBright capabilities for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga73935512cac4da9ab40ad7d67fba3576">ADL2_Adapter_VariBrightEnable_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000116"></a> Function to enable or disable VariBright capabilities This function enables or disables VariBright for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga292032a7bc5b0acbbb64943c50c3a5f7">ADL_Adapter_VariBrightEnable_Set</a>  (int iAdapterIndex, int iEnabled)</dt>
 <dd><a class="anchor" id="_APIS15000117"></a> Function to enable or disable VariBright capabilities This function enables or disables VariBright for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga292032a7bc5b0acbbb64943c50c3a5f7">ADL_Adapter_VariBrightEnable_Set</a>  (int iAdapterIndex, int iEnabled)</dt>
+<dd><a class="anchor" id="_APIS15000118"></a> Function to enable or disable VariBright capabilities This function enables or disables VariBright for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#gaa9eaed1256a24051e9a0298433fdf05c">ADL2_Adapter_VariBrightLevel_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iDefaultLevel, int *iNumberOfLevels, int *iStep, int *iCurrentLevel)</dt>
-<dd><a class="anchor" id="_APIS15000118"></a> Function to get the current VariBright level This function retrieves the VariBright level for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga0e05ed940fc273f4b7265f31cae5a7c8">ADL_Adapter_VariBrightLevel_Get</a>  (int iAdapterIndex, int *iDefaultLevel, int *iNumberOfLevels, int *iStep, int *iCurrentLevel)</dt>
 <dd><a class="anchor" id="_APIS15000119"></a> Function to get the current VariBright level This function retrieves the VariBright level for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga0e05ed940fc273f4b7265f31cae5a7c8">ADL_Adapter_VariBrightLevel_Get</a>  (int iAdapterIndex, int *iDefaultLevel, int *iNumberOfLevels, int *iStep, int *iCurrentLevel)</dt>
+<dd><a class="anchor" id="_APIS15000120"></a> Function to get the current VariBright level This function retrieves the VariBright level for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__DISPLAYAPI.html#ga1127fdfd90d27fd97536ce9a4d9faa7f">ADL2_Adapter_VariBrightLevel_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iCurrentLevel, int iApplyImmediately)</dt>
-<dd><a class="anchor" id="_APIS15000120"></a> Function to set the current VariBright level This function sets the VariBright level for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga6a2ba209a1a50b0b773416277adb5ae7">ADL_Adapter_VariBrightLevel_Set</a>  (int iAdapterIndex, int iCurrentLevel, int iApplyImmediately)</dt>
 <dd><a class="anchor" id="_APIS15000121"></a> Function to set the current VariBright level This function sets the VariBright level for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga6a2ba209a1a50b0b773416277adb5ae7">ADL_Adapter_VariBrightLevel_Set</a>  (int iAdapterIndex, int iCurrentLevel, int iApplyImmediately)</dt>
+<dd><a class="anchor" id="_APIS15000122"></a> Function to set the current VariBright level This function sets the VariBright level for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__COLORAPI.html#ga26ca6b1119650b86d869c1ca96538729">ADL2_Display_Gamut_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> *lpCap)</dt>
-<dd><a class="anchor" id="_APIS15000122"></a> Function to get the current <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for the display. This function get the <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for a specified display.  </dd>
-<dt>Global <a class="el" href="group__COLORAPI.html#gac0742bf3878912c407812052fc6f766e">ADL_Display_Gamut_Caps</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> *lpCap)</dt>
 <dd><a class="anchor" id="_APIS15000123"></a> Function to get the current <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for the display. This function get the <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for a specified display.  </dd>
+<dt>Global <a class="el" href="group__COLORAPI.html#gac0742bf3878912c407812052fc6f766e">ADL_Display_Gamut_Caps</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> *lpCap)</dt>
+<dd><a class="anchor" id="_APIS15000124"></a> Function to get the current <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for the display. This function get the <a class="el" href="structADLGamutInfo.html" title="Structure containing information about driver supported gamut spaces , capability method.">ADLGamutInfo</a> setting for a specified display.  </dd>
 <dt>Global <a class="el" href="group__COLORAPI.html#ga26b524733e3f28e5b68442f9f6b126ac">ADL2_Display_Gamut_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> *lpSource)</dt>
-<dd><a class="anchor" id="_APIS15000124"></a> Function to get the current <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for the display. This function get the <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for a specified display.  </dd>
+<dd><a class="anchor" id="_APIS15000125"></a> Function to get the current <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for the display. This function get the <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for a specified display.  </dd>
 <dt>Global <a class="el" href="group__COLORAPI.html#ga2b586a1579951747c384bd32df4492a3">ADL2_Display_Gamut_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, const <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> *lpSource)</dt>
-<dd><a class="anchor" id="_APIS15000125"></a> Function to set the current <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for the display. This function sets the <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for a specified display.  </dd>
-<dt>Global <a class="el" href="group__COLORAPI.html#gad859bf10ac445f5e0a27005ed73abea4">ADL_Display_Gamut_Set</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, const <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> *lpSource)</dt>
 <dd><a class="anchor" id="_APIS15000126"></a> Function to set the current <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for the display. This function sets the <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for a specified display.  </dd>
+<dt>Global <a class="el" href="group__COLORAPI.html#gad859bf10ac445f5e0a27005ed73abea4">ADL_Display_Gamut_Set</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLGamutReference.html" title="Structure containing information about driver gamut space , whether it is related to source or to des...">ADLGamutReference</a> gamut, const <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> *lpSource)</dt>
+<dd><a class="anchor" id="_APIS15000127"></a> Function to set the current <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for the display. This function sets the <a class="el" href="structADLGamutData.html" title="Structure containing information about driver current gamut space , parent struct for ADLGamutCoordin...">ADLGamutData</a> setting for a specified display.  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#gaef3a32f0a31afd35cdd8e884224d0024">ADL2_Display_ModeTimingOverrideX2_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLDisplayModeInfoX2.html" title="Structure containing display mode information.">ADLDisplayModeInfoX2</a> *lpMode, int iForceUpdate)</dt>
-<dd><a class="anchor" id="_APIS15000127"></a> Function to set display mode timing override information. </dd>
+<dd><a class="anchor" id="_APIS15000128"></a> Function to set display mode timing override information. </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga4a2133cdc54cb2bde21a594ea40ac194">ADL2_Display_ModeTimingOverrideX3_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLDisplayID.html" title="Structure containing information about the display device.">ADLDisplayID</a> displayID, <a class="el" href="structADLDisplayModeX2.html" title="Structure containing the display mode definition used per controller.">ADLDisplayModeX2</a> *lpModeIn, <a class="el" href="structADLDisplayModeInfoX2.html" title="Structure containing display mode information.">ADLDisplayModeInfoX2</a> *lpModeInfoOut)</dt>
-<dd><a class="anchor" id="_APIS15000128"></a> Function to retrieve display mode timing override information. </dd>
+<dd><a class="anchor" id="_APIS15000129"></a> Function to retrieve display mode timing override information. </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga46b213ac527c01d50612153cb7f1c6ca">ADL2_Display_ModeTimingOverrideListX3_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLDisplayID.html" title="Structure containing information about the display device.">ADLDisplayID</a> displayID, int *lpNumOfModes, <a class="el" href="structADLDisplayModeInfoX2.html" title="Structure containing display mode information.">ADLDisplayModeInfoX2</a> **lpModeInfoList)</dt>
-<dd><a class="anchor" id="_APIS15000129"></a> Function to get the display mode timing override list. </dd>
+<dd><a class="anchor" id="_APIS15000130"></a> Function to get the display mode timing override list. </dd>
 <dt>Global <a class="el" href="display_8h.html#a8401e84abec78a8f115b244237856d31">ADL2_Display_TargetTimingX2_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLDisplayID.html" title="Structure containing information about the display device.">ADLDisplayID</a> displayID, <a class="el" href="structADLDisplayModeInfoX2.html" title="Structure containing display mode information.">ADLDisplayModeInfoX2</a> *lpModeInfoOut)</dt>
-<dd><a class="anchor" id="_APIS15000130"></a> Function to retrieve current display mode timing override information. </dd>
+<dd><a class="anchor" id="_APIS15000131"></a> Function to retrieve current display mode timing override information. </dd>
 <dt>Global <a class="el" href="display_8h.html#ab6a2bec75b80b353dca8184d165eced4">ADL2_TurboSyncSupport_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iTurboSyncSupported)</dt>
-<dd><a class="anchor" id="_APIS15000131"></a> Checks if given GPU (identified by adapter id) supports Turbo Sync functionality or not </dd>
+<dd><a class="anchor" id="_APIS15000132"></a> Checks if given GPU (identified by adapter id) supports Turbo Sync functionality or not </dd>
 <dt>Global <a class="el" href="display_8h.html#a25c7ac0726bb41154cafbd2d35241d07">ADL2_User_Settings_Notify</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_USER_SETTINGS iSetting, int iChanged)</dt>
-<dd><a class="anchor" id="_APIS15000132"></a> Function to notify KMD that user settings have changed. This function is called from client to communicate DX via KMD that user settings(TurboSync aka Enhanced Sync) have changed  </dd>
+<dd><a class="anchor" id="_APIS15000133"></a> Function to notify KMD that user settings have changed. This function is called from client to communicate DX via KMD that user settings(TurboSync aka Enhanced Sync) have changed  </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gac40344f3bb8cd09d88452e093745dd5d">ADL2_Display_SLSBuilder_CommonMode_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumDisplayTarget, <a class="el" href="structADLSLSTarget.html" title="Structure containing information about the SLS targets.">ADLSLSTarget</a> *lpSLSTarget, int *lpTotalWidth, int *lpTotalHeight)</dt>
-<dd><a class="anchor" id="_APIS15000133"></a> Get SLS builder common mode layout size </dd>
+<dd><a class="anchor" id="_APIS15000134"></a> Get SLS builder common mode layout size </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gaf33743729b4e3aafcd588cc2704c7a8e">ADL2_Display_SLSMapConfig_Valid</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLSLSMap.html" title="Structure containing information about the display SLS Map information.">ADLSLSMap</a> slsMap, int iNumDisplayTarget, <a class="el" href="structADLSLSTarget.html" title="Structure containing information about the SLS targets.">ADLSLSTarget</a> *lpSLSTarget, int *lpSupportedSLSLayoutImageMode, int *lpReasonForNotSupportSLS, int iOption)</dt>
-<dd><a class="anchor" id="_APIS15000134"></a> Set SLS configuration for each display index the controller and the adapter is being mapped to </dd>
+<dd><a class="anchor" id="_APIS15000135"></a> Set SLS configuration for each display index the controller and the adapter is being mapped to </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#ga378dac0d85bb70bdcac4cb76f8a5e3d3">ADL2_MGPUSLS_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iStatus)</dt>
-<dd><a class="anchor" id="_APIS15000135"></a> This function communicates KMD that user changed MGPU SLS feature.  </dd>
+<dd><a class="anchor" id="_APIS15000136"></a> This function communicates KMD that user changed MGPU SLS feature.  </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gaa235f2db77a3cc4137f4e7f08c4eda51">ADL2_Adapter_Desktop_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDesktopCapsValue, int *lpDesktopCapsMask)</dt>
-<dd><a class="anchor" id="_APIS15000136"></a> Function to set retrieve active desktop caps information </dd>
+<dd><a class="anchor" id="_APIS15000137"></a> Function to set retrieve active desktop caps information </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#ga4930f3496f66b5875b5d39ae1b7298ff">ADL2_Adapter_Desktop_SupportedSLSGridTypes_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumOfAvailableDisplays, <a class="el" href="structADLDisplayTarget.html" title="Structure containing information about display target information.">ADLDisplayTarget</a> *lpAvailableDisplays, int *lpNumSLSGrid, <a class="el" href="structADLSLSGrid.html" title="Structure containing information about the display SLS Grid information.">ADLSLSGrid</a> **lppSLSGrid, int iOption)</dt>
-<dd><a class="anchor" id="_APIS15000137"></a> Fucntion To retrieve active desktop supported SLS grid size.  </dd>
+<dd><a class="anchor" id="_APIS15000138"></a> Fucntion To retrieve active desktop supported SLS grid size.  </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga7f6fcff0e07a8fec52c966c4cb260b8a">ADL2_Graphics_IsDetachableGraphicsPlatform_Get</a>  (ADL_CONTEXT_HANDLE context, int *lpStatus)</dt>
-<dd><a class="anchor" id="_APIS15000138"></a> Function to discover if the current platform is a detachable graphics one or not. </dd>
+<dd><a class="anchor" id="_APIS15000139"></a> Function to discover if the current platform is a detachable graphics one or not. </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga99ef5ab6ef476e22982a8e91b433d39a">ADL2_Graphics_IsGfx9AndAbove</a>  (ADL_CONTEXT_HANDLE context)</dt>
-<dd><a class="anchor" id="_APIS15000139"></a> Function to retrieve the Family ID of a GPU. </dd>
+<dd><a class="anchor" id="_APIS15000140"></a> Function to retrieve the Family ID of a GPU. </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#gae1f2fee41e0c4bcd88fd819190c97b60">ADL2_Graphics_MantleVersion_Get</a>  (ADL_CONTEXT_HANDLE context, <a class="el" href="structADLMantleAppInfo.html" title="Structure containing Mantle App info.">ADLMantleAppInfo</a> *mantleAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000140"></a> Function to get mantle versions. </dd>
+<dd><a class="anchor" id="_APIS15000141"></a> Function to get mantle versions. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga4f26838a57df827f4111351fa5e0e38c">ADL2_OverdriveN_AutoWattman_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_APIS15000141"></a> Function to retrieve the Auto Wattman support </dd>
+<dd><a class="anchor" id="_APIS15000142"></a> Function to retrieve the Auto Wattman support </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga29615806a6f6f14aa651a7926df36b22">ADL2_OverdriveN_AutoWattman_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000142"></a> Function to retrieve the Auto Wattman current status </dd>
+<dd><a class="anchor" id="_APIS15000143"></a> Function to retrieve the Auto Wattman current status </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga84ee4734aff67404a1db56572186ab7e">ADL2_OverdriveN_AutoWattman_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000143"></a> Function to set the Auto Wattman status </dd>
+<dd><a class="anchor" id="_APIS15000144"></a> Function to set the Auto Wattman status </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gae015a1f02b28a73077960f779ff35aee">ADL2_OverdriveN_CountOfEvents_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int eventcounterType, int *eventCount)</dt>
-<dd><a class="anchor" id="_APIS15000144"></a> Function to retrieve the Events occured </dd>
+<dd><a class="anchor" id="_APIS15000145"></a> Function to retrieve the Events occured </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gae3a9cb5cb75d1f6390ea2420ef544b61">ADL2_OverdriveN_SCLKAutoOverClock_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpStatus)</dt>
-<dd><a class="anchor" id="_APIS15000145"></a> Function to retrieve the OverdriveN SCLK Auto overclock state. </dd>
+<dd><a class="anchor" id="_APIS15000146"></a> Function to retrieve the OverdriveN SCLK Auto overclock state. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gafaaa5a0093be6bb325368078360d7506">ADL2_OverdriveN_SCLKAutoOverClock_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iStatus, int *iFlags)</dt>
-<dd><a class="anchor" id="_APIS15000146"></a> Function to sets the OverdriveN SCLK Auto overclock state. </dd>
+<dd><a class="anchor" id="_APIS15000147"></a> Function to sets the OverdriveN SCLK Auto overclock state. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaffa5983e514b4f2ebe77199e1f370b2d">ADL2_OverdriveN_Test_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000147"></a> Function to enable or disable OVERdrive test This function enables or disables Overdrive testing status for a specified display adapter. works on earlier OD versions also.  </dd>
+<dd><a class="anchor" id="_APIS15000148"></a> Function to enable or disable OVERdrive test This function enables or disables Overdrive testing status for a specified display adapter. works on earlier OD versions also.  </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaaa79165c6370ead0b5ba87bb93d73794">ADL2_OverdriveN_ThrottleNotification_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpStatus, int *lpThrottleFlags)</dt>
-<dd><a class="anchor" id="_APIS15000148"></a> Function to retrieve the OverdriveN Throttle Notification state and its flags. </dd>
+<dd><a class="anchor" id="_APIS15000149"></a> Function to retrieve the OverdriveN Throttle Notification state and its flags. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gae473ec8183120f5bfc4715f457ad0740">ADL2_Workstation_DeepBitDepthX2_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDefDBDState, int *lpCurDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000149"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga53a2127e3741cbf74e9543402836a9bf">ADL_Workstation_DeepBitDepthX2_Get</a>  (int iAdapterIndex, int *lpDefDBDState, int *lpCurDBDState)</dt>
 <dd><a class="anchor" id="_APIS15000150"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga53a2127e3741cbf74e9543402836a9bf">ADL_Workstation_DeepBitDepthX2_Get</a>  (int iAdapterIndex, int *lpDefDBDState, int *lpCurDBDState)</dt>
+<dd><a class="anchor" id="_APIS15000151"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga6b7ae4ed11a70a8c2a0e1913079f3623">ADL2_Workstation_DeepBitDepthX2_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000151"></a> Function to set requested state of Deep Bit Depth </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gafcc66316886f19c1dca215be65a22e1a">ADL_Workstation_DeepBitDepthX2_Set</a>  (int iAdapterIndex, int iDBDState)</dt>
 <dd><a class="anchor" id="_APIS15000152"></a> Function to set requested state of Deep Bit Depth </dd>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gafcc66316886f19c1dca215be65a22e1a">ADL_Workstation_DeepBitDepthX2_Set</a>  (int iAdapterIndex, int iDBDState)</dt>
+<dd><a class="anchor" id="_APIS15000153"></a> Function to set requested state of Deep Bit Depth </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gab0ae5759d1d65d33f823d9ca2bfc4ba0">ADL2_Workstation_SDI_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported)</dt>
-<dd><a class="anchor" id="_APIS15000153"></a> Function to check for Serial Digital Interface capabilities </dd>
+<dd><a class="anchor" id="_APIS15000154"></a> Function to check for Serial Digital Interface capabilities </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga069608c723b19e62c55aa54b433d9deb">ADL2_Workstation_SDI_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDefualt, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDriver, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000154"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gaad3346274a620bfc9e2b6ac04b8ea074">ADL_Workstation_SDI_Get</a>  (int iAdapterIndex, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDefualt, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDriver, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpCurrent)</dt>
 <dd><a class="anchor" id="_APIS15000155"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gaad3346274a620bfc9e2b6ac04b8ea074">ADL_Workstation_SDI_Get</a>  (int iAdapterIndex, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDefualt, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDriver, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpCurrent)</dt>
+<dd><a class="anchor" id="_APIS15000156"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gaf09faca29c6037d2e6af8cfdb9c404bf">ADL2_Workstation_SDI_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSDIState, int iSizeofSDISegment)</dt>
-<dd><a class="anchor" id="_APIS15000156"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga87015afce6f023ea0f7b976ae18bb3ca">ADL_Workstation_SDI_Set</a>  (int iAdapterIndex, int iSDIState, int iSizeofSDISegment)</dt>
 <dd><a class="anchor" id="_APIS15000157"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gab2f008470b425d8fed9d4a321d2ee668">ADL2_Workstation_SDISegmentList_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga87015afce6f023ea0f7b976ae18bb3ca">ADL_Workstation_SDI_Set</a>  (int iAdapterIndex, int iSDIState, int iSizeofSDISegment)</dt>
 <dd><a class="anchor" id="_APIS15000158"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
-<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga6db77420ec7ca04638f085aef2c7234d">ADL_Workstation_SDISegmentList_Get</a>  (int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gab2f008470b425d8fed9d4a321d2ee668">ADL2_Workstation_SDISegmentList_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
 <dd><a class="anchor" id="_APIS15000159"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga6db77420ec7ca04638f085aef2c7234d">ADL_Workstation_SDISegmentList_Get</a>  (int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
+<dd><a class="anchor" id="_APIS15000160"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga143494da783491bc63809fb6b1daf69b">ADL2_WS_Overdrive_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
-<dd><a class="anchor" id="_APIS15000160"></a> Function to retrieve current workattaion overdrive support capabilities</dd>
+<dd><a class="anchor" id="_APIS15000161"></a> Function to retrieve current workattaion overdrive support capabilities</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

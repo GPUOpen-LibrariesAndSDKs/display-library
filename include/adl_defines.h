@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2016 - 2022 Advanced Micro Devices, Inc. All rights reserved.
 //
 // MIT LICENSE:
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -83,9 +83,10 @@
 /// ADLI2C.iAction used with ADL_Display_WriteAndReadI2C()
 /// @{
 
-#define ADL_DL_I2C_ACTIONREAD                                    0x00000001
-#define ADL_DL_I2C_ACTIONWRITE                                0x00000002
-#define ADL_DL_I2C_ACTIONREAD_REPEATEDSTART    0x00000003
+#define ADL_DL_I2C_ACTIONREAD								0x00000001
+#define ADL_DL_I2C_ACTIONWRITE								0x00000002
+#define ADL_DL_I2C_ACTIONREAD_REPEATEDSTART    				0x00000003
+#define ADL_DL_I2C_ACTIONIS_PRESENT							0x00000004
 /// @}
 
 
@@ -134,6 +135,10 @@
 #define ADL_ERR_NO_XDISPLAY                    -21
 /// escape call failed becuse of incompatiable driver found in driver store
 #define ADL_ERR_CALL_TO_INCOMPATIABLE_DRIVER            -22
+/// not running as administrator
+#define ADL_ERR_NO_ADMINISTRATOR_PRIVILEGES            -23
+/// Feature Sync Start api is not called yet
+#define ADL_ERR_FEATURESYNC_NOT_STARTED            -24
 
 /// @}
 /// </A>
@@ -1270,6 +1275,7 @@ typedef enum DceSettingsType {
     DceSetting_HdmiLq,
     DceSetting_DpSettings,
     DceSetting_Protection
+
 } DceSettingsType;
 
 typedef enum DpLinkRate {
@@ -1280,7 +1286,11 @@ typedef enum DpLinkRate {
     DPLinkRate_HBR,
 	DPLinkRate_4_32Gbps,
     DPLinkRate_HBR2,
-    DPLinkRate_HBR3
+    DPLinkRate_HBR3,
+	DPLinkRate_UHBR10,
+	DPLinkRate_UHBR13D5,
+	DPLinkRate_UHBR20
+
 } DpLinkRate;
 
 /// @}
@@ -1483,7 +1493,7 @@ typedef enum ADL_VIRTUALDISPLAY_TYPE
 /// @{
 /// defines for iSupportedHDR in ADLDDCInfo2
 #define ADL_HDR_CEA861_3        0x0001      ///< HDR10/CEA861.3 HDR supported
-#define ADL_HDR_DOLBYVISION        0x0002      ///< DolbyVision HDR supported
+#define ADL_HDR_DOLBYVISION     0x0002      ///< \deprecated DolbyVision HDR supported
 #define ADL_HDR_FREESYNC_HDR    0x0004      ///< FreeSync HDR supported
 /// @}
 
@@ -2394,7 +2404,9 @@ typedef enum ADL_UIFEATURES_GROUP
 	ADL_UIFEATURES_GROUP_USU = 10,
 	ADL_UIFEATURES_GROUP_XGMI = 11,
 	ADL_UIFEATURES_GROUP_PROVSR = 12,
-    ADL_UIFEATURES_GROUP_SMA = 13
+    ADL_UIFEATURES_GROUP_SMA = 13,
+    ADL_UIFEATURES_GROUP_CAMERA = 14,
+    ADL_UIFEATURES_GROUP_FRTCPRO = 15
 } ADL_UIFEATURES_GROUP;
 
 
@@ -2488,7 +2500,7 @@ typedef enum ADL_USER_SETTINGS
     ADL_USER_SETTINGS_USU_PROFILE = 1 << 4,  		//notify USU settings change
     ADL_USER_SETTINGS_CVDC_PROFILE = 1 << 5,			//notify Color Vision Deficiency Corretion settings change
     ADL_USER_SETTINGS_SCE_PROFILE = 1 << 6,
-	ADL_USER_SETTINGS_PROVSR = 1 << 7
+    ADL_USER_SETTINGS_PROVSR = 1 << 7
    } ADL_USER_SETTINGS;
 
 #define ADL_REG_DEVICE_FUNCTION_1            0x00000001

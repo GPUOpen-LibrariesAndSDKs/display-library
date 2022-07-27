@@ -3,7 +3,7 @@
 #include <vector>
 
 ///
-///  Copyright (c) 2018 - 2021 Advanced Micro Devices, Inc.
+///  Copyright (c) 2018 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -59,8 +59,8 @@ typedef int(*ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET) (ADL_CONTEXT_HANDLE context,
 
 
 typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_GET) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogSupportInfo* pPMLogSupportInfo);
-typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_START) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogStartInput* pPMLogStartInput, ADLPMLogStartOutput* pPMLogStartOutput, ADL_D3DKMT_HANDLE pDevice);
-typedef int(*ADL2_ADAPTER_PMLOG_SUPPORT_STOP) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE pDevice);
+typedef int(*ADL2_ADAPTER_PMLOG_START) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLPMLogStartInput* pPMLogStartInput, ADLPMLogStartOutput* pPMLogStartOutput, ADL_D3DKMT_HANDLE pDevice);
+typedef int(*ADL2_ADAPTER_PMLOG_STOP) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE pDevice);
 typedef int(*ADL2_DESKTOP_DEVICE_CREATE) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_D3DKMT_HANDLE *pDevice);
 typedef int(*ADL2_DESKTOP_DEVICE_DESTROY) (ADL_CONTEXT_HANDLE context, ADL_D3DKMT_HANDLE hDevice);
 typedef int(*ADL2_WS_OVERDRIVE_CAPS) (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int * iSupported, int * iEnabled, int * iVersion);
@@ -86,8 +86,8 @@ ADL2_OVERDRIVE8_INIT_SETTINGX2_GET ADL2_Overdrive8_Init_SettingX2_Get = NULL;
 ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET ADL2_Overdrive8_Current_SettingX2_Get = NULL;
 
 ADL2_ADAPTER_PMLOG_SUPPORT_GET ADL2_Adapter_PMLog_Support_Get = NULL;
-ADL2_ADAPTER_PMLOG_SUPPORT_START ADL2_Adapter_PMLog_Support_Start = NULL;
-ADL2_ADAPTER_PMLOG_SUPPORT_STOP ADL2_Adapter_PMLog_Support_Stop = NULL;
+ADL2_ADAPTER_PMLOG_START ADL2_Adapter_PMLog_Start = NULL;
+ADL2_ADAPTER_PMLOG_STOP ADL2_Adapter_PMLog_Stop = NULL;
 ADL2_DESKTOP_DEVICE_CREATE ADL2_Desktop_Device_Create = NULL;
 ADL2_DESKTOP_DEVICE_DESTROY ADL2_Desktop_Device_Destroy = NULL;
 ADL2_WS_OVERDRIVE_CAPS ADL2_WS_Overdrive_Caps = NULL;
@@ -267,8 +267,8 @@ int initializeADL()
     ADL2_Overdrive8_Current_SettingX2_Get = (ADL2_OVERDRIVE8_CURRENT_SETTINGX2_GET)GetProcAddress(hDLL, "ADL2_Overdrive8_Current_SettingX2_Get");
 
 	ADL2_Adapter_PMLog_Support_Get = (ADL2_ADAPTER_PMLOG_SUPPORT_GET)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Support_Get");
-	ADL2_Adapter_PMLog_Support_Start = (ADL2_ADAPTER_PMLOG_SUPPORT_START)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Start");
-	ADL2_Adapter_PMLog_Support_Stop = (ADL2_ADAPTER_PMLOG_SUPPORT_STOP)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Stop");
+	ADL2_Adapter_PMLog_Start = (ADL2_ADAPTER_PMLOG_START)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Start");
+	ADL2_Adapter_PMLog_Stop = (ADL2_ADAPTER_PMLOG_STOP)GetProcAddress(hDLL, "ADL2_Adapter_PMLog_Stop");
 	ADL2_Desktop_Device_Create = (ADL2_DESKTOP_DEVICE_CREATE)GetProcAddress(hDLL, "ADL2_Desktop_Device_Create");
 	ADL2_Desktop_Device_Destroy = (ADL2_DESKTOP_DEVICE_DESTROY)GetProcAddress(hDLL, "ADL2_Desktop_Device_Destroy");
     ADL2_WS_Overdrive_Caps = (ADL2_WS_OVERDRIVE_CAPS)GetProcAddress(hDLL, "ADL2_WS_Overdrive_Caps");
@@ -289,8 +289,8 @@ int initializeADL()
         NULL == ADL2_Overdrive8_Init_SettingX2_Get ||
         NULL == ADL2_Overdrive8_Current_SettingX2_Get ||
 		NULL == ADL2_Adapter_PMLog_Support_Get ||
-		NULL == ADL2_Adapter_PMLog_Support_Start ||
-		NULL == ADL2_Adapter_PMLog_Support_Stop ||
+		NULL == ADL2_Adapter_PMLog_Start ||
+		NULL == ADL2_Adapter_PMLog_Stop ||
 		NULL == ADL2_Desktop_Device_Create ||
 		NULL == ADL2_Desktop_Device_Destroy ||
         NULL == ADL2_WS_Overdrive_Caps)
@@ -658,8 +658,8 @@ int printOD8GPUVoltageParameters()
                 ret = ADL2_New_QueryPMLogData_Get(context, lpAdapterInfo[i].iAdapterIndex, &odlpDataOutput);
                 if (0 == ret)
                 {
-                    if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS &&
-                        (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE)
+                    if (((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS) &&
+                        ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE))
                     {
                         //GPU Voltage
                         OverdriveRangeDataStruct oneRangeData;
@@ -667,8 +667,8 @@ int printOD8GPUVoltageParameters()
                         GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_VOLTAGE2, ADL_OD8_GFXCLK_CURVE);
                         GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_GFXCLK_VOLTAGE3, ADL_OD8_GFXCLK_CURVE);
                     }
-                    else if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS &&
-                        (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) != ADL_OD8_GFXCLK_CURVE) {
+                    else if (((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS) &&
+                        ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) != ADL_OD8_GFXCLK_CURVE)) {
                         //GPU Voltage
                         OverdriveRangeDataStruct oneRangeData;
                         GetOD8RangePrint(odInitSetting, odCurrentSetting, oneRangeData, OD8_OD_VOLTAGE, ADL_OD8_ODVOLTAGE_LIMIT);
@@ -721,8 +721,8 @@ int SetOD8GPUVoltageParameters(int SettingId, int Reset, int value)
                     PRINTF("Get Current Setting failed.\n");
                     return ADL_ERR;
                 }
-                if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS &&
-                    (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE)
+                if (((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS) &&
+                    ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) == ADL_OD8_GFXCLK_CURVE))
                 {
                     if (OD8_GFXCLK_VOLTAGE1 == SettingId)
                     {
@@ -754,8 +754,8 @@ int SetOD8GPUVoltageParameters(int SettingId, int Reset, int value)
                     else
                         PRINTF("Set Error settingID.\n");
                 }
-                else if ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS &&
-                    (odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) != ADL_OD8_GFXCLK_CURVE) {
+                else if (((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_LIMITS) == ADL_OD8_GFXCLK_LIMITS) &&
+                    ((odInitSetting.overdrive8Capabilities & ADL_OD8_GFXCLK_CURVE) != ADL_OD8_GFXCLK_CURVE)) {
                      if (OD8_OD_VOLTAGE == SettingId)
                      {
                         if (ADL_OK == SetOD8PlusRange(odInitSetting, odCurrentSetting, lpAdapterInfo[i].iAdapterIndex, SettingId, Reset, value))
@@ -2554,7 +2554,6 @@ int PMLogCreateD3DDevice(int adapterNumber, ADL_D3DKMT_HANDLE *hDevice)
 
 int main(int argc, char* argv[])
 {
-    MessageBox(NULL, L"In Main():", L"The caption", MB_OK);
     if (initializeADL())
     {
         if (argc > 1)
@@ -2776,7 +2775,7 @@ int PMLogAllSensorStart(int adapterNumber, int sampleRate,  ADLPMLogData** PMLog
 	adlPMLogStartInput.usSensors[i] = ADL_SENSOR_MAXTYPES;
 	adlPMLogStartInput.ulSampleRate = sampleRate;
 
- 	if (ADL_OK != ADL2_Adapter_PMLog_Support_Start(context, lpAdapterInfo[0].iAdapterIndex, &adlPMLogStartInput, &adlPMLogStartOutput, *hDevice))
+	if (ADL_OK != ADL2_Adapter_PMLog_Start(context, lpAdapterInfo[0].iAdapterIndex, &adlPMLogStartInput, &adlPMLogStartOutput, *hDevice))
 	{
  		PRINTF("Failed to start PMLOG\n");
 		return ADL_ERR;
@@ -2902,7 +2901,7 @@ int printOD8()
 				}
 
 
-				if (ADL_OK != ADL2_Adapter_PMLog_Support_Stop(context, lpAdapterInfo[0].iAdapterIndex, hDevice))
+				if (ADL_OK != ADL2_Adapter_PMLog_Stop(context, lpAdapterInfo[0].iAdapterIndex, hDevice))
 				{
 					PRINTF("Failed to get PMLog Support\n");
 					return ADL_ERR;

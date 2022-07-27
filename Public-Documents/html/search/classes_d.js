@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xscreeninfo_3492',['XScreenInfo',['../structXScreenInfo.html',1,'']]]
+  ['xscreeninfo_3572',['XScreenInfo',['../structXScreenInfo.html',1,'']]]
 ];

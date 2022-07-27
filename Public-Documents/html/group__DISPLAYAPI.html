@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -140,6 +140,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga850df281cefdac70b97d363b690042d5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga850df281cefdac70b97d363b690042d5">ADL2_Display_ColorDepth_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int iColorDepth)</td></tr>
 <tr class="memdesc:ga850df281cefdac70b97d363b690042d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set color depth. <b>HDMI</b> and DP<b>only</b>.  <a href="group__DISPLAYAPI.html#ga850df281cefdac70b97d363b690042d5">More...</a><br /></td></tr>
 <tr class="separator:ga850df281cefdac70b97d363b690042d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga79077c3fecfa75105f9b1a13c9151ff1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga79077c3fecfa75105f9b1a13c9151ff1">ADL2_Display_ColorDepthDefault_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpColorDepthDefault)</td></tr>
+<tr class="separator:ga79077c3fecfa75105f9b1a13c9151ff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4b1203fc8f9919343872a1133c1efc4c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DISPLAYAPI.html#ga4b1203fc8f9919343872a1133c1efc4c">ADL2_Display_ConnectedDisplays_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpConnections)</td></tr>
 <tr class="memdesc:ga4b1203fc8f9919343872a1133c1efc4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to indicate whether displays are physically connected to an adapter.  <a href="group__DISPLAYAPI.html#ga4b1203fc8f9919343872a1133c1efc4c">More...</a><br /></td></tr>
 <tr class="separator:ga4b1203fc8f9919343872a1133c1efc4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -939,6 +941,57 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 </div>
 </div>
+<a id="ga79077c3fecfa75105f9b1a13c9151ff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga79077c3fecfa75105f9b1a13c9151ff1">&#9670;&nbsp;</a></span>ADL2_Display_ColorDepthDefault_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Display_ColorDepthDefault_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iDisplayIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpColorDepthDefault</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to get color depth default value. <b>HDMI</b> and <b>DP</b> only<p>This function retrieves the current display on given adpater's default color depth. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter per physical GPU. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. It can be retrieved from the <a class="el" href="structADLDisplayInfo.html" title="Structure containing information about the display device.">ADLDisplayInfo</a> data structure. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpColorDepthDefault</td><td>The pointer to the default color depth setting for given display. <a class="el" href="group__define__colordepth__constants.html">Define_colordepth_constants</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
 <a id="ga4b1203fc8f9919343872a1133c1efc4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga4b1203fc8f9919343872a1133c1efc4c">&#9670;&nbsp;</a></span>ADL2_Display_ConnectedDisplays_Get()</h2>
 
@@ -1530,7 +1583,7 @@ Function to retrieve per display HDCP information. <p>This function retrieves th
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iDisplayIndex</td><td>The desired display index. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">lpHDCPSettings</td><td>The pointer to the <a class="el" href="structADLDceSettings.html" title="Structure containing per display Display Connectivty Experience Settings.">ADLDceSettings</a> structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpHDCPSettings</td><td>The pointer to the <a class="el" href="structADLHDCPSettings.html" title="Structure containing HDCP Settings info.">ADLHDCPSettings</a> structure </td></tr>
   </table>
   </dd>
 </dl>

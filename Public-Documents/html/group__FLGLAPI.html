@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -74,6 +74,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga4fe8fee2ff0e9c016527f14a60708457"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FLGLAPI.html#ga4fe8fee2ff0e9c016527f14a60708457">ADL2_FRTCPro_Caps</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpSupported)</td></tr>
+<tr class="separator:ga4fe8fee2ff0e9c016527f14a60708457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab7c2fcb587d5d89366b4c30de7c0ebf7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FLGLAPI.html#gab7c2fcb587d5d89366b4c30de7c0ebf7">ADL2_FRTCPro_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADL__FRTCPRO__Settings.html">ADL_FRTCPRO_Settings</a> *FRTCPROSettings)</td></tr>
+<tr class="separator:gab7c2fcb587d5d89366b4c30de7c0ebf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9bc6353a45d4ea04e7a0a00900a504f3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FLGLAPI.html#ga9bc6353a45d4ea04e7a0a00900a504f3">ADL2_FRTCPro_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADL__FRTCPRO__Settings.html">ADL_FRTCPRO_Settings</a> FRTCPROSettings, <a class="el" href="structADL__FRTCPRO__CHANGED__REASON.html">ADL_FRTCPRO_CHANGED_REASON</a> changeReason)</td></tr>
+<tr class="separator:ga9bc6353a45d4ea04e7a0a00900a504f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9dcb0c77cd2b622a6a7433726d63d16"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__FLGLAPI.html#gac9dcb0c77cd2b622a6a7433726d63d16">ADL2_Workstation_DisplayGenlockCapable_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpCanGenlock)</td></tr>
 <tr class="memdesc:gac9dcb0c77cd2b622a6a7433726d63d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to determine whether or not a display is capable of Genlock functionality.  <a href="group__FLGLAPI.html#gac9dcb0c77cd2b622a6a7433726d63d16">More...</a><br /></td></tr>
 <tr class="separator:gac9dcb0c77cd2b622a6a7433726d63d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,6 +144,144 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group describes the Framelock Genlock APIs. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga4fe8fee2ff0e9c016527f14a60708457"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4fe8fee2ff0e9c016527f14a60708457">&#9670;&nbsp;</a></span>ADL2_FRTCPro_Caps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_FRTCPro_Caps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpSupported</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to get FRTCPRO caps<p>This Function to get FRTCPRO caps. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>: Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>: The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpSupported</td><td>: The value indicating the FRTCPRO Feature support state. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gab7c2fcb587d5d89366b4c30de7c0ebf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab7c2fcb587d5d89366b4c30de7c0ebf7">&#9670;&nbsp;</a></span>ADL2_FRTCPro_Settings_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_FRTCPro_Settings_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADL__FRTCPRO__Settings.html">ADL_FRTCPRO_Settings</a> *&#160;</td>
+          <td class="paramname"><em>FRTCPROSettings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to get FRTCPRO setting<p>This function is to get FRTCPRO Setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>: Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>: The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">FRTCPROSettings</td><td>: The structure indicating capability of the FRTCPRO Feature status,enable/disable,default value. <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga9bc6353a45d4ea04e7a0a00900a504f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9bc6353a45d4ea04e7a0a00900a504f3">&#9670;&nbsp;</a></span>ADL2_FRTCPro_Settings_Set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_FRTCPro_Settings_Set </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADL__FRTCPRO__Settings.html">ADL_FRTCPRO_Settings</a>&#160;</td>
+          <td class="paramname"><em>FRTCPROSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADL__FRTCPRO__CHANGED__REASON.html">ADL_FRTCPRO_CHANGED_REASON</a>&#160;</td>
+          <td class="paramname"><em>changeReason</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to set FRTCPRO Setting<p>This function set FRTCPRO Setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>: Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>: The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">FRTCPROSettings</td><td>: The structure indicating capability of the FRTCPRO Feature status,enable/disable,default value. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">changeReason</td><td>: The structure indicating reason of the FRTCPRO Feature status changed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="gac9dcb0c77cd2b622a6a7433726d63d16"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gac9dcb0c77cd2b622a6a7433726d63d16">&#9670;&nbsp;</a></span>ADL2_Workstation_DisplayGenlockCapable_Get()</h2>
 

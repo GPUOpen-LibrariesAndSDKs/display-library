@@ -399,8 +399,8 @@ BOOL CAMDSplashScreenDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 									//
-	CRect temprect(0, 0, 800, 450);
-	CWnd::SetWindowPos(NULL, 0, 0, temprect.Width(), temprect.Height(), SWP_NOZORDER | SWP_NOMOVE);
+	CWnd::SetWindowPos(NULL, 0, 0, 1208, 658, SWP_NOZORDER | SWP_NOMOVE);
+	//CWnd::SetWindowPos(NULL, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER);
 
 	// TODO: Add extra initialization here
 	AdjustTitlebarControls();
@@ -525,18 +525,21 @@ HBRUSH CAMDSplashScreenDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 void CAMDSplashScreenDlg::OnLButtonDown(UINT nFlags, CPoint point)
 {
+	CRect rect;
+	GetClientRect(&rect);
+
 	// TODO: Add your message handler code here and/or call default
-	if ((point.y > 0) && (point.y < 400))
+	if ((point.y > 0) && (point.y < rect.Height()))
 	{
 		PostMessage(WM_NCLBUTTONDOWN, HTCAPTION, MAKELPARAM(point.x, point.y));
 	}
 
-	if ((point.x >= 720 && point.x < 750) && (point.y >= 0 && point.y <= 50))
+	if ((point.x >= rect.Width() - 65 && point.x <= rect.Width() - 40) && (point.y >= 0 && point.y <= 50))
 	{
 		ShowWindow(SW_SHOWMINIMIZED);
 	}
 
-	if ((point.x >= 760 && point.x <= 785) && (point.y >= 0 && point.y <= 50))
+	if ((point.x >= rect.Width() - 30 && point.x <= rect.Width() - 5) && (point.y >= 0 && point.y <= 50))
 	{
 		exit(0);
 	}
@@ -551,13 +554,16 @@ void CAMDSplashScreenDlg::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CAMDSplashScreenDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
+	CRect rect;
+	GetClientRect(&rect);
+
 	// TODO: Add your message handler code here and/or call default
-	if ((point.x >= 720 && point.x < 750) && (point.y >= 0 && point.y <= 50))
+	if ((point.x >= rect.Width() - 65 && point.x <= rect.Width() - 40) && (point.y >= 0 && point.y <= 50))
 	{
 		SetCursor(LoadCursor(NULL, IDC_HAND));
 	}
 
-	if ((point.x >= 760 && point.x <= 785) && (point.y >= 0 && point.y <= 50))
+	if ((point.x >= rect.Width() - 30 && point.x <= rect.Width() - 5) && (point.y >= 0 && point.y <= 50))
 	{
 		SetCursor(LoadCursor(NULL, IDC_HAND));
 	}
@@ -634,8 +640,8 @@ void CAMDSplashScreenDlg::DrawPictureControls()
         bmpBackground.GetBitmap(&bitmap);
         CBitmap* pbmpOld = dcMem.SelectObject(&bmpBackground);
 
-        dc.StretchBlt(0, 0, rect.Width(), rect.Height(), &dcMem, 0, 0, rect.Width(), rect.Height(), SRCCOPY);
-        //dc.StretchBlt(0, 0, rect.Width(), rect.Height(), &dcMem, 0, 0, bitmap.bmWidth, bitmap.bmHeight, SRCCOPY);
+        //dc.StretchBlt(0, 0, rect.Width(), rect.Height(), &dcMem, 0, 0, rect.Width(), rect.Height(), SRCCOPY);
+        dc.StretchBlt(0, 0, rect.Width(), rect.Height(), &dcMem, 0, 0, bitmap.bmWidth, bitmap.bmHeight, SRCCOPY);
 
         dcMem.SelectObject(pbmpOld);
         dcMem.DeleteDC();
@@ -643,10 +649,50 @@ void CAMDSplashScreenDlg::DrawPictureControls()
 
     //AMD Logo
     DrawPictureImage(IDC_STATIC_LOGO, IDB_PNG1, sc_logo_width, sc_logo_height);
+
+	CRect clientRect;
+	GetClientRect(&clientRect);
     //Minimize
     DrawPictureImage(IDC_STATIC_MIN, IDB_PNG4, sc_min_width, sc_min_height);
+	//{
+	//	CClientDC* pDC = new CClientDC(GetDlgItem(IDC_STATIC_MIN));
+	//	CRect rect;
+	//	GetDlgItem(IDC_STATIC_MIN)->GetWindowRect(&rect);
+
+	//	Graphics graphics(pDC->m_hDC); // Create a GDI+ graphics object  
+	//	Image* pimage; // Construct an image
+	//	ImageFromIDResource(IDB_PNG4, _T("PNG"), pimage);
+
+	//	graphics.DrawImage(pimage,
+	//		clientRect.left + clientRect.Width() - 40 - sc_min_width - sc_exit_width,
+	//		//clientRect.right - sc_margin_x*2 - sc_exit_width - sc_min_width,
+	//		clientRect.top + 15,
+	//		sc_min_width, 
+	//		sc_min_height);
+
+	//	delete pDC, pDC = nullptr;
+	//}
     //Exit
     DrawPictureImage(IDC_STATIC_EXIT, IDB_PNG3, sc_exit_width, sc_exit_height);
+	//{
+	//	CClientDC* pDC = new CClientDC(GetDlgItem(IDC_STATIC_EXIT));
+	//	CRect rect;
+	//	GetDlgItem(IDC_STATIC_EXIT)->GetWindowRect(&rect);
+
+	//	Graphics graphics(pDC->m_hDC); // Create a GDI+ graphics object  
+	//	Image* pimage; // Construct an image
+	//	ImageFromIDResource(IDB_PNG3, _T("PNG"), pimage);
+
+	//	graphics.DrawImage(pimage,
+	//		clientRect.left + clientRect.Width() - sc_margin_x - sc_exit_width,
+	//		//clientRect.right - sc_margin_x - sc_exit_width,
+	//		clientRect.top + 15,
+	//		sc_exit_width,
+	//		sc_exit_height);
+
+	//	delete pDC, pDC = nullptr;
+	//}
+
 
     //VIRTUAL SUPER RESOLUTION
     {

@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2008 - 2013 Advanced Micro Devices, Inc.
+///  Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -24,3 +24,4 @@ extern void removeEmulation(int iAdapterIndex, ADLDevicePort devicePort);
 extern int printAdapaterInfo();
 extern void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int numberOfMSTPorts, int ActivePorts);
 extern void getDevicePort(char* RAD, ADLDevicePort* devicePort);
+extern void ReadEDIDDataByDisplayIndex(int iAdapterIndex, int iDisplayIndex);

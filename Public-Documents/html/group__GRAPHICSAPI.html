@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -104,6 +104,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9824d4877a501abcf8b990553258571c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GRAPHICSAPI.html#ga9824d4877a501abcf8b990553258571c">ADL2_Graphics_VulkanVersionX3_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, ADLVulkanAppInfo *vulkanAppInfo, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>)</td></tr>
 <tr class="memdesc:ga9824d4877a501abcf8b990553258571c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get Vulkan versions of different GPUs.  <a href="group__GRAPHICSAPI.html#ga9824d4877a501abcf8b990553258571c">More...</a><br /></td></tr>
 <tr class="separator:ga9824d4877a501abcf8b990553258571c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf60a265fb5464d4e10bb491d61fb76de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GRAPHICSAPI.html#gaf60a265fb5464d4e10bb491d61fb76de">ADL2_SmartDC_Active_State_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int *lpSmartDCActiveState)</td></tr>
+<tr class="separator:gaf60a265fb5464d4e10bb491d61fb76de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga81f1f95e699d441c2a44a0c12a4754b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GRAPHICSAPI.html#ga81f1f95e699d441c2a44a0c12a4754b1">ADL2_SmartDC_Caps</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int *lpSupported, int *lpDefault)</td></tr>
 <tr class="separator:ga81f1f95e699d441c2a44a0c12a4754b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga50a3f9b191e609ce629132e572fd6ca1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__GRAPHICSAPI.html#ga50a3f9b191e609ce629132e572fd6ca1">ADL2_SmartDC_Status_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int *lpSmartDCState)</td></tr>
@@ -602,6 +604,43 @@ Function to retrieve version information for graphics driver installed on specif
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="gaf60a265fb5464d4e10bb491d61fb76de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf60a265fb5464d4e10bb491d61fb76de">&#9670;&nbsp;</a></span>ADL2_SmartDC_Active_State_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_SmartDC_Active_State_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpSmartDCActiveState</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to retrieve the SmartDC active state information.<p>This function retrieves SmartDC current active stats information from Driver. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 10; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpSmartDCState</td><td>The pointer to the integer of SmartDC current state flag. If SmartDC currently is enabled , the value is 1, otherwise it is 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 
 </div>
 </div>

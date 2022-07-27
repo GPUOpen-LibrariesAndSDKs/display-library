@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -173,7 +173,8 @@ $(function() {
 : <a class="el" href="structADLConnectionProperties.html#ae6b0b42c71413012e4959140c74d3b41">ADLConnectionProperties</a>
 </li>
 <li>iBitsPerPel
-: <a class="el" href="structADLDisplayMode.html#a62624adb02544c8cb3212a8257e48238">ADLDisplayMode</a>
+: <a class="el" href="structADL__DL__DISPLAY__MODE.html#a45c1ff67cf1285faee1a6a17877a7b89">ADL_DL_DISPLAY_MODE</a>
+, <a class="el" href="structADLDisplayMode.html#a62624adb02544c8cb3212a8257e48238">ADLDisplayMode</a>
 </li>
 <li>iBlockIndex
 : <a class="el" href="structADLDisplayEDIDData.html#a298363c49f53fad71f0b49642b7c3ef3">ADLDisplayEDIDData</a>
@@ -286,6 +287,9 @@ $(function() {
 <li>iCurrentMemoryPerformanceLevel
 : <a class="el" href="structADLODNPerformanceStatus.html#ac8ff63492ebd28b002dfdd5b67f01612">ADLODNPerformanceStatus</a>
 </li>
+<li>iCurrentMode
+: <a class="el" href="structADLSmartShiftSettings.html#a81e00b8542f1c6dffc9baf89c07b19f9">ADLSmartShiftSettings</a>
+</li>
 <li>iCurrentPCIELaneWidth
 : <a class="el" href="structADLChipSetInfo.html#ab87850565058978d1ca04333fddfbb28">ADLChipSetInfo</a>
 </li>
@@ -295,6 +299,9 @@ $(function() {
 </li>
 <li>icurrentSizeInMB
 : <a class="el" href="structADLVirtualSegmentSettingsOutput.html#ac06f1257a52c4f37da21c7c27af09280">ADLVirtualSegmentSettingsOutput</a>
+</li>
+<li>iCurrentValue
+: <a class="el" href="structADLSmartShiftSettings.html#a8437483c20bb4a1aa405f4c0bbed845c">ADLSmartShiftSettings</a>
 </li>
 <li>iDataSize
 : <a class="el" href="structADLConnectionData.html#a571547a4723ebd073e6d62ab3d3fd020">ADLConnectionData</a>
@@ -317,8 +324,14 @@ $(function() {
 <li>iDefaultClock
 : <a class="el" href="structADLODClockSetting.html#a149f025278770cc3eb345247ff624446">ADLODClockSetting</a>
 </li>
+<li>iDefaultMode
+: <a class="el" href="structADLSmartShiftSettings.html#ac8e96268c93d051f645c559a59f1f5d4">ADLSmartShiftSettings</a>
+</li>
 <li>idefaultSizeInMB
 : <a class="el" href="structADLVirtualSegmentSettingsOutput.html#aa95ee9556dd0614429446c7b3a7161ce">ADLVirtualSegmentSettingsOutput</a>
+</li>
+<li>iDefaultValue
+: <a class="el" href="structADLSmartShiftSettings.html#a55153d842ecb52ece15025bab04fc94c">ADLSmartShiftSettings</a>
 </li>
 <li>iDevice
 : <a class="el" href="structADLAdapterLocation.html#af9e7e275a954d06186d79838850132a5">ADLAdapterLocation</a>
@@ -345,7 +358,8 @@ $(function() {
 , <a class="el" href="structADLMemoryRequired.html#a50f568ae2efebd3907dab97f201bda54">ADLMemoryRequired</a>
 </li>
 <li>iDisplayFrequency
-: <a class="el" href="structADLDisplayMode.html#a88dc807e780ccbab7f7f98096df8aab6">ADLDisplayMode</a>
+: <a class="el" href="structADL__DL__DISPLAY__MODE.html#a9b82f8e72b8624ac664ab885865ccf39">ADL_DL_DISPLAY_MODE</a>
+, <a class="el" href="structADLDisplayMode.html#a88dc807e780ccbab7f7f98096df8aab6">ADLDisplayMode</a>
 </li>
 <li>iDisplayHeight
 : <a class="el" href="structADLSLSOffset.html#a2a44c05a4b01d32f604ff0b9848cdc48">ADLSLSOffset</a>
@@ -534,6 +548,7 @@ $(function() {
 , <a class="el" href="structADLFanSpeedValue.html#af35ee7e6fb8d651b10fced7e9efa2506">ADLFanSpeedValue</a>
 , <a class="el" href="structADLI2CLargePayload.html#a9dab3ced6589578450677d3e1b950aed">ADLI2CLargePayload</a>
 , <a class="el" href="structADLODNCapabilitiesX2.html#a9c0b37cf022299c50ceecb7a4eca3403">ADLODNCapabilitiesX2</a>
+, <a class="el" href="structADLSmartShiftSettings.html#a809c1f4f5aeaf8b998e07af077f132ed">ADLSmartShiftSettings</a>
 , <a class="el" href="structADLThermalControllerInfo.html#a5fce192a26e3127da6009d7fc01d5124">ADLThermalControllerInfo</a>
 </li>
 <li>iFramelockCntlVector
@@ -601,6 +616,7 @@ $(function() {
 <li>iHyperMemorySize
 : <a class="el" href="structADLMemoryInfo2.html#ac967194f507665b454b773f099391121">ADLMemoryInfo2</a>
 , <a class="el" href="structADLMemoryInfo3.html#a9cd4a57cd6115fc7ebc971ad3873a4a2">ADLMemoryInfo3</a>
+, <a class="el" href="structADLMemoryInfoX4.html#a5dc795a18f996eb5a3c69c7f0c51d9d9">ADLMemoryInfoX4</a>
 </li>
 <li>iIndex
 : <a class="el" href="structADLPossibleMap.html#a075306e72629ef0f527b7ba5571c3374">ADLPossibleMap</a>
@@ -615,10 +631,14 @@ $(function() {
 <li>iInvisibleMemorySize
 : <a class="el" href="structADLMemoryInfo2.html#ab2e52612b9c3dfe26d469a03103fddd3">ADLMemoryInfo2</a>
 , <a class="el" href="structADLMemoryInfo3.html#ae1c7bc69cc50f1247a20bc4ac95a8d54">ADLMemoryInfo3</a>
+, <a class="el" href="structADLMemoryInfoX4.html#a8aa989bcc13c36ea1bb805a29af96fe7">ADLMemoryInfoX4</a>
 </li>
 <li>iLength
 : <a class="el" href="structADLBracketSlotInfo.html#a6707f7313730742b4a11ba0aeb60d2e5">ADLBracketSlotInfo</a>
 , <a class="el" href="structADLConnectorInfo.html#a22e2a826a2887159664a3a575ddc3efd">ADLConnectorInfo</a>
+</li>
+<li>iLengthOfValue
+: <a class="el" href="structVALUE.html#acd35331ee159ceed327d8c726aa6f294">VALUE</a>
 </li>
 <li>iLine
 : <a class="el" href="structADLI2C.html#aed1a589655ee098ede9fe41632b99166">ADLI2C</a>
@@ -658,6 +678,9 @@ $(function() {
 <li>iMaxPercent
 : <a class="el" href="structADLFanSpeedInfo.html#a9e3b917af6329dce29927b2b7899c8eb">ADLFanSpeedInfo</a>
 </li>
+<li>iMaxRange
+: <a class="el" href="structADLSmartShiftSettings.html#a2c5c3a2d2d396c0f6e25f8ba371afa87">ADLSmartShiftSettings</a>
+</li>
 <li>iMaxRefreshRateInMicroHz
 : <a class="el" href="structADLFreeSyncCap.html#ad4a15ceaa2498be5c47428b8efda669b">ADLFreeSyncCap</a>
 </li>
@@ -676,6 +699,13 @@ $(function() {
 : <a class="el" href="structADLMemoryInfo2.html#acdb4a89358902bb1c6244ef684be3904">ADLMemoryInfo2</a>
 , <a class="el" href="structADLMemoryInfo3.html#a76230ee4d9af28df3ddbf6bafa31a453">ADLMemoryInfo3</a>
 , <a class="el" href="structADLMemoryInfo.html#a74b0fb0965707b0b4d9b7c236a07a3c0">ADLMemoryInfo</a>
+, <a class="el" href="structADLMemoryInfoX4.html#ad7ffed53153d336129051ca9c3cc14d3">ADLMemoryInfoX4</a>
+</li>
+<li>iMemoryBandwidthX2
+: <a class="el" href="structADLMemoryInfoX4.html#a820a8d63c7c77bf68ac9370210f18d64">ADLMemoryInfoX4</a>
+</li>
+<li>iMemoryBitRateX2
+: <a class="el" href="structADLMemoryInfoX4.html#a1fdc015ed143e2ab671e88bbcccc6f65">ADLMemoryInfoX4</a>
 </li>
 <li>iMemoryClock
 : <a class="el" href="structADLAdapterODClockConfig.html#aea5c20e67ce2230602ca1c73d61691d1">ADLAdapterODClockConfig</a>
@@ -699,6 +729,7 @@ $(function() {
 : <a class="el" href="structADLMemoryInfo2.html#a9fa7bfde4da121283f3a1de9dedc1e8c">ADLMemoryInfo2</a>
 , <a class="el" href="structADLMemoryInfo3.html#a95d145f138d431236a89fb99e823fc6e">ADLMemoryInfo3</a>
 , <a class="el" href="structADLMemoryInfo.html#aa07923b6d486213c8e761da8f5acd170">ADLMemoryInfo</a>
+, <a class="el" href="structADLMemoryInfoX4.html#a0faddb1d94e8c9354b5ce8d8a622884a">ADLMemoryInfoX4</a>
 </li>
 <li>iMin
 : <a class="el" href="structADLAdjustmentinfo.html#a54c0dc2f4dd66983b7cebd51d834b8f1">ADLAdjustmentinfo</a>
@@ -718,6 +749,9 @@ $(function() {
 </li>
 <li>iMinPerformanceClock
 : <a class="el" href="structADLODNFanControl.html#ae35541ce63b6edf6004abb33de551cfe">ADLODNFanControl</a>
+</li>
+<li>iMinRange
+: <a class="el" href="structADLSmartShiftSettings.html#aff13c21483844ab3a52c631ceb2f3204">ADLSmartShiftSettings</a>
 </li>
 <li>iMinRefreshRateInMicroHz
 : <a class="el" href="structADLFreeSyncCap.html#a5af3ca5ab644d2321e2074f54a67b299">ADLFreeSyncCap</a>
@@ -784,6 +818,9 @@ $(function() {
 </li>
 <li>iNativeDisplayChromaticityWhitePointY
 : <a class="el" href="structADLDDCInfo2.html#ac9fbfc02c0c884f12130becb8f5e57c0">ADLDDCInfo2</a>
+</li>
+<li>Index
+: <a class="el" href="structELEMENTS.html#a5ee79ade022fb1bd6b6bb295fe48df8b">ELEMENTS</a>
 </li>
 <li>InjectErrorType
 : <a class="el" href="structADLRASErrorInjectonInput.html#a1da4587623264308f0d6c33778418aa2">ADLRASErrorInjectonInput</a>
@@ -909,12 +946,14 @@ $(function() {
 : <a class="el" href="structADLDDCInfo2.html#a2c49ad7173b65f9f0fedddd82e155d43">ADLDDCInfo2</a>
 </li>
 <li>iPelsHeight
-: <a class="el" href="structADLDisplayMode.html#a5196a39f78bf20c207aea115bc358d68">ADLDisplayMode</a>
+: <a class="el" href="structADL__DL__DISPLAY__MODE.html#a24c20debf37ce8d1ed9287117ca69544">ADL_DL_DISPLAY_MODE</a>
+, <a class="el" href="structADLDisplayMode.html#a5196a39f78bf20c207aea115bc358d68">ADLDisplayMode</a>
 , <a class="el" href="structADLDisplayModeInfo.html#a09ec646cf44c0184212b1e7b21ba46f4">ADLDisplayModeInfo</a>
 , <a class="el" href="structADLDisplayModeInfoX2.html#ad0398ce9b45dbd7769710e324908d42a">ADLDisplayModeInfoX2</a>
 </li>
 <li>iPelsWidth
-: <a class="el" href="structADLDisplayMode.html#ac99dbe09a4b7d51cb172df98a47c5e55">ADLDisplayMode</a>
+: <a class="el" href="structADL__DL__DISPLAY__MODE.html#a43b92622c2e1ad2ef1a345d6dc9a0a44">ADL_DL_DISPLAY_MODE</a>
+, <a class="el" href="structADLDisplayMode.html#ac99dbe09a4b7d51cb172df98a47c5e55">ADLDisplayMode</a>
 , <a class="el" href="structADLDisplayModeInfo.html#af5f54576c72c00188d008425df065770">ADLDisplayModeInfo</a>
 , <a class="el" href="structADLDisplayModeInfoX2.html#aa6736780fa2d82518cfe5224b1d95536">ADLDisplayModeInfoX2</a>
 </li>
@@ -1284,12 +1323,14 @@ $(function() {
 <li>iVisibleMemorySize
 : <a class="el" href="structADLMemoryInfo2.html#ae142b6b44e76e7e147e7d58e5690e3eb">ADLMemoryInfo2</a>
 , <a class="el" href="structADLMemoryInfo3.html#a5879a7f478fefd25b1a07129e204a060">ADLMemoryInfo3</a>
+, <a class="el" href="structADLMemoryInfoX4.html#a8144c48614edc69f20865a45606ee117">ADLMemoryInfoX4</a>
 </li>
 <li>iVisualID
 : <a class="el" href="structADLFeatureCaps.html#a5091839fd93c440dfc4ea393c42dbfe6">ADLFeatureCaps</a>
 </li>
 <li>iVramVendorRevId
 : <a class="el" href="structADLMemoryInfo3.html#a52b7d895907fe04248385864209617ba">ADLMemoryInfo3</a>
+, <a class="el" href="structADLMemoryInfoX4.html#a9bd4abd8497ff5003163d32f05b4bcf3">ADLMemoryInfoX4</a>
 </li>
 <li>iWidth
 : <a class="el" href="structADLBracketSlotInfo.html#a29cff923cdddc671144562b98fb612bc">ADLBracketSlotInfo</a>

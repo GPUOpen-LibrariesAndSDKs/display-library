@@ -1,6 +1,6 @@
 #ifndef _ADL_H_
 #define _ADL_H_
-///  Copyright (c) 2019 Advanced Micro Devices, Inc.
+///  Copyright (c) 2019 - 2022 Advanced Micro Devices, Inc.
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 ///  WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
@@ -29,6 +29,9 @@ typedef int(*ADL2_DISPLAY_DISPLAYINFO_GET)      (ADL_CONTEXT_HANDLE context, int
 typedef int(*ADL2_DISPLAY_PROPERTY_GET)         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDisplayProperty * lpDisplayProperty);
 typedef int(*ADL2_DISPLAY_PROPERTY_SET)         (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDisplayProperty * lpDisplayProperty);
 typedef int(*ADL2_ADAPTER_MEMORYINFO3_GET)       (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADLMemoryInfo3 *);
+//Display Spec
+typedef int(*ADL2_DISPLAY_DCE_GET)                                     (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDceSettings* lpDceSettings);
+typedef int(*ADL2_DISPLAY_DCE_SET)                                     (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, ADLDceSettings* lpDceSettings);
 
 
 //Declaring pointers to ADL Methods. 
@@ -44,6 +47,9 @@ extern ADL2_DISPLAY_PROPERTY_SET                ADL2_Display_Property_Set;
 
 extern ADL2_DISPLAY_DISPLAYINFO_GET             ADL2_Display_DisplayInfo_Get;
 extern ADL2_ADAPTER_MEMORYINFO3_GET         ADL2_Adapter_MemoryInfo3_Get;
+
+extern ADL2_DISPLAY_DCE_GET         ADL2_Display_DCE_Get;
+extern ADL2_DISPLAY_DCE_SET         ADL2_Display_DCE_Set;
 
 void __stdcall ADL_Main_Memory_Free(void** lpBuffer);
 

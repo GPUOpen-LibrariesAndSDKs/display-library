@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 17.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_80769c3595fd93bd7f02c25d52ef5900.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Copyright (c) 2008 - 2021 Advanced Micro Devices, Inc.  
+<p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="adl__structures_8h_source.html">adl_structures.h</a>&quot;</code><br />
 </div>
@@ -195,8 +195,16 @@ Functions</h2></td></tr>
 <tr class="separator:ga31cc37db3dbc42a999b0114224f1352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf51188482158a07922fea2ae566dbd56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaf51188482158a07922fea2ae566dbd56">ADL2_Adapter_IsGamingDriver_Info_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpCwgSupport, int *lpIsGamingMode)</td></tr>
 <tr class="separator:gaf51188482158a07922fea2ae566dbd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaabea1a7a27946e4a621dd2b5b71e70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#acaabea1a7a27946e4a621dd2b5b71e70">ADL2_Adapter_KeepAwake_Start</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="group__define__D3DKMT__HANDLE.html#ga4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> hDevice)</td></tr>
+<tr class="memdesc:acaabea1a7a27946e4a621dd2b5b71e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to start keeping adatper awake.  <a href="adapter_8h.html#acaabea1a7a27946e4a621dd2b5b71e70">More...</a><br /></td></tr>
+<tr class="separator:acaabea1a7a27946e4a621dd2b5b71e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4680bce21256b6897a3280fc48adee40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#a4680bce21256b6897a3280fc48adee40">ADL2_Adapter_KeepAwake_Stop</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="group__define__D3DKMT__HANDLE.html#ga4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a> hDevice)</td></tr>
+<tr class="memdesc:a4680bce21256b6897a3280fc48adee40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to stop keeping adapter awake.  <a href="adapter_8h.html#a4680bce21256b6897a3280fc48adee40">More...</a><br /></td></tr>
+<tr class="separator:a4680bce21256b6897a3280fc48adee40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf52143d588adede310eea6a31b3bc14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gabf52143d588adede310eea6a31b3bc14">ADL2_Adapter_MemoryInfo2_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfo2.html">ADLMemoryInfo2</a> *lpMemoryInfo2)</td></tr>
 <tr class="separator:gabf52143d588adede310eea6a31b3bc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3db3dca5ef79c271b6c06d731a6c6617"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga3db3dca5ef79c271b6c06d731a6c6617">ADL2_Adapter_MemoryInfoX4_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfoX4.html">ADLMemoryInfoX4</a> *lpMemoryInfoX4)</td></tr>
+<tr class="separator:ga3db3dca5ef79c271b6c06d731a6c6617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gacf2eff0b81bd247d73fa3e540a0cbd4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gacf2eff0b81bd247d73fa3e540a0cbd4d">ADL2_Adapter_Modes_ReEnumerate</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context)</td></tr>
 <tr class="separator:gacf2eff0b81bd247d73fa3e540a0cbd4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8123cca3eef17e457c99cb383b1a2383"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga8123cca3eef17e457c99cb383b1a2383">ADL2_Adapter_ModeSwitch</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>)</td></tr>
@@ -209,6 +217,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga1fe40c3da175bf722cc5094e024b5afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the number of OS-known adapters.  <a href="group__ADAPTERMAINAPI.html#ga1fe40c3da175bf722cc5094e024b5afb">More...</a><br /></td></tr>
 <tr class="separator:ga1fe40c3da175bf722cc5094e024b5afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6069d8bd1245d8742ec3fbf142c99805"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga6069d8bd1245d8742ec3fbf142c99805">ADL2_Adapter_ObservedClockInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpCoreClock, int *lpMemoryClock)</td></tr>
+<tr class="memdesc:ga6069d8bd1245d8742ec3fbf142c99805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;Specific logic is used to select appropriate clock for display in current configuration.  <a href="group__ADAPTERMAINAPI.html#ga6069d8bd1245d8742ec3fbf142c99805">More...</a><br /></td></tr>
 <tr class="separator:ga6069d8bd1245d8742ec3fbf142c99805"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa6efb0f48a056ced472e6b4524c899e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaaa6efb0f48a056ced472e6b4524c899e">ADL2_Adapter_Primary_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int *lpPrimaryAdapterIndex)</td></tr>
 <tr class="memdesc:gaaa6efb0f48a056ced472e6b4524c899e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the primary display adapter index.  <a href="group__ADAPTERMAINAPI.html#gaaa6efb0f48a056ced472e6b4524c899e">More...</a><br /></td></tr>
@@ -353,6 +362,12 @@ Functions</h2></td></tr>
 <tr class="memitem:gacab49c66fcafbf8289c658137f4279bd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__POWERMANAGEMANTAPI.html#gacab49c66fcafbf8289c658137f4279bd">ADL2_RIS_Settings_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADL__RIS__SETTINGS.html">ADL_RIS_SETTINGS</a> settings, <a class="el" href="structADL__RIS__NOTFICATION__REASON.html">ADL_RIS_NOTFICATION_REASON</a> changeReason)</td></tr>
 <tr class="memdesc:gacab49c66fcafbf8289c658137f4279bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set RIS settings This function sets the user input values to RIS feature.  <a href="group__POWERMANAGEMANTAPI.html#gacab49c66fcafbf8289c658137f4279bd">More...</a><br /></td></tr>
 <tr class="separator:gacab49c66fcafbf8289c658137f4279bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4df5793ccb752b986abae5b7ecf392ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga4df5793ccb752b986abae5b7ecf392ee">ADL2_SmartShift_DeltaGain_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iMode, int iValue)</td></tr>
+<tr class="separator:ga4df5793ccb752b986abae5b7ecf392ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a9d7dcb3155a5583296377ba738c0ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga3a9d7dcb3155a5583296377ba738c0ed">ADL2_SmartShift_Settings_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLSmartShiftSettings.html">ADLSmartShiftSettings</a> *lpCurrent)</td></tr>
+<tr class="separator:ga3a9d7dcb3155a5583296377ba738c0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2d7e6edbad77e07e864f33dfb88f3471"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga2d7e6edbad77e07e864f33dfb88f3471">ADL2_SmartShift_Support</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpSupported, int *lpVersion)</td></tr>
+<tr class="separator:ga2d7e6edbad77e07e864f33dfb88f3471"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1b59fe27b88a391c581c2aa76f8d4e64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga1b59fe27b88a391c581c2aa76f8d4e64">ADL2_Stress_Test_Cap</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iSupported, int *iEnabled, int *iVersion)</td></tr>
 <tr class="separator:ga1b59fe27b88a391c581c2aa76f8d4e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1813b0645f218a80c593840d15e5c59"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaa1813b0645f218a80c593840d15e5c59">ADL2_Throttle_Notification_Cap</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iSupported, int *iEnabled, int *iVersion)</td></tr>
@@ -511,7 +526,7 @@ Functions</h2></td></tr>
 <tr class="separator:ga090a0e4473f29346861c8e2c430a93e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Copyright (c) 2008 - 2021 Advanced Micro Devices, Inc. </p>
+<div class="textblock"><p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc. </p>
 <p>THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</p>
 <p>Contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms.</p>
 <p>This file contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders. </p>
@@ -675,6 +690,100 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>, or an ADL error code otherwise. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="acaabea1a7a27946e4a621dd2b5b71e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaabea1a7a27946e4a621dd2b5b71e70">&#9670;&nbsp;</a></span>ADL2_Adapter_KeepAwake_Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_KeepAwake_Start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#ga4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>hDevice</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to start keeping adatper awake. </p>
+<p>This function implements a call to start keeping specified adapter awake.</p>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hDevice</td><td>The D3D device handle associate with the applicatioin. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="a4680bce21256b6897a3280fc48adee40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4680bce21256b6897a3280fc48adee40">&#9670;&nbsp;</a></span>ADL2_Adapter_KeepAwake_Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_KeepAwake_Stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group__define__D3DKMT__HANDLE.html#ga4dcdb9d1c4af78791ea518c36f381fff">ADL_D3DKMT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>hDevice</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to stop keeping adapter awake. </p>
+<p>This function implments a call to stop keeping specified adapter awake.</p>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hDevice</td><td>The D3D device handle associate with the applicatioin. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 
 </div>
 </div>

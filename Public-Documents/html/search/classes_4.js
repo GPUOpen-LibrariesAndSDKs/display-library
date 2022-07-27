@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['xscreeninfo_3361',['XScreenInfo',['../structXScreenInfo.html',1,'']]]
+  ['driver_3555',['DRIVER',['../structDRIVER.html',1,'']]],
+  ['driver_5fcompact_3556',['DRIVER_COMPACT',['../structDRIVER__COMPACT.html',1,'']]]
 ];

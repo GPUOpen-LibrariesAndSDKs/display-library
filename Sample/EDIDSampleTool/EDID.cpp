@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2008 - 2013 Advanced Micro Devices, Inc.
+///  Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -31,6 +31,7 @@ typedef int ( *ADL2_ADAPTER_SUPPORTEDCONNECTIONS_GET) (ADL_CONTEXT_HANDLE, int, 
 typedef int ( *ADL2_ADAPTER_EMULATIONMODE_SET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, int);
 typedef int ( *ADL2_ADAPTER_CONNECTIONDATA_REMOVE) (ADL_CONTEXT_HANDLE, int, ADLDevicePort);
 typedef int ( *ADL2_ADAPTER_BOARDLAYOUT_GET) (ADL_CONTEXT_HANDLE, int, int*, int*, ADLBracketSlotInfo**, int*, ADLConnectorInfo**);
+typedef int ( *ADL2_DISPLAY_EDIDDATA_GET) (ADL_CONTEXT_HANDLE context, int, int, ADLDisplayEDIDData* lpEDIDData);
 
 HINSTANCE hDLL;
 ADL_CONTEXT_HANDLE context = NULL;
@@ -49,6 +50,7 @@ ADL2_ADAPTER_SUPPORTEDCONNECTIONS_GET ADL2_Adapter_SupportedConnections_Get = NU
 ADL2_ADAPTER_EMULATIONMODE_SET ADL2_Adapter_EmulationMode_Set = NULL;
 ADL2_ADAPTER_CONNECTIONDATA_REMOVE ADL2_Adapter_ConnectionData_Remove = NULL;
 ADL2_ADAPTER_BOARDLAYOUT_GET ADL2_Adapter_BoardLayout_Get = NULL;
+ADL2_DISPLAY_EDIDDATA_GET               ADL2_Display_EdidData_Get = NULL;
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -109,6 +111,7 @@ int initializeADL()
 		ADL2_Adapter_EmulationMode_Set = (ADL2_ADAPTER_EMULATIONMODE_SET) GetProcAddress( hDLL,"ADL2_Adapter_EmulationMode_Set");
 		ADL2_Adapter_ConnectionData_Remove = (ADL2_ADAPTER_CONNECTIONDATA_REMOVE) GetProcAddress (hDLL, "ADL2_Adapter_ConnectionData_Remove");
 		ADL2_Adapter_BoardLayout_Get = (ADL2_ADAPTER_BOARDLAYOUT_GET) GetProcAddress (hDLL, "ADL2_Adapter_BoardLayout_Get");
+		ADL2_Display_EdidData_Get = (ADL2_DISPLAY_EDIDDATA_GET) GetProcAddress(hDLL, "ADL2_Display_EdidData_Get");
 		if ( NULL == ADL2_Main_Control_Create ||
 			 NULL == ADL2_Main_Control_Destroy ||
 			 NULL == ADL2_Adapter_NumberOfAdapters_Get||
@@ -121,7 +124,8 @@ int initializeADL()
 			 NULL == ADL2_Adapter_SupportedConnections_Get ||
 			 NULL == ADL2_Adapter_EmulationMode_Set ||
 			 NULL == ADL2_Adapter_ConnectionData_Remove ||
-			 NULL == ADL2_Adapter_BoardLayout_Get)
+			 NULL == ADL2_Adapter_BoardLayout_Get ||
+			 NULL == ADL2_Display_EdidData_Get)
 		{
 			PRINTF("Failed to get ADL function pointers\n");
 			return FALSE;
@@ -953,6 +957,35 @@ void saveEDIDData(int iAdapterIndex, ADLDevicePort devicePort, char* fileName)
 		PRINTF (" Connection Data get Failed \n");		
 
 	PRINTF (" --------------------------------------------------------- \n");
+}
+
+void ReadEDIDDataByDisplayIndex(int iAdapterIndex, int iDisplayIndex)
+{
+	ADLDisplayEDIDData edidData;
+	ZeroMemory(&edidData, sizeof(edidData));
+	edidData.iSize = sizeof(edidData);
+
+	PRINTF(" --------------------------------------------------------- \n");
+	if (ADL2_Display_EdidData_Get == NULL)
+	{
+		PRINTF(" EDID API is NULLLLLL \n");
+	}
+	if (ADL_OK == ADL2_Display_EdidData_Get(context, iAdapterIndex, iDisplayIndex, &edidData))
+	{
+		for (int i = 0; i < ADL_MAX_EDIDDATA_SIZE; i+=16)
+		{
+			PRINTF("%08x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n", i,
+				(unsigned char)edidData.cEDIDData[i], (unsigned char)edidData.cEDIDData[i + 1], (unsigned char)edidData.cEDIDData[i + 2], (unsigned char)edidData.cEDIDData[i + 3],
+				(unsigned char)edidData.cEDIDData[i + 4], (unsigned char)edidData.cEDIDData[i + 5], (unsigned char)edidData.cEDIDData[i + 6], (unsigned char)edidData.cEDIDData[i + 7],
+				(unsigned char)edidData.cEDIDData[i + 8], (unsigned char)edidData.cEDIDData[i + 9], (unsigned char)edidData.cEDIDData[i + 10], (unsigned char)edidData.cEDIDData[i + 11],
+				(unsigned char)edidData.cEDIDData[i + 12], (unsigned char)edidData.cEDIDData[i + 13], (unsigned char)edidData.cEDIDData[i + 14], (unsigned char)edidData.cEDIDData[i + 15]);
+		}
+		PRINTF(" EDID feteched Successfully \n");
+	}
+	else
+		PRINTF(" EDID feteched Failed %08x\n", ADL2_Display_EdidData_Get(context, iAdapterIndex, iDisplayIndex, &edidData));
+
+	PRINTF(" --------------------------------------------------------- \n");
 }
 
 void setConnectionData(int iAdapterIndex, ADLDevicePort devicePort, int iConnectionType, char* FileName)

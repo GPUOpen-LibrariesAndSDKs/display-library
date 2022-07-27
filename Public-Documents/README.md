@@ -7,8 +7,16 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 
+### ADL 17.0 - Release Notes
+* Introduced API to retrieve the SmartDC active state information.
+* Introduced Colordepth default get API.
+* Deprecate AMD Dolby Vision HDR
+
+---
+
 ### ADL 16.0 - Release Notes
-*  Added samples:
+* Added samples:
+	* <a href="SmartDC-example.html">SmartDC</a>: Added sample to illustrate how to control SmartDC from ADL.
 	* <a href="SideBySide-example.html">SideBySide</a>: Added sample to illustrate how to use Side by Side from ADL.
 
 ---
@@ -91,7 +99,7 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 * Supported Driver:
-	Requires Radeon Software Adrenalin Edition 21.5.3 or later.
+	Requires Radeon Software Adrenalin Edition 22.7.1 or later.
 
 ---
 ### End User License Agreement
