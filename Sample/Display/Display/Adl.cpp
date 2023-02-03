@@ -1,4 +1,4 @@
-///  Copyright (c) 2019 Advanced Micro Devices, Inc.
+///  Copyright (c) 2019 - 2022 Advanced Micro Devices, Inc.
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
 ///  WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
@@ -28,7 +28,9 @@ ADL2_ADAPTER_ACTIVE_GET				ADL2_Adapter_Active_Get = nullptr;
 ADL2_DISPLAY_DISPLAYINFO_GET                                        ADL2_Display_DisplayInfo_Get = nullptr;
 ADL2_DISPLAY_PROPERTY_GET											ADL2_Display_Property_Get = nullptr;
 ADL2_DISPLAY_PROPERTY_SET											ADL2_Display_Property_Set = nullptr;
-
+ADL2_ADAPTER_MEMORYINFO3_GET         ADL2_Adapter_MemoryInfo3_Get = nullptr;
+ADL2_DISPLAY_DCE_GET         ADL2_Display_DCE_Get = nullptr;
+ADL2_DISPLAY_DCE_SET         ADL2_Display_DCE_Set = nullptr;
 // ADL module handle
 HINSTANCE hDLL = NULL;
 ADL_CONTEXT_HANDLE context_ = NULL;
@@ -80,6 +82,9 @@ int InitADL()
 
         ADL2_Display_Property_Get = (ADL2_DISPLAY_PROPERTY_GET)GetProcAddress(hDLL, "ADL2_Display_Property_Get");
         ADL2_Display_Property_Set = (ADL2_DISPLAY_PROPERTY_SET)GetProcAddress(hDLL, "ADL2_Display_Property_Set");
+        ADL2_Adapter_MemoryInfo3_Get = (ADL2_ADAPTER_MEMORYINFO3_GET)GetProcAddress(hDLL, "ADL2_Adapter_MemoryInfo3_Get");
+        ADL2_Display_DCE_Get = (ADL2_DISPLAY_DCE_GET)GetProcAddress(hDLL, "ADL2_Display_DCE_Get");
+        ADL2_Display_DCE_Set = (ADL2_DISPLAY_DCE_SET)GetProcAddress(hDLL, "ADL2_Display_DCE_Set");
 
         if (nullptr == ADL2_Main_Control_Create ||
             nullptr == ADL2_Main_Control_Destroy ||
@@ -89,7 +94,10 @@ int InitADL()
             nullptr == ADL2_Adapter_Active_Get ||
             nullptr == ADL2_Display_Property_Get ||
             nullptr == ADL2_Display_Property_Set ||
-            nullptr == ADL2_Display_DisplayInfo_Get
+            nullptr == ADL2_Display_DisplayInfo_Get ||
+            nullptr == ADL2_Adapter_MemoryInfo3_Get ||
+            nullptr == ADL2_Display_DCE_Get ||
+            nullptr == ADL2_Display_DCE_Set
             )
         {
             std::cout << "ADL's API is missing!" << std::endl;
@@ -124,7 +132,34 @@ int GpuBDF(int busNo_, int devNo_, int funcNo_)
 {
     return ((busNo_ & 0xFF) << 8) | ((devNo_ & 0x1F) << 3) | (funcNo_ & 0x07);
 }
-
+char * GetGPUVRAMNameFromID(int iVramVendorRevId)
+{
+    switch (iVramVendorRevId)
+    {
+        case ADLvRamVendor_SAMSUNG:
+            return "Samsung";
+        case ADLvRamVendor_INFINEON:
+            return "Infineon";
+        case ADLvRamVendor_ELPIDA:
+            return "Elpida";
+        case ADLvRamVendor_ETRON:
+            return "Etron";
+        case ADLvRamVendor_NANYA:
+            return "Nanya";
+        case ADLvRamVendor_HYNIX:
+            return "Hynix";
+        case ADLvRamVendor_MOSEL:
+            return "Mosel";
+        case ADLvRamVendor_WINBOND:
+            return "Winbond";
+        case ADLvRamVendor_ESMT:
+            return "Esmt";
+        case ADLvRamVendor_MICRON:
+            return "Micron";
+            default:
+                return "Undefine";
+    }
+}
 void PrepareAPI()
 {
     int iNumberAdapters = 0;
@@ -167,6 +202,17 @@ void PrepareAPI()
                         (primary == i) ? "yes" : "no"
                     );
                     AdapterIndexMap_[bdf] = i;
+                    ADLMemoryInfo3 adlMemInfo3;
+                    if (ADL_OK == ADL2_Adapter_MemoryInfo3_Get(context_, info.iAdapterIndex, &adlMemInfo3))
+                    {
+                        printf("\tGPU Memory Size : %d MB, Memory Type %s\n", adlMemInfo3.iMemorySize / 1024 / 1024, adlMemInfo3.strMemoryType);
+                        if (ADLvRamVendor_Unsupported == adlMemInfo3.iVramVendorRevId)
+                            printf("\tGPU Vedio RAM vendor ID Unsupport, only support AMD dGPU now.\n");
+                        else
+                            printf("\tGPU Vedio RAM vendor ID : %d, Name : %s\n", adlMemInfo3.iVramVendorRevId, GetGPUVRAMNameFromID(adlMemInfo3.iVramVendorRevId));
+                        printf("\tGPU Vedio RAM memory bandwidth : %d B\n", adlMemInfo3.iMemoryBandwidth / 1024);
+                    }
+
                 }
             }
         }
@@ -187,7 +233,9 @@ void Get_All_DisplayInfo(int adapterIndex)
                 ADLDisplayID display(oneDis->displayID);
                 DisplayID_.insert(std::pair<int, ADLDisplayID>(i, display));
             }
+
         }
+
     }
 
     ADL_Main_Memory_Free((void**)&allDisplaysBuffer);

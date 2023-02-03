@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AMDSplashScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AMDSplashScreenDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPUScaling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AMDSplashScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AMDSplashScreenDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Adl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GPUScaling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AMDSplashScreen.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\AMDSplashScreen.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\binary1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\idr_chs_.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\binary2.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\binary3.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00001.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00002.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00003.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00004.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00005.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00006.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00007.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00008.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00009.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00010.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00011.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00012.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00013.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00014.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00015.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00016.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\bin00017.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\binary16.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\AMDSplashScreen.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\background-new.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\AMDSplashScreen_ICON.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\radeon-logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\exit-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\minimize-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bg1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_silver.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\radeon-overlay-panel-bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_grey.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_brown_alt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_brown_alt_flipv.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_grey_flipv.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\gradient_red_flipv.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\maximize-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\restore-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\reset-icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="CHS.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CHT.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="CZE.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="DAN.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="DEU.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="ELL.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="ELSA.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="FIN.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="FRA.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="HUN.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="ITA.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="JPN.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="KOR.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="NLD.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="NOR.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="POL.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="POR.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="RUS.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="SWE.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="THA.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="TUR.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="ENU.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

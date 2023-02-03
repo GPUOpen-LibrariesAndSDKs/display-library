@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2008 - 2018 Advanced Micro Devices, Inc.
+///  Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.
 
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -167,7 +167,7 @@ int atiEyefinityGetConfigInfo(char OSDisplayName[], EyefinityInfoStruct *lpEyefi
             for (int dispIdx = 0, foundDisplays = 0; dispIdx < numDisplays; dispIdx++) {
                 ADLDisplayTarget oneAdlDisplay = adlDisplays[dispIdx];
                 if (oneAdlDisplay.iDisplayMapIndex == oneAdlDesktop.iDisplayMapIndex) {
-                    if (primaryIndex == oneAdlDisplay.displayID.iDisplayPhysicalAdapterIndex) {
+                    if (primaryIndex == oneAdlDisplay.displayID.iDisplayLogicalAdapterIndex) {
                         //add a display in list. For SLS this info will be updated later
                         displays.push_back(TopologyDisplay(oneAdlDisplay.displayID, 0,
                             oneAdlDesktop.displayMode.iXRes, oneAdlDesktop.displayMode.iYRes, //size

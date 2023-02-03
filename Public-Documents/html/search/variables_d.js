@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['padding_5007',['padding',['../structADLErrorRecord.html#a0626f94d73b6a51f92198f6191ddc5f7',1,'ADLErrorRecord::padding()'],['../structADLRASErrorInjectonInput.html#a1b4019dc0ffd33bc9b8068a3f8926daf',1,'ADLRASErrorInjectonInput::padding()'],['../structADLRASErrorInjectionOutput.html#ac867a7dcaf62005db96fbff0b754fa80',1,'ADLRASErrorInjectionOutput::padding()']]],
+  ['partialpathofapplication_5008',['PartialPathOfApplication',['../structAPPLICATION.html#a22adcb0b806077477d99166c9c61b25e',1,'APPLICATION']]],
+  ['partialpathwherethisapplicationresides_5009',['PartialPathWhereThisApplicationResides',['../structAPPLICATION__COMPACT.html#a5257cafe6239f988d4ad867f3bc63504',1,'APPLICATION_COMPACT::PartialPathWhereThisApplicationResides()'],['../structures_8h.html#abfef904d78720b44feb4ad38b3ed64eb',1,'PartialPathWhereThisApplicationResides():&#160;structures.h']]],
+  ['pcdata_5010',['pcData',['../structADLI2C.html#afd3bc545e6da65f223444de5f7f20f37',1,'ADLI2C::pcData()'],['../structADLI2CLargePayload.html#a99a51c9d68199d17efd8893da3902f18',1,'ADLI2CLargePayload::pcData()']]],
+  ['persistflag_5011',['persistFlag',['../structADLDceSettings.html#ade1bcf335da851205055deaa8c1c56d9',1,'ADLDceSettings']]],
+  ['ploggingaddress_5012',['pLoggingAddress',['../structADLPMLogStartOutput.html#a80655481dd667e6da16fcd04e1e22360',1,'ADLPMLogStartOutput']]],
+  ['power_5013',['power',['../structADLODNCapabilities.html#adbcc08ac8aa72b113bca9317905b6110',1,'ADLODNCapabilities::power()'],['../structADLODNCapabilitiesX2.html#a362da936aee984273d73be784055e664',1,'ADLODNCapabilitiesX2::power()']]],
+  ['powerprofilingenabled_5014',['PowerProfilingEnabled',['../structADLPPLogSettings.html#a2539ebf6d410aa0841c30c355b223e70',1,'ADLPPLogSettings']]],
+  ['powerprofilingtimeinterval_5015',['PowerProfilingTimeInterval',['../structADLPPLogSettings.html#a874fd1be8f1d2eb67731a71f28a955da',1,'ADLPPLogSettings']]],
+  ['powertunetemperature_5016',['powerTuneTemperature',['../structADLODNCapabilities.html#a5d4caad3fecb778b2c4a1d2f01bccda0',1,'ADLODNCapabilities::powerTuneTemperature()'],['../structADLODNCapabilitiesX2.html#a6f9b5b6fb2d6a2c09f4251189cea28e6',1,'ADLODNCapabilitiesX2::powerTuneTemperature()']]],
+  ['powertype_5017',['powerType',['../structADLODNCurrentPowerParameters.html#a19b8d21d196c6b3bf3a5bb4914efabf6',1,'ADLODNCurrentPowerParameters']]],
+  ['preamble_5018',['PreAmble',['../structHEADER.html#a150f9d6201ffdb2c497f7e68289fc082',1,'HEADER::PreAmble()'],['../structures_8h.html#ad6b4ebff53d9852cbc4f3aba29456482',1,'PreAmble():&#160;structures.h']]],
+  ['prephasis_5019',['PrePhasis',['../union__ADLDCESupport.html#a5dab6ccbfc8a53edd6fbdf65f7003b55',1,'_ADLDCESupport']]],
+  ['privacy_5020',['Privacy',['../structDRIVER.html#a29f82d84151d351c0745490e6ce987f6',1,'DRIVER::Privacy()'],['../structDRIVER__COMPACT.html#ad6ee58447d96f5aef3d39e035960a43f',1,'DRIVER_COMPACT::Privacy()'],['../structures_8h.html#a0a16bf7de55ed8bfecab965a4a586378',1,'Privacy():&#160;structures.h']]],
+  ['processid_5021',['ProcessId',['../structADLAppInterceptionInfo.html#a00019c1dce0cae5d230bc6fa8beed651',1,'ADLAppInterceptionInfo::ProcessId()'],['../structADLAppInterceptionInfoX2.html#a800cead08562ab9c8b981dae9836a163',1,'ADLAppInterceptionInfoX2::ProcessId()'],['../structADLAppInterceptionInfoX3.html#a5d773d15bc83ccdca5c632c09d5a5ff4',1,'ADLAppInterceptionInfoX3::ProcessId()']]],
+  ['profile_5022',['Profile',['../structBODY.html#ad953de84af9a8108e6ebf79a03410650',1,'BODY::Profile()'],['../structures_8h.html#a1b19945d54cde5fb800abd0cd11b7404',1,'Profile():&#160;structures.h']]],
+  ['property_5023',['Property',['../structBODY.html#a1e61620f65685aa34c8db42035c29021',1,'BODY::Property()'],['../structures_8h.html#a2fb4311eb457505ce912eb5eb9a2d985',1,'Property():&#160;structures.h']]],
+  ['propertyofvalue_5024',['PropertyOfValue',['../structVALUE.html#aaf4f5be80acee0ca1fa9fe4f9d348d3c',1,'VALUE']]],
+  ['protection_5025',['Protection',['../structADLDceSettings.html#a42705732b53f3bfca81a5cf62ceb8aae',1,'ADLDceSettings']]],
+  ['provsr_5026',['proVsr',['../structADL__ERROR__REASON.html#a6128b3a9cfb80d6abde9c8b2f88ca985',1,'ADL_ERROR_REASON']]],
+  ['ptr_5floggingaddress_5027',['ptr_LoggingAddress',['../structADLPMLogStartOutput.html#a1e140c26ea3d34350a508805a75d4bcf',1,'ADLPMLogStartOutput']]]
+];

@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2016 - 2022 Advanced Micro Devices, Inc. All rights reserved.
 //
 // MIT LICENSE:
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,5 +40,7 @@
 /// Memory Allocation Call back 
 typedef void* ( __stdcall *ADL_MAIN_MALLOC_CALLBACK )( int );
 
+#define ADL_SDK_MAJOR_VERSION 17
+#define ADL_SDK_MINOR_VERSION 0
 
 #endif /* ADL_SDK_H_ */

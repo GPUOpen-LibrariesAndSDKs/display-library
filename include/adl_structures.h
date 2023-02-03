@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2016 Advanced Micro Devices, Inc. All rights reserved.
+// Copyright (c) 2016 - 2022 Advanced Micro Devices, Inc. All rights reserved.
 //
 // MIT LICENSE:
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +30,7 @@
 #define ADL_STRUCTURES_H_
 
 #include "adl_defines.h"
-
+#include <stdbool.h>
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the graphics adapter.
 ///
@@ -77,6 +77,7 @@ typedef struct AdapterInfo
     char strPNPString[ADL_MAX_PATH];
 /// It is generated from EnumDisplayDevices.
     int iOSDisplayIndex;
+	
 #endif /* (_WIN32) || (_WIN64) */
 
 #if defined (LINUX)
@@ -111,6 +112,181 @@ typedef struct XScreenInfo
 } XScreenInfo, *LPXScreenInfo;
 #endif /* (LINUX) */
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about an controller mode
+///
+/// This structure is used to store information of an controller mode
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLAdapterCaps
+{
+	/// AdapterID for this adapter
+	int iAdapterID;
+	/// Number of controllers for this adapter
+	int iNumControllers;
+	/// Number of displays for this adapter
+	int iNumDisplays;
+	/// Number of overlays for this adapter
+	int iNumOverlays;
+	/// Number of GLSyncConnectors
+	int iNumOfGLSyncConnectors;
+	/// The bit mask identifies the adapter caps
+	int iCapsMask;
+	/// The bit identifies the adapter caps \ref define_adapter_caps
+	int iCapsValue;
+}ADLAdapterCaps;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing additional information about the ASIC memory
+///
+/// This structure is used to store additional information about the ASIC memory.  This
+/// information can be returned to the user.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLMemoryInfo2
+{
+	/// Memory size in bytes.
+	long long iMemorySize;
+	/// Memory type in string.
+	char strMemoryType[ADL_MAX_PATH];
+	/// Highest default performance level Memory bandwidth in Mbytes/s
+	long long iMemoryBandwidth;
+	/// HyperMemory size in bytes.
+	long long iHyperMemorySize;
+
+	/// Invisible Memory size in bytes.
+	long long iInvisibleMemorySize;
+	/// Visible Memory size in bytes.
+	long long iVisibleMemorySize;
+} ADLMemoryInfo2, *LPADLMemoryInfo2;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing additional information about the ASIC memory
+///
+/// This structure is used to store additional information about the ASIC memory.  This
+/// information can be returned to the user.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLMemoryInfo3
+{
+    /// Memory size in bytes.
+    long long iMemorySize;
+    /// Memory type in string.
+    char strMemoryType[ADL_MAX_PATH];
+    /// Highest default performance level Memory bandwidth in Mbytes/s
+    long long iMemoryBandwidth;
+    /// HyperMemory size in bytes.
+    long long iHyperMemorySize;
+
+    /// Invisible Memory size in bytes.
+    long long iInvisibleMemorySize;
+    /// Visible Memory size in bytes.
+    long long iVisibleMemorySize;
+    /// Vram vendor ID
+    long long iVramVendorRevId;
+} ADLMemoryInfo3, *LPADLMemoryInfo3;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing additional information about the ASIC memory
+///
+/// This structure is used to store additional information about the ASIC memory.  This
+/// information can be returned to the user.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLMemoryInfoX4
+{
+    /// Memory size in bytes.
+    long long iMemorySize;
+    /// Memory type in string.
+    char strMemoryType[ADL_MAX_PATH];
+    /// Highest default performance level Memory bandwidth in Mbytes/s
+    long long iMemoryBandwidth;
+    /// HyperMemory size in bytes.
+    long long iHyperMemorySize;
+
+    /// Invisible Memory size in bytes.
+    long long iInvisibleMemorySize;
+    /// Visible Memory size in bytes.
+    long long iVisibleMemorySize;
+    /// Vram vendor ID
+    long long iVramVendorRevId;
+    /// Memory Bandiwidth that is calculated and finalized on the driver side, grab and go.
+    long long iMemoryBandwidthX2;
+    /// Memory Bit Rate that is calculated and finalized on the driver side, grab and go.
+    long long iMemoryBitRateX2;
+
+} ADLMemoryInfoX4, *LPADLMemoryInfoX4;
+
+///////////////////////////////////////////////////////////////////////////
+// ADLvRamVendor Enumeration
+///////////////////////////////////////////////////////////////////////////
+enum ADLvRamVendors
+{
+    ADLvRamVendor_Unsupported = 0x0,
+    ADLvRamVendor_SAMSUNG,
+    ADLvRamVendor_INFINEON,
+    ADLvRamVendor_ELPIDA,
+    ADLvRamVendor_ETRON,
+    ADLvRamVendor_NANYA,
+    ADLvRamVendor_HYNIX,
+    ADLvRamVendor_MOSEL,
+    ADLvRamVendor_WINBOND,
+    ADLvRamVendor_ESMT,
+    ADLvRamVendor_MICRON = 0xF,
+    ADLvRamVendor_Undefined
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about components of ASIC GCN architecture
+///
+///  Elements of GCN info are compute units, number of Tex (Texture filtering units)  , number of ROPs (render back-ends).
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLGcnInfo
+{
+	int CuCount; //Number of compute units on the ASIC.
+	int TexCount; //Number of texture mapping units.
+	int RopCount; //Number of Render backend Units.
+	int ASICFamilyId; //Such SI, VI. See /inc/asic_reg/atiid.h for family ids
+	int ASICRevisionId; //Such as Ellesmere, Fiji.   For example - VI family revision ids are stored in /inc/asic_reg/vi_id.h
+}ADLGcnInfo;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related virtual segment config information.
+///
+/// This structure is used to store information related virtual segment config
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLVirtualSegmentSettingsOutput
+{
+	int                      virtualSegmentSupported;   // 1 - subsequent values are valid
+	int                      virtualSegmentDefault;     //virtual segment default, 1: enable, 0: disable
+	int                      virtualSegmentCurrent;     //virtual segment current, 1: enable, 0: disable
+	int                      iMinSizeInMB;              //minimum value
+	int                      iMaxSizeInMB;              //maximum value
+	int                      icurrentSizeInMB;          //last configured otherwise same as factory default
+	int                      idefaultSizeInMB;          //factory default
+	int                      iMask;                     //fileds for extension in the future
+	int                      iValue;                    //fileds for extension in the future
+} ADLVirtualSegmentSettingsOutput;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Structure containing information about the Chipset.
+///
+/// This structure is used to store various information about the Chipset.  This 
+/// information can be returned to the user.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLChipSetInfo
+{
+	int iBusType; 		///< Bus type.
+	int iBusSpeedType;	///Maximum Bus Speed of the current platform
+	int iMaxPCIELaneWidth; 	///< Number of PCIE lanes.
+	int iCurrentPCIELaneWidth;  ///< Current PCIE Lane Width
+	int iSupportedAGPSpeeds;    ///< Bit mask or AGP transfer speed.
+	int iCurrentAGPSpeed;       ///< Current AGP speed
+} ADLChipSetInfo, *LPADLChipSetInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the ASIC memory.
@@ -281,7 +457,6 @@ typedef struct ADLDDCInfo2
     int iReserved[4];
 } ADLDDCInfo2, *LPADLDDCInfo2;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information controller Gamma settings.
 ///
@@ -362,7 +537,6 @@ typedef struct ADLDisplayConfig
 /// Reserved field
   long ulReserved;
 } ADLDisplayConfig;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the display device.
@@ -774,7 +948,6 @@ typedef struct ADLGlSyncPortInfo
     int        iSignalType;
 /// Used for ADL_GLSYNC_PORT_RJ45PORT*. It is GL_Sync GPU Port index or ADL_GLSYNC_SIGNALSOURCE_*.  \ref define_glsync
     int        iSignalSource;
-
 } ADLGlSyncPortInfo, *LPADLGlSyncPortInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -832,7 +1005,6 @@ typedef struct ADLGlSyncMode2
 /// Index of the display to which this GLSync applies to.
     int        iDisplayIndex;
 } ADLGlSyncMode2, *LPADLGlSyncMode2;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing the packet info of a display.
@@ -1158,7 +1330,6 @@ typedef struct ADLBiosInfo
     char strDate[ADL_MAX_PATH];        ///< BIOS date in yyyy/mm/dd hh:mm format.
 } ADLBiosInfo, *LPADLBiosInfo;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about adapter location.
 ///
@@ -1190,7 +1361,6 @@ typedef struct ADLVersionsInfo
     char strCatalystVersion[ADL_MAX_PATH];
     /// Web link to an XML file with information about the latest AMD drivers and locations (e.g. "http://www.amd.com/us/driverxml" )
     char strCatalystWebLink[ADL_MAX_PATH];
-
 } ADLVersionsInfo, *LPADLVersionsInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1209,7 +1379,6 @@ typedef struct ADLVersionsInfoX2
     char strCrimsonVersion[ADL_MAX_PATH];
     /// Web link to an XML file with information about the latest AMD drivers and locations (e.g. "http://support.amd.com/drivers/xml/driver_09_us.xml" )
     char strCatalystWebLink[ADL_MAX_PATH];
-
 } ADLVersionsInfoX2, *LPADLVersionsInfoX2;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1310,7 +1479,6 @@ typedef struct ADLMode
     int iModeValue;
 } ADLMode, *LPADLMode;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about display target information.
 ///
@@ -1330,9 +1498,7 @@ typedef struct ADLDisplayTarget
 
     /// The bit mask identifies the display status. The detailed definition is in \ref ADL_DISPLAY_DISPLAYTARGET_PREFERRED.
     int  iDisplayTargetValue;
-
 } ADLDisplayTarget, *LPADLDisplayTarget;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the display SLS bezel Mode information.
@@ -1365,9 +1531,7 @@ typedef struct tagADLBezelTransientMode
 
     /// The bit mask identifies the display status. The detail definition is defined below.
     int  iSLSBezelTransientModeValue;
-
 } ADLBezelTransientMode, *LPADLBezelTransientMode;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about the adapter display manner.
@@ -1386,7 +1550,6 @@ typedef struct ADLAdapterDisplayCap
     /// The bit mask identifies the status. Refer to ADL_ADAPTER_DISPLAYCAP_XXX
     int  iAdapterDisplayCapValue;
 } ADLAdapterDisplayCap, *LPADLAdapterDisplayCap;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about display mapping.
@@ -1415,9 +1578,7 @@ typedef struct ADLDisplayMap
 
 ///The bit mask identifies the display status. The detailed definition is in ADL_DISPLAY_DISPLAYMAP_MANNER_xxx.
     int  iDisplayMapValue;
-
 } ADLDisplayMap, *LPADLDisplayMap;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about the display device possible map for one GPU
@@ -1441,7 +1602,6 @@ typedef struct ADLPossibleMap
     /// The display Targets list for these display Maps to be validated.
     ADLDisplayTarget* displayTarget;
 } ADLPossibleMap, *LPADLPossibleMap;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about display possible mapping.
@@ -1498,7 +1658,6 @@ typedef struct ADLSLSGrid
 
 /// The grid bit value identifies the display status. Refer to ADL_DISPLAY_SLSGRID_ORIENTATION_XXX
     int  iSLSGridValue;
-
 } ADLSLSGrid, *LPADLSLSGrid;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1553,8 +1712,6 @@ typedef struct    ADLSLSMap
 
     /// The bit mask identifies the display map status. Refer to ADL_DISPLAY_SLSMAP_XXX
     int  iSLSMapValue;
-
-
 } ADLSLSMap, *LPADLSLSMap;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1623,9 +1780,6 @@ typedef struct ADLSLSMode
     int iSLSNativeModeValue;
 } ADLSLSMode, *LPADLSLSMode;
 
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the display Possible SLS Map information.
 ///
@@ -1650,7 +1804,6 @@ typedef struct ADLPossibleSLSMap
     /// The display target list for validation.
     ADLDisplayTarget* lpDisplayTarget;
 } ADLPossibleSLSMap, *LPADLPossibleSLSMap;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about the SLS targets.
@@ -1683,7 +1836,6 @@ typedef struct ADLSLSTarget
 
     /// The bit mask identifies status info. It is for function extension purpose
     int iSLSTargetValue;
-
 } ADLSLSTarget, *LPADLSLSTarget;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1711,7 +1863,6 @@ typedef struct ADLBezelOffsetSteppingSize
 
     /// Bit mask identifies the display status.
     int iBezelOffsetSteppingSizeValue;
-
 } ADLBezelOffsetSteppingSize, *LPADLBezelOffsetSteppingSize;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1746,7 +1897,6 @@ typedef struct ADLPXConfigCaps
 
     /// The bit mask identifies the PowerExpress Config Caps value. The detailed definition is in ADL_PX_CONFIGCAPS_XXXX /ref define_powerxpress_constants.
     int  iPXConfigCapValue;
-
 } ADLPXConfigCaps, *LPADLPXConfigCaps;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -1756,7 +1906,7 @@ typedef struct ADLPXConfigCaps
 /// 
 /// \nosubgrouping
 //////////////////////////////////////////////////////////////////////////////////////////
-enum ADLPxType
+typedef enum ADLPxType
 {
 	//Not AMD related PX/HG or not PX or HG at all
 	ADL_PX_NONE = 0,
@@ -1768,8 +1918,7 @@ enum ADLPxType
 	ADL_SWITCHABLE_AMDOTHER = 3,
 	//A+I HG
 	ADL_HG_AMDOTHER = 4,
-};
-
+}ADLPxType;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about an application
@@ -1777,7 +1926,7 @@ enum ADLPxType
 /// This structure is used to store basic information of an application
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLApplicationData
+typedef struct ADLApplicationData
 {
     /// Path Name
     char strPathName[ADL_MAX_PATH];
@@ -1795,7 +1944,7 @@ typedef struct _ADLApplicationData
 /// This structure is used to store basic information of an application
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLApplicationDataX2
+typedef struct ADLApplicationDataX2
 {
     /// Path Name
     wchar_t strPathName[ADL_MAX_PATH];
@@ -1813,7 +1962,7 @@ typedef struct _ADLApplicationDataX2
 /// This structure is used to store basic information of an application including process id
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLApplicationDataX3
+typedef struct ADLApplicationDataX3
 {
     /// Path Name
     wchar_t strPathName[ADL_MAX_PATH];
@@ -1833,7 +1982,7 @@ typedef struct _ADLApplicationDataX3
 /// This structure is used to store property information of an application profile
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _PropertyRecord
+typedef struct PropertyRecord
 {
     /// Property Name
     char strName [ADL_APP_PROFILE_PROPERTY_LENGTH];
@@ -1851,14 +2000,13 @@ typedef struct _PropertyRecord
 /// This structure is used to store information of an application profile
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLApplicationProfile
+typedef struct ADLApplicationProfile
 {
     /// Number of properties
     int iCount;
     /// Buffer to store all property records
     PropertyRecord record[1];
 }ADLApplicationProfile;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about an OD5 Power Control feature
@@ -1882,7 +2030,7 @@ int iStepValue;
 /// This structure is used to store information of an controller mode
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLControllerMode
+typedef struct ADLControllerMode
 {
     /// This falg indicates actions that will be applied by set viewport
     /// The value can be a combination of ADL_CONTROLLERMODE_CM_MODIFIER_VIEW_POSITION,
@@ -1933,7 +2081,6 @@ typedef struct ADLDisplayIdentifier
 
     /// serial number of the display
     long ulSerialNo;
-
 } ADLDisplayIdentifier;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1942,7 +2089,7 @@ typedef struct ADLDisplayIdentifier
 /// This structure is used to store information about Overdrive 6 clock range
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6ParameterRange
+typedef struct ADLOD6ParameterRange
 {
     /// The starting value of the clock range
     int     iMin;
@@ -1950,7 +2097,6 @@ typedef struct _ADLOD6ParameterRange
     int     iMax;
     /// The minimum increment between clock values
     int     iStep;
-
 } ADLOD6ParameterRange;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1959,7 +2105,7 @@ typedef struct _ADLOD6ParameterRange
 /// This structure is used to store information about Overdrive 6 capabilities
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6Capabilities
+typedef struct ADLOD6Capabilities
 {
     /// Contains a bitmap of the OD6 capability flags.  Possible values: \ref ADL_OD6_CAPABILITY_SCLK_CUSTOMIZATION,
     /// \ref ADL_OD6_CAPABILITY_MCLK_CUSTOMIZATION, \ref ADL_OD6_CAPABILITY_GPU_ACTIVITY_MONITOR
@@ -1984,7 +2130,6 @@ typedef struct _ADLOD6Capabilities
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6Capabilities;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1993,13 +2138,12 @@ typedef struct _ADLOD6Capabilities
 /// This structure is used to store information about Overdrive 6 clock values.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6PerformanceLevel
+typedef struct ADLOD6PerformanceLevel
 {
     /// Engine (core) clock.
     int iEngineClock;
     /// Memory clock.
     int iMemoryClock;
-
 } ADLOD6PerformanceLevel;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2010,7 +2154,7 @@ typedef struct _ADLOD6PerformanceLevel
 /// are contained in the aLevels array.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6StateInfo
+typedef struct ADLOD6StateInfo
 {
     /// Number of levels.  OD6 uses clock ranges instead of discrete performance levels.
     /// iNumberOfPerformanceLevels is always 2.  The 1st level indicates the minimum clocks
@@ -2025,7 +2169,6 @@ typedef struct _ADLOD6StateInfo
     /// Variable-sized array of levels.
     /// The number of elements in the array is specified by iNumberofPerformanceLevels.
     ADLOD6PerformanceLevel aLevels [1];
-
 } ADLOD6StateInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2034,7 +2177,7 @@ typedef struct _ADLOD6StateInfo
 /// This structure is used to store information about current Overdrive 6 performance status.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6CurrentStatus
+typedef struct ADLOD6CurrentStatus
 {
     /// Current engine clock in 10 KHz.
     int     iEngineClock;
@@ -2056,7 +2199,6 @@ typedef struct _ADLOD6CurrentStatus
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6CurrentStatus;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2065,7 +2207,7 @@ typedef struct _ADLOD6CurrentStatus
 /// This structure is used to store information about Overdrive 6 thermal controller capabilities
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6ThermalControllerCaps
+typedef struct ADLOD6ThermalControllerCaps
 {
     /// Contains a bitmap of thermal controller capability flags. Possible values: \ref ADL_OD6_TCCAPS_THERMAL_CONTROLLER, \ref ADL_OD6_TCCAPS_FANSPEED_CONTROL,
     /// \ref ADL_OD6_TCCAPS_FANSPEED_PERCENT_READ, \ref ADL_OD6_TCCAPS_FANSPEED_PERCENT_WRITE, \ref ADL_OD6_TCCAPS_FANSPEED_RPM_READ, \ref ADL_OD6_TCCAPS_FANSPEED_RPM_WRITE
@@ -2083,7 +2225,6 @@ typedef struct _ADLOD6ThermalControllerCaps
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6ThermalControllerCaps;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2092,7 +2233,7 @@ typedef struct _ADLOD6ThermalControllerCaps
 /// This structure is used to store information about Overdrive 6 fan speed information
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6FanSpeedInfo
+typedef struct ADLOD6FanSpeedInfo
 {
     /// Contains a bitmap of the valid fan speed type flags.  Possible values: \ref ADL_OD6_FANSPEED_TYPE_PERCENT, \ref ADL_OD6_FANSPEED_TYPE_RPM, \ref ADL_OD6_FANSPEED_USER_DEFINED
     int     iSpeedType;
@@ -2105,7 +2246,6 @@ typedef struct _ADLOD6FanSpeedInfo
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6FanSpeedInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2114,7 +2254,7 @@ typedef struct _ADLOD6FanSpeedInfo
 /// This structure is used to store information about Overdrive 6 fan speed value
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6FanSpeedValue
+typedef struct ADLOD6FanSpeedValue
 {
     /// Indicates the units of the fan speed.  Possible values: \ref ADL_OD6_FANSPEED_TYPE_PERCENT, \ref ADL_OD6_FANSPEED_TYPE_RPM
     int     iSpeedType;
@@ -2125,7 +2265,6 @@ typedef struct _ADLOD6FanSpeedValue
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6FanSpeedValue;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2136,7 +2275,7 @@ typedef struct _ADLOD6FanSpeedValue
 /// to be adjusted by changing the PowerTune power limits.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6PowerControlInfo
+typedef struct ADLOD6PowerControlInfo
 {
     /// The minimum PowerControl adjustment value
     int     iMinValue;
@@ -2149,7 +2288,6 @@ typedef struct _ADLOD6PowerControlInfo
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6PowerControlInfo;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2160,7 +2298,7 @@ typedef struct _ADLOD6PowerControlInfo
 /// to be adjusted by changing the PowerTune power limits.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6VoltageControlInfo
+typedef struct ADLOD6VoltageControlInfo
 {
     /// The minimum VoltageControl adjustment value
     int     iMinValue;
@@ -2173,7 +2311,6 @@ typedef struct _ADLOD6VoltageControlInfo
     int     iExtValue;
     /// Mask for future extension
     int     iExtMask;
-
 } ADLOD6VoltageControlInfo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -2182,17 +2319,13 @@ typedef struct _ADLOD6VoltageControlInfo
 /// Doubt Error Detect -  count of errors that cannot be corrected
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLECCData
+typedef struct ADLECCData
 {
     // Single error count - count of errors that can be corrected
     int iSec;
     // Double error detect - count of errors that cannot be corrected
     int iDed;
-
 } ADLECCData;
-
-
-
 
 /// \brief Handle to ADL client context.
 ///
@@ -2201,6 +2334,14 @@ typedef struct _ADLECCData
 ///  the context with call to \ref ADL2_Main_Control_Destroy
 /// \nosubgrouping
 typedef void *ADL_CONTEXT_HANDLE;
+
+/// \brief Handle to ADL Frame Monitor Token.
+///
+///  Frame Monitor clients obtain handle from initial call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Enable
+///  Clients have to pass the handle to each subsequent ADL call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Get 
+///  and finally destroy the token with call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Disable
+/// \nosubgrouping
+typedef void *ADL_FRAME_DURATION_HANDLE;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing the display mode definition used per controller.
@@ -2222,13 +2363,109 @@ typedef struct ADLDisplayModeX2
    int  iTimingStandard;
 } ADLDisplayModeX2;
 
+typedef enum ADLAppProcessState
+{
+	APP_PROC_INVALID = 0,          // Invalid Application
+	APP_PROC_PREMPTION = 1,          // The Application is being set up for Process Creation
+	APP_PROC_CREATION = 2,          // The Application's Main Process is created by the OS
+	APP_PROC_READ = 3,          // The Application's Data is ready to be read
+	APP_PROC_WAIT = 4,          // The Application is waiting for Timeout or Notification to Resume
+	APP_PROC_RUNNING = 5,          // The Application is running
+	APP_PROC_TERMINATE = 6           // The Application is about to terminate
+}ADLAppProcessState;
+
+typedef enum ADLAppInterceptionListType
+{
+	ADL_INVALID_FORMAT = 0,
+	ADL_IMAGEFILEFORMAT = 1,
+	ADL_ENVVAR = 2
+}ADLAppInterceptionListType;
+
+typedef struct ADLAppInterceptionInfo
+{
+	wchar_t                     AppName[ADL_MAX_PATH]; // the file name of the application or env var
+	unsigned int                ProcessId;
+	ADLAppInterceptionListType  AppFormat;
+	ADLAppProcessState          AppState;
+} ADLAppInterceptionInfo;
+
+typedef enum ADL_AP_DATABASE // same as _SHARED_AP_DATABASE in "inc/shared/shared_escape.h"
+{
+	ADL_AP_DATABASE__SYSTEM,
+	ADL_AP_DATABASE__USER,
+	ADL_AP_DATABASE__OEM
+} ADL_AP_DATABASE;
+
+typedef struct ADLAppInterceptionInfoX2
+{
+	wchar_t                     AppName[ADL_MAX_PATH]; // the file name of the application or env var
+	unsigned int                ProcessId;
+	unsigned int                WaitForResumeNeeded;
+	wchar_t                     CommandLine[ADL_MAX_PATH]; // The command line on app start/stop event
+	ADLAppInterceptionListType  AppFormat;
+	ADLAppProcessState          AppState;
+} ADLAppInterceptionInfoX2;
+
+typedef struct ADLAppInterceptionInfoX3
+{
+    wchar_t                     AppName[ADL_MAX_PATH]; // the file name of the application or env var
+    unsigned int                ProcessId;
+    unsigned int                WaitForResumeNeeded;
+    unsigned int                RayTracingStatus; // returns the Ray Tracing status if it is enabled atleast once in session.
+    wchar_t                     CommandLine[ADL_MAX_PATH]; // The command line on app start/stop event
+    ADLAppInterceptionListType  AppFormat;
+    ADLAppProcessState          AppState;
+} ADLAppInterceptionInfoX3;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information info for a property record in a profile
+///
+/// This structure is used to store info for a property record in a profile
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLPropertyRecordCreate
+{
+	/// Name of the property
+	wchar_t * strPropertyName;
+	/// Data type of the property
+	ADLProfilePropertyType eType;
+	// Value of the property
+	wchar_t * strPropertyValue;
+} ADLPropertyRecordCreate;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information info for an application record
+///
+/// This structure is used to store info for an application record
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLApplicationRecord
+{
+    /// Title of the application
+    wchar_t * strTitle;
+    /// File path of the application
+    wchar_t * strPathName;
+    /// File name of the application
+    wchar_t * strFileName;
+    /// File versin the application
+    wchar_t * strVersion;
+    /// Nostes on the application
+    wchar_t * strNotes;
+    /// Driver area which the application uses
+    wchar_t * strArea;
+    /// Name of profile assigned to the application
+    wchar_t * strProfileName;
+    // Source where this application record come from
+    ADL_AP_DATABASE recordSource;
+} ADLApplicationRecord;
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about Overdrive 6 extension capabilities
 ///
 /// This structure is used to store information about Overdrive 6 extension capabilities
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6CapabilitiesEx
+typedef struct ADLOD6CapabilitiesEx
 {
     /// Contains a bitmap of the OD6 extension capability flags.  Possible values: \ref ADL_OD6_CAPABILITY_SCLK_CUSTOMIZATION,
     /// \ref ADL_OD6_CAPABILITY_MCLK_CUSTOMIZATION, \ref ADL_OD6_CAPABILITY_GPU_ACTIVITY_MONITOR,
@@ -2256,7 +2493,7 @@ typedef struct _ADLOD6CapabilitiesEx
 /// This structure is used to store information about Overdrive 6 extension state information
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6StateEx
+typedef struct ADLOD6StateEx
 {
     /// The current engine clock adjustment value, specified as a +/- percent.
     int iEngineClockPercent;
@@ -2276,7 +2513,7 @@ typedef struct _ADLOD6StateEx
 /// This structure is used to store information about Overdrive 6 extension recommended maximum clock adjustment values
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD6MaxClockAdjust
+typedef struct ADLOD6MaxClockAdjust
 {
     /// The recommended maximum engine clock adjustment in percent, for the specified power limit value.
     int iEngineClockMax;
@@ -2311,7 +2548,6 @@ typedef struct ADLConnectorInfo
     int iOffset;
     ///Length of the connector(in millimeters).
     int iLength;
-
 } ADLConnectorInfo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -2388,7 +2624,6 @@ typedef struct ADLConnectionState
     int iDisplayIndex;
 } ADLConnectionState;
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing connection properties information
 ///
@@ -2459,7 +2694,7 @@ typedef struct ADLAdapterCapsX2
     int iNumConnectors;
 }ADLAdapterCapsX2;
 
-typedef enum _ADL_ERROR_RECORD_SEVERITY
+typedef enum ADL_ERROR_RECORD_SEVERITY
 {
     ADL_GLOBALLY_UNCORRECTED  = 1,
     ADL_LOCALLY_UNCORRECTED   = 2,
@@ -2507,7 +2742,7 @@ typedef struct ADLErrorRecord
     unsigned int padding[3];
 }ADLErrorRecord;
 
-typedef enum _ADL_EDC_BLOCK_ID
+typedef enum ADL_EDC_BLOCK_ID
 {
     ADL_EDC_BLOCK_ID_SQCIS = 1,
     ADL_EDC_BLOCK_ID_SQCDS = 2,
@@ -2519,7 +2754,7 @@ typedef enum _ADL_EDC_BLOCK_ID
     ADL_EDC_BLOCK_ID_TCL2  = 8
 }ADL_EDC_BLOCK_ID;
 
-typedef enum _ADL_ERROR_INJECTION_MODE
+typedef enum ADL_ERROR_INJECTION_MODE
 {
     ADL_ERROR_INJECTION_MODE_SINGLE      = 1,
     ADL_ERROR_INJECTION_MODE_MULTIPLE    = 2,
@@ -2539,7 +2774,7 @@ typedef union _ADL_ERROR_PATTERN
     unsigned long long u64Value;
 } ADL_ERROR_PATTERN;
 
-typedef struct _ADL_ERROR_INJECTION_DATA
+typedef struct ADL_ERROR_INJECTION_DATA
 {
     unsigned long long errorAddress;
     ADL_ERROR_PATTERN errorPattern;
@@ -2579,8 +2814,11 @@ typedef struct ADLFreeSyncCap
     int iMinRefreshRateInMicroHz;
     /// Reports maximum FreeSync refresh rate supported by the display in micro hertz
     int iMaxRefreshRateInMicroHz;
+    /// Index of FreeSync Label to use:  ADL_FREESYNC_LABEL_*
+    unsigned char ucLabelIndex;  
     /// Reserved
-    int iReserved[5];
+    char cReserved[3];
+    int iReserved[4];
 } ADLFreeSyncCap;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2590,7 +2828,7 @@ typedef struct ADLFreeSyncCap
 /// display
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLDceSettings
+typedef struct ADLDceSettings
 {
     DceSettingsType type;                       // Defines which structure is in the union below
     union
@@ -2653,14 +2891,13 @@ typedef struct ADLGraphicCoreInfo
     int iReserved[11];
 }ADLGraphicCoreInfo;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about Overdrive N clock range
 ///
 /// This structure is used to store information about Overdrive N clock range
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLODNParameterRange
+typedef struct ADLODNParameterRange
 {
     /// The starting value of the clock range
     int     iMode;
@@ -2672,7 +2909,6 @@ typedef struct _ADLODNParameterRange
     int     iStep;
     /// The default clock values
     int     iDefault;
-
 } ADLODNParameterRange;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -2681,7 +2917,7 @@ typedef struct _ADLODNParameterRange
 /// This structure is used to store information about Overdrive N capabilities
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLODNCapabilities
+typedef struct ADLODNCapabilities
 {
     /// Number of levels which describe the minimum to maximum clock ranges.
     /// The 1st level indicates the minimum clocks, and the 2nd level
@@ -2719,7 +2955,7 @@ typedef struct _ADLODNCapabilities
 /// This structure is used to store information about Overdrive N capabilities
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLODNCapabilitiesX2
+typedef struct ADLODNCapabilitiesX2
 {
     /// Number of levels which describe the minimum to maximum clock ranges.
     /// The 1st level indicates the minimum clocks, and the 2nd level
@@ -2884,7 +3120,7 @@ typedef struct ADLODNPerformanceLevelsX2
     ADLODNPerformanceLevelX2 aLevels[1];
 } ADLODNPerformanceLevelsX2;
 
-typedef enum _ADLODNCurrentPowerType
+typedef enum ADLODNCurrentPowerType
 {
     ODN_GPU_TOTAL_POWER = 0,
     ODN_GPU_PPT_POWER,
@@ -2893,7 +3129,7 @@ typedef enum _ADLODNCurrentPowerType
 } ADLODNCurrentPowerType;
 
 // in/out: CWDDEPM_CURRENTPOWERPARAMETERS
-typedef struct _ADLODNCurrentPowerParameters
+typedef struct ADLODNCurrentPowerParameters
 {
     int   size;
     ADLODNCurrentPowerType   powerType;
@@ -2901,7 +3137,7 @@ typedef struct _ADLODNCurrentPowerParameters
 } ADLODNCurrentPowerParameters;
 
 //ODN Ext range data structure
-typedef struct _ADLODNExtSingleInitSetting
+typedef struct ADLODNExtSingleInitSetting
 {
 	int mode;
 	int minValue;
@@ -2911,7 +3147,7 @@ typedef struct _ADLODNExtSingleInitSetting
 } ADLODNExtSingleInitSetting;
 
 //OD8 Ext range data structure
-typedef struct _ADLOD8SingleInitSetting
+typedef struct ADLOD8SingleInitSetting
 {
     int featureID;
     int minValue;
@@ -2919,14 +3155,13 @@ typedef struct _ADLOD8SingleInitSetting
     int defaultValue;
 } ADLOD8SingleInitSetting;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about Overdrive8 initial setting
 ///
 /// This structure is used to store information about Overdrive8 initial setting
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD8InitSetting
+typedef struct ADLOD8InitSetting
 {
     int count;
     int overdrive8Capabilities;
@@ -2939,12 +3174,11 @@ typedef struct _ADLOD8InitSetting
 /// This structure is used to store information about Overdrive8 current setting
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLOD8CurrentSetting
+typedef struct ADLOD8CurrentSetting
 {
     int count;
     int Od8SettingTable[OD8_COUNT];
 } ADLOD8CurrentSetting;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about Overdrive8 set setting
@@ -2953,15 +3187,14 @@ typedef struct _ADLOD8CurrentSetting
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef struct _ADLOD8SingleSetSetting
+typedef struct ADLOD8SingleSetSetting
 {
     int value;
     int requested;      // 0 - default , 1 - requested
     int reset;          // 0 - do not reset , 1 - reset setting back to default
 } ADLOD8SingleSetSetting;
 
-
-typedef struct _ADLOD8SetSetting
+typedef struct ADLOD8SetSetting
 {
     int count;
     ADLOD8SingleSetSetting  od8SettingTable[OD8_COUNT];
@@ -2973,18 +3206,17 @@ typedef struct _ADLOD8SetSetting
 /// This structure is used to store information about Performance Metrics data output
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLSingleSensorData
+typedef struct ADLSingleSensorData
 {
     int supported;
     int  value;
 } ADLSingleSensorData;
 
-typedef struct _ADLPMLogDataOutput
+typedef struct ADLPMLogDataOutput
 {
     int size;
     ADLSingleSensorData sensors[ADL_PMLOG_MAX_SENSORS];
 }ADLPMLogDataOutput;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about PPLog settings.
@@ -3012,7 +3244,7 @@ typedef struct ADLPPLogSettings
 /// This structure is used to store information related AC and DC Frames Per Second settings
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLFPSSettingsOutput
+typedef struct ADLFPSSettingsOutput
 {
     /// size
     int ulSize;
@@ -3032,7 +3264,6 @@ typedef struct _ADLFPSSettingsOutput
     int ulDCFPSMaximum;
     /// Minimum FPS Threshold allowed in PPLib for DC
     int ulDCFPSMinimum;
-
 } ADLFPSSettingsOutput;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3041,7 +3272,7 @@ typedef struct _ADLFPSSettingsOutput
 /// This structure is used to store information related AC and DC Frames Per Second settings
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLFPSSettingsInput
+typedef struct ADLFPSSettingsInput
 {
     /// size
     int ulSize;
@@ -3053,7 +3284,6 @@ typedef struct _ADLFPSSettingsInput
     int ulDCFPSCurrent;
     /// Reserved
     int ulReserved[6];
-
 } ADLFPSSettingsInput;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3064,15 +3294,13 @@ typedef struct _ADLFPSSettingsInput
 ////////////////////////////////////////////////////////////////////////////////////////////
 enum { ADL_PMLOG_MAX_SUPPORTED_SENSORS = 256 };
 
-typedef struct _ADLPMLogSupportInfo
+typedef struct ADLPMLogSupportInfo
 {
     /// list of sensors defined by ADL_PMLOG_SENSORS
     unsigned short usSensors[ADL_PMLOG_MAX_SUPPORTED_SENSORS];
     /// Reserved
     int ulReserved[16];
-
 } ADLPMLogSupportInfo;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information to start power management logging.
@@ -3080,7 +3308,7 @@ typedef struct _ADLPMLogSupportInfo
 /// This structure is used as input to ADL2_Adapter_PMLog_Start
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLPMLogStartInput
+typedef struct ADLPMLogStartInput
 {
     /// list of sensors defined by ADL_PMLOG_SENSORS
     unsigned short usSensors[ADL_PMLOG_MAX_SUPPORTED_SENSORS];
@@ -3088,10 +3316,9 @@ typedef struct _ADLPMLogStartInput
     unsigned long ulSampleRate;
     /// Reserved
     int ulReserved[15];
-
 } ADLPMLogStartInput;
 
-typedef struct _ADLPMLogData
+typedef struct ADLPMLogData
 {
     /// Structure version
     unsigned int ulVersion;
@@ -3103,7 +3330,6 @@ typedef struct _ADLPMLogData
     unsigned int ulValues[ADL_PMLOG_MAX_SUPPORTED_SENSORS][2];
     /// Reserved
     unsigned int ulReserved[256];
-
 } ADLPMLogData;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3112,7 +3338,7 @@ typedef struct _ADLPMLogData
 /// This structure is returned as output from ADL2_Adapter_PMLog_Start
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLPMLogStartOutput
+typedef struct ADLPMLogStartOutput
 {
     /// Pointer to memory address containing logging data
     union
@@ -3122,9 +3348,18 @@ typedef struct _ADLPMLogStartOutput
     };
     /// Reserved
     int ulReserved[14];
-
 } ADLPMLogStartOutput;
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information to query limts of power management logging.
+///
+/// This structure is returned as output from ADL2_Adapter_PMLog_SensorLimits_Get
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLPMLogSensorLimits
+{
+    int SensorLimits[ADL_PMLOG_MAX_SENSORS][2]; //index 0: min, 1: max
+} ADLPMLogSensorLimits;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information related RAS Get Error Counts Information
@@ -3133,7 +3368,7 @@ typedef struct _ADLPMLogStartOutput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef struct _ADLRASGetErrorCountsInput
+typedef struct ADLRASGetErrorCountsInput
 {
     unsigned int                Reserved[16];
 } ADLRASGetErrorCountsInput;
@@ -3145,8 +3380,7 @@ typedef struct _ADLRASGetErrorCountsInput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASGetErrorCountsOutput
+typedef struct ADLRASGetErrorCountsOutput
 {
     unsigned int                CorrectedErrors;    // includes both DRAM and SRAM ECC
     unsigned int                UnCorrectedErrors;  // includes both DRAM and SRAM ECC
@@ -3160,14 +3394,13 @@ typedef struct _ADLRASGetErrorCountsOutput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef struct _ADLRASGetErrorCounts
+typedef struct ADLRASGetErrorCounts
 {
     unsigned int                InputSize;
     ADLRASGetErrorCountsInput   Input;
     unsigned int                OutputSize;
     ADLRASGetErrorCountsOutput  Output;
 } ADLRASGetErrorCounts;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information related RAS Error Counts Reset Information
@@ -3176,8 +3409,7 @@ typedef struct _ADLRASGetErrorCounts
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASResetErrorCountsInput
+typedef struct ADLRASResetErrorCountsInput
 {
     unsigned int                Reserved[8];
 } ADLRASResetErrorCountsInput;
@@ -3189,8 +3421,7 @@ typedef struct _ADLRASResetErrorCountsInput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASResetErrorCountsOutput
+typedef struct ADLRASResetErrorCountsOutput
 {
     unsigned int                Reserved[8];
 } ADLRASResetErrorCountsOutput;
@@ -3202,15 +3433,13 @@ typedef struct _ADLRASResetErrorCountsOutput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASResetErrorCounts
+typedef struct ADLRASResetErrorCounts
 {
     unsigned int                    InputSize;
     ADLRASResetErrorCountsInput     Input;
     unsigned int                    OutputSize;
     ADLRASResetErrorCountsOutput    Output;
 } ADLRASResetErrorCounts;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information related RAS Error Injection information
@@ -3219,7 +3448,7 @@ typedef struct _ADLRASResetErrorCounts
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-typedef struct _ADLRASErrorInjectonInput
+typedef struct ADLRASErrorInjectonInput
 {
     unsigned long long Address;
     ADL_RAS_INJECTION_METHOD Value;
@@ -3236,8 +3465,7 @@ typedef struct _ADLRASErrorInjectonInput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASErrorInjectionOutput
+typedef struct ADLRASErrorInjectionOutput
 {
     unsigned int ErrorInjectionStatus;
     unsigned int padding[15];
@@ -3250,8 +3478,7 @@ typedef struct _ADLRASErrorInjectionOutput
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-typedef struct _ADLRASErrorInjection
+typedef struct ADLRASErrorInjection
 {
     unsigned int                           InputSize;
     ADLRASErrorInjectonInput               Input;
@@ -3265,7 +3492,7 @@ typedef struct _ADLRASErrorInjection
 /// This structure is used to store basic information of a recently ran or currently running application
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADLSGApplicationInfo
+typedef struct ADLSGApplicationInfo
 {
     /// Application file name
     wchar_t strFileName[ADL_MAX_PATH];
@@ -3298,7 +3525,7 @@ enum ADLPreFlipPostProcessingLUTAlgorithm
     ADLPreFlipPostProcessingLUTAlgorithm_Approximation
 };
 
-typedef struct _ADLPreFlipPostProcessingInfo
+typedef struct ADLPreFlipPostProcessingInfo
 {
     /// size
     int ulSize;
@@ -3310,16 +3537,14 @@ typedef struct _ADLPreFlipPostProcessingInfo
     int ulSelectedLUTAlgorithm;
     /// Reserved
     int ulReserved[12];
-
 } ADLPreFlipPostProcessingInfo;
 
-
-
-typedef struct _ADL_ERROR_REASON
+typedef struct ADL_ERROR_REASON
 {
 	int boost; //ON, when boost is Enabled
 	int delag; //ON, when delag is Enabled
 	int chill; //ON, when chill is Enabled
+	int proVsr; //ON, when proVsr is Enabled
 }ADL_ERROR_REASON;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3328,7 +3553,7 @@ typedef struct _ADL_ERROR_REASON
 ///  Elements of DELAG settings changed reason.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_DELAG_NOTFICATION_REASON
+typedef struct ADL_DELAG_NOTFICATION_REASON
 {
 	int HotkeyChanged; //Set when Hotkey value is changed
 	int GlobalEnableChanged; //Set when Global enable value is changed
@@ -3341,7 +3566,7 @@ typedef struct _ADL_DELAG_NOTFICATION_REASON
 ///  Elements of DELAG settings.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_DELAG_SETTINGS
+typedef struct ADL_DELAG_SETTINGS
 {
 	int Hotkey; // Hotkey value
 	int GlobalEnable; //Global enable value
@@ -3357,7 +3582,7 @@ typedef struct _ADL_DELAG_SETTINGS
 ///  Elements of BOOST settings changed reason.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_BOOST_NOTFICATION_REASON
+typedef struct ADL_BOOST_NOTFICATION_REASON
 {
 	int HotkeyChanged; //Set when Hotkey value is changed
 	int GlobalEnableChanged; //Set when Global enable value is changed
@@ -3370,7 +3595,7 @@ typedef struct _ADL_BOOST_NOTFICATION_REASON
 ///  Elements of BOOST settings.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_BOOST_SETTINGS
+typedef struct ADL_BOOST_SETTINGS
 {
 	int Hotkey; // Hotkey value
 	int GlobalEnable; //Global enable value
@@ -3380,13 +3605,64 @@ typedef struct _ADL_BOOST_SETTINGS
 	int GlobalMinRes_Step; //Gloabl Min Resolution step  value
 }ADL_BOOST_SETTINGS;
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about ProVSR Settings change reason
+///
+///  Elements of ProVSR settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_PROVSR_NOTFICATION_REASON
+{
+	int HotkeyChanged; //Set when Hotkey value is changed
+	int GlobalEnableChanged; //Set when Global enable value is changed 
+}ADL_PROVSR_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about Pro VSR Settings
+///
+///  Elements of ProVSR settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_PROVSR_SETTINGS
+{
+	int Hotkey; // Hotkey value
+	int GlobalEnable; //Global enable value
+}ADL_PROVSR_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about Image Boost(OGL) Settings change reason
+///
+///  Elements of Image Boost settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_IMAGE_BOOST_NOTFICATION_REASON
+{
+    int HotkeyChanged; //Set when Hotkey value is changed
+    int GlobalEnableChanged; //Set when Global enable value is changed
+}ADL_IMAGE_BOOST_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about OGL IMAGE BOOST Settings
+///
+///  Elements of OGL IMAGE BOOST settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_IMAGE_BOOST_SETTINGS
+{
+    int Hotkey; // Hotkey value
+    int GlobalEnable; //Global enable value
+}ADL_IMAGE_BOOST_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about RIS Settings change reason
 ///
 ///  Elements of RIS settings changed reason.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_RIS_NOTFICATION_REASON
+typedef struct ADL_RIS_NOTFICATION_REASON
 {
 	unsigned int GlobalEnableChanged; //Set when Global enable value is changed
 	unsigned int GlobalSharpeningDegreeChanged; //Set when Global sharpening Degree value is changed
@@ -3398,7 +3674,7 @@ typedef struct _ADL_RIS_NOTFICATION_REASON
 ///  Elements of RIS settings.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_RIS_SETTINGS
+typedef struct ADL_RIS_SETTINGS
 {
 	int GlobalEnable; //Global enable value
 	int GlobalSharpeningDegree; //Global sharpening value
@@ -3413,7 +3689,7 @@ typedef struct _ADL_RIS_SETTINGS
 ///  Elements of Chiil settings changed reason.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_CHILL_NOTFICATION_REASON
+typedef struct ADL_CHILL_NOTFICATION_REASON
 {
 	int HotkeyChanged; //Set when Hotkey value is changed
 	int GlobalEnableChanged; //Set when Global enable value is changed
@@ -3424,10 +3700,10 @@ typedef struct _ADL_CHILL_NOTFICATION_REASON
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about CHILL Settings
 ///
-///  Elements of Chiil settings.
+///  Elements of Chill settings.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct _ADL_CHILL_SETTINGS
+typedef struct ADL_CHILL_SETTINGS
 {
 	int Hotkey; // Hotkey value
 	int GlobalEnable; //Global enable value
@@ -3437,4 +3713,568 @@ typedef struct _ADL_CHILL_SETTINGS
 	int GlobalFPS_MaxLimit; //Gloabl FPS slider max limit value
 	int GlobalFPS_Step; //Gloabl FPS Slider step  value
 }ADL_CHILL_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about DRIVERUPSCALE Settings change reason
+///
+///  Elements of DRIVERUPSCALE settings changed reason.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_DRIVERUPSCALE_NOTFICATION_REASON
+{
+    int ModeOverrideEnabledChanged;     //Set when Global min resolution value is changed
+    int GlobalEnabledChanged;           //Set when Global enable value is changed
+}ADL_DRIVERUPSCALE_NOTFICATION_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about DRIVERUPSCALE Settings
+///
+///  Elements of DRIVERUPSCALE settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_DRIVERUPSCALE_SETTINGS
+{
+    int ModeOverrideEnabled;
+    int GlobalEnabled;
+}ADL_DRIVERUPSCALE_SETTINGS;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief  Structure Containing R G B values for Radeon USB LED Bar
+///
+/// Elements of RGB Values.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_RADEON_LED_COLOR_CONFIG
+{
+	unsigned short R : 8; // Red Value
+	unsigned short G : 8; // Green Value
+	unsigned short B : 8; // Blue Value
+}ADL_RADEON_LED_COLOR_CONFIG;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure Containing All Generic LED configuration for user requested LED pattern. The driver will apply the confgiuration as requested
+///
+///  Elements of Radeon USB LED configuration.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_RADEON_LED_PATTERN_CONFIG_GENERIC
+{
+	short brightness : 8; // Brightness of LED
+	short speed : 8; // Speed of LED pattern
+	bool directionCounterClockWise; //Direction of LED Pattern
+	ADL_RADEON_LED_COLOR_CONFIG colorConfig; // RGB value of LED pattern
+	char morseCodeText[ADL_RADEON_LED_MAX_MORSE_CODE]; // Morse Code user input for Morse Code LED pattern
+	char morseCodeTextOutPut[ADL_RADEON_LED_MAX_MORSE_CODE]; // Driver set output representation of Morse Code
+	int  morseCodeTextOutPutLen; // Length of Morse Code output
+}ADL_RADEON_LED_PATTERN_CONFIG_GENERIC;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure Containing All custom grid pattern LED configuration for user requested LED grid pattern. The driver will apply the confgiuration as requested
+///
+///  Elements of Radeon USB LED custom grid configuration.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_RADEON_LED_CUSTOM_LED_CONFIG
+{
+	short brightness : 8; // Brightness of LED
+	ADL_RADEON_LED_COLOR_CONFIG colorConfig[ADL_RADEON_LED_MAX_LED_ROW_ON_GRID][ADL_RADEON_LED_MAX_LED_COLUMN_ON_GRID]; // Full grid array representation of Radeon LED to be populated by user
+}ADL_RADEON_LED_CUSTOM_GRID_LED_CONFIG;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure Containing All Radeon USB LED requests and controls.
+///
+/// Elements of Radeon USB LED Controls. 
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_RADEON_LED_PATTERN_CONFIG
+{
+	ADL_RADEON_USB_LED_BAR_CONTROLS control; //Requested LED pattern
+
+    union
+    {
+		ADL_RADEON_LED_PATTERN_CONFIG_GENERIC genericPararmeters; //Requested pattern configuration settings
+		ADL_RADEON_LED_CUSTOM_GRID_LED_CONFIG customGridConfig; //Requested custom grid configuration settings
+    };
+}ADL_RADEON_LED_PATTERN_CONFIG;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about the graphics adapter with extended caps
+///
+/// This structure is used to store various information about the graphics adapter.  This
+/// information can be returned to the user. Alternatively, it can be used to access various driver calls to set
+/// or fetch various settings upon the user's request.
+/// This AdapterInfoX2 struct extends the AdapterInfo struct in adl_structures.h
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct AdapterInfoX2
+{
+    /// \ALL_STRUCT_MEM
+
+    /// Size of the structure.
+    int iSize;
+    /// The ADL index handle. One GPU may be associated with one or two index handles
+    int iAdapterIndex;
+    /// The unique device ID associated with this adapter.
+    char strUDID[ADL_MAX_PATH];
+    /// The BUS number associated with this adapter.
+    int iBusNumber;
+    /// The driver number associated with this adapter.
+    int iDeviceNumber;
+    /// The function number.
+    int iFunctionNumber;
+    /// The vendor ID associated with this adapter.
+    int iVendorID;
+    /// Adapter name.
+    char strAdapterName[ADL_MAX_PATH];
+    /// Display name. For example, "\\\\Display0"
+    char strDisplayName[ADL_MAX_PATH];
+    /// Present or not; 1 if present and 0 if not present.It the logical adapter is present, the display name such as \\\\.\\Display1 can be found from OS
+    int iPresent;
+    /// Exist or not; 1 is exist and 0 is not present.
+    int iExist;
+    /// Driver registry path.
+    char strDriverPath[ADL_MAX_PATH];
+    /// Driver registry path Ext for.
+    char strDriverPathExt[ADL_MAX_PATH];
+    /// PNP string from Windows.
+    char strPNPString[ADL_MAX_PATH];
+    /// It is generated from EnumDisplayDevices.
+    int iOSDisplayIndex;
+    /// The bit mask identifies the adapter info
+    int iInfoMask;
+    /// The bit identifies the adapter info \ref define_adapter_info
+    int iInfoValue;
+} AdapterInfoX2, *LPAdapterInfoX2;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about driver  gamut space , whether it is related to source or to destination, overlay or graphics
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef  struct ADLGamutReference
+{
+    /// mask whether it is related to source or to destination, overlay or graphics
+    int      iGamutRef;
+}ADLGamutReference;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about driver supported gamut spaces , capability method
+///
+/// This structure is used to get driver all supported gamut spaces
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLGamutInfo
+{
+    ///Any combination of following ADL_GAMUT_SPACE_CCIR_709 - ADL_GAMUT_SPACE_CUSTOM
+    int    SupportedGamutSpace;
+
+    ///Any combination of following ADL_WHITE_POINT_5000K - ADL_WHITE_POINT_CUSTOM
+    int    SupportedWhitePoint;
+} ADLGamutInfo;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about driver point coordinates
+///
+/// This structure is used to store the driver point coodinates for gamut and white point
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLPoint
+{
+    /// x coordinate
+    int          iX;
+    /// y coordinate
+    int          iY;
+} ADLPoint;
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about driver supported gamut coordinates
+///
+/// This structure is used to store the driver supported supported gamut coordinates
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLGamutCoordinates
+{
+    /// red channel chromasity coordinate
+    ADLPoint      Red;
+    /// green channel chromasity coordinate
+    ADLPoint      Green;
+    /// blue channel chromasity coordinate
+    ADLPoint      Blue;
+} ADLGamutCoordinates;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about driver current gamut space , parent struct for ADLGamutCoordinates and ADLWhitePoint
+/// This structure is used to get/set driver supported gamut space
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef  struct ADLGamutData
+{
+    ///used as mask and could be 4 options
+    ///BIT_0 If flag ADL_GAMUT_REFERENCE_SOURCE is asserted set operation is related to gamut source ,
+    ///if not gamut destination
+    ///BIT_1 If flag ADL_GAMUT_GAMUT_VIDEO_CONTENT is asserted
+    ///BIT_2,BIT_3 used as mask and could be 4 options custom (2) + predefined (2)
+    ///0.  Gamut predefined,        white point predefined -> 0                | 0
+    ///1.  Gamut predefined,        white point custom     -> 0                | ADL_CUSTOM_WHITE_POINT
+    ///2.  White point predefined,  gamut custom           -> 0                | ADL_CUSTOM_GAMUT
+    ///3.  White point custom,      gamut custom           -> ADL_CUSTOM_GAMUT | ADL_CUSTOM_WHITE_POINT
+    int        iFeature;
+
+    ///one of ADL_GAMUT_SPACE_CCIR_709 - ADL_GAMUT_SPACE_CIE_RGB
+    int         iPredefinedGamut;
+
+    ///one of ADL_WHITE_POINT_5000K - ADL_WHITE_POINT_9300K
+    int         iPredefinedWhitePoint;
+
+    ///valid when in mask avails ADL_CUSTOM_WHITE_POINT
+    ADLPoint             CustomWhitePoint;
+
+    ///valid when in mask avails ADL_CUSTOM_GAMUT
+    ADLGamutCoordinates  CustomGamut;
+} ADLGamutData;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing detailed timing parameters.
+///
+/// This structure is used to store the detailed timing parameters.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLDetailedTimingX2
+{
+    /// Size of the structure.
+    int   iSize;
+    /// Timing flags. \ref define_detailed_timing_flags
+    int sTimingFlags;
+    /// Total width (columns).
+    int sHTotal;
+    /// Displayed width.
+    int sHDisplay;
+    /// Horizontal sync signal offset.
+    int sHSyncStart;
+    /// Horizontal sync signal width.
+    int sHSyncWidth;
+    /// Total height (rows).
+    int sVTotal;
+    /// Displayed height.
+    int sVDisplay;
+    /// Vertical sync signal offset.
+    int sVSyncStart;
+    /// Vertical sync signal width.
+    int sVSyncWidth;
+    /// Pixel clock value.
+    int sPixelClock;
+    /// Overscan right.
+    short sHOverscanRight;
+    /// Overscan left.
+    short sHOverscanLeft;
+    /// Overscan bottom.
+    short sVOverscanBottom;
+    /// Overscan top.
+    short sVOverscanTop;
+    short sOverscan8B;
+    short sOverscanGR;
+} ADLDetailedTimingX2;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing display mode information.
+///
+/// This structure is used to store the display mode information.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLDisplayModeInfoX2
+{
+    /// Timing standard of the current mode. \ref define_modetiming_standard
+    int  iTimingStandard;
+    /// Applicable timing standards for the current mode.
+    int  iPossibleStandard;
+    /// Refresh rate factor.
+    int  iRefreshRate;
+    /// Num of pixels in a row.
+    int  iPelsWidth;
+    /// Num of pixels in a column.
+    int  iPelsHeight;
+    /// Detailed timing parameters.
+    ADLDetailedTimingX2  sDetailedTiming;
+} ADLDisplayModeInfoX2;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about I2C.
+///
+/// This structure is used to store the I2C information for the current adapter.
+/// This structure is used by \ref ADL_Display_WriteAndReadI2CLargePayload
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLI2CLargePayload
+{
+    /// Size of the structure
+    int iSize;
+    /// Numerical value representing hardware I2C.
+    int iLine;
+    /// The 7-bit I2C slave device address.
+    int iAddress;
+    /// The offset of the data from the address.
+    int iOffset;
+    /// Read from or write to slave device. \ref ADL_DL_I2C_ACTIONREAD or \ref ADL_DL_I2C_ACTIONWRITE
+    int iAction;
+    /// I2C clock speed in KHz.
+    int iSpeed;
+    /// I2C option flags.  \ref define_ADLI2CLargePayload
+    int iFlags;
+    /// A numerical value representing the number of bytes to be sent or received on the I2C bus.
+    int iDataSize;
+    /// Address of the characters which are to be sent or received on the I2C bus.
+    char *pcData;
+} ADLI2CLargePayload;
+
+/// Size in bytes of the Feature Name
+#define ADL_FEATURE_NAME_LENGTH 	16
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing the Multimedia Feature Name
+///
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLFeatureName
+{
+    /// The Feature Name
+    char FeatureName[ADL_FEATURE_NAME_LENGTH];
+}	ADLFeatureName, *LPADLFeatureName;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about MM Feature Capabilities.
+///
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLFeatureCaps
+{
+    /// The Feature Name
+    ADLFeatureName	Name;
+    //	char strFeatureName[ADL_FEATURE_NAME_LENGTH];
+
+    /// Group ID. All Features in the same group are shown sequentially in the same UI Page.
+    int  iGroupID;
+
+    /// Visual ID. Places one or more features in a Group Box. If zero, no Group Box is added.
+    int  iVisualID;
+
+    /// Page ID. All Features with the same Page ID value are shown together on the same UI page.
+    int iPageID;
+
+    /// Feature Property Mask. Indicates which are the valid bits for iFeatureProperties.
+    int iFeatureMask;
+
+    /// Feature Property Values. See definitions for ADL_FEATURE_PROPERTIES_XXX
+    int  iFeatureProperties;
+
+    /// Apperance of the User-Controlled Boolean.
+    int  iControlType;
+
+    /// Style of the User-Controlled Boolean.
+    int  iControlStyle;
+
+    /// Apperance of the Adjustment Controls.
+    int  iAdjustmentType;
+
+    /// Style of the Adjustment Controls.
+    int  iAdjustmentStyle;
+
+    /// Default user-controlled boolean value. Valid only if ADLFeatureCaps supports user-controlled boolean.
+    int bDefault;
+
+    /// Minimum integer value. Valid only if ADLFeatureCaps indicates support for integers.
+    int iMin;
+
+    /// Maximum integer value. Valid only if ADLFeatureCaps indicates support for integers.
+    int iMax;
+
+    /// Step integer value. Valid only if ADLFeatureCaps indicates support for integers.
+    int iStep;
+
+    /// Default integer value. Valid only if ADLFeatureCaps indicates support for integers.
+    int iDefault;
+
+    /// Minimum float value. Valid only if ADLFeatureCaps indicates support for floats.
+    float fMin;
+
+    /// Maximum float value. Valid only if ADLFeatureCaps indicates support for floats.
+    float fMax;
+
+    /// Step float value. Valid only if ADLFeatureCaps indicates support for floats.
+    float fStep;
+
+    /// Default float value. Valid only if ADLFeatureCaps indicates support for floats.
+    float fDefault;
+
+    /// The Mask for available bits for enumerated values.(If ADLFeatureCaps supports ENUM values)
+    int EnumMask;
+} ADLFeatureCaps, *LPADLFeatureCaps;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about MM Feature Values.
+///
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLFeatureValues
+{
+    /// The Feature Name
+    ADLFeatureName	Name;
+    //	char strFeatureName[ADL_FEATURE_NAME_LENGTH];
+
+    /// User controlled Boolean current value. Valid only if ADLFeatureCaps supports Boolean.
+    int bCurrent;
+
+    /// Current integer value. Valid only if ADLFeatureCaps indicates support for integers.
+    int iCurrent;
+
+    /// Current float value. Valid only if ADLFeatureCaps indicates support for floats.
+    float fCurrent;
+
+    /// The States for the available bits for enumerated values.
+    int EnumStates;
+} ADLFeatureValues, *LPADLFeatureValues;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing HDCP Settings info
+///
+/// This structure is used to store the HDCP settings of a
+/// display
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLHDCPSettings
+{
+	int iHDCPProtectionVersion; // Version, starting from 1
+	int iHDCPCaps; //Caps used to ensure at least one protection scheme is supported, 1 is HDCP1X and 2 is HDCP22
+	int iAllowAll; //Allow all is true, disable all is false
+	int iHDCPVale;
+	int iHDCPMask;
+} ADLHDCPSettings;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing Mantle App  info
+///
+/// This structure is used to store the Mantle Driver information
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+
+typedef struct ADLMantleAppInfo
+{
+	/// mantle api version
+	int   apiVersion;
+	/// mantle driver version
+	long   driverVersion;
+	/// mantle vendroe id
+	long   vendorId;
+	/// mantle device id
+	long   deviceId;
+	/// mantle gpu type;
+	int     gpuType;
+	/// gpu name
+	char     gpuName[256];
+	/// mem size
+	int     maxMemRefsPerSubmission;
+	/// virtual mem size
+	long long virtualMemPageSize;
+	/// mem update
+	long long maxInlineMemoryUpdateSize;
+	/// bound descriptot
+	long     maxBoundDescriptorSets;
+	/// thread group size
+	long     maxThreadGroupSize;
+	/// time stamp frequency
+	long  long timestampFrequency;
+	/// color target
+	long     multiColorTargetClears;
+}ADLMantleAppInfo, *LPADLMantleAppInfo;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about SDIData 
+///This structure is used to store information about the state of the SDI whether it is on
+///or off and the current size of the segment or aperture size.
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLSDIData
+{
+	/// The SDI state, ADL_SDI_ON or ADL_SDI_OFF, for the current SDI mode
+	int iSDIState;
+	/// Size of the memory segment for SDI (in MB).
+	int iSizeofSDISegment;
+} ADLSDIData, *LPADLSDIData;
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about FRTCPRO Settings
+///
+///  Elements of FRTCPRO settings.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_FRTCPRO_Settings
+{
+    int DefaultState;              //The default status for FRTC pro
+    int CurrentState;              //The current enable/disable status for FRTC pro
+    unsigned int DefaultValue;     //The default FPS value for FRTC pro.
+    unsigned int CurrentValue;      //The current FPS value for FRTC pro.
+    unsigned int maxSupportedFps;      //The max value for FRTC pro.
+    unsigned int minSupportedFps;      //The min value for FRTC pro.
+}ADL_FRTCPRO_Settings, *LPADLFRTCProSettings;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information about FRTCPRO Settings changed reason
+///
+///  Reason of FRTCPRO changed.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_FRTCPRO_CHANGED_REASON
+{
+    int StateChanged;               // FRTCPro state changed
+    int ValueChanged;               // FRTCPro value changed
+}ADL_FRTCPRO_CHANGED_REASON;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Structure containing the display mode definition used per controller.
+///
+/// This structure is used to store the display mode definition used per controller.
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADL_DL_DISPLAY_MODE
+{
+    int  iPelsHeight;                      // Vertical resolution (in pixels).
+    int  iPelsWidth;                       // Horizontal resolution (in pixels).
+    int  iBitsPerPel;                      // Color depth.
+    int  iDisplayFrequency;                // Refresh rate.
+} ADL_DL_DISPLAY_MODE;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+///\brief Structure containing information related DCE support
+///
+/// This structure is used to store a bit vector of possible DCE support
+///
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef union _ADLDCESupport
+{
+    struct
+    {
+        unsigned int PrePhasis : 1;
+        unsigned int voltageSwing : 1;
+        unsigned int reserved : 30;
+    }bits;
+    unsigned int u32All;
+}ADLDCESupport;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Structure for Smart shift 2.0 settings
+///
+/// This structure is used to return the smart shift settings
+/// \nosubgrouping
+////////////////////////////////////////////////////////////////////////////////////////////
+typedef struct ADLSmartShiftSettings
+{
+	int iMinRange;
+	int iMaxRange;
+	int iDefaultMode; //Refer to CWDDEPM_ODN_CONTROL_TYPE
+	int iDefaultValue;
+	int iCurrentMode;
+	int iCurrentValue;
+    int iFlags; //refer to define_smartshift_bits
+}ADLSmartShiftSettings, *LPADLSmartShiftSettings;
 #endif /* ADL_STRUCTURES_H_ */

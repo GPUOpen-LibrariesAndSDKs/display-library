@@ -1,5 +1,5 @@
 ///
-///  Copyright (c) 2008 - 2013 Advanced Micro Devices, Inc.
+///  Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.
  
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -8,7 +8,7 @@
 /// \file EDID.c
 
 #include <windows.h>
-#include "..\..\include\adl_sdk.h"
+#include "..\..\include\ADL_sdk.h"
 #include "EDID.h"
 #include <stdio.h>
 
@@ -17,37 +17,40 @@
 #define PRINTF printf
 
 // Definitions of the used function pointers. Add more if you use other ADL APIs
-typedef int ( *ADL_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int );
-typedef int ( *ADL_MAIN_CONTROL_DESTROY )();
-typedef int ( *ADL_FLUSH_DRIVER_DATA)(int);
-typedef int ( *ADL_ADAPTER_NUMBEROFADAPTERS_GET ) ( int* );
-typedef int ( *ADL_ADAPTER_ADAPTERINFO_GET ) ( LPAdapterInfo, int );
-typedef int ( *ADL_ADAPTER_EDIDMANAGEMENT_CAPS )(int, int*);
-typedef int ( *ADL_ADAPTERX2_CAPS) (int, ADLAdapterCapsX2* adapterCaps );
-typedef int ( *ADL_ADAPTER_CONNECTIONSTATE_GET) (int, ADLDevicePort, ADLConnectionState*);
-typedef int ( *ADL_ADAPTER_CONNECTIONDATA_GET) (int, ADLDevicePort, int , ADLConnectionData*);
-typedef int ( *ADL_ADAPTER_CONNECTIONDATA_SET) (int, ADLDevicePort, ADLConnectionData);
-typedef int ( *ADL_ADAPTER_SUPPORTEDCONNECTIONS_GET) (int, ADLDevicePort, ADLSupportedConnections*);
-typedef int ( *ADL_ADAPTER_EMULATIONMODE_SET) (int, ADLDevicePort, int);
-typedef int ( *ADL_ADAPTER_CONNECTIONDATA_REMOVE) (int, ADLDevicePort);
-typedef int ( *ADL_ADAPTER_BOARDLAYOUT_GET) (int, int*, int*, ADLBracketSlotInfo**, int*, ADLConnectorInfo**);
+typedef int ( *ADL2_MAIN_CONTROL_CREATE )(ADL_MAIN_MALLOC_CALLBACK, int, ADL_CONTEXT_HANDLE*);
+typedef int ( *ADL2_MAIN_CONTROL_DESTROY )(ADL_CONTEXT_HANDLE);
+typedef int ( *ADL2_FLUSH_DRIVER_DATA)(int);
+typedef int ( *ADL2_ADAPTER_NUMBEROFADAPTERS_GET ) (ADL_CONTEXT_HANDLE, int* );
+typedef int ( *ADL2_ADAPTER_ADAPTERINFO_GET ) (ADL_CONTEXT_HANDLE, LPAdapterInfo, int );
+typedef int ( *ADL2_ADAPTER_EDIDMANAGEMENT_CAPS )(ADL_CONTEXT_HANDLE, int, int*);
+typedef int ( *ADL2_ADAPTERX2_CAPS) (ADL_CONTEXT_HANDLE, int, ADLAdapterCapsX2* adapterCaps );
+typedef int ( *ADL2_ADAPTER_CONNECTIONSTATE_GET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, ADLConnectionState*);
+typedef int ( *ADL2_ADAPTER_CONNECTIONDATA_GET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, int , ADLConnectionData*);
+typedef int ( *ADL2_ADAPTER_CONNECTIONDATA_SET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, ADLConnectionData);
+typedef int ( *ADL2_ADAPTER_SUPPORTEDCONNECTIONS_GET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, ADLSupportedConnections*);
+typedef int ( *ADL2_ADAPTER_EMULATIONMODE_SET) (ADL_CONTEXT_HANDLE, int, ADLDevicePort, int);
+typedef int ( *ADL2_ADAPTER_CONNECTIONDATA_REMOVE) (ADL_CONTEXT_HANDLE, int, ADLDevicePort);
+typedef int ( *ADL2_ADAPTER_BOARDLAYOUT_GET) (ADL_CONTEXT_HANDLE, int, int*, int*, ADLBracketSlotInfo**, int*, ADLConnectorInfo**);
+typedef int ( *ADL2_DISPLAY_EDIDDATA_GET) (ADL_CONTEXT_HANDLE context, int, int, ADLDisplayEDIDData* lpEDIDData);
 
 HINSTANCE hDLL;
+ADL_CONTEXT_HANDLE context = NULL;
 
-ADL_MAIN_CONTROL_CREATE          ADL_Main_Control_Create = NULL;
-ADL_MAIN_CONTROL_DESTROY         ADL_Main_Control_Destroy = NULL;
-ADL_FLUSH_DRIVER_DATA			 ADL_Flush_Driver_Data = NULL;
-ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get = NULL;
-ADL_ADAPTER_ADAPTERINFO_GET      ADL_Adapter_AdapterInfo_Get = NULL;
-ADL_ADAPTER_EDIDMANAGEMENT_CAPS ADL_Adapter_EDIDManagement_Caps = NULL;
-ADL_ADAPTERX2_CAPS ADL_AdapterX2_Caps = NULL;
-ADL_ADAPTER_CONNECTIONSTATE_GET ADL_Adapter_ConnectionState_Get = NULL;
-ADL_ADAPTER_CONNECTIONDATA_GET ADL_Adapter_ConnectionData_Get = NULL;
-ADL_ADAPTER_CONNECTIONDATA_SET ADL_Adapter_ConnectionData_Set = NULL;
-ADL_ADAPTER_SUPPORTEDCONNECTIONS_GET ADL_Adapter_SupportedConnections_Get = NULL;
-ADL_ADAPTER_EMULATIONMODE_SET ADL_Adapter_EmulationMode_Set = NULL;
-ADL_ADAPTER_CONNECTIONDATA_REMOVE ADL_Adapter_ConnectionData_Remove = NULL;
-ADL_ADAPTER_BOARDLAYOUT_GET ADL_Adapter_BoardLayout_Get = NULL;
+ADL2_MAIN_CONTROL_CREATE          ADL2_Main_Control_Create = NULL;
+ADL2_MAIN_CONTROL_DESTROY         ADL2_Main_Control_Destroy = NULL;
+ADL2_FLUSH_DRIVER_DATA			 ADL2_Flush_Driver_Data = NULL;
+ADL2_ADAPTER_NUMBEROFADAPTERS_GET ADL2_Adapter_NumberOfAdapters_Get = NULL;
+ADL2_ADAPTER_ADAPTERINFO_GET      ADL2_Adapter_AdapterInfo_Get = NULL;
+ADL2_ADAPTER_EDIDMANAGEMENT_CAPS ADL2_Adapter_EDIDManagement_Caps = NULL;
+ADL2_ADAPTERX2_CAPS ADL2_AdapterX2_Caps = NULL;
+ADL2_ADAPTER_CONNECTIONSTATE_GET ADL2_Adapter_ConnectionState_Get = NULL;
+ADL2_ADAPTER_CONNECTIONDATA_GET ADL2_Adapter_ConnectionData_Get = NULL;
+ADL2_ADAPTER_CONNECTIONDATA_SET ADL2_Adapter_ConnectionData_Set = NULL;
+ADL2_ADAPTER_SUPPORTEDCONNECTIONS_GET ADL2_Adapter_SupportedConnections_Get = NULL;
+ADL2_ADAPTER_EMULATIONMODE_SET ADL2_Adapter_EmulationMode_Set = NULL;
+ADL2_ADAPTER_CONNECTIONDATA_REMOVE ADL2_Adapter_ConnectionData_Remove = NULL;
+ADL2_ADAPTER_BOARDLAYOUT_GET ADL2_Adapter_BoardLayout_Get = NULL;
+ADL2_DISPLAY_EDIDDATA_GET               ADL2_Display_EdidData_Get = NULL;
 // Memory allocation function
 void* __stdcall ADL_Main_Memory_Alloc ( int iSize )
 {
@@ -65,14 +68,24 @@ void __stdcall ADL_Main_Memory_Free ( void** lpBuffer )
     }
 }
 
+int unInitializeADL()
+{
+	if (ADL_OK != ADL2_Main_Control_Destroy(context))
+	{
+		PRINTF("Failed to destroy ADL2 context");
+		return FALSE;
+	}
+}
 int initializeADL()
 {
 	
 	// Load the ADL dll
 	{
+		OutputDebugStringA("11::::atiadlxx.dll");
 		hDLL = LoadLibrary(TEXT("atiadlxx.dll"));
 		if (hDLL == NULL)
 		{
+			OutputDebugStringA("11::::atiadlxy.dll");
 			// A 32 bit calling application on 64 bit OS will fail to LoadLibrary.
 			// Try to load the 32 bit library (atiadlxy.dll) instead
 			hDLL = LoadLibrary(TEXT("atiadlxy.dll"));
@@ -85,40 +98,42 @@ int initializeADL()
 		}
 	}
 	{
-		ADL_Main_Control_Create = (ADL_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL_Main_Control_Create");
-		ADL_Main_Control_Destroy = (ADL_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL_Main_Control_Destroy");
-		ADL_Adapter_NumberOfAdapters_Get = (ADL_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL_Adapter_NumberOfAdapters_Get");
-		ADL_Adapter_AdapterInfo_Get = (ADL_ADAPTER_ADAPTERINFO_GET) GetProcAddress(hDLL,"ADL_Adapter_AdapterInfo_Get");
-		ADL_Adapter_EDIDManagement_Caps = (ADL_ADAPTER_EDIDMANAGEMENT_CAPS) GetProcAddress(hDLL, "ADL_Adapter_EDIDManagement_Caps");
-		ADL_AdapterX2_Caps = (ADL_ADAPTERX2_CAPS) GetProcAddress( hDLL, "ADL_AdapterX2_Caps");
-		ADL_Adapter_ConnectionState_Get = (ADL_ADAPTER_CONNECTIONSTATE_GET) GetProcAddress (hDLL, "ADL_Adapter_ConnectionState_Get");
-		ADL_Adapter_ConnectionData_Get = (ADL_ADAPTER_CONNECTIONDATA_GET) GetProcAddress(hDLL, "ADL_Adapter_ConnectionData_Get");
-		ADL_Adapter_ConnectionData_Set = (ADL_ADAPTER_CONNECTIONDATA_SET) GetProcAddress(hDLL, "ADL_Adapter_ConnectionData_Set");
-		ADL_Adapter_SupportedConnections_Get = (ADL_ADAPTER_SUPPORTEDCONNECTIONS_GET) GetProcAddress(hDLL, "ADL_Adapter_SupportedConnections_Get");
-		ADL_Adapter_EmulationMode_Set = (ADL_ADAPTER_EMULATIONMODE_SET) GetProcAddress( hDLL,"ADL_Adapter_EmulationMode_Set");
-		ADL_Adapter_ConnectionData_Remove = (ADL_ADAPTER_CONNECTIONDATA_REMOVE) GetProcAddress (hDLL, "ADL_Adapter_ConnectionData_Remove");
-		ADL_Adapter_BoardLayout_Get = (ADL_ADAPTER_BOARDLAYOUT_GET) GetProcAddress (hDLL, "ADL_Adapter_BoardLayout_Get");
-		if ( NULL == ADL_Main_Control_Create ||
-			 NULL == ADL_Main_Control_Destroy ||
-			 NULL == ADL_Adapter_NumberOfAdapters_Get||
-			 NULL == ADL_Adapter_AdapterInfo_Get ||
-			 NULL == ADL_Adapter_EDIDManagement_Caps ||
-			 NULL == ADL_AdapterX2_Caps ||
-			 NULL == ADL_Adapter_ConnectionState_Get ||
-			 NULL == ADL_Adapter_ConnectionData_Get ||
-			 NULL == ADL_Adapter_ConnectionData_Set ||
-			 NULL == ADL_Adapter_SupportedConnections_Get ||
-			 NULL == ADL_Adapter_EmulationMode_Set ||
-			 NULL == ADL_Adapter_ConnectionData_Remove ||
-			 NULL == ADL_Adapter_BoardLayout_Get)
+		ADL2_Main_Control_Create = (ADL2_MAIN_CONTROL_CREATE) GetProcAddress(hDLL,"ADL2_Main_Control_Create");
+		ADL2_Main_Control_Destroy = (ADL2_MAIN_CONTROL_DESTROY) GetProcAddress(hDLL,"ADL2_Main_Control_Destroy");
+		ADL2_Adapter_NumberOfAdapters_Get = (ADL2_ADAPTER_NUMBEROFADAPTERS_GET) GetProcAddress(hDLL,"ADL2_Adapter_NumberOfAdapters_Get");
+		ADL2_Adapter_AdapterInfo_Get = (ADL2_ADAPTER_ADAPTERINFO_GET) GetProcAddress(hDLL,"ADL2_Adapter_AdapterInfo_Get");
+		ADL2_Adapter_EDIDManagement_Caps = (ADL2_ADAPTER_EDIDMANAGEMENT_CAPS) GetProcAddress(hDLL, "ADL2_Adapter_EDIDManagement_Caps");
+		ADL2_AdapterX2_Caps = (ADL2_ADAPTERX2_CAPS) GetProcAddress( hDLL, "ADL2_AdapterX2_Caps");
+		ADL2_Adapter_ConnectionState_Get = (ADL2_ADAPTER_CONNECTIONSTATE_GET) GetProcAddress (hDLL, "ADL2_Adapter_ConnectionState_Get");
+		ADL2_Adapter_ConnectionData_Get = (ADL2_ADAPTER_CONNECTIONDATA_GET) GetProcAddress(hDLL, "ADL2_Adapter_ConnectionData_Get");
+		ADL2_Adapter_ConnectionData_Set = (ADL2_ADAPTER_CONNECTIONDATA_SET) GetProcAddress(hDLL, "ADL2_Adapter_ConnectionData_Set");
+		ADL2_Adapter_SupportedConnections_Get = (ADL2_ADAPTER_SUPPORTEDCONNECTIONS_GET) GetProcAddress(hDLL, "ADL2_Adapter_SupportedConnections_Get");
+		ADL2_Adapter_EmulationMode_Set = (ADL2_ADAPTER_EMULATIONMODE_SET) GetProcAddress( hDLL,"ADL2_Adapter_EmulationMode_Set");
+		ADL2_Adapter_ConnectionData_Remove = (ADL2_ADAPTER_CONNECTIONDATA_REMOVE) GetProcAddress (hDLL, "ADL2_Adapter_ConnectionData_Remove");
+		ADL2_Adapter_BoardLayout_Get = (ADL2_ADAPTER_BOARDLAYOUT_GET) GetProcAddress (hDLL, "ADL2_Adapter_BoardLayout_Get");
+		ADL2_Display_EdidData_Get = (ADL2_DISPLAY_EDIDDATA_GET) GetProcAddress(hDLL, "ADL2_Display_EdidData_Get");
+		if ( NULL == ADL2_Main_Control_Create ||
+			 NULL == ADL2_Main_Control_Destroy ||
+			 NULL == ADL2_Adapter_NumberOfAdapters_Get||
+			 NULL == ADL2_Adapter_AdapterInfo_Get ||
+			 NULL == ADL2_Adapter_EDIDManagement_Caps ||
+			 NULL == ADL2_AdapterX2_Caps ||
+			 NULL == ADL2_Adapter_ConnectionState_Get ||
+			 NULL == ADL2_Adapter_ConnectionData_Get ||
+			 NULL == ADL2_Adapter_ConnectionData_Set ||
+			 NULL == ADL2_Adapter_SupportedConnections_Get ||
+			 NULL == ADL2_Adapter_EmulationMode_Set ||
+			 NULL == ADL2_Adapter_ConnectionData_Remove ||
+			 NULL == ADL2_Adapter_BoardLayout_Get ||
+			 NULL == ADL2_Display_EdidData_Get)
 		{
 			PRINTF("Failed to get ADL function pointers\n");
 			return FALSE;
 		}
 	}
-	if ( ADL_OK != ADL_Main_Control_Create (ADL_Main_Memory_Alloc, 1) )
+	if ( ADL_OK != ADL2_Main_Control_Create (ADL_Main_Memory_Alloc, 1, &context) )
 	{
-		PRINTF("ADL_Main_Control_Create() failed\n");
+		PRINTF("ADL2_Main_Control_Create() failed\n");
 		return FALSE;
 	}
 	
@@ -142,7 +157,7 @@ int printAdapaterInfo()
 
 	LPAdapterInfo     lpAdapterInfo = NULL;
 	// Obtain the number of adapters for the system
-    if ( ADL_OK != ADL_Adapter_NumberOfAdapters_Get ( &iNumberAdapters ) )
+    if ( ADL_OK != ADL2_Adapter_NumberOfAdapters_Get (context, &iNumberAdapters ) )
 	{
 	       PRINTF("Cannot get the number of adapters!\n");
 		   return 0;
@@ -154,7 +169,7 @@ int printAdapaterInfo()
         memset ( lpAdapterInfo,'\0', sizeof (AdapterInfo) * iNumberAdapters );
 
         // Get the AdapterInfo structure for all adapters in the system
-        ADL_Adapter_AdapterInfo_Get (lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
+        ADL2_Adapter_AdapterInfo_Get (context, lpAdapterInfo, sizeof (AdapterInfo) * iNumberAdapters);
     }
 
 
@@ -188,9 +203,9 @@ int printAdapaterInfo()
 				if (iBusNumber == lpAdapterInfo[ j ].iBusNumber)
 				{
 					iAdapterIndex = lpAdapterInfo[ j ].iAdapterIndex;					
-					if (ADL_OK != ADL_Adapter_EDIDManagement_Caps(iAdapterIndex, &iEDIDSupported))
+					if (ADL_OK != ADL2_Adapter_EDIDManagement_Caps(context, iAdapterIndex, &iEDIDSupported))
 					{
-						PRINTF (" ADL_Adapter_EDIDManagement_Caps failed \n");
+						PRINTF (" ADL2_Adapter_EDIDManagement_Caps failed \n");
 					}
 					else
 					{
@@ -199,9 +214,9 @@ int printAdapaterInfo()
                         	ADLAdapterCapsX2 temp;
                             memset(&temp, 0, sizeof(temp));
 
-							if (ADL_OK != ADL_AdapterX2_Caps(iAdapterIndex, &temp))
+							if (ADL_OK != ADL2_AdapterX2_Caps(context, iAdapterIndex, &temp))
 							{
-								PRINTF (" ADL_AdapterX2_Caps Failed \n");
+								PRINTF (" ADL2_AdapterX2_Caps Failed \n");
 							}
 							else
 							{
@@ -211,7 +226,7 @@ int printAdapaterInfo()
 								{
 									PRINTF (" No of Ports : %d \n", temp.iNumConnectors);
 									
-									ADL_Adapter_BoardLayout_Get(iAdapterIndex, &iValidFlags, &iNumofSlots, &barcketSlotInfo, &iNumofConnectors, &connectorInfo);
+									ADL2_Adapter_BoardLayout_Get(context, iAdapterIndex, &iValidFlags, &iNumofSlots, &barcketSlotInfo, &iNumofConnectors, &connectorInfo);
 									
 									if (iValidFlags != 15)
 										
@@ -300,7 +315,7 @@ void getEmulationStatus(int iAdapterIndex)
 	ADLConnectionData connectionData;
 	ADLSupportedConnections supportedConnections;
 	int i=0,j=0;
-	if (ADL_OK == ADL_AdapterX2_Caps(iAdapterIndex, &temp))
+	if (ADL_OK == ADL2_AdapterX2_Caps(context, iAdapterIndex, &temp))
 	{
 		for (i=0; i<temp.iNumConnectors; i++)
 		{
@@ -312,8 +327,8 @@ void getEmulationStatus(int iAdapterIndex)
 			PRINTF (" Connector #%d Information :\n" , i);
 			PRINTF (" --------------------------------------------------------- \n");
 				
-			#pragma region ADL_Adapter_SupportedConnections_Get
-			if (ADL_OK == ADL_Adapter_SupportedConnections_Get(iAdapterIndex, devicePort, &supportedConnections))
+			#pragma region ADL2_Adapter_SupportedConnections_Get
+			if (ADL_OK == ADL2_Adapter_SupportedConnections_Get(context, iAdapterIndex, devicePort, &supportedConnections))
 			{
 				PRINTF (" Connections     | BItRate | No.OfLanes | 3D Caps | OutputBwidth | ColorDepth\n");
 				PRINTF (" ______________________________________________________________________________ \n");
@@ -396,11 +411,11 @@ void getEmulationStatus(int iAdapterIndex)
 			}  
 			#pragma endregion
 			
-			#pragma region ADL_Adapter_ConnectionState_Get
+			#pragma region ADL2_Adapter_ConnectionState_Get
 			PRINTF ("\n Connection Information:\n");
 			PRINTF (" -----------------------\n");
 				
-			if (ADL_OK == ADL_Adapter_ConnectionState_Get(iAdapterIndex,devicePort, &connectionState))
+			if (ADL_OK == ADL2_Adapter_ConnectionState_Get(context, iAdapterIndex,devicePort, &connectionState))
 			{
 				if (connectionState.iDisplayIndex != -1)
 				{
@@ -450,11 +465,11 @@ void getEmulationStatus(int iAdapterIndex)
 			#pragma endregion
 
 
-			#pragma region ADL_Adapter_ConnectionData_Get
+			#pragma region ADL2_Adapter_ConnectionData_Get
 			connectionData.iActiveConnections = 0;
 			connectionData.iNumberofPorts = 0;
 
-			if (ADL_OK == ADL_Adapter_ConnectionData_Get(iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
+			if (ADL_OK == ADL2_Adapter_ConnectionData_Get(context, iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
 			{
 				switch (connectionData.iConnectionType)
 				{
@@ -506,11 +521,8 @@ void getEmulationStatus(int iAdapterIndex)
 							PRINTF (" \tBITRate : 1.62Ghz\n");
 							break;
 						case ADL_LINK_BITRATE_2_7_GHZ:
-							PRINTF (" \tBITRate : 2.7Ghz\n");
-							break;
-						case ADL_LINK_BTIRATE_3_24_GHZ:
-							PRINTF (" \tBITRate : 3.24Ghz\n");
-							break;
+							PRINTF (" \tBITRate : 2.7Ghz\n");	
+							break;						
 						case ADL_LINK_BITRATE_5_4_GHZ:
 							PRINTF (" \tBITRate : 5.4Ghz\n");
 							break;
@@ -541,9 +553,7 @@ void getEmulationStatus(int iAdapterIndex)
 						case ADL_LINK_BITRATE_2_7_GHZ:
 							PRINTF (" \tBITRate : 2.7Ghz\n");
 							break;
-						case ADL_LINK_BTIRATE_3_24_GHZ:
-							PRINTF (" \tBITRate : 3.24Ghz\n");
-							break;
+						
 						case ADL_LINK_BITRATE_5_4_GHZ:
 							PRINTF (" \tBITRate : 5.4Ghz\n");
 							break;
@@ -641,8 +651,8 @@ void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int n
 			PRINTF (" Information \n .................................... \n\n");
 			     
 			
-			#pragma region ADL_Adapter_SupportedConnections_Get
-			if (ADL_OK == ADL_Adapter_SupportedConnections_Get(iAdapterIndex, devicePort, &supportedConnections))
+			#pragma region ADL2_Adapter_SupportedConnections_Get
+			if (ADL_OK == ADL2_Adapter_SupportedConnections_Get(context, iAdapterIndex, devicePort, &supportedConnections))
 			{
 				PRINTF (" Connections     | BItRate | No.OfLanes | 3D Caps | OutputBwidth | ColorDepth\n");
 				PRINTF (" ______________________________________________________________________________ \n");
@@ -728,11 +738,11 @@ void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int n
 
 			if (active)
 			{
-				#pragma region ADL_Adapter_ConnectionState_Get
+				#pragma region ADL2_Adapter_ConnectionState_Get
 			
 				PRINTF ("\n Connection Information:\n");
 				PRINTF (" -----------------------\n");
-				if (ADL_OK == ADL_Adapter_ConnectionState_Get(iAdapterIndex,devicePort, &connectionState))
+				if (ADL_OK == ADL2_Adapter_ConnectionState_Get(context, iAdapterIndex,devicePort, &connectionState))
 				{
 					if (connectionState.iDisplayIndex != -1)
 					{
@@ -782,11 +792,11 @@ void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int n
 	#pragma endregion
 
 
-				#pragma region ADL_Adapter_ConnectionData_Get
+				#pragma region ADL2_Adapter_ConnectionData_Get
 				connectionData.iActiveConnections = 0;
 				connectionData.iNumberofPorts = 0;
 
-				if (ADL_OK == ADL_Adapter_ConnectionData_Get(iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
+				if (ADL_OK == ADL2_Adapter_ConnectionData_Get(context, iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
 				{
 					switch (connectionData.iConnectionType)
 					{
@@ -840,9 +850,7 @@ void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int n
 							case ADL_LINK_BITRATE_2_7_GHZ:
 								PRINTF (" \tBITRate : 2.7Ghz\n");
 								break;
-							case ADL_LINK_BTIRATE_3_24_GHZ:
-								PRINTF (" \tBITRate : 3.24Ghz\n");
-								break;
+							
 							case ADL_LINK_BITRATE_5_4_GHZ:
 								PRINTF (" \tBITRate : 5.4Ghz\n");
 								break;
@@ -873,9 +881,7 @@ void printChildMSTPorts(int iAdapterIndex, ADLDevicePort parentDevicePort, int n
 							case ADL_LINK_BITRATE_2_7_GHZ:
 								PRINTF (" \tBITRate : 2.7Ghz\n");
 								break;
-							case ADL_LINK_BTIRATE_3_24_GHZ:
-								PRINTF (" \tBITRate : 3.24Ghz\n");
-								break;
+							
 							case ADL_LINK_BITRATE_5_4_GHZ:
 								PRINTF (" \tBITRate : 5.4Ghz\n");
 								break;
@@ -934,8 +940,12 @@ void saveEDIDData(int iAdapterIndex, ADLDevicePort devicePort, char* fileName)
 	ADLConnectionData connectionData;
 	FILE *ptr_myfile;
 
-	PRINTF (" --------------------------------------------------------- \n");
-	if (ADL_OK == ADL_Adapter_ConnectionData_Get(iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
+	PRINTF(" --------------------------------------------------------- \n");
+	if (ADL2_Adapter_ConnectionData_Get == NULL)
+	{
+		PRINTF(" Connection Data get NULLLLLL \n");
+	}
+	if (ADL_OK == ADL2_Adapter_ConnectionData_Get(context, iAdapterIndex, devicePort, ADL_QUERY_CURRENT_DATA, &connectionData))
 	{
 		ptr_myfile=fopen(fileName,"wb");
 		fwrite(connectionData.EdidData, connectionData.iDataSize, 1, ptr_myfile);
@@ -947,6 +957,35 @@ void saveEDIDData(int iAdapterIndex, ADLDevicePort devicePort, char* fileName)
 		PRINTF (" Connection Data get Failed \n");		
 
 	PRINTF (" --------------------------------------------------------- \n");
+}
+
+void ReadEDIDDataByDisplayIndex(int iAdapterIndex, int iDisplayIndex)
+{
+	ADLDisplayEDIDData edidData;
+	ZeroMemory(&edidData, sizeof(edidData));
+	edidData.iSize = sizeof(edidData);
+
+	PRINTF(" --------------------------------------------------------- \n");
+	if (ADL2_Display_EdidData_Get == NULL)
+	{
+		PRINTF(" EDID API is NULLLLLL \n");
+	}
+	if (ADL_OK == ADL2_Display_EdidData_Get(context, iAdapterIndex, iDisplayIndex, &edidData))
+	{
+		for (int i = 0; i < ADL_MAX_EDIDDATA_SIZE; i+=16)
+		{
+			PRINTF("%08x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n", i,
+				(unsigned char)edidData.cEDIDData[i], (unsigned char)edidData.cEDIDData[i + 1], (unsigned char)edidData.cEDIDData[i + 2], (unsigned char)edidData.cEDIDData[i + 3],
+				(unsigned char)edidData.cEDIDData[i + 4], (unsigned char)edidData.cEDIDData[i + 5], (unsigned char)edidData.cEDIDData[i + 6], (unsigned char)edidData.cEDIDData[i + 7],
+				(unsigned char)edidData.cEDIDData[i + 8], (unsigned char)edidData.cEDIDData[i + 9], (unsigned char)edidData.cEDIDData[i + 10], (unsigned char)edidData.cEDIDData[i + 11],
+				(unsigned char)edidData.cEDIDData[i + 12], (unsigned char)edidData.cEDIDData[i + 13], (unsigned char)edidData.cEDIDData[i + 14], (unsigned char)edidData.cEDIDData[i + 15]);
+		}
+		PRINTF(" EDID feteched Successfully \n");
+	}
+	else
+		PRINTF(" EDID feteched Failed %08x\n", ADL2_Display_EdidData_Get(context, iAdapterIndex, iDisplayIndex, &edidData));
+
+	PRINTF(" --------------------------------------------------------- \n");
 }
 
 void setConnectionData(int iAdapterIndex, ADLDevicePort devicePort, int iConnectionType, char* FileName)
@@ -973,7 +1012,7 @@ void setConnectionData(int iAdapterIndex, ADLDevicePort devicePort, int iConnect
 	fclose(ptr_myfile);
 	
 	
-	if (ADL_OK == ADL_Adapter_SupportedConnections_Get(iAdapterIndex, devicePort, &supportedConnections))
+	if (ADL_OK == ADL2_Adapter_SupportedConnections_Get(context, iAdapterIndex, devicePort, &supportedConnections))
 	{
 		connectionData.aConnectionProperties.iValidProperties = 0;
 		connectionData.aConnectionProperties.iBitrate = 0;
@@ -1011,7 +1050,7 @@ void setConnectionData(int iAdapterIndex, ADLDevicePort devicePort, int iConnect
 				connectionData.aConnectionProperties.iValidProperties |= ADL_CONNECTION_PROPERTY_3DCAPS;
 			}
 
-			if (ADL_OK == ADL_Adapter_ConnectionData_Set(iAdapterIndex, devicePort, connectionData))
+			if (ADL_OK == ADL2_Adapter_ConnectionData_Set(context, iAdapterIndex, devicePort, connectionData))
 			{
 				PRINTF (" Set Connection Data success on %d \n", devicePort.iConnectorIndex);
 			}
@@ -1037,7 +1076,7 @@ void setBranchData(int iAdapterIndex, ADLDevicePort devicePort, int iConnectionT
 	PRINTF (" --------------------------------------------------------- \n");
 	
 	
-	if (ADL_OK == ADL_Adapter_SupportedConnections_Get(iAdapterIndex, devicePort, &supportedConnections))
+	if (ADL_OK == ADL2_Adapter_SupportedConnections_Get(context, iAdapterIndex, devicePort, &supportedConnections))
 	{
 		connectionData.aConnectionProperties.iValidProperties = 0;
 		connectionData.aConnectionProperties.iBitrate = 0;
@@ -1075,7 +1114,7 @@ void setBranchData(int iAdapterIndex, ADLDevicePort devicePort, int iConnectionT
 				connectionData.aConnectionProperties.iValidProperties |= ADL_CONNECTION_PROPERTY_3DCAPS;
 			}
 
-			if (ADL_OK == ADL_Adapter_ConnectionData_Set(iAdapterIndex, devicePort, connectionData))
+			if (ADL_OK == ADL2_Adapter_ConnectionData_Set(context, iAdapterIndex, devicePort, connectionData))
 			{
 				PRINTF (" Set Connection Data success on %d \n", devicePort.iConnectorIndex);
 			}
@@ -1097,7 +1136,7 @@ void setEmulation(int iAdapterIndex, ADLDevicePort devicePort, int iEmulationMod
 {
 	
 	PRINTF (" --------------------------------------------------------- \n");
-	if (ADL_OK == ADL_Adapter_EmulationMode_Set(iAdapterIndex, devicePort, iEmulationMode))
+	if (ADL_OK == ADL2_Adapter_EmulationMode_Set(context, iAdapterIndex, devicePort, iEmulationMode))
 		PRINTF (" Emulation Activation Successfully \n");				
 	else
 		PRINTF (" Emulation Activation failed \n");		
@@ -1108,7 +1147,7 @@ void setEmulation(int iAdapterIndex, ADLDevicePort devicePort, int iEmulationMod
 void removeEmulation(int iAdapterIndex, ADLDevicePort devicePort)
 {
 	PRINTF (" --------------------------------------------------------- \n");
-	if (ADL_OK == ADL_Adapter_ConnectionData_Remove(iAdapterIndex, devicePort))
+	if (ADL_OK == ADL2_Adapter_ConnectionData_Remove(context, iAdapterIndex, devicePort))
 		PRINTF (" Connection data & emulation removed Successfully \n");				
 	else
 		PRINTF (" Connection data & emulation remove failed \n");		

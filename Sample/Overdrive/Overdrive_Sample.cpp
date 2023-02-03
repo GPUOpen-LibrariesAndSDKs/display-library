@@ -2,7 +2,7 @@
 //
 
 ///
-///  Copyright (c) 2013 Advanced Micro Devices, Inc.
+///  Copyright (c) 2013 - 2022 Advanced Micro Devices, Inc.
 
 ///  THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
 ///  EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
@@ -16,7 +16,6 @@
 
 #if defined (LINUX)
 #include "../../include/adl_sdk.h"
-#include "../../include/customer/oem_structures.h"
 #include <dlfcn.h>	//dyopen, dlsym, dlclose
 #include <stdlib.h>	
 #include <string.h>	//memeset
