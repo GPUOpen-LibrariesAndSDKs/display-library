@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -67,6 +67,9 @@ $(function() {
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>PMLOG_ASIC_POWER
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dae34ce867737e9115ef5f783fcb74dd54">adl_defines.h</a>
+</li>
+<li>PMLOG_BOARD_POWER
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dab9cdba08f75e03e8ed43cc1b611ac665">adl_defines.h</a>
 </li>
 <li>PMLOG_BUS_LANES
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904daa734571559ad0e5e1aba4353e2b8f26a">adl_defines.h</a>
@@ -152,6 +155,18 @@ $(function() {
 <li>PMLOG_SOC_VOLTAGE
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da5e85a4caa0f53fc5523bb21c1800fe66">adl_defines.h</a>
 </li>
+<li>PMLOG_SSAPU_POWERLIMIT
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da710769a0790a08fbce0dbf1c1dc82cd7">adl_defines.h</a>
+</li>
+<li>PMLOG_SSDGPU_POWERLIMIT
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904daa5462b825da6a138343351bbf9d11c94">adl_defines.h</a>
+</li>
+<li>PMLOG_SSPAIRED_ASICPOWER
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da87378ef51cb0583446754aedbaf3a0b0">adl_defines.h</a>
+</li>
+<li>PMLOG_SSTOTAL_POWERLIMIT
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dabad044f39b8876c590041bec16e9c1da">adl_defines.h</a>
+</li>
 <li>PMLOG_TEMPERATURE_CPU
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da1f3ab3b52acf97ef5150e04663a322d2">adl_defines.h</a>
 </li>
@@ -163,6 +178,12 @@ $(function() {
 </li>
 <li>PMLOG_TEMPERATURE_HOTSPOT
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da6f93e34de9bd1e1e329c5be26862ba60">adl_defines.h</a>
+</li>
+<li>PMLOG_TEMPERATURE_HOTSPOT_GCD
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da99d9f974ef4fa40f724ceec32d3f8a55">adl_defines.h</a>
+</li>
+<li>PMLOG_TEMPERATURE_HOTSPOT_MCD
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dad01924060e4c1d3c7c24bfde88f2f535">adl_defines.h</a>
 </li>
 <li>PMLOG_TEMPERATURE_LIQUID
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dafd5e77eed6a9907e17f1a120a050affe">adl_defines.h</a>
@@ -197,11 +218,74 @@ $(function() {
 <li>PMLOG_TEMPERATURE_VRVDDC
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da175da631d593c2a68d1d84dfa88c534d">adl_defines.h</a>
 </li>
+<li>PMLOG_THROTTLER_FIT_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dafa8d9142a5b6d20f1a67539e3e408971">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_GFX_APCC_PLUS_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dada796eecf429dcf6fc9239e19c1a7464">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_PPT0_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da1dc8fedd3bda86fee8b4d54f51cb0a1d">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_PPT1_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da6d31d3dc7dd9b971f75ea15593b58d12">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_PPT2_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dade8c01f26887b39191681f96fd11aafe">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_PPT3_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904daf88093c1a8d4bd4e7d6604f5e0241217">adl_defines.h</a>
+</li>
 <li>PMLOG_THROTTLER_STATUS
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da17e99ed600192dfc50a2c88bcb31fd5f">adl_defines.h</a>
 </li>
 <li>PMLOG_THROTTLER_STATUS_CPU
 : <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dab60a7b5f4b4cc9c5c92e64705a516c77">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TDC_GFX_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da915a2cede1626f3d77618dc387d895f6">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TDC_SOC_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da462eed4c74d66a791f7ac355052e07e5">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TDC_USR_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dad78d42805e5fb79f054d8fc4a7543020">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_EDGE_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da276abb633ce01c56399d986aec1c76d3">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_HOTSPOT_GCD_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dad3e53f3da1125ba6464fdf8eab58778c">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_HOTSPOT_MCD_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da300668a7abb09f29580b2c40d2feeac2">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_HOTSPOT_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da3d8683e7a82c952fec017a7c38957be0">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_LIQUID0_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904daf726abc806084533af6c94f6486ea0c1">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_LIQUID1_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da0d7335f3438ce12f16199f16891de12b">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_MEM_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da0dab985909af52c46530fc17d6974fb8">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_PLX_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dab3cf7a985779f519271f2bc6f09be19c">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_VR_GFX_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da42e69ea99a9406d9eaea7247702ea984">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_VR_MEM0_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da5037078a056c2b2d6cad8071473dcf04">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_VR_MEM1_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904da2aac3b98753fe242d231696fcbd2c8c3">adl_defines.h</a>
+</li>
+<li>PMLOG_THROTTLER_TEMP_VR_SOC_PERCENTAGE
+: <a class="el" href="group__DEFINES.html#ggad06f53fd97d66846124df8094ab8904dac2e093f6fe9051e1d8b4f108aadc81eb">adl_defines.h</a>
 </li>
 <li>ProfilesOnly
 : <a class="el" href="structures_8h.html#a24fce2096e256771411277e65ba3542fa7ad413f750fb9f93366859e170299d4c">structures.h</a>

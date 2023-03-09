@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -92,6 +92,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gae76f73486d4273180c0d7ea64a05670e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#gae76f73486d4273180c0d7ea64a05670e">ADL2_Display_WriteAndReadI2CRev_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpMajor, int *lpMinor)</td></tr>
 <tr class="memdesc:gae76f73486d4273180c0d7ea64a05670e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the I2C API revision.  <a href="group__I2CDDCEDIDAPI.html#gae76f73486d4273180c0d7ea64a05670e">More...</a><br /></td></tr>
 <tr class="separator:gae76f73486d4273180c0d7ea64a05670e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga853222b62b80a11bee8138d65249547c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga853222b62b80a11bee8138d65249547c">ADL2_Display_WriteAndReadSMUI2C</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLI2C.html">ADLI2C</a> *plI2C)</td></tr>
+<tr class="separator:ga853222b62b80a11bee8138d65249547c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7377020bd5c77c0bf02885f072e08699"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga7377020bd5c77c0bf02885f072e08699">ADL_Display_DDCBlockAccess_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int iOption, int iCommandIndex, int iSendMsgLen, char *lpucSendMsgBuf, int *lpulRecvMsgLen, char *lpucRecvMsgBuf)</td></tr>
 <tr class="memdesc:ga7377020bd5c77c0bf02885f072e08699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get Display DDC block access.  <a href="group__I2CDDCEDIDAPI.html#ga7377020bd5c77c0bf02885f072e08699">More...</a><br /></td></tr>
 <tr class="separator:ga7377020bd5c77c0bf02885f072e08699"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +112,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6e226c5eedfa1c1689b298f9a7175836"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga6e226c5eedfa1c1689b298f9a7175836">ADL_Display_WriteAndReadI2CRev_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpMajor, int *lpMinor)</td></tr>
 <tr class="memdesc:ga6e226c5eedfa1c1689b298f9a7175836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the I2C API revision.  <a href="group__I2CDDCEDIDAPI.html#ga6e226c5eedfa1c1689b298f9a7175836">More...</a><br /></td></tr>
 <tr class="separator:ga6e226c5eedfa1c1689b298f9a7175836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bd6a39137ddf9e27b635e7188910f46"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga4bd6a39137ddf9e27b635e7188910f46">ADL_Display_WriteAndReadSMUI2C</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLI2C.html">ADLI2C</a> *plI2C)</td></tr>
+<tr class="memdesc:ga4bd6a39137ddf9e27b635e7188910f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to write and read I2C via SMU.  <a href="group__I2CDDCEDIDAPI.html#ga4bd6a39137ddf9e27b635e7188910f46">More...</a><br /></td></tr>
+<tr class="separator:ga4bd6a39137ddf9e27b635e7188910f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group outlines I2C, DDC and EDID related APIs. </p>
@@ -471,6 +476,51 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 </div>
 </div>
+<a id="ga853222b62b80a11bee8138d65249547c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga853222b62b80a11bee8138d65249547c">&#9670;&nbsp;</a></span>ADL2_Display_WriteAndReadSMUI2C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Display_WriteAndReadSMUI2C </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLI2C.html">ADLI2C</a> *&#160;</td>
+          <td class="paramname"><em>plI2C</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to write and read I2C via SMU.<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">plI2C</td><td>A pointer to the <a class="el" href="structADLI2C.html" title="Structure containing information about I2C.">ADLI2C</a> structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
 <a id="ga7377020bd5c77c0bf02885f072e08699"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga7377020bd5c77c0bf02885f072e08699">&#9670;&nbsp;</a></span>ADL_Display_DDCBlockAccess_Get()</h2>
 
@@ -774,6 +824,45 @@ Clients can use ADL2 version of the API to assure that there is no interference 
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpMajor</td><td>The pointer to the major version. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpMinor</td><td>The pointer to the minor version. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
+
+</div>
+</div>
+<a id="ga4bd6a39137ddf9e27b635e7188910f46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4bd6a39137ddf9e27b635e7188910f46">&#9670;&nbsp;</a></span>ADL_Display_WriteAndReadSMUI2C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL_Display_WriteAndReadSMUI2C </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structADLI2C.html">ADLI2C</a> *&#160;</td>
+          <td class="paramname"><em>plI2C</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to write and read I2C via SMU. </p>
+<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">plI2C</td><td>A pointer to the <a class="el" href="structADLI2C.html" title="Structure containing information about I2C.">ADLI2C</a> structure. </td></tr>
   </table>
   </dd>
 </dl>

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -90,86 +90,88 @@ $(function() {
 </dd>
 <dt>Global <a class="el" href="group__define__HDR__support.html#ga254c131072922f7ee2e82ae1e07336ed">ADL_HDR_DOLBYVISION</a>  </dt>
 <dd><a class="anchor" id="_deprecated000008"></a>DolbyVision HDR supported  </dd>
+<dt>Global <a class="el" href="group__DEFINES.html#gadf1d3429069f905588cfebd56cc6858b">ADLSensorType</a>  </dt>
+<dd><a class="anchor" id="_deprecated000009"></a>Replaced with ADL_PMLOG_SENSORS  </dd>
 <dt>Global <a class="el" href="structAdapterInfo.html#a0b2df80f90e8fd00828e3a4b28514a0b">AdapterInfo::strXScreenConfigName</a>  [256]</dt>
-<dd><a class="anchor" id="_deprecated000009"></a>Internal x config file screen identifier name. Use <a class="el" href="structXScreenInfo.html" title="Structure containing information about the Linux X screen information.">XScreenInfo</a> instead.  </dd>
+<dd><a class="anchor" id="_deprecated000010"></a>Internal x config file screen identifier name. Use <a class="el" href="structXScreenInfo.html" title="Structure containing information about the Linux X screen information.">XScreenInfo</a> instead.  </dd>
 <dt>Global <a class="el" href="structADLDisplayInfo.html#a8fa6ead06a071b80d51d06d873b55756">ADLDisplayInfo::iDisplayControllerIndex</a>  </dt>
-<dd><a class="anchor" id="_deprecated000010"></a>The controller index to which the display is mapped.<br  />
+<dd><a class="anchor" id="_deprecated000011"></a>The controller index to which the display is mapped.<br  />
  Will not be used in the future<br  />
   </dd>
 <dt>Global <a class="el" href="group__LINUX.html#ga9759437242f9c318a8dfaefbfafb3428">ADL2_Controller_Color_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> adlGamma)</dt>
-<dd><a class="anchor" id="_deprecated000011"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Set  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#gafb7660949c4f6b222525f094bc510fbd">ADL_Controller_Color_Set</a>  (int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> adlGamma)</dt>
 <dd><a class="anchor" id="_deprecated000012"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Set  </dd>
+<dt>Global <a class="el" href="group__LINUX.html#gafb7660949c4f6b222525f094bc510fbd">ADL_Controller_Color_Set</a>  (int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> adlGamma)</dt>
+<dd><a class="anchor" id="_deprecated000013"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Set  </dd>
 <dt>Global <a class="el" href="group__LINUX.html#ga3355d8b730d1f114ab258d5ad6be191d">ADL2_Controller_Color_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaCurrent, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaDefault, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMin, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMax)</dt>
-<dd><a class="anchor" id="_deprecated000013"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Get  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#gac8c98b26daece020cb5665b4b37555c7">ADL_Controller_Color_Get</a>  (int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaCurrent, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaDefault, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMin, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMax)</dt>
 <dd><a class="anchor" id="_deprecated000014"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Get  </dd>
+<dt>Global <a class="el" href="group__LINUX.html#gac8c98b26daece020cb5665b4b37555c7">ADL_Controller_Color_Get</a>  (int iAdapterIndex, int iControllerIndex, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaCurrent, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaDefault, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMin, <a class="el" href="structADLGamma.html" title="Structure containing information controller Gamma settings.">ADLGamma</a> *lpGammaMax)</dt>
+<dd><a class="anchor" id="_deprecated000015"></a>This API has been deprecated because the controller index is no longer used with DAL2. Replaced by ADL_Display_LUTColor_Get  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga8251323480cf0214a092f63902d2c4ce">ADL2_Display_ModeTimingOverride_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLDisplayMode.html" title="Structure containing the display mode definition used per controller.">ADLDisplayMode</a> *lpModeIn, <a class="el" href="structADLDisplayModeInfo.html" title="Structure containing display mode information.">ADLDisplayModeInfo</a> *lpModeInfoOut)</dt>
-<dd><a class="anchor" id="_deprecated000015"></a>This API has been deprecated. It has been replaced with API ADL2_Display_ModeTimingOverrideX2_Get  </dd>
+<dd><a class="anchor" id="_deprecated000016"></a>This API has been deprecated. It has been replaced with API ADL2_Display_ModeTimingOverrideX2_Get  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga317bc27767e0f19656d6367282262393">ADL_Display_ModeTimingOverride_Get</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADLDisplayMode.html" title="Structure containing the display mode definition used per controller.">ADLDisplayMode</a> *lpModeIn, <a class="el" href="structADLDisplayModeInfo.html" title="Structure containing display mode information.">ADLDisplayModeInfo</a> *lpModeInfoOut)</dt>
-<dd><a class="anchor" id="_deprecated000016"></a>This API has been deprecated. It has been replaced with API ADL_Display_ModeTimingOverrideX2_Get  </dd>
+<dd><a class="anchor" id="_deprecated000017"></a>This API has been deprecated. It has been replaced with API ADL_Display_ModeTimingOverrideX2_Get  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga0ef429f14e5bc7d764e652401c884ac5">ADL2_Display_ModeTimingOverrideList_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iMaxNumOfOverrides, <a class="el" href="structADLDisplayModeInfo.html" title="Structure containing display mode information.">ADLDisplayModeInfo</a> *lpModeInfoList, int *lpNumOfOverrides)</dt>
-<dd><a class="anchor" id="_deprecated000017"></a>This API has been deprecated. It has been replaced with API ADL2_Display_ModeTimingOverrideListX2_Get  </dd>
+<dd><a class="anchor" id="_deprecated000018"></a>This API has been deprecated. It has been replaced with API ADL2_Display_ModeTimingOverrideListX2_Get  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#ga36198353896ed34b3eeb6c044fa8830f">ADL_Display_ModeTimingOverrideList_Get</a>  (int iAdapterIndex, int iDisplayIndex, int iMaxNumOfOverrides, <a class="el" href="structADLDisplayModeInfo.html" title="Structure containing display mode information.">ADLDisplayModeInfo</a> *lpModeInfoList, int *lpNumOfOverrides)</dt>
-<dd><a class="anchor" id="_deprecated000018"></a>This API has been deprecated. It has been replaced with API ADL_Display_ModeTimingOverrideListX2_Get  </dd>
+<dd><a class="anchor" id="_deprecated000019"></a>This API has been deprecated. It has been replaced with API ADL_Display_ModeTimingOverrideListX2_Get  </dd>
 <dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#gacbac22b609e2e52d5270789e4bed0eef">ADL2_Display_ModeTimingOverrideInfo_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADL__DL__DISPLAY__MODE.html" title="Structure containing the display mode definition used per controller.">ADL_DL_DISPLAY_MODE</a> *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</dt>
-<dd><a class="anchor" id="_deprecated000019"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#gaa8e13a253cec0c325615357311ce943a">ADL_Display_ModeTimingOverrideInfo_Get</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADL__DL__DISPLAY__MODE.html" title="Structure containing the display mode definition used per controller.">ADL_DL_DISPLAY_MODE</a> *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</dt>
 <dd><a class="anchor" id="_deprecated000020"></a>This API has been deprecated.  </dd>
+<dt>Global <a class="el" href="group__T__OVERRIDEAPI.html#gaa8e13a253cec0c325615357311ce943a">ADL_Display_ModeTimingOverrideInfo_Get</a>  (int iAdapterIndex, int iDisplayIndex, <a class="el" href="structADL__DL__DISPLAY__MODE.html" title="Structure containing the display mode definition used per controller.">ADL_DL_DISPLAY_MODE</a> *lpModeIn, ADL_DL_DISPLAYMODEINFO *lpModeInfoOut)</dt>
+<dd><a class="anchor" id="_deprecated000021"></a>This API has been deprecated.  </dd>
 <dt>Global <a class="el" href="group__TVAPI.html#ga588f32e7b4abf46f2d5b41702b72748e">ADL2_Display_TVCaps_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpcaps)</dt>
-<dd><a class="anchor" id="_deprecated000021"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__TVAPI.html#ga0bfd3fbf50470cda85469e4e70055772">ADL_Display_TVCaps_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpcaps)</dt>
 <dd><a class="anchor" id="_deprecated000022"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__TVAPI.html#ga6d534f7a078ee1951ff362cdbb7165f0">ADL2_TV_Standard_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iCurrent)</dt>
+<dt>Global <a class="el" href="group__TVAPI.html#ga0bfd3fbf50470cda85469e4e70055772">ADL_Display_TVCaps_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpcaps)</dt>
 <dd><a class="anchor" id="_deprecated000023"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__TVAPI.html#ga457fbd988af8f50c54979349f1616b3c">ADL_TV_Standard_Set</a>  (int iAdapterIndex, int iDisplayIndex, int iCurrent)</dt>
+<dt>Global <a class="el" href="group__TVAPI.html#ga6d534f7a078ee1951ff362cdbb7165f0">ADL2_TV_Standard_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iCurrent)</dt>
 <dd><a class="anchor" id="_deprecated000024"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__TVAPI.html#ga0b956af0f7f62f45644ebed76f083882">ADL2_TV_Standard_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</dt>
+<dt>Global <a class="el" href="group__TVAPI.html#ga457fbd988af8f50c54979349f1616b3c">ADL_TV_Standard_Set</a>  (int iAdapterIndex, int iDisplayIndex, int iCurrent)</dt>
 <dd><a class="anchor" id="_deprecated000025"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__TVAPI.html#ga970e2c6a2ed109a2cfa68cf609a3ffa3">ADL_TV_Standard_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</dt>
+<dt>Global <a class="el" href="group__TVAPI.html#ga0b956af0f7f62f45644ebed76f083882">ADL2_TV_Standard_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</dt>
 <dd><a class="anchor" id="_deprecated000026"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#gae4d3ecb62835e348f18059b5bf87ceb6">ADL2_CV_DongleSettings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpDongleSetting, int *lpOverrideSettingsSupported, int *lpCurOverrideSettings)</dt>
+<dt>Global <a class="el" href="group__TVAPI.html#ga970e2c6a2ed109a2cfa68cf609a3ffa3">ADL_TV_Standard_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</dt>
 <dd><a class="anchor" id="_deprecated000027"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#ga6f1a240894524a05bd1544666c24959d">ADL_CV_DongleSettings_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpDongleSetting, int *lpOverrideSettingsSupported, int *lpCurOverrideSettings)</dt>
+<dt>Global <a class="el" href="group__CVAPI.html#gae4d3ecb62835e348f18059b5bf87ceb6">ADL2_CV_DongleSettings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpDongleSetting, int *lpOverrideSettingsSupported, int *lpCurOverrideSettings)</dt>
 <dd><a class="anchor" id="_deprecated000028"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#gae28ab0383becbf6caa16592da8d52407">ADL2_CV_DongleSettings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iOverrideSettings)</dt>
+<dt>Global <a class="el" href="group__CVAPI.html#ga6f1a240894524a05bd1544666c24959d">ADL_CV_DongleSettings_Get</a>  (int iAdapterIndex, int iDisplayIndex, int *lpDongleSetting, int *lpOverrideSettingsSupported, int *lpCurOverrideSettings)</dt>
 <dd><a class="anchor" id="_deprecated000029"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#gae1c42ec3114f191a66b7e8b2500453ce">ADL_CV_DongleSettings_Set</a>  (int iAdapterIndex, int iDisplayIndex, int iOverrideSettings)</dt>
+<dt>Global <a class="el" href="group__CVAPI.html#gae28ab0383becbf6caa16592da8d52407">ADL2_CV_DongleSettings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iOverrideSettings)</dt>
 <dd><a class="anchor" id="_deprecated000030"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#ga25fe985c2e4497cf81c81ad8cfaf383b">ADL2_CV_DongleSettings_Reset</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex)</dt>
+<dt>Global <a class="el" href="group__CVAPI.html#gae1c42ec3114f191a66b7e8b2500453ce">ADL_CV_DongleSettings_Set</a>  (int iAdapterIndex, int iDisplayIndex, int iOverrideSettings)</dt>
 <dd><a class="anchor" id="_deprecated000031"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
-<dt>Global <a class="el" href="group__CVAPI.html#ga70056aecbe8f40b6ed3fc0d5191a9037">ADL_CV_DongleSettings_Reset</a>  (int iAdapterIndex, int iDisplayIndex)</dt>
+<dt>Global <a class="el" href="group__CVAPI.html#ga25fe985c2e4497cf81c81ad8cfaf383b">ADL2_CV_DongleSettings_Reset</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex)</dt>
 <dd><a class="anchor" id="_deprecated000032"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
+<dt>Global <a class="el" href="group__CVAPI.html#ga70056aecbe8f40b6ed3fc0d5191a9037">ADL_CV_DongleSettings_Reset</a>  (int iAdapterIndex, int iDisplayIndex)</dt>
+<dd><a class="anchor" id="_deprecated000033"></a>Dropping support for component, composite, and S-Video connectors.  </dd>
 <dt>Global <a class="el" href="group__LINUX.html#gadd4f4c9981c7691efe8ced1c8bb06823">ADL2_DesktopConfig_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDesktopConfig)</dt>
-<dd><a class="anchor" id="_deprecated000033"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#ga3f45e8f3beb3d8a9c5ec8c92c7b195ff">ADL_DesktopConfig_Get</a>  (int iAdapterIndex, int *lpDesktopConfig)</dt>
 <dd><a class="anchor" id="_deprecated000034"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#gae5fc63b3a1cf7feb1ca649aa3f1b7514">ADL2_DesktopConfig_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDesktopConfig)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#ga3f45e8f3beb3d8a9c5ec8c92c7b195ff">ADL_DesktopConfig_Get</a>  (int iAdapterIndex, int *lpDesktopConfig)</dt>
 <dd><a class="anchor" id="_deprecated000035"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#ga7b11d5599576e472a6079715ad3cb3b1">ADL_DesktopConfig_Set</a>  (int iAdapterIndex, int iDesktopConfig)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#gae5fc63b3a1cf7feb1ca649aa3f1b7514">ADL2_DesktopConfig_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDesktopConfig)</dt>
 <dd><a class="anchor" id="_deprecated000036"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#ga5586c7cadfba5d88750a6581b143086b">ADL2_NumberOfDisplayEnable_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfDisplays)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#ga7b11d5599576e472a6079715ad3cb3b1">ADL_DesktopConfig_Set</a>  (int iAdapterIndex, int iDesktopConfig)</dt>
 <dd><a class="anchor" id="_deprecated000037"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#ga6bb3f05bb27ba4429d8cd02d35ae642f">ADL_NumberOfDisplayEnable_Get</a>  (int iAdapterIndex, int *lpNumberOfDisplays)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#ga5586c7cadfba5d88750a6581b143086b">ADL2_NumberOfDisplayEnable_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpNumberOfDisplays)</dt>
 <dd><a class="anchor" id="_deprecated000038"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#gaa8b2205454c061cfa1fb43be4cf2358b">ADL2_DisplayEnable_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDisplayIndexList, int iDisplayListSize, int bPersistOnly)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#ga6bb3f05bb27ba4429d8cd02d35ae642f">ADL_NumberOfDisplayEnable_Get</a>  (int iAdapterIndex, int *lpNumberOfDisplays)</dt>
 <dd><a class="anchor" id="_deprecated000039"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
-<dt>Global <a class="el" href="group__LINUX.html#gaa800c55ead3a3c7e6b378dd737d594b8">ADL_DisplayEnable_Set</a>  (int iAdapterIndex, int *lpDisplayIndexList, int iDisplayListSize, int bPersistOnly)</dt>
+<dt>Global <a class="el" href="group__LINUX.html#gaa8b2205454c061cfa1fb43be4cf2358b">ADL2_DisplayEnable_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDisplayIndexList, int iDisplayListSize, int bPersistOnly)</dt>
 <dd><a class="anchor" id="_deprecated000040"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
+<dt>Global <a class="el" href="group__LINUX.html#gaa800c55ead3a3c7e6b378dd737d594b8">ADL_DisplayEnable_Set</a>  (int iAdapterIndex, int *lpDisplayIndexList, int iDisplayListSize, int bPersistOnly)</dt>
+<dd><a class="anchor" id="_deprecated000041"></a>This API has been deprecated because it was only used for RandR 1.1 (Red Hat 5.x) distributions which is now not supported.  </dd>
 <dt>Global <a class="el" href="group__OVERDRIVE8API.html#gac13bd3ad924670ddf0766537581304f9">ADL2_Overdrive8_Init_Setting_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLOD8InitSetting.html" title="Structure containing information about Overdrive8 initial setting.">ADLOD8InitSetting</a> *lpInitSetting)</dt>
-<dd><a class="anchor" id="_deprecated000041"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__OVERDRIVE8API.html#ga48705da45f75d44581b9453f6d963786">ADL2_New_QueryPMLogData_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLPMLogDataOutput.html">ADLPMLogDataOutput</a> *lpDataOutput)</dt>
 <dd><a class="anchor" id="_deprecated000042"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga2a3a4d30c9acd9c8a31a55952acdf403">ADL2_OverdriveN_Capabilities_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNCapabilities.html" title="Structure containing information about Overdrive N capabilities.">ADLODNCapabilities</a> *lpODCapabilities)</dt>
+<dt>Global <a class="el" href="group__OVERDRIVE8API.html#ga48705da45f75d44581b9453f6d963786">ADL2_New_QueryPMLogData_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLPMLogDataOutput.html">ADLPMLogDataOutput</a> *lpDataOutput)</dt>
 <dd><a class="anchor" id="_deprecated000043"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaefc61c6d450304347f1d274368cec771">ADL2_OverdriveN_SystemClocks_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
+<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga2a3a4d30c9acd9c8a31a55952acdf403">ADL2_OverdriveN_Capabilities_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNCapabilities.html" title="Structure containing information about Overdrive N capabilities.">ADLODNCapabilities</a> *lpODCapabilities)</dt>
 <dd><a class="anchor" id="_deprecated000044"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga62ebb20b08732e363e8a6eebc798bdd1">ADL2_OverdriveN_SystemClocks_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
+<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaefc61c6d450304347f1d274368cec771">ADL2_OverdriveN_SystemClocks_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
 <dd><a class="anchor" id="_deprecated000045"></a>This API has been deprecated.  </dd>
-<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga5c3ceff60521a78ebbf5b914fb5c2827">ADL2_OverdriveN_MemoryClocks_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
+<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga62ebb20b08732e363e8a6eebc798bdd1">ADL2_OverdriveN_SystemClocks_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
 <dd><a class="anchor" id="_deprecated000046"></a>This API has been deprecated.  </dd>
+<dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga5c3ceff60521a78ebbf5b914fb5c2827">ADL2_OverdriveN_MemoryClocks_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
+<dd><a class="anchor" id="_deprecated000047"></a>This API has been deprecated.  </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gae32d2a07062807a677ec56d27927a247">ADL2_OverdriveN_MemoryClocks_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLODNPerformanceLevels.html" title="Structure containing information about Overdrive N performance levels.">ADLODNPerformanceLevels</a> *lpODPerformanceLevels)</dt>
-<dd><a class="anchor" id="_deprecated000047"></a>This API has been deprecated. </dd>
+<dd><a class="anchor" id="_deprecated000048"></a>This API has been deprecated. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

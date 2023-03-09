@@ -1948,17 +1948,17 @@ int PrintFeatureName(int itemID_)
     case OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT:
         PRINTF("OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT:");
         break;
-    case RESERVED_1:
-        PRINTF("RESERVED_1:");
+    case OD8_GFXCLK_CURVE_COEFFICIENT_A:
+        PRINTF("OD8_GFXCLK_CURVE_COEFFICIENT_A:");
         break;
-    case RESERVED_2:
-        PRINTF("RESERVED_2:");
+    case OD8_GFXCLK_CURVE_COEFFICIENT_B:
+        PRINTF("OD8_GFXCLK_CURVE_COEFFICIENT_B:");
         break;
-    case RESERVED_3:
-        PRINTF("RESERVED_3:");
+    case OD8_GFXCLK_CURVE_COEFFICIENT_C:
+        PRINTF("OD8_GFXCLK_CURVE_COEFFICIENT_C:");
         break;
-    case RESERVED_4:
-        PRINTF("RESERVED_4:");
+    case OD8_GFXCLK_CURVE_VFT_FMIN:
+        PRINTF("OD8_GFXCLK_CURVE_VFT_FMIN:");
         break;
     case OD8_UCLK_FMIN:
         PRINTF("OD8_UCLK_FMIN:");

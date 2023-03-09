@@ -77,7 +77,7 @@ typedef struct AdapterInfo
     char strPNPString[ADL_MAX_PATH];
 /// It is generated from EnumDisplayDevices.
     int iOSDisplayIndex;
-	
+
 #endif /* (_WIN32) || (_WIN64) */
 
 #if defined (LINUX)
@@ -274,7 +274,7 @@ typedef struct ADLVirtualSegmentSettingsOutput
 /////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Structure containing information about the Chipset.
 ///
-/// This structure is used to store various information about the Chipset.  This 
+/// This structure is used to store various information about the Chipset.  This
 /// information can be returned to the user.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1903,7 +1903,7 @@ typedef struct ADLPXConfigCaps
 ///\brief Enum containing PX or HG type
 ///
 /// This enum is used to get PX or hG type
-/// 
+///
 /// \nosubgrouping
 //////////////////////////////////////////////////////////////////////////////////////////
 typedef enum ADLPxType
@@ -2338,7 +2338,7 @@ typedef void *ADL_CONTEXT_HANDLE;
 /// \brief Handle to ADL Frame Monitor Token.
 ///
 ///  Frame Monitor clients obtain handle from initial call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Enable
-///  Clients have to pass the handle to each subsequent ADL call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Get 
+///  Clients have to pass the handle to each subsequent ADL call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Get
 ///  and finally destroy the token with call to \ref ADL2_Adapter_FrameMetrics_FrameDuration_Disable
 /// \nosubgrouping
 typedef void *ADL_FRAME_DURATION_HANDLE;
@@ -2815,7 +2815,7 @@ typedef struct ADLFreeSyncCap
     /// Reports maximum FreeSync refresh rate supported by the display in micro hertz
     int iMaxRefreshRateInMicroHz;
     /// Index of FreeSync Label to use:  ADL_FREESYNC_LABEL_*
-    unsigned char ucLabelIndex;  
+    unsigned char ucLabelIndex;
     /// Reserved
     char cReserved[3];
     int iReserved[4];
@@ -3541,11 +3541,20 @@ typedef struct ADLPreFlipPostProcessingInfo
 
 typedef struct ADL_ERROR_REASON
 {
-	int boost; //ON, when boost is Enabled
-	int delag; //ON, when delag is Enabled
-	int chill; //ON, when chill is Enabled
-	int proVsr; //ON, when proVsr is Enabled
+    int boost; //ON, when boost is Enabled
+    int delag; //ON, when delag is Enabled
+    int chill; //ON, when chill is Enabled
+    int proVsr; //ON, when proVsr is Enabled
 }ADL_ERROR_REASON;
+
+typedef struct ADL_ERROR_REASON2
+{
+    int boost; //ON, when boost is Enabled
+    int delag; //ON, when delag is Enabled
+    int chill; //ON, when chill is Enabled
+    int proVsr; //ON, when proVsr is Enabled
+    int upscale; //ON, when RSR is Enabled
+}ADL_ERROR_REASON2;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about DELAG Settings change reason
@@ -3615,7 +3624,7 @@ typedef struct ADL_BOOST_SETTINGS
 typedef struct ADL_PROVSR_NOTFICATION_REASON
 {
 	int HotkeyChanged; //Set when Hotkey value is changed
-	int GlobalEnableChanged; //Set when Global enable value is changed 
+	int GlobalEnableChanged; //Set when Global enable value is changed
 }ADL_PROVSR_NOTFICATION_REASON;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -3783,7 +3792,7 @@ typedef struct ADL_RADEON_LED_CUSTOM_LED_CONFIG
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure Containing All Radeon USB LED requests and controls.
 ///
-/// Elements of Radeon USB LED Controls. 
+/// Elements of Radeon USB LED Controls.
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 typedef struct ADL_RADEON_LED_PATTERN_CONFIG
@@ -4188,7 +4197,7 @@ typedef struct ADLMantleAppInfo
 }ADLMantleAppInfo, *LPADLMantleAppInfo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-///\brief Structure containing information about SDIData 
+///\brief Structure containing information about SDIData
 ///This structure is used to store information about the state of the SDI whether it is on
 ///or off and the current size of the segment or aperture size.
 ////////////////////////////////////////////////////////////////////////////////////////////

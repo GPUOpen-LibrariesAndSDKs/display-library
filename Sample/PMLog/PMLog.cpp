@@ -287,6 +287,33 @@ int PrintAllSupportedSensors()
 					case ADL_PMLOG_THROTTLER_STATUS:
 						PRINTF("Throttler Status Sensor Detected\n");
 						break;
+					case ADL_PMLOG_SMART_POWERSHIFT_CPU:
+						PRINTF("Powershift CPU Sensor Detected\n");
+						break;
+					case ADL_PMLOG_SMART_POWERSHIFT_DGPU:
+						PRINTF("Powershift DGPU Sensor Detected\n");
+						break;
+					case ADL_PMLOG_BUS_SPEED:
+						PRINTF("Bus Speed Sensor Detected\n");
+						break;
+					case ADL_PMLOG_BUS_LANES:
+						PRINTF("Bus Lanes Sensor Detected\n");
+						break;
+					case ADL_PMLOG_BOARD_POWER:
+						PRINTF("Total Board Power Sensor Detected\n");
+						break;
+					case ADL_PMLOG_SSPAIRED_ASICPOWER:
+						PRINTF("APU Power Sensor Detected\n");
+						break;
+					case ADL_PMLOG_SSTOTAL_POWERLIMIT:
+						PRINTF("Total Power limit Sensor Detected\n");
+						break;
+					case ADL_PMLOG_SSAPU_POWERLIMIT:
+						PRINTF("APU Power limit Sensor Detected\n");
+						break;
+					case ADL_PMLOG_SSDGPU_POWERLIMIT:
+						PRINTF("DGPU Power limit Sensor Detected\n");
+						break;
 					case ADL_SENSOR_MAXTYPES:
 						PRINTF("End of Sensor Detected\n");
 						break;
@@ -426,6 +453,33 @@ void DisplayPMLogOutput(ADLPMLogData* PMLogOutput, int Duration)
 				break;
 			case ADL_PMLOG_THROTTLER_STATUS:
 				PRINTF("Throttler Status Sensor: ");
+				break;
+			case ADL_PMLOG_SMART_POWERSHIFT_CPU:
+				PRINTF("Powershift CPU Sensor: ");
+				break;
+			case ADL_PMLOG_SMART_POWERSHIFT_DGPU:
+				PRINTF("Powershift DGPU Sensor: ");
+				break;
+			case ADL_PMLOG_BUS_SPEED:
+				PRINTF("Bus Speed Sensor: ");
+				break;
+			case ADL_PMLOG_BUS_LANES:
+				PRINTF("Bus Lanes Sensor: ");
+				break;
+			case ADL_PMLOG_BOARD_POWER:
+				PRINTF("Total Board Power Sensor: ");
+				break;
+			case ADL_PMLOG_SSPAIRED_ASICPOWER:
+				PRINTF("APU Power Sensor: ");
+				break;
+			case ADL_PMLOG_SSTOTAL_POWERLIMIT:
+				PRINTF("Total Power limit Sensor: ");
+				break;
+			case ADL_PMLOG_SSAPU_POWERLIMIT:
+				PRINTF("APU Power limit Sensor: ");
+				break;
+			case ADL_PMLOG_SSDGPU_POWERLIMIT:
+				PRINTF("DGPU Power limit Sensor: ");
 				break;
 			case ADL_SENSOR_MAXTYPES:
 				break;

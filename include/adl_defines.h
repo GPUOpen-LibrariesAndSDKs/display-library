@@ -139,6 +139,8 @@
 #define ADL_ERR_NO_ADMINISTRATOR_PRIVILEGES            -23
 /// Feature Sync Start api is not called yet
 #define ADL_ERR_FEATURESYNC_NOT_STARTED            -24
+/// Adapter is in an invalid power state
+#define ADL_ERR_INVALID_POWER_STATE             -25
 
 /// @}
 /// </A>
@@ -964,13 +966,20 @@ enum ADLGraphicCoreGeneration
 #define ADL_DL_I2C_LINE_OEM4               0x00000005
 #define ADL_DL_I2C_LINE_OEM5               0x00000006
 #define ADL_DL_I2C_LINE_OEM6               0x00000007
+#define ADL_DL_I2C_LINE_GPIO               0x00000008
 
 // Max size of I2C data buffer
-#define ADL_DL_I2C_MAXDATASIZE             0x00000040
+#define ADL_DL_I2C_MAXDATASIZE             0x00000018
 #define ADL_DL_I2C_MAXWRITEDATASIZE        0x0000000C
 #define ADL_DL_I2C_MAXADDRESSLENGTH        0x00000006
 #define ADL_DL_I2C_MAXOFFSETLENGTH         0x00000004
 
+// I2C clock speed in KHz
+#define ADL_DL_I2C_SPEED_50K               50
+#define ADL_DL_I2C_SPEED_100K              100
+#define ALD_DL_I2C_SPEED_400K              400
+#define ADL_DL_I2C_SPEED_1M                1000
+#define ADL_DL_I2C_SPEED_2M                2300
 
 /// Values for ADLDisplayProperty.iPropertyType
 #define ADL_DL_DISPLAYPROPERTY_TYPE_UNKNOWN              0
@@ -1497,7 +1506,7 @@ typedef enum ADL_VIRTUALDISPLAY_TYPE
 #define ADL_HDR_FREESYNC_HDR    0x0004      ///< FreeSync HDR supported
 /// @}
 
-/// \defgroup define_FreesyncFlags ADLDDCInfo2 Freesync HDR flags 
+/// \defgroup define_FreesyncFlags ADLDDCInfo2 Freesync HDR flags
 /// @{
 /// defines for iFreesyncFlags in ADLDDCInfo2
 #define ADL_HDR_FREESYNC_BACKLIGHT_SUPPORT           0x0001      ///< Global backlight control supported
@@ -1764,7 +1773,7 @@ enum ADLODNDPMMaskType
      ADL_ODN_DPM_MASK                = 1 << 2,
 };
 
-//ODN features Bits for ADLODNCapabilitiesX2 
+//ODN features Bits for ADLODNCapabilitiesX2
 enum ADLODNFeatureControl
 {
      ADL_ODN_SCLK_DPM                = 1 << 0,
@@ -1790,7 +1799,7 @@ enum ADLODNFeatureControl
 
 //If any new feature is added, PPLIB only needs to add ext feature ID and Item ID(Seeting ID). These IDs should match the drive defined in CWDDEPM.h
 enum ADLODNExtFeatureControl
-{	
+{
 	ADL_ODN_EXT_FEATURE_MEMORY_TIMING_TUNE = 1 << 0,
 	ADL_ODN_EXT_FEATURE_FAN_ZERO_RPM_CONTROL = 1 << 1,
 	ADL_ODN_EXT_FEATURE_AUTO_UV_ENGINE = 1 << 2,   //Auto under voltage
@@ -1820,7 +1829,7 @@ enum ADLODNExtSettingId
 	ADL_ODN_PARAMETER_FAN_CURVE_SPEED_5,
     ADL_ODN_POWERGAUGE,
 	ODN_COUNT
-	
+
 } ;
 
 //OD8 Capability features bits
@@ -1837,14 +1846,21 @@ enum ADLOD8FeatureControl
     ADL_OD8_MEMORY_TIMING_TUNE = 1 << 8,
     ADL_OD8_FAN_ZERO_RPM_CONTROL = 1 << 9 ,
 	ADL_OD8_AUTO_UV_ENGINE = 1 << 10,  //Auto under voltage
-	ADL_OD8_AUTO_OC_ENGINE = 1 << 11,  //Auto overclock engine     
+	ADL_OD8_AUTO_OC_ENGINE = 1 << 11,  //Auto overclock engine
 	ADL_OD8_AUTO_OC_MEMORY = 1 << 12,  //Auto overclock memory
 	ADL_OD8_FAN_CURVE = 1 << 13,   //Fan curve
 	ADL_OD8_WS_AUTO_FAN_ACOUSTIC_LIMIT = 1 << 14, //Workstation Manual Fan controller
     ADL_OD8_GFXCLK_QUADRATIC_CURVE = 1 << 15,
     ADL_OD8_OPTIMIZED_GPU_POWER_MODE = 1 << 16,
     ADL_OD8_ODVOLTAGE_LIMIT = 1 << 17,
-    ADL_OD8_POWER_GAUGE = 1 << 18 //Power Gauge
+    ADL_OD8_ADV_OC_LIMITS = 1 << 18,  //Advanced OC limits.
+    ADL_OD8_PER_ZONE_GFX_VOLTAGE_OFFSET = 1 << 19,  //Per Zone gfx voltage offset feature
+    ADL_OD8_AUTO_CURVE_OPTIMIZER = 1 << 20,  //Auto per zone tuning.
+    ADL_OD8_GFX_VOLTAGE_LIMIT = 1 << 21,  //Voltage limit slider
+    ADL_OD8_TDC_LIMIT = 1 << 22,  //TDC slider
+    ADL_OD8_FULL_CONTROL_MODE = 1 << 23,  //Full control
+    ADL_OD8_POWER_SAVING_FEATURE_CONTROL = 1 << 24,  //Power saving feature control
+    ADL_OD8_POWER_GAUGE = 1 << 25 //Power Gauge
 };
 
 
@@ -1880,15 +1896,28 @@ typedef enum ADLOD8SettingId
 	OD8_FAN_CURVE_TEMPERATURE_5,
 	OD8_FAN_CURVE_SPEED_5,
 	OD8_WS_FAN_AUTO_FAN_ACOUSTIC_LIMIT,
-    RESERVED_1,
-    RESERVED_2,
-    RESERVED_3,
-    RESERVED_4,
+    OD8_GFXCLK_CURVE_COEFFICIENT_A, // As part of the agreement with UI team, the min/max voltage limits for the
+    OD8_GFXCLK_CURVE_COEFFICIENT_B, // quadratic curve graph will be stored in the min and max limits of
+    OD8_GFXCLK_CURVE_COEFFICIENT_C, // coefficient a, b and c. A, b and c themselves do not have limits.
+    OD8_GFXCLK_CURVE_VFT_FMIN,
     OD8_UCLK_FMIN,
     OD8_FAN_ZERO_RPM_STOP_TEMPERATURE,
     OD8_OPTIMZED_POWER_MODE,
-    OD8_OD_VOLTAGE,
-    OD8_POWER_GAUGE, //Starting from this is new features with new capabilities and new interface for limits.
+    OD8_OD_VOLTAGE,// RSX - voltage offset feature
+    OD8_ADV_OC_LIMITS_SETTING,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_1,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_2,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_3,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_4,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_5,
+    OD8_PER_ZONE_GFX_VOLTAGE_OFFSET_POINT_6,
+    OD8_AUTO_CURVE_OPTIMIZER_SETTING,
+    OD8_GFX_VOLTAGE_LIMIT_SETTING,
+    OD8_TDC_PERCENTAGE,
+    OD8_FULL_CONTROL_MODE_SETTING,
+    OD8_IDLE_POWER_SAVING_FEATURE_CONTROL,
+    OD8_RUNTIME_POWER_SAVING_FEATURE_CONTROL,
+    OD8_POWER_GAUGE,
     OD8_COUNT
 } ADLOD8SettingId;
 
@@ -1896,6 +1925,7 @@ typedef enum ADLOD8SettingId
 //Define Performance Metrics Log max sensors number
 #define ADL_PMLOG_MAX_SENSORS  256
 
+/// \deprecated Replaced with ADL_PMLOG_SENSORS
 typedef enum ADLSensorType
 {
     SENSOR_MAXTYPES             = 0,
@@ -1944,6 +1974,34 @@ typedef enum ADLSensorType
     PMLOG_TEMPERATURE_LIQUID1   = 43,
     PMLOG_CLK_FCLK              = 44,
     PMLOG_THROTTLER_STATUS_CPU  = 45,
+    PMLOG_SSPAIRED_ASICPOWER    = 46, // apuPower
+    PMLOG_SSTOTAL_POWERLIMIT    = 47, // Total Power limit    
+    PMLOG_SSAPU_POWERLIMIT      = 48, // APU Power limit
+    PMLOG_SSDGPU_POWERLIMIT     = 49, // DGPU Power limit
+    PMLOG_TEMPERATURE_HOTSPOT_GCD      = 50,
+    PMLOG_TEMPERATURE_HOTSPOT_MCD      = 51,
+    PMLOG_THROTTLER_TEMP_EDGE_PERCENTAGE        = 52,
+    PMLOG_THROTTLER_TEMP_HOTSPOT_PERCENTAGE     = 53,
+    PMLOG_THROTTLER_TEMP_HOTSPOT_GCD_PERCENTAGE = 54,
+    PMLOG_THROTTLER_TEMP_HOTSPOT_MCD_PERCENTAGE = 55,
+    PMLOG_THROTTLER_TEMP_MEM_PERCENTAGE     = 56,
+    PMLOG_THROTTLER_TEMP_VR_GFX_PERCENTAGE  = 57,
+    PMLOG_THROTTLER_TEMP_VR_MEM0_PERCENTAGE = 58,
+    PMLOG_THROTTLER_TEMP_VR_MEM1_PERCENTAGE = 59,
+    PMLOG_THROTTLER_TEMP_VR_SOC_PERCENTAGE  = 60,
+    PMLOG_THROTTLER_TEMP_LIQUID0_PERCENTAGE = 61,
+    PMLOG_THROTTLER_TEMP_LIQUID1_PERCENTAGE = 62,
+    PMLOG_THROTTLER_TEMP_PLX_PERCENTAGE = 63,
+    PMLOG_THROTTLER_TDC_GFX_PERCENTAGE  = 64,
+    PMLOG_THROTTLER_TDC_SOC_PERCENTAGE  = 65,
+    PMLOG_THROTTLER_TDC_USR_PERCENTAGE  = 66,
+    PMLOG_THROTTLER_PPT0_PERCENTAGE     = 67,
+    PMLOG_THROTTLER_PPT1_PERCENTAGE     = 68,
+    PMLOG_THROTTLER_PPT2_PERCENTAGE     = 69,
+    PMLOG_THROTTLER_PPT3_PERCENTAGE     = 70,
+    PMLOG_THROTTLER_FIT_PERCENTAGE           = 71,
+    PMLOG_THROTTLER_GFX_APCC_PLUS_PERCENTAGE = 72,
+    PMLOG_BOARD_POWER                        = 73,
     PMLOG_MAX_SENSORS_REAL
 } ADLSensorType;
 
@@ -2004,6 +2062,35 @@ typedef enum ADL_PMLOG_SENSORS
     ADL_PMLOG_TEMPERATURE_LIQUID1   = 43,
     ADL_PMLOG_CLK_FCLK              = 44,
     ADL_PMLOG_THROTTLER_STATUS_CPU  = 45,
+    ADL_PMLOG_SSPAIRED_ASICPOWER    = 46, // apuPower
+    ADL_PMLOG_SSTOTAL_POWERLIMIT    = 47, // Total Power limit
+    ADL_PMLOG_SSAPU_POWERLIMIT      = 48, // APU Power limit
+    ADL_PMLOG_SSDGPU_POWERLIMIT     = 49, // DGPU Power limit
+    ADL_PMLOG_TEMPERATURE_HOTSPOT_GCD      = 50,
+    ADL_PMLOG_TEMPERATURE_HOTSPOT_MCD      = 51,
+    ADL_PMLOG_THROTTLER_TEMP_EDGE_PERCENTAGE        = 52,
+    ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_PERCENTAGE     = 53,
+    ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_GCD_PERCENTAGE = 54,
+    ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_MCD_PERCENTAGE = 55,
+    ADL_PMLOG_THROTTLER_TEMP_MEM_PERCENTAGE     = 56,
+    ADL_PMLOG_THROTTLER_TEMP_VR_GFX_PERCENTAGE  = 57,
+    ADL_PMLOG_THROTTLER_TEMP_VR_MEM0_PERCENTAGE = 58,
+    ADL_PMLOG_THROTTLER_TEMP_VR_MEM1_PERCENTAGE = 59,
+    ADL_PMLOG_THROTTLER_TEMP_VR_SOC_PERCENTAGE  = 60,
+    ADL_PMLOG_THROTTLER_TEMP_LIQUID0_PERCENTAGE = 61,
+    ADL_PMLOG_THROTTLER_TEMP_LIQUID1_PERCENTAGE = 62,
+    ADL_PMLOG_THROTTLER_TEMP_PLX_PERCENTAGE = 63,
+    ADL_PMLOG_THROTTLER_TDC_GFX_PERCENTAGE  = 64,
+    ADL_PMLOG_THROTTLER_TDC_SOC_PERCENTAGE  = 65,
+    ADL_PMLOG_THROTTLER_TDC_USR_PERCENTAGE  = 66,
+    ADL_PMLOG_THROTTLER_PPT0_PERCENTAGE     = 67,
+    ADL_PMLOG_THROTTLER_PPT1_PERCENTAGE     = 68,
+    ADL_PMLOG_THROTTLER_PPT2_PERCENTAGE     = 69,
+    ADL_PMLOG_THROTTLER_PPT3_PERCENTAGE     = 70,
+    ADL_PMLOG_THROTTLER_FIT_PERCENTAGE           = 71,
+    ADL_PMLOG_THROTTLER_GFX_APCC_PLUS_PERCENTAGE = 72,
+    ADL_PMLOG_BOARD_POWER                        = 73,
+    ADL_PMLOG_MAX_SENSORS_REAL
 } ADL_PMLOG_SENSORS;
 
 /// \defgroup define_ecc_mode_states
@@ -2236,7 +2323,7 @@ typedef enum ADL_PMLOG_SENSORS
 #define ADL_CONNECTOR_TYPE_DISPLAYPORT             10
 /// Indicates EDP Connector type
 #define ADL_CONNECTOR_TYPE_EDP                     11
-/// Indicates MiniDP Connector type 
+/// Indicates MiniDP Connector type
 #define ADL_CONNECTOR_TYPE_MINI_DISPLAYPORT        12
 /// Indicates Virtual Connector type
 #define ADL_CONNECTOR_TYPE_VIRTUAL                   13
@@ -2430,11 +2517,11 @@ typedef enum ADL_UIFEATURES_GROUP
 #define ADL_RADEON_LED_MAX_LED_COLUMN_ON_GRID   24
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-///\brief 
+///\brief
 ///
-/// 
-/// 
-/// 
+///
+///
+///
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 typedef enum ADL_RADEON_USB_LED_BAR_CONTROLS
@@ -2453,22 +2540,22 @@ typedef enum ADL_RADEON_USB_LED_BAR_CONTROLS
 }ADL_RADEON_USB_LED_BAR_CONTROLS;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-///\brief 
+///\brief
 ///
-/// 
-/// 
-/// 
+///
+///
+///
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 typedef unsigned int RadeonLEDBARSupportedControl;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-///\brief 
+///\brief
 ///
-/// 
-/// 
-/// 
+///
+///
+///
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 typedef enum ADL_RADEON_USB_LED_CONTROL_CONFIGS
@@ -2481,11 +2568,11 @@ typedef enum ADL_RADEON_USB_LED_CONTROL_CONFIGS
 }ADL_RADEON_USB_LED_CONTROL_CONFIGS;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-///\brief 
+///\brief
 ///
-/// 
-/// 
-/// 
+///
+///
+///
 /// \nosubgrouping
 ////////////////////////////////////////////////////////////////////////////////////////////
 typedef unsigned int RadeonLEDBARSupportedConfig;

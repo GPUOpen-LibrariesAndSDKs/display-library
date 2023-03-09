@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -125,6 +125,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga31cc37db3dbc42a999b0114224f1352c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf51188482158a07922fea2ae566dbd56"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaf51188482158a07922fea2ae566dbd56">ADL2_Adapter_IsGamingDriver_Info_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpCwgSupport, int *lpIsGamingMode)</td></tr>
 <tr class="separator:gaf51188482158a07922fea2ae566dbd56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf65a9df180ef5f3d2858272d242c042e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gaf65a9df180ef5f3d2858272d242c042e">ADL2_Adapter_LED_Support_Cap</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iSupported, int *iEnabled, int *iVersion)</td></tr>
+<tr class="separator:gaf65a9df180ef5f3d2858272d242c042e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabf52143d588adede310eea6a31b3bc14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gabf52143d588adede310eea6a31b3bc14">ADL2_Adapter_MemoryInfo2_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfo2.html">ADLMemoryInfo2</a> *lpMemoryInfo2)</td></tr>
 <tr class="separator:gabf52143d588adede310eea6a31b3bc14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3db3dca5ef79c271b6c06d731a6c6617"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga3db3dca5ef79c271b6c06d731a6c6617">ADL2_Adapter_MemoryInfoX4_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLMemoryInfoX4.html">ADLMemoryInfoX4</a> *lpMemoryInfoX4)</td></tr>
@@ -1346,6 +1348,66 @@ This function retrieves the creator who game support information for a specified
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a> <br  />
  </dd></dl>
+
+</div>
+</div>
+<a id="gaf65a9df180ef5f3d2858272d242c042e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf65a9df180ef5f3d2858272d242c042e">&#9670;&nbsp;</a></span>ADL2_Adapter_LED_Support_Cap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_Adapter_LED_Support_Cap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>iSupported</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>iEnabled</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>iVersion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+Function to retrieve current LED support capability<p>This function retrieves current status of LED supported for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iSupported</td><td>The pointer to an int variable which indicates if LED is supported ( <a class="el" href="group__define__misc.html#ga4075eb5b8e4e10b540b3c849899f9bc4">ADL_TRUE</a> : supported, <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">ADL_FALSE</a> : not supported) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iEnabled</td><td>The pointer to an int variable which indicates if LED is enabled ( <a class="el" href="group__define__misc.html#ga4075eb5b8e4e10b540b3c849899f9bc4">ADL_TRUE</a> : enabled, <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">ADL_FALSE</a> : disabled) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iVersion</td><td>The pointer to an int variable receiving the LED feature version. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> (zero). Otherwise the return value is an ADL error code (non-zero). <a class="el" href="group__define__adl__results.html">Result Codes</a>. If Overdrive feature is not supported the return code is <a class="el" href="group__define__adl__results.html#ga4106ea9010be1a3be584384ef35a9ee0">ADL_ERR_NOT_SUPPORTED</a></dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Call this API prior to calling any other LED APIs to determine if this feature is supported and enabled. </dd>
+<dd>
+Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
 </div>

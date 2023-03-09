@@ -7,6 +7,11 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 
+### ADL 17.1 - Release Notes
+* Introduced write and read I2C via SMU API.
+
+---
+
 ### ADL 17.0 - Release Notes
 * Introduced API to retrieve the SmartDC active state information.
 * Introduced Colordepth default get API.
@@ -99,7 +104,7 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 * Supported Driver:
-	Requires Radeon Software Adrenalin Edition 22.7.1 or later.
+	Requires Radeon Software Adrenalin Edition 22.11.2 or later.
 
 ---
 ### End User License Agreement

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -459,6 +459,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gae76f73486d4273180c0d7ea64a05670e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#gae76f73486d4273180c0d7ea64a05670e">ADL2_Display_WriteAndReadI2CRev_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpMajor, int *lpMinor)</td></tr>
 <tr class="memdesc:gae76f73486d4273180c0d7ea64a05670e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the I2C API revision.  <a href="group__I2CDDCEDIDAPI.html#gae76f73486d4273180c0d7ea64a05670e">More...</a><br /></td></tr>
 <tr class="separator:gae76f73486d4273180c0d7ea64a05670e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga853222b62b80a11bee8138d65249547c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga853222b62b80a11bee8138d65249547c">ADL2_Display_WriteAndReadSMUI2C</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLI2C.html">ADLI2C</a> *plI2C)</td></tr>
+<tr class="separator:ga853222b62b80a11bee8138d65249547c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6a2bec75b80b353dca8184d165eced4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="display_8h.html#ab6a2bec75b80b353dca8184d165eced4">ADL2_TurboSyncSupport_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iTurboSyncSupported)</td></tr>
 <tr class="separator:ab6a2bec75b80b353dca8184d165eced4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0b956af0f7f62f45644ebed76f083882"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TVAPI.html#ga0b956af0f7f62f45644ebed76f083882">ADL2_TV_Standard_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</td></tr>
@@ -794,6 +796,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6e226c5eedfa1c1689b298f9a7175836"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga6e226c5eedfa1c1689b298f9a7175836">ADL_Display_WriteAndReadI2CRev_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpMajor, int *lpMinor)</td></tr>
 <tr class="memdesc:ga6e226c5eedfa1c1689b298f9a7175836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the I2C API revision.  <a href="group__I2CDDCEDIDAPI.html#ga6e226c5eedfa1c1689b298f9a7175836">More...</a><br /></td></tr>
 <tr class="separator:ga6e226c5eedfa1c1689b298f9a7175836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4bd6a39137ddf9e27b635e7188910f46"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__I2CDDCEDIDAPI.html#ga4bd6a39137ddf9e27b635e7188910f46">ADL_Display_WriteAndReadSMUI2C</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLI2C.html">ADLI2C</a> *plI2C)</td></tr>
+<tr class="memdesc:ga4bd6a39137ddf9e27b635e7188910f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to write and read I2C via SMU.  <a href="group__I2CDDCEDIDAPI.html#ga4bd6a39137ddf9e27b635e7188910f46">More...</a><br /></td></tr>
+<tr class="separator:ga4bd6a39137ddf9e27b635e7188910f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga970e2c6a2ed109a2cfa68cf609a3ffa3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TVAPI.html#ga970e2c6a2ed109a2cfa68cf609a3ffa3">ADL_TV_Standard_Get</a> (int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iDisplayIndex, int *lpCurrent, int *lpDefault, int *lpSupportedStandards)</td></tr>
 <tr class="memdesc:ga970e2c6a2ed109a2cfa68cf609a3ffa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to retrieve the TV standard.  <a href="group__TVAPI.html#ga970e2c6a2ed109a2cfa68cf609a3ffa3">More...</a><br /></td></tr>
 <tr class="separator:ga970e2c6a2ed109a2cfa68cf609a3ffa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
