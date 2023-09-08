@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.0</span>
    </div>
   </td>
  </tr>
@@ -215,17 +215,17 @@ $(function() {
 <dd><a class="anchor" id="_APIS15000073"></a> Function to resume a KMD suspended process </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf0d915fdacc8fb6ac090cea6b80b8cd5">ADL2_ApplicationProfiles_AppStartStopInfo_Get</a>  (ADL_CONTEXT_HANDLE context, int iAppType, <a class="el" href="structADLAppInterceptionInfo.html">ADLAppInterceptionInfo</a> *lpAppInfo)</dt>
 <dd><a class="anchor" id="_APIS15000074"></a> Function to retrieve information about the recent App Start/Stop event </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5f792129f1869f65cdb9297220ad3f5e">ADL2_ApplicationProfiles_ConvertToCompact</a>  (ADL_CONTEXT_HANDLE context, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomisation, <a class="el" href="structBINFILE.html">BINFILE</a> *outCompact, int *outSize)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5f792129f1869f65cdb9297220ad3f5e">ADL2_ApplicationProfiles_ConvertToCompact</a>  (ADL_CONTEXT_HANDLE context, CUSTOMISATIONS *pCustomisation, BINFILE *outCompact, int *outSize)</dt>
 <dd><a class="anchor" id="_APIS15000075"></a> Function to convert C style structures into Compact style for writing a blob file </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf02ceed78f2a8b5e9ae3330f06c594ab">ADL_ApplicationProfiles_ConvertToCompact</a>  (<a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomisation, <a class="el" href="structBINFILE.html">BINFILE</a> *outCompact, int *outSize)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gaf02ceed78f2a8b5e9ae3330f06c594ab">ADL_ApplicationProfiles_ConvertToCompact</a>  (CUSTOMISATIONS *pCustomisation, BINFILE *outCompact, int *outSize)</dt>
 <dd><a class="anchor" id="_APIS15000076"></a> Function to convert C style structures into Compact style for writing a blob file </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga69eb241d612ae3b062528e8a0d978eea">ADL2_ApplicationProfiles_DriverAreaPrivacy_Get</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *DriverArea, PRIVACYTYPES *outDriverAreaPrivacy)</dt>
 <dd><a class="anchor" id="_APIS15000077"></a> Function to retrieve privacy type for the specified area </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga5ac5b2b55817fa1ddbd02db249dcfc93">ADL_ApplicationProfiles_DriverAreaPrivacy_Get</a>  (const wchar_t *DriverArea, PRIVACYTYPES *outDriverAreaPrivacy)</dt>
 <dd><a class="anchor" id="_APIS15000078"></a> Function to retrieve privacy type for the specified area </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7d68d0d16715a8cbde1743cf08fd69f0">ADL2_ApplicationProfiles_GetCustomization</a>  (ADL_CONTEXT_HANDLE context, ADL_AP_DATABASE Databaseln, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomizationOut)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7d68d0d16715a8cbde1743cf08fd69f0">ADL2_ApplicationProfiles_GetCustomization</a>  (ADL_CONTEXT_HANDLE context, ADL_AP_DATABASE Databaseln, CUSTOMISATIONS *pCustomizationOut)</dt>
 <dd><a class="anchor" id="_APIS15000079"></a> Function to retrieve the pointer to Customization structure of the specified blob file </dd>
-<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gab84564b6eef7a5c09a193f64b68319e3">ADL_ApplicationProfiles_GetCustomization</a>  (ADL_AP_DATABASE Databaseln, <a class="el" href="structCUSTOMISATIONS.html">CUSTOMISATIONS</a> *pCustomizationOut)</dt>
+<dt>Global <a class="el" href="group__APPPROFILESAPI.html#gab84564b6eef7a5c09a193f64b68319e3">ADL_ApplicationProfiles_GetCustomization</a>  (ADL_AP_DATABASE Databaseln, CUSTOMISATIONS *pCustomizationOut)</dt>
 <dd><a class="anchor" id="_APIS15000080"></a> Function to retrieve the pointer to Customization structure of the specified blob file </dd>
 <dt>Global <a class="el" href="group__APPPROFILESAPI.html#ga7c728340879671d4dda0486fad285226">ADL2_ApplicationProfiles_Profile_Create</a>  (ADL_CONTEXT_HANDLE context, const wchar_t *driverArea, const wchar_t *profileName, int numProperties, const <a class="el" href="structADLPropertyRecordCreate.html" title="Structure containing information info for a property record in a profile.">ADLPropertyRecordCreate</a> *propertyRecords)</dt>
 <dd><a class="anchor" id="_APIS15000081"></a> Function to create new application profile. </dd>
@@ -398,7 +398,7 @@ $(function() {
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2023 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

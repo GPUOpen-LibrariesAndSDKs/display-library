@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['customisations_3647',['CUSTOMISATIONS',['../structCUSTOMISATIONS.html',1,'']]]
+  ['tagadlbezeltransientmode_3532',['tagADLBezelTransientMode',['../structtagADLBezelTransientMode.html',1,'']]]
 ];

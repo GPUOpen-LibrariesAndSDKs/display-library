@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['elements_5551',['ELEMENTS',['../structures_8h.html#a6dfb05d8f33572fbec12211a1c70926b',1,'structures.h']]],
-  ['errno_5ft_5552',['errno_t',['../secure__crt__linux_8h.html#a46a037236862ac1a534efbe605c10f42',1,'secure_crt_linux.h']]]
+  ['propertyrecord_5382',['PropertyRecord',['../adl__structures_8h.html#ac1fdfd28b988370f6d9b38bc933f8649',1,'adl_structures.h']]],
+  ['pxscheme_5383',['PXScheme',['../group__define__powerxpress__constants.html#gade2dc9639fd6ad00bc2b2f95a1875c24',1,'adl_defines.h']]]
 ];

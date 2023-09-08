@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.0</span>
    </div>
   </td>
  </tr>
@@ -1070,6 +1070,9 @@ $(function() {
 <li>ADL2_GcnAsicInfo_Get()
 : <a class="el" href="group__ADAPTERMAINAPI.html#gac3af32d4929dd1d21dc147bb36fcd99b">adapter.h</a>
 </li>
+<li>ADL2_GfxIP_Version_Get()
+: <a class="el" href="adapter_8h.html#a3a2f8aa449670f118f8c460b68d3cb2a">adapter.h</a>
+</li>
 <li>ADL2_GPUVMPageSize_Info_Get()
 : <a class="el" href="group__ADAPTERMAINAPI.html#gae3c8682eef0b670ed7822a9814eaa952">adapter.h</a>
 </li>
@@ -1471,6 +1474,12 @@ $(function() {
 </li>
 <li>ADL2_RIS_Settings_Set()
 : <a class="el" href="group__POWERMANAGEMANTAPI.html#gacab49c66fcafbf8289c658137f4279bd">adapter.h</a>
+</li>
+<li>ADL2_RTBOOST_Settings_Get()
+: <a class="el" href="group__POWERMANAGEMANTAPI.html#ga1a8f87cb5caa9a4f18b1142d81652c09">adapter.h</a>
+</li>
+<li>ADL2_RTBOOST_Settings_Set()
+: <a class="el" href="group__POWERMANAGEMANTAPI.html#gae5e4d87240c2fab47d4c28f91371eda4">adapter.h</a>
 </li>
 <li>ADL2_SmartDC_Active_State_Get()
 : <a class="el" href="group__GRAPHICSAPI.html#gaf60a265fb5464d4e10bb491d61fb76de">graphics.h</a>
@@ -2047,6 +2056,9 @@ $(function() {
 </li>
 <li>ADL_BOOST_SETTINGS
 : <a class="el" href="adl__structures_8h.html#a2c5d55c8f36fe8a385f8ef66d291be4c">adl_structures.h</a>
+</li>
+<li>ADL_BOOST_SETTINGSX2
+: <a class="el" href="adl__structures_8h.html#a1fc46ea59f6f0f39abf2cd0d8d074270">adl_structures.h</a>
 </li>
 <li>ADL_BUSTYPE_AGP
 : <a class="el" href="group__DEFINES.html#ga7ab220cb8050979453561c621b8c515e">adl_defines.h</a>
@@ -3920,7 +3932,6 @@ $(function() {
 <li>ADL_EXTERNC
 : <a class="el" href="adapter_8h.html#a24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
 , <a class="el" href="appprofiles_8h.html#a24a14773b8978b7ef0fb45451fcc495e">appprofiles.h</a>
-, <a class="el" href="controller_8h.html#a24a14773b8978b7ef0fb45451fcc495e">controller.h</a>
 , <a class="el" href="crossdisplay_8h.html#a24a14773b8978b7ef0fb45451fcc495e">crossdisplay.h</a>
 , <a class="el" href="display_8h.html#a24a14773b8978b7ef0fb45451fcc495e">display.h</a>
 , <a class="el" href="displaysmanager_8h.html#a24a14773b8978b7ef0fb45451fcc495e">displaysmanager.h</a>
@@ -3932,6 +3943,7 @@ $(function() {
 , <a class="el" href="radeonusbled_8h.html#a24a14773b8978b7ef0fb45451fcc495e">radeonusbled.h</a>
 , <a class="el" href="workstation_8h.html#a24a14773b8978b7ef0fb45451fcc495e">workstation.h</a>
 , <a class="el" href="overdrive8_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive8.h</a>
+, <a class="el" href="controller_8h.html#a24a14773b8978b7ef0fb45451fcc495e">controller.h</a>
 , <a class="el" href="graphics_8h.html#a24a14773b8978b7ef0fb45451fcc495e">graphics.h</a>
 </li>
 <li>ADL_FALSE
@@ -5104,8 +5116,53 @@ $(function() {
 <li>ADL_PMLOG_MEM_VOLTAGE
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da1fe8455b922214a2f50232ebe298b4be">adl_defines.h</a>
 </li>
+<li>ADL_PMLOG_RESERVED_0
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da83f27f2232a0a94a2382438d68263d65">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_1
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da09e30defc15ace11159433bb8fe01610">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_10
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da7a12afbf5bf533897329bc7e7da25f1b">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_11
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2256536c67b25fe75d03398e5da7d083">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_12
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da4202b4e4e53307de68e1b8e5d7ea4a70">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_13
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da13d12f7c7576101269a7c52576b7f46d">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_14
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dabf9a5e7fc76dc9aef6feffaeec6e12c3">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_2
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daef37bdafba816447b5b94c8525ec9b2d">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_3
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da591e782a973a46a9cfb0735e0391db42">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_4
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dab7760bdafbb18e26c2d3745a1b72a8a0">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_5
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da9e65d631bc8317018e48aef918a7200a">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_6
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da613b828f18a94bf662328286d4a59060">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_7
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da95f6c5050a1fbdbb3d7a47e895bba3cc">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_8
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da3c008a4161063fd7680550be84aa2125">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_RESERVED_9
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da28e29f5fec64174c617e047e5fa05d5e">adl_defines.h</a>
+</li>
 <li>ADL_PMLOG_SENSORS
-: <a class="el" href="group__DEFINES.html#gaefdb8372946cb09d1633f729d692ff6d">adl_defines.h</a>
+: <a class="el" href="group__DEFINES.html#ga7647e36d1d7b3f4dde63aae83c502d1e">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_SMART_POWERSHIFT_CPU
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da5e1d5c19212bf9c3eec9b07b0e9c0d31">adl_defines.h</a>
@@ -5152,6 +5209,9 @@ $(function() {
 <li>ADL_PMLOG_TEMPERATURE_HOTSPOT_MCD
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da77268fa91fd11a558fd13063685fc982">adl_defines.h</a>
 </li>
+<li>ADL_PMLOG_TEMPERATURE_INTAKE
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da8eb5094c80438baa85927f526860f0d7">adl_defines.h</a>
+</li>
 <li>ADL_PMLOG_TEMPERATURE_LIQUID
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dae7892d09778fe0141dffb387cc28ca33">adl_defines.h</a>
 </li>
@@ -5188,80 +5248,35 @@ $(function() {
 <li>ADL_PMLOG_THROTTLE_CURRENT
 : <a class="el" href="group__DEFINES.html#ggaad05270cac3dbe5649f217465026dd6ca1d5233bb5585ffb5c4abe902df210bb7">adl_defines.h</a>
 </li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_POWER
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da42a82fd38b48d971e99ac09ab80e63b1">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_TDC
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da0819b9c330ac757f18d4c30c67c8dda9">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_TEMP_GFX
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da573a4431a502320c58950133c030818c">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_TEMP_MEM
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daa9453f6d1e2566c20394392f998cb122">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_TEMP_VR
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dac46a3c9fce12ffb81c0a704687730ad8">adl_defines.h</a>
+</li>
+<li>ADL_PMLOG_THROTTLE_PERCENTAGE_VMAX
+: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da6f3902213e966f8c9e8df8a04dc41802">adl_defines.h</a>
+</li>
 <li>ADL_PMLOG_THROTTLE_POWER
 : <a class="el" href="group__DEFINES.html#ggaad05270cac3dbe5649f217465026dd6ca61e5146709e55b64006eadbda1610533">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_THROTTLE_THERMAL
 : <a class="el" href="group__DEFINES.html#ggaad05270cac3dbe5649f217465026dd6ca2adc3673665236a3ff5d138c71670e81">adl_defines.h</a>
 </li>
-<li>ADL_PMLOG_THROTTLER_FIT_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da07da3ad3c48eb53d7f83488de39e2690">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_GFX_APCC_PLUS_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2eb2d15d81a7be005cae2270ac17b6b6">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_PPT0_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da01fbad9b15c97fc10646a6440bf013d9">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_PPT1_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da679f76256a88c2410bca0169d56d0983">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_PPT2_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da80b5a25c1043077c0b0b3be55a492942">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_PPT3_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daeae0af31c7aa97ec1acd9a35eca58d95">adl_defines.h</a>
-</li>
 <li>ADL_PMLOG_THROTTLER_STATUS
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dab0f652fb925fe6058c4594daa5fdeef0">adl_defines.h</a>
 </li>
 <li>ADL_PMLOG_THROTTLER_STATUS_CPU
 : <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da49e313f9b2f9067a156f844ff3971532">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TDC_GFX_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daccf348d5936a84e04d1ec2915a15c2f6">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TDC_SOC_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dae689ee868b8839203cbe1a1da8c205b9">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TDC_USR_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da9598f16b5b72c9982e8813a98a546ba9">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_EDGE_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da9f51f78af5a1721d4ad42b5bafcc4a40">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_GCD_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2ce2af649306097390ff9c69f4f2228b">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_MCD_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da956152a298daa53020074278acb31ed7">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_HOTSPOT_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dac39678830d6ac79775d8527ff0b1c505">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_LIQUID0_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6daa92da4951a051ce0a6d81d8bf4916464">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_LIQUID1_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da42876fc82d386f853888e248b1403ba7">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_MEM_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6dab2c1c6e748aa5a2b758e704e49476561">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_PLX_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da457cdb77586bc882beb7e93a49828d85">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_VR_GFX_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da38bb8293e3968a4d70b2ab3c5b71e42a">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_VR_MEM0_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da305ee5053d8c1c08ac7a356273c62418">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_VR_MEM1_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da2e1cea54df0ecd9c80b2a24ed8b79771">adl_defines.h</a>
-</li>
-<li>ADL_PMLOG_THROTTLER_TEMP_VR_SOC_PERCENTAGE
-: <a class="el" href="group__DEFINES.html#ggaefdb8372946cb09d1633f729d692ff6da6f126cce549d1c81f23aacf1d1647736">adl_defines.h</a>
 </li>
 <li>ADL_PowerXpress_AncillaryDevices_Get()
 : <a class="el" href="group__POWERXAPI.html#gaa420d628378f14799a2b712d903157f1">powerxpress.h</a>
@@ -5432,7 +5447,7 @@ $(function() {
 : <a class="el" href="adl__defines_8h.html#a80ec1e5b576b4ae54eceb829c24e55eea7dd7bf416739951d555d0f38dc03769f">adl_defines.h</a>
 </li>
 <li>ADL_RAS_BLOCK_ID
-: <a class="el" href="adl__defines_8h.html#aff07e1afdf5373699d1e26d7fb261c11">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#a79d44a7299e8b599be8a4c0037b14789">adl_defines.h</a>
 </li>
 <li>ADL_RAS_BLOCK_ID_ATHUB
 : <a class="el" href="adl__defines_8h.html#a79d44a7299e8b599be8a4c0037b14789ae7c9e9e434937caa5d4a662064be7cba">adl_defines.h</a>
@@ -5549,7 +5564,7 @@ $(function() {
 : <a class="el" href="adl__defines_8h.html#a1cdc8a2a08727f49c790fdceeda0e30f">adl_defines.h</a>
 </li>
 <li>ADL_RAS_INJECTION_METHOD
-: <a class="el" href="adl__defines_8h.html#afdd65ef90ebbfc628c69ec7c1b859f28">adl_defines.h</a>
+: <a class="el" href="adl__defines_8h.html#ad2cd728e1e9c644e82eebdbf0df88c77">adl_defines.h</a>
 </li>
 <li>ADL_REG_DEVICE_FUNCTION_1
 : <a class="el" href="adl__defines_8h.html#abe2c281f2507bfbae881565b81c98804">adl_defines.h</a>
@@ -5565,6 +5580,9 @@ $(function() {
 </li>
 <li>ADL_RIS_SETTINGS
 : <a class="el" href="adl__structures_8h.html#ad837fe0b78f02d8b15a656a9f14aa5cb">adl_structures.h</a>
+</li>
+<li>ADL_RTBOOST_SETTINGS
+: <a class="el" href="adl__structures_8h.html#a44337c6a5a195af5d6a6a971b1bbcdcf">adl_structures.h</a>
 </li>
 <li>ADL_SCA_LOCAL_DIMMING_DISABLE
 : <a class="el" href="group__define__source__content__flags.html#gaefeda62766df5ef20d225f99b254ebb3">adl_defines.h</a>
@@ -5764,6 +5782,9 @@ $(function() {
 <li>ADL_UIFEATURES_GROUP_DELAG
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea199190d7c8ca97f4a5b848f894167414">adl_defines.h</a>
 </li>
+<li>ADL_UIFEATURES_GROUP_DELAGNEXT
+: <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceaa6c15326a2781f34b5119a7bdbc2f8ff">adl_defines.h</a>
+</li>
 <li>ADL_UIFEATURES_GROUP_DVR
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea65189e690d8fe76b8c1e4d2ef5803ef8">adl_defines.h</a>
 </li>
@@ -5781,6 +5802,9 @@ $(function() {
 </li>
 <li>ADL_UIFEATURES_GROUP_PROVSR
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceac6a23a0b0bfe92b77203c65458503945">adl_defines.h</a>
+</li>
+<li>ADL_UIFEATURES_GROUP_RTBOOST
+: <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babceab35ef0e61dbe7bcd78c2eec6e770d00f">adl_defines.h</a>
 </li>
 <li>ADL_UIFEATURES_GROUP_SMA
 : <a class="el" href="adl__defines_8h.html#af437e78a1cb455496ae3c17a399babcea66107064520b1772e6afa451f3dfd158">adl_defines.h</a>
@@ -5821,6 +5845,9 @@ $(function() {
 <li>ADL_USER_SETTINGS_PROVSR
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a3254c88784e5a6c1a2e6e7a58d71c473">adl_defines.h</a>
 </li>
+<li>ADL_USER_SETTINGS_RTBOOST_PROFILE
+: <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7af0456e261bbabcd0e18229271dae5ef5">adl_defines.h</a>
+</li>
 <li>ADL_USER_SETTINGS_SCE_PROFILE
 : <a class="el" href="adl__defines_8h.html#a9717bff45bf588163caa14ab994a88b7a996bf29e333ff763d1dbc1bfe0a95a7f">adl_defines.h</a>
 </li>
@@ -5837,7 +5864,7 @@ $(function() {
 : <a class="el" href="group__define__appprofiles.html#gga3bc1938745dff8a4b9d769ac04986329a221ccb4a36abe7462110c4228eb2fc02">adl_defines.h</a>
 </li>
 <li>ADL_VIRTUALDISPLAY_TYPE
-: <a class="el" href="group__define__appprofiles.html#ga7ad310bf1263a2cb356bf0917118d07b">adl_defines.h</a>
+: <a class="el" href="group__define__appprofiles.html#ga3bc1938745dff8a4b9d769ac04986329">adl_defines.h</a>
 </li>
 <li>ADL_VIRTUALDISPLAY_XINPUT
 : <a class="el" href="group__define__appprofiles.html#gga3bc1938745dff8a4b9d769ac04986329a3663066c13a4a639a294f515640c072d">adl_defines.h</a>
@@ -6455,7 +6482,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a0303af6b53cbd03424e07578cc09962d">adl_structures.h</a>
 </li>
 <li>ADLODNCurrentPowerType
-: <a class="el" href="adl__structures_8h.html#a70e9973999078eae58fbe9f6a1d1941a">adl_structures.h</a>
+: <a class="el" href="adl__structures_8h.html#a94516e309ff1f355b80fe615abee9bf7">adl_structures.h</a>
 </li>
 <li>ADLODNDPMMaskType
 : <a class="el" href="group__DEFINES.html#gaae2f909e57c202737d6aa255a42c0aa7">adl_defines.h</a>
@@ -6578,7 +6605,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a25f1b7e7f84775e857a8965c73840f85a161227fac5a472ee866ec33b46fc0cdc">adl_structures.h</a>
 </li>
 <li>ADLProfilePropertyType
-: <a class="el" href="group__define__appprofiles.html#gac52192a9239287dec516948d03463da2">adl_defines.h</a>
+: <a class="el" href="group__define__appprofiles.html#ga16ea35bb85ade0e67789343656e486da">adl_defines.h</a>
 </li>
 <li>ADLPropertyRecordCreate
 : <a class="el" href="adl__structures_8h.html#a24191f671d8d2bb2b8c8f6c7eaffa2ed">adl_structures.h</a>
@@ -6590,7 +6617,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#accd82cc6964912d3a1b6977797750066">adl_structures.h</a>
 </li>
 <li>ADLPXScheme
-: <a class="el" href="group__define__powerxpress__constants.html#ga591d547216470c771ba49aa0b20935cd">adl_defines.h</a>
+: <a class="el" href="group__define__powerxpress__constants.html#ga9fe20ca605fe6fe9c96c837b5b4eea55">adl_defines.h</a>
 </li>
 <li>ADLPxType
 : <a class="el" href="adl__structures_8h.html#a94ae23592252d759e648650f16b47768">adl_structures.h</a>
@@ -6659,7 +6686,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#a4db457c731c35dcf3a5bbc78154914d9">adl_structures.h</a>
 </li>
 <li>ADLSensorType
-: <a class="el" href="group__DEFINES.html#gad06f53fd97d66846124df8094ab8904d">adl_defines.h</a>
+: <a class="el" href="group__DEFINES.html#gadf1d3429069f905588cfebd56cc6858b">adl_defines.h</a>
 </li>
 <li>ADLSGApplicationInfo
 : <a class="el" href="adl__structures_8h.html#a8bd0915ae48c01b22300c422addbcce5">adl_structures.h</a>
@@ -6698,7 +6725,7 @@ $(function() {
 : <a class="el" href="adl__structures_8h.html#aa28ee823fc5d0abd67936aeb59a9fb42">adl_structures.h</a>
 </li>
 <li>ADLThreadingModel
-: <a class="el" href="group__thread__model.html#ga4394dc5b3af89164fa14a5e574341a73">adl_defines.h</a>
+: <a class="el" href="group__thread__model.html#gadeb9a4d7042d1392f490d90a952f1900">adl_defines.h</a>
 </li>
 <li>ADLVersionsInfo
 : <a class="el" href="adl__structures_8h.html#af554a6a5e00ba200d54e6f8b2367a0d3">adl_structures.h</a>
@@ -6748,14 +6775,8 @@ $(function() {
 <li>ADLvRamVendors
 : <a class="el" href="adl__structures_8h.html#a757ccc2df1156413320fb3c846db9b34">adl_structures.h</a>
 </li>
-<li>AggregateSizeOfTheValues
-: <a class="el" href="structures_8h.html#a86c6eb36bc7d236f1271f779a65bc352">structures.h</a>
-</li>
 <li>ALD_DL_I2C_SPEED_400K
 : <a class="el" href="group__DEFINES.html#gaf4398c0effe9179ab3911903baf3ffc7">adl_defines.h</a>
-</li>
-<li>AP_KEY
-: <a class="el" href="structures_8h.html#ac411ad0287aea27c55cff126d4801ae3">structures.h</a>
 </li>
 <li>APP_PROC_CREATION
 : <a class="el" href="adl__structures_8h.html#af15cbd063e82331e39587e64c74ef5e3acb2805ca6a777a36c0208eaadd8f103f">adl_structures.h</a>
@@ -6778,30 +6799,12 @@ $(function() {
 <li>APP_PROC_WAIT
 : <a class="el" href="adl__structures_8h.html#af15cbd063e82331e39587e64c74ef5e3a1b29de05a3ecdf8eacf480e7fddc6013">adl_structures.h</a>
 </li>
-<li>Application
-: <a class="el" href="structures_8h.html#a59b2d39491b6eb54a58522f3452c086b">structures.h</a>
-</li>
-<li>APPLICATION
-: <a class="el" href="structures_8h.html#a537e038902de94dbeadf72fc7fba25e1">structures.h</a>
-</li>
 <li>ApplicationListType
 : <a class="el" href="group__define__appprofiles.html#ga345861f6384c58df2cce392f4f004ee6">adl_defines.h</a>
 </li>
-<li>ApplicationsAndProfiles
-: <a class="el" href="structures_8h.html#a24fce2096e256771411277e65ba3542fa82c982d68507aeeed6f5cedee2a9465a">structures.h</a>
-</li>
-<li>ApplicationsOnly
-: <a class="el" href="structures_8h.html#a24fce2096e256771411277e65ba3542fa71f4c11d31b3f78d568d2bb7efb949a8">structures.h</a>
-</li>
-<li>Area
-: <a class="el" href="structures_8h.html#a950a398be292e29815b931aa12153f2d">structures.h</a>
-</li>
-<li>AREA
-: <a class="el" href="structures_8h.html#acdcb7ff738877a73d43e88a493948f14">structures.h</a>
-</li>
 </ul>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2023 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

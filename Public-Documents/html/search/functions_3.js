@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['strcat_5fs_4534',['strcat_s',['../secure__crt__linux_8h.html#a4e391680d4e78ebb0682bd36f44456ab',1,'secure_crt_linux.h']]],
-  ['strcpy_5fs_4535',['strcpy_s',['../secure__crt__linux_8h.html#acb9ae5a53e7ff9f2195dc76528528726',1,'secure_crt_linux.h']]],
-  ['strncpy_5fs_4536',['strncpy_s',['../secure__crt__linux_8h.html#afb9e900252aa4ece73ad42e4a6db7b95',1,'secure_crt_linux.h']]]
+  ['wcscat_5fs_4406',['wcscat_s',['../secure__crt__linux_8h.html#a80b49b8d4f5c63bdf6a6def8ee28c770',1,'secure_crt_linux.h']]],
+  ['wcscpy_5fs_4407',['wcscpy_s',['../secure__crt__linux_8h.html#a554a40b5fadf59c089a20e84b186091d',1,'secure_crt_linux.h']]],
+  ['wcsncpy_5fs_4408',['wcsncpy_s',['../secure__crt__linux_8h.html#ad8bb362f721aae8ab3a1c101963b54c1',1,'secure_crt_linux.h']]],
+  ['wcstombs_5fs_4409',['wcstombs_s',['../secure__crt__linux_8h.html#a0bcaa937ed030522be7042c30efc9901',1,'secure_crt_linux.h']]],
+  ['wctomb_5fs_4410',['wctomb_s',['../secure__crt__linux_8h.html#a2f3e03f29c942d80fedb5eb7e33f5758',1,'secure_crt_linux.h']]]
 ];
