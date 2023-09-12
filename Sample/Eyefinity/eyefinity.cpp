@@ -167,7 +167,7 @@ int atiEyefinityGetConfigInfo(char OSDisplayName[], EyefinityInfoStruct *lpEyefi
             for (int dispIdx = 0, foundDisplays = 0; dispIdx < numDisplays; dispIdx++) {
                 ADLDisplayTarget oneAdlDisplay = adlDisplays[dispIdx];
                 if (oneAdlDisplay.iDisplayMapIndex == oneAdlDesktop.iDisplayMapIndex) {
-                    if (primaryIndex == oneAdlDisplay.displayID.iDisplayLogicalAdapterIndex) {
+                    if (primaryIndex == oneAdlDisplay.displayID.iDisplayPhysicalAdapterIndex) {
                         //add a display in list. For SLS this info will be updated later
                         displays.push_back(TopologyDisplay(oneAdlDisplay.displayID, 0,
                             oneAdlDesktop.displayMode.iXRes, oneAdlDesktop.displayMode.iYRes, //size

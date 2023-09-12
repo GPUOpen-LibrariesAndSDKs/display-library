@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['dcesettingstype_5327',['DceSettingsType',['../group__define__eyefinity__constants.html#ga7908891b13d1706d345796f9fd875916',1,'adl_defines.h']]],
-  ['dplinkrate_5328',['DpLinkRate',['../group__define__eyefinity__constants.html#ga08c8063038ee981a3a0d05ce3a52c690',1,'adl_defines.h']]]
+  ['blobs_5545',['BLOBS',['../structures_8h.html#a62cffb11925f7e4c81422fbc491db70c',1,'structures.h']]]
 ];

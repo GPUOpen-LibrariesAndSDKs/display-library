@@ -3614,35 +3614,6 @@ typedef struct ADL_BOOST_SETTINGS
 	int GlobalMinRes_Step; //Gloabl Min Resolution step  value
 }ADL_BOOST_SETTINGS;
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-///\brief Structure containing information about RTBOOST Settings
-///
-///  Elements of RTBOOST settings.
-/// \nosubgrouping
-////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct ADL_RTBOOST_SETTINGS
-{
-    unsigned int rtBoostEnabled;
-    unsigned int reserved[15];
-} ADL_RTBOOST_SETTINGS;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-///\brief Structure containing information about BOOST Settings
-///
-///  Elements of BOOST settings.
-/// \nosubgrouping
-////////////////////////////////////////////////////////////////////////////////////////////
-typedef struct ADL_BOOST_SETTINGSX2
-{
-    int Hotkey; // Hotkey value
-    int GlobalEnable; //Global enable value
-    int GlobalMinRes; //Gloabl Min Resolution value
-    int GlobalMinRes_MinLimit; //Gloabl Min Resolution slider min limit value
-    int GlobalMinRes_MaxLimit; //Gloabl Min Resolution slider max limit value
-    int GlobalMinRes_Step; //Gloabl Min Resolution step  value
-    int VsrSupported; //Allows for interop with Upscaling/RSR
-}ADL_BOOST_SETTINGSX2;
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ///\brief Structure containing information about ProVSR Settings change reason

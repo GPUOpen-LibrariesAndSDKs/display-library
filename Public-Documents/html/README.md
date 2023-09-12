@@ -7,12 +7,6 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 
-### ADL 18.0 - Release Notes
-* Introduced new RT Boost setting API.
-* Introduced ADL_PMLOG_TEMPERATURE_INTAKE in ADL_PMLOG_SENSORS
-
----
-
 ### ADL 17.1 - Release Notes
 * Introduced write and read I2C via SMU API.
 
@@ -110,7 +104,7 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 * Supported Driver:
-	Requires Radeon Software Adrenalin Edition 23.9.1 or later.
+	Requires Radeon Software Adrenalin Edition 22.11.2 or later.
 
 ---
 ### End User License Agreement

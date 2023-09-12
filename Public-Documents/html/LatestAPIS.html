@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ADL (AMD Display Library) Public APIs: 18.0 APIs List</title>
+<title>ADL (AMD Display Library) Public APIs: 17.0 APIs List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 18.0</span>
+   &#160;<span id="projectnumber">Version 17.1</span>
    </div>
   </td>
  </tr>
@@ -63,18 +63,28 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">18.0 APIs List </div>  </div>
+<div class="title">17.0 APIs List </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga1a8f87cb5caa9a4f18b1142d81652c09">ADL2_RTBOOST_Settings_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADL__RTBOOST__SETTINGS.html" title="Structure containing information about RTBOOST Settings.">ADL_RTBOOST_SETTINGS</a> *settings)</dt>
-<dd><a class="anchor" id="_LatestAPIS000001"></a> Function to get the RTBOOST settings This function retrieves the RTBOOST settings for a specified display adapter.  </dd>
-<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#gae5e4d87240c2fab47d4c28f91371eda4">ADL2_RTBOOST_Settings_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADL__RTBOOST__SETTINGS.html" title="Structure containing information about RTBOOST Settings.">ADL_RTBOOST_SETTINGS</a> *settings)</dt>
-<dd><a class="anchor" id="_LatestAPIS000002"></a> Function to set the RTBOOST settings This function retrieves the RTBOOST settings for a specified display adapter. </dd>
+<dt>Global <a class="el" href="group__ADAPTERMAINAPI.html#gaf65a9df180ef5f3d2858272d242c042e">ADL2_Adapter_LED_Support_Cap</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
+<dd><a class="anchor" id="_LatestAPIS000001"></a> Function to retrieve current LED support capability </dd>
+<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga4390b38f622d55430d8a50312c5722ac">ADL2_CHILL_SettingsX3_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADL__CHILL__SETTINGS.html" title="Structure containing information about CHILL Settings.">ADL_CHILL_SETTINGS</a> settings, <a class="el" href="structADL__CHILL__NOTFICATION__REASON.html" title="Structure containing information about CHILL Settings change reason.">ADL_CHILL_NOTFICATION_REASON</a> changeReason, <a class="el" href="structADL__ERROR__REASON2.html">ADL_ERROR_REASON2</a> *errorReason)</dt>
+<dd><a class="anchor" id="_LatestAPIS000002"></a> Function to set CHILL settings This function sets the user input values to CHILL feature  </dd>
+<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#ga4091e1cdf0d2c08a2db1281afcce6312">ADL2_DELAG_SettingsX2_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADL__DELAG__SETTINGS.html" title="Structure containing information about DELAG Settings.">ADL_DELAG_SETTINGS</a> settings, <a class="el" href="structADL__DELAG__NOTFICATION__REASON.html" title="Structure containing information about DELAG Settings change reason.">ADL_DELAG_NOTFICATION_REASON</a> changeReason, <a class="el" href="structADL__ERROR__REASON2.html">ADL_ERROR_REASON2</a> *errorReason)</dt>
+<dd><a class="anchor" id="_LatestAPIS000003"></a> Function to set DELAG settings This function sets the user input values to DELAG feature  </dd>
+<dt>Global <a class="el" href="group__POWERMANAGEMANTAPI.html#gaf3927037a9196f1703777c4465c425c3">ADL2_BOOST_SettingsX2_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADL__BOOST__SETTINGS.html" title="Structure containing information about BOOST Settings.">ADL_BOOST_SETTINGS</a> settings, <a class="el" href="structADL__BOOST__NOTFICATION__REASON.html" title="Structure containing information about BOOST Settings change reason.">ADL_BOOST_NOTFICATION_REASON</a> changeReason, <a class="el" href="structADL__ERROR__REASON2.html">ADL_ERROR_REASON2</a> *errorReason)</dt>
+<dd><a class="anchor" id="_LatestAPIS000004"></a> Function to set BOOST settings This function sets the user input values to BOOST feature  </dd>
+<dt>Global <a class="el" href="group__DISPLAYAPI.html#ga79077c3fecfa75105f9b1a13c9151ff1">ADL2_Display_ColorDepthDefault_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *lpColorDepthDefault)</dt>
+<dd><a class="anchor" id="_LatestAPIS000005"></a> Function to get color depth default value. <b>HDMI</b> and <b>DP</b> only </dd>
+<dt>Global <a class="el" href="group__I2CDDCEDIDAPI.html#ga853222b62b80a11bee8138d65249547c">ADL2_Display_WriteAndReadSMUI2C</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLI2C.html" title="Structure containing information about I2C.">ADLI2C</a> *plI2C)</dt>
+<dd><a class="anchor" id="_LatestAPIS000006"></a> Function to write and read I2C via SMU. </dd>
+<dt>Global <a class="el" href="group__GRAPHICSAPI.html#gaf60a265fb5464d4e10bb491d61fb76de">ADL2_SmartDC_Active_State_Get</a>  (ADL_CONTEXT_HANDLE context, int *lpSmartDCActiveState)</dt>
+<dd><a class="anchor" id="_LatestAPIS000007"></a> Function to retrieve the SmartDC active state information.</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2023 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

@@ -40,7 +40,7 @@
 /// Memory Allocation Call back 
 typedef void* ( __stdcall *ADL_MAIN_MALLOC_CALLBACK )( int );
 
-#define ADL_SDK_MAJOR_VERSION 18
-#define ADL_SDK_MINOR_VERSION 0
+#define ADL_SDK_MAJOR_VERSION 17
+#define ADL_SDK_MINOR_VERSION 1
 
 #endif /* ADL_SDK_H_ */
