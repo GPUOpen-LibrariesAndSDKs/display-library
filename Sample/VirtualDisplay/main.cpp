@@ -16,7 +16,7 @@
 int main (int c,char* args[],char* s[])
 {
 	
-	int iAdapterIndex, iConnectorIndex, iConnectionType, iEmulationMode, validArgs = 0;
+	int iAdapterIndex, iConnectorIndex, iEmulationMode, validArgs = 0;
 	ADLDevicePort devicePort;
 	
 	
@@ -69,8 +69,7 @@ int main (int c,char* args[],char* s[])
 				{
 					iAdapterIndex = atoi(args[2]);
 					getDevicePort(args[3], &devicePort);
-					iConnectionType = atoi(args[4]);
-					setConnectionData(iAdapterIndex, devicePort, 13, args[5]);
+					setConnectionData(iAdapterIndex, devicePort, 13, args[4]);
 				}
 				else
 					validArgs = -1;
