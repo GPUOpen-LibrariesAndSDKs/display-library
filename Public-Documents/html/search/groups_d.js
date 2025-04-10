@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['timing_20standards_6295',['Timing Standards',['../group__define__modetiming__standard.html',1,'']]],
-  ['tv_20capabilities_20and_20standards_6296',['TV Capabilities and Standards',['../group__define__tv__caps.html',1,'']]],
-  ['timing_20override_20apis_6297',['Timing Override APIs',['../group__T__OVERRIDEAPI.html',1,'']]],
-  ['thread_5fmodel_6298',['Thread_model',['../group__thread__model.html',1,'']]],
-  ['tv_20apis_6299',['TV APIs',['../group__TVAPI.html',1,'']]]
+  ['values_20used_20by_20adl_5fcv_5fdonglesettings_5fxxx_6331',['Values used by ADL_CV_DongleSettings_xxx',['../group__define__cv__dongle.html',1,'']]],
+  ['values_20used_20for_20ddcinfoflag_6332',['Values used for DDCInfoFlag',['../group__define__ddcinfoflag.html',1,'']]],
+  ['values_20for_20ulddcinfoflag_6333',['Values for ulDDCInfoFlag',['../group__define__edid__flags.html',1,'']]],
+  ['video_20custom_20mode_20flags_6334',['Video Custom Mode flags',['../group__define__video__custom__mode.html',1,'']]],
+  ['video_20related_20apis_6335',['Video Related APIs',['../group__VIDEOAPI.html',1,'']]],
+  ['viewport_20apis_6336',['ViewPort APIs',['../group__VIEWPORTAPI.html',1,'']]]
 ];

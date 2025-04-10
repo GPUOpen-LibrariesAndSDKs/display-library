@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sls_5fimagecroptype_5668',['SLS_ImageCropType',['../group__define__eyefinity__constants.html#ga39bdbcfc0be5875998d40561614c206f',1,'adl_defines.h']]]
+  ['privacytypes_5662',['PRIVACYTYPES',['../structures_8h.html#a24fce2096e256771411277e65ba3542f',1,'structures.h']]],
+  ['pxscheme_5663',['PXScheme',['../group__define__powerxpress__constants.html#gac8f1f0ffad5040c76f833a15b3fb830e',1,'adl_defines.h']]]
 ];

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -129,7 +129,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The function returns <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> or <a class="el" href="group__define__adl__results.html#gaeb2828fcdffde5f281f9af50ee62bde0">ADL_OK_WARNING</a> (if any of the version strings could not be retrieved from the system, for example "Catalyst Version"). If ADL is not initialized properly the function will return <a class="el" href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">ADL_ERR_DISABLED_ADAPTER</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 <h2 class="groupheader">Function Documentation</h2>
@@ -328,6 +328,7 @@ Function to get mantle versions.<p>This function gets mantle versions. </p><dl c
   </table>
   </dd>
 </dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000030">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -479,7 +480,7 @@ Function to retrieve version information for graphics driver installed on specif
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The function returns <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> or <a class="el" href="group__define__adl__results.html#gaeb2828fcdffde5f281f9af50ee62bde0">ADL_OK_WARNING</a> (if any of the version strings could not be retrieved from the system, for example "Catalyst Version"). If ADL is not initialized properly the function will return <a class="el" href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">ADL_ERR_DISABLED_ADAPTER</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>On hybrid system with multiple GPUs (A+A) each GPU has different driver version installed. This call will allow the application to discover driver version for each GPU. </dd></dl>
 
@@ -822,13 +823,13 @@ Function to set SmartDC status.<p>This function enable/disable SmartDC from Driv
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The function returns <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a> or <a class="el" href="group__define__adl__results.html#gaeb2828fcdffde5f281f9af50ee62bde0">ADL_OK_WARNING</a> (if any of the version strings could not be retrieved from the system, for example "Catalyst Version"). If ADL is not initialized properly the function will return <a class="el" href="group__define__adl__results.html#ga66bb6f3f87d35eb8bd7549ab98b5c971">ADL_ERR_DISABLED_ADAPTER</a> </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

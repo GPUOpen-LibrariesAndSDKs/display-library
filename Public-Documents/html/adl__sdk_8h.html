@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -83,18 +83,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ad16f14718feefaa629b3b7601ac9fdeb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#ad16f14718feefaa629b3b7601ac9fdeb">__stdcall</a></td></tr>
-<tr class="separator:ad16f14718feefaa629b3b7601ac9fdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71880356b161dbfe1e7cbe5f411a544e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#a71880356b161dbfe1e7cbe5f411a544e">ADL_SDK_MAJOR_VERSION</a>&#160;&#160;&#160;17</td></tr>
+<tr class="memitem:a71880356b161dbfe1e7cbe5f411a544e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#a71880356b161dbfe1e7cbe5f411a544e">ADL_SDK_MAJOR_VERSION</a>&#160;&#160;&#160;18</td></tr>
 <tr class="separator:a71880356b161dbfe1e7cbe5f411a544e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1b0a63cbc0ad29c52a980110ca6744e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#ae1b0a63cbc0ad29c52a980110ca6744e">ADL_SDK_MINOR_VERSION</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:ae1b0a63cbc0ad29c52a980110ca6744e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#ae1b0a63cbc0ad29c52a980110ca6744e">ADL_SDK_MINOR_VERSION</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:ae1b0a63cbc0ad29c52a980110ca6744e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab93033b29cbf037bb3812d2ab4667856"><td class="memItemLeft" align="right" valign="top">typedef void *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">ADL_MAIN_MALLOC_CALLBACK</a>) (int)</td></tr>
-<tr class="memdesc:ab93033b29cbf037bb3812d2ab4667856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory Allocation Call back.  <a href="adl__sdk_8h.html#ab93033b29cbf037bb3812d2ab4667856">More...</a><br /></td></tr>
-<tr class="separator:ab93033b29cbf037bb3812d2ab4667856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08465b787b096c60ecf9eedac5916e14"><td class="memItemLeft" align="right" valign="top">typedef void *__stdcall *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adl__sdk_8h.html#a08465b787b096c60ecf9eedac5916e14">ADL_MAIN_MALLOC_CALLBACK</a>(int)</td></tr>
+<tr class="memdesc:a08465b787b096c60ecf9eedac5916e14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Memory Allocation Call back.  <a href="adl__sdk_8h.html#a08465b787b096c60ecf9eedac5916e14">More...</a><br /></td></tr>
+<tr class="separator:a08465b787b096c60ecf9eedac5916e14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains the definition of the Memory Allocation Callback.<br  />
@@ -105,20 +103,6 @@ This file contains the definition of the Memory Allocation Callback.<br  />
 It also includes definitions of the respective structures and constants.<br  />
 <b> This is the only header file to be included in a C/C++ project using ADL </b> </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="ad16f14718feefaa629b3b7601ac9fdeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad16f14718feefaa629b3b7601ac9fdeb">&#9670;&nbsp;</a></span>__stdcall</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define __stdcall</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a71880356b161dbfe1e7cbe5f411a544e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a71880356b161dbfe1e7cbe5f411a544e">&#9670;&nbsp;</a></span>ADL_SDK_MAJOR_VERSION</h2>
 
@@ -126,7 +110,7 @@ It also includes definitions of the respective structures and constants.<br  />
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADL_SDK_MAJOR_VERSION&#160;&#160;&#160;17</td>
+          <td class="memname">#define ADL_SDK_MAJOR_VERSION&#160;&#160;&#160;18</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -140,7 +124,7 @@ It also includes definitions of the respective structures and constants.<br  />
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ADL_SDK_MINOR_VERSION&#160;&#160;&#160;1</td>
+          <td class="memname">#define ADL_SDK_MINOR_VERSION&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -148,14 +132,14 @@ It also includes definitions of the respective structures and constants.<br  />
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ab93033b29cbf037bb3812d2ab4667856"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab93033b29cbf037bb3812d2ab4667856">&#9670;&nbsp;</a></span>ADL_MAIN_MALLOC_CALLBACK</h2>
+<a id="a08465b787b096c60ecf9eedac5916e14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08465b787b096c60ecf9eedac5916e14">&#9670;&nbsp;</a></span>ADL_MAIN_MALLOC_CALLBACK</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void*( * ADL_MAIN_MALLOC_CALLBACK) (int)</td>
+          <td class="memname">typedef void* __stdcall* ADL_MAIN_MALLOC_CALLBACK(int)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -165,7 +149,7 @@ It also includes definitions of the respective structures and constants.<br  />
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

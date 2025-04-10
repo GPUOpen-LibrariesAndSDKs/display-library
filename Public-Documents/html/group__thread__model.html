@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -118,15 +118,14 @@ Enumerations</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggadeb9a4d7042d1392f490d90a952f1900af89698b9054be257c5ecb20070e9151f"></a>ADL_THREADING_UNLOCKED&#160;</td><td class="fielddoc"><p>Default behavior. ADL will not enforce serialization of ADL API executions by multiple threads. Multiple threads will be allowed to enter to ADL at the same time. Note that ADL library is not guaranteed to be thread-safe. Client that calls ADL_Main_Control_Create have to provide its own mechanism for ADL calls serialization. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggadeb9a4d7042d1392f490d90a952f1900aea73eff1aa0c869612d887eeb0b324b1"></a>ADL_THREADING_LOCKED&#160;</td><td class="fielddoc"><p>ADL will enforce serialization of ADL API when called by multiple threads. Only single thread will be allowed to enter ADL API at the time. This option makes ADL calls thread-safe. You shouldn't use this option if ADL calls will be executed on Linux on x-server rendering thread. It can cause the application to hung. <br  />
- </p>
+<tr><td class="fieldname"><a id="ggadeb9a4d7042d1392f490d90a952f1900aea73eff1aa0c869612d887eeb0b324b1"></a>ADL_THREADING_LOCKED&#160;</td><td class="fielddoc"><p>ADL will enforce serialization of ADL API when called by multiple threads. Only single thread will be allowed to enter ADL API at the time. This option makes ADL calls thread-safe. </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

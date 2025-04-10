@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ADL (AMD Display Library) Public APIs: Public-Documents Directory Reference</title>
+<title>ADL (AMD Display Library) Public APIs: User3DLUT</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 16.0</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -46,6 +46,7 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,18 +61,32 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_b47ae7daf8f92ae62c050be11c754341.html">Public-Documents</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Public-Documents Directory Reference</div>  </div>
+<div class="title">User3DLUT</div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<!DOCTYPE html>
+<html>
+<body>
+<p><B>Description:</B> This sample demonstrates how to configure user 3D LUT.</p>
+<B>Supported OS:</B> Windows
+</br></br>
+<b>Init and Destroy:</b> Initialize the library before using it and destroy it after the usage. Refer to InitADL() for initialization and clean-up is done inside main function only.
+</br></br>
+<b>Functionality:</b>
+<ul>
+<li>Reads 3D LUT from file and sets LUT for Usage on specified display and adapter.</li>
+<li>Retrieves 3DLUT specified by Usage and writes it out to User3DLUT_"Usage".txt.</li>
+<li>Clears all User 3D LUT's (SRD and HDR or All).</li>
+<li>Checks if feature is supported.</li>
+</ul>
+</p>
+<b>Sample Path:</b> Sample\User3DLUT
+</br>
+</body>
+</html><div class="fragment"></div><!-- fragment --> </div><!-- contents -->
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

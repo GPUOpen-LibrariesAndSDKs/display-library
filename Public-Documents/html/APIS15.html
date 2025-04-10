@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -339,66 +339,84 @@ $(function() {
 <dd><a class="anchor" id="_APIS15000132"></a> Checks if given GPU (identified by adapter id) supports Turbo Sync functionality or not </dd>
 <dt>Global <a class="el" href="display_8h.html#a25c7ac0726bb41154cafbd2d35241d07">ADL2_User_Settings_Notify</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, ADL_USER_SETTINGS iSetting, int iChanged)</dt>
 <dd><a class="anchor" id="_APIS15000133"></a> Function to notify KMD that user settings have changed. This function is called from client to communicate DX via KMD that user settings(TurboSync aka Enhanced Sync) have changed  </dd>
+<dt>Global <a class="el" href="display_8h.html#afbfb7f603e7b4f1fcf3ce88a3c017d83">ADL2_Adapter_RefreshRateAutoSwitch_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *iSupported, int *iEnabled, int *iDefault, int *iVersion)</dt>
+<dd><a class="anchor" id="_APIS15000134"></a> Function to get the RefreshRateAutoSwitch capabilities This function retrieves the RefreshRateAutoSwitch capabilities for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#a9821303de6044bc1e563462b7798f079">ADL2_Adapter_RefreshRateAutoSwitchEnable_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iEnabled)</dt>
+<dd><a class="anchor" id="_APIS15000135"></a> Function to enable or disable RefreshRateAutoSwitch capabilities This function enables or disables RefreshRateAutoSwitch for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#aede79ba78f034062f6017d956ae7592f">ADL2_Adapter_RefreshRateAutoSwitchPolicy_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *iPolicy, int *iDefault)</dt>
+<dd><a class="anchor" id="_APIS15000136"></a> Function to get RefreshRateAutoSwitch policy This function get RefreshRateAutoSwitch policy for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#a8a7c94e5b52702cdcc6ad9baab0695cc">ADL2_Adapter_RefreshRateAutoSwitchPolicy_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iPolicy)</dt>
+<dd><a class="anchor" id="_APIS15000137"></a> Function to set RefreshRateAutoSwitch policy This function set RefreshRateAutoSwitch policy for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#a9d70ff03db9e63e06651a13b6e4ccbd2">ADL2_Adapter_RefreshRateAutoSwitchSMC_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *iEnable, int *iDefault)</dt>
+<dd><a class="anchor" id="_APIS15000138"></a> Function to get RefreshRateAutoSwitch Prefer-Seamless-Mode-Change status This function set RefreshRateAutoSwitch Prefer-Seamless-Mode-Change caps for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#a053fd62f58ba77659bad3c868d827ae6">ADL2_Adapter_RefreshRateAutoSwitchSMC_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iEnable)</dt>
+<dd><a class="anchor" id="_APIS15000139"></a> Function to set RefreshRateAutoSwitch Seamless-Mode-Change status This function set RefreshRateAutoSwitch Prefer-Seamless-Mode-Change caps for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#aa01636501d456c01b61f0678ed4d2d25">ADL2_Adapter_VariBrightScaling_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *iSupported, int *iDefault, int *iVersion)</dt>
+<dd><a class="anchor" id="_APIS15000140"></a> Function to get the VariBright Scaling capabilities This function retrieves the VariBright Scaling capabilities for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#ab7652ff9c0bdef58d5b316548c3d8a6f">ADL2_Adapter_VariBrightScaling_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int *iEnabled)</dt>
+<dd><a class="anchor" id="_APIS15000141"></a> Function to get the VariBright Scaling enabled status This function retrieves the VariBright Scaling enabled status for a specified display adapter.  </dd>
+<dt>Global <a class="el" href="display_8h.html#a0caa2cacbd3145346a2a4b6b723197ad">ADL2_Adapter_VariBrightScalingEnable_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDisplayIndex, int iEnabled)</dt>
+<dd><a class="anchor" id="_APIS15000142"></a> Function to enable or disable VariBright capabilities This function enables or disables VariBright Scaling for a specified display adapter.  </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gac40344f3bb8cd09d88452e093745dd5d">ADL2_Display_SLSBuilder_CommonMode_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumDisplayTarget, <a class="el" href="structADLSLSTarget.html" title="Structure containing information about the SLS targets.">ADLSLSTarget</a> *lpSLSTarget, int *lpTotalWidth, int *lpTotalHeight)</dt>
-<dd><a class="anchor" id="_APIS15000134"></a> Get SLS builder common mode layout size </dd>
+<dd><a class="anchor" id="_APIS15000143"></a> Get SLS builder common mode layout size </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gaf33743729b4e3aafcd588cc2704c7a8e">ADL2_Display_SLSMapConfig_Valid</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLSLSMap.html" title="Structure containing information about the display SLS Map information.">ADLSLSMap</a> slsMap, int iNumDisplayTarget, <a class="el" href="structADLSLSTarget.html" title="Structure containing information about the SLS targets.">ADLSLSTarget</a> *lpSLSTarget, int *lpSupportedSLSLayoutImageMode, int *lpReasonForNotSupportSLS, int iOption)</dt>
-<dd><a class="anchor" id="_APIS15000135"></a> Set SLS configuration for each display index the controller and the adapter is being mapped to </dd>
+<dd><a class="anchor" id="_APIS15000144"></a> Set SLS configuration for each display index the controller and the adapter is being mapped to </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#ga378dac0d85bb70bdcac4cb76f8a5e3d3">ADL2_MGPUSLS_Status_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iStatus)</dt>
-<dd><a class="anchor" id="_APIS15000136"></a> This function communicates KMD that user changed MGPU SLS feature.  </dd>
+<dd><a class="anchor" id="_APIS15000145"></a> This function communicates KMD that user changed MGPU SLS feature.  </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#gaa235f2db77a3cc4137f4e7f08c4eda51">ADL2_Adapter_Desktop_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDesktopCapsValue, int *lpDesktopCapsMask)</dt>
-<dd><a class="anchor" id="_APIS15000137"></a> Function to set retrieve active desktop caps information </dd>
+<dd><a class="anchor" id="_APIS15000146"></a> Function to set retrieve active desktop caps information </dd>
 <dt>Global <a class="el" href="group__EYEFINITYAPI.html#ga4930f3496f66b5875b5d39ae1b7298ff">ADL2_Adapter_Desktop_SupportedSLSGridTypes_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iNumOfAvailableDisplays, <a class="el" href="structADLDisplayTarget.html" title="Structure containing information about display target information.">ADLDisplayTarget</a> *lpAvailableDisplays, int *lpNumSLSGrid, <a class="el" href="structADLSLSGrid.html" title="Structure containing information about the display SLS Grid information.">ADLSLSGrid</a> **lppSLSGrid, int iOption)</dt>
-<dd><a class="anchor" id="_APIS15000138"></a> Fucntion To retrieve active desktop supported SLS grid size.  </dd>
+<dd><a class="anchor" id="_APIS15000147"></a> Fucntion To retrieve active desktop supported SLS grid size.  </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga7f6fcff0e07a8fec52c966c4cb260b8a">ADL2_Graphics_IsDetachableGraphicsPlatform_Get</a>  (ADL_CONTEXT_HANDLE context, int *lpStatus)</dt>
-<dd><a class="anchor" id="_APIS15000139"></a> Function to discover if the current platform is a detachable graphics one or not. </dd>
+<dd><a class="anchor" id="_APIS15000148"></a> Function to discover if the current platform is a detachable graphics one or not. </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#ga99ef5ab6ef476e22982a8e91b433d39a">ADL2_Graphics_IsGfx9AndAbove</a>  (ADL_CONTEXT_HANDLE context)</dt>
-<dd><a class="anchor" id="_APIS15000140"></a> Function to retrieve the Family ID of a GPU. </dd>
+<dd><a class="anchor" id="_APIS15000149"></a> Function to retrieve the Family ID of a GPU. </dd>
 <dt>Global <a class="el" href="group__GRAPHICSAPI.html#gae1f2fee41e0c4bcd88fd819190c97b60">ADL2_Graphics_MantleVersion_Get</a>  (ADL_CONTEXT_HANDLE context, <a class="el" href="structADLMantleAppInfo.html" title="Structure containing Mantle App info.">ADLMantleAppInfo</a> *mantleAppInfo)</dt>
-<dd><a class="anchor" id="_APIS15000141"></a> Function to get mantle versions. </dd>
+<dd><a class="anchor" id="_APIS15000150"></a> Function to get mantle versions. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga4f26838a57df827f4111351fa5e0e38c">ADL2_OverdriveN_AutoWattman_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported, int *lpDefault)</dt>
-<dd><a class="anchor" id="_APIS15000142"></a> Function to retrieve the Auto Wattman support </dd>
+<dd><a class="anchor" id="_APIS15000151"></a> Function to retrieve the Auto Wattman support </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga29615806a6f6f14aa651a7926df36b22">ADL2_OverdriveN_AutoWattman_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000143"></a> Function to retrieve the Auto Wattman current status </dd>
+<dd><a class="anchor" id="_APIS15000152"></a> Function to retrieve the Auto Wattman current status </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#ga84ee4734aff67404a1db56572186ab7e">ADL2_OverdriveN_AutoWattman_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000144"></a> Function to set the Auto Wattman status </dd>
+<dd><a class="anchor" id="_APIS15000153"></a> Function to set the Auto Wattman status </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gae015a1f02b28a73077960f779ff35aee">ADL2_OverdriveN_CountOfEvents_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int eventcounterType, int *eventCount)</dt>
-<dd><a class="anchor" id="_APIS15000145"></a> Function to retrieve the Events occured </dd>
+<dd><a class="anchor" id="_APIS15000154"></a> Function to retrieve the Events occured </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gae3a9cb5cb75d1f6390ea2420ef544b61">ADL2_OverdriveN_SCLKAutoOverClock_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpStatus)</dt>
-<dd><a class="anchor" id="_APIS15000146"></a> Function to retrieve the OverdriveN SCLK Auto overclock state. </dd>
+<dd><a class="anchor" id="_APIS15000155"></a> Function to retrieve the OverdriveN SCLK Auto overclock state. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gafaaa5a0093be6bb325368078360d7506">ADL2_OverdriveN_SCLKAutoOverClock_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iStatus, int *iFlags)</dt>
-<dd><a class="anchor" id="_APIS15000147"></a> Function to sets the OverdriveN SCLK Auto overclock state. </dd>
+<dd><a class="anchor" id="_APIS15000156"></a> Function to sets the OverdriveN SCLK Auto overclock state. </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaffa5983e514b4f2ebe77199e1f370b2d">ADL2_OverdriveN_Test_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iEnabled)</dt>
-<dd><a class="anchor" id="_APIS15000148"></a> Function to enable or disable OVERdrive test This function enables or disables Overdrive testing status for a specified display adapter. works on earlier OD versions also.  </dd>
+<dd><a class="anchor" id="_APIS15000157"></a> Function to enable or disable OVERdrive test This function enables or disables Overdrive testing status for a specified display adapter. works on earlier OD versions also.  </dd>
 <dt>Global <a class="el" href="group__OVERDRIVENAPI.html#gaaa79165c6370ead0b5ba87bb93d73794">ADL2_OverdriveN_ThrottleNotification_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpStatus, int *lpThrottleFlags)</dt>
-<dd><a class="anchor" id="_APIS15000149"></a> Function to retrieve the OverdriveN Throttle Notification state and its flags. </dd>
+<dd><a class="anchor" id="_APIS15000158"></a> Function to retrieve the OverdriveN Throttle Notification state and its flags. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gae473ec8183120f5bfc4715f457ad0740">ADL2_Workstation_DeepBitDepthX2_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpDefDBDState, int *lpCurDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000150"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
+<dd><a class="anchor" id="_APIS15000159"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga53a2127e3741cbf74e9543402836a9bf">ADL_Workstation_DeepBitDepthX2_Get</a>  (int iAdapterIndex, int *lpDefDBDState, int *lpCurDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000151"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
+<dd><a class="anchor" id="_APIS15000160"></a> Function to get current requested state of Deep Bit Depth and related settings </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga6b7ae4ed11a70a8c2a0e1913079f3623">ADL2_Workstation_DeepBitDepthX2_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000152"></a> Function to set requested state of Deep Bit Depth </dd>
+<dd><a class="anchor" id="_APIS15000161"></a> Function to set requested state of Deep Bit Depth </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gafcc66316886f19c1dca215be65a22e1a">ADL_Workstation_DeepBitDepthX2_Set</a>  (int iAdapterIndex, int iDBDState)</dt>
-<dd><a class="anchor" id="_APIS15000153"></a> Function to set requested state of Deep Bit Depth </dd>
+<dd><a class="anchor" id="_APIS15000162"></a> Function to set requested state of Deep Bit Depth </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gab0ae5759d1d65d33f823d9ca2bfc4ba0">ADL2_Workstation_SDI_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpSupported)</dt>
-<dd><a class="anchor" id="_APIS15000154"></a> Function to check for Serial Digital Interface capabilities </dd>
+<dd><a class="anchor" id="_APIS15000163"></a> Function to check for Serial Digital Interface capabilities </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga069608c723b19e62c55aa54b433d9deb">ADL2_Workstation_SDI_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDefualt, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDriver, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000155"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000164"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gaad3346274a620bfc9e2b6ac04b8ea074">ADL_Workstation_SDI_Get</a>  (int iAdapterIndex, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDefualt, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpDriver, <a class="el" href="structADLSDIData.html" title="Structure containing information about SDIData This structure is used to store information about the ...">ADLSDIData</a> *lpCurrent)</dt>
-<dd><a class="anchor" id="_APIS15000156"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000165"></a> Function to get the default, driver and user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gaf09faca29c6037d2e6af8cfdb9c404bf">ADL2_Workstation_SDI_Set</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int iSDIState, int iSizeofSDISegment)</dt>
-<dd><a class="anchor" id="_APIS15000157"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000166"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga87015afce6f023ea0f7b976ae18bb3ca">ADL_Workstation_SDI_Set</a>  (int iAdapterIndex, int iSDIState, int iSizeofSDISegment)</dt>
-<dd><a class="anchor" id="_APIS15000158"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000167"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#gab2f008470b425d8fed9d4a321d2ee668">ADL2_Workstation_SDISegmentList_Get</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
-<dd><a class="anchor" id="_APIS15000159"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000168"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga6db77420ec7ca04638f085aef2c7234d">ADL_Workstation_SDISegmentList_Get</a>  (int iAdapterIndex, int *lpMemorySegmentCount, int **lppMemorySegmentList)</dt>
-<dd><a class="anchor" id="_APIS15000160"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
+<dd><a class="anchor" id="_APIS15000169"></a> Function to set the user requested Serial Digital Interface Data for the specified adapter. </dd>
 <dt>Global <a class="el" href="group__WORKSTATIONAPI.html#ga143494da783491bc63809fb6b1daf69b">ADL2_WS_Overdrive_Caps</a>  (ADL_CONTEXT_HANDLE context, int iAdapterIndex, int *iSupported, int *iEnabled, int *iVersion)</dt>
-<dd><a class="anchor" id="_APIS15000161"></a> Function to retrieve current workattaion overdrive support capabilities</dd>
+<dd><a class="anchor" id="_APIS15000170"></a> Function to retrieve current workattaion overdrive support capabilities</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

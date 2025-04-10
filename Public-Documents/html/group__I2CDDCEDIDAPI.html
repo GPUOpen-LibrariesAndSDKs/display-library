@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -188,7 +188,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to get Display DDC block access. </p>
-<p>This function provides means for applications to send/receive data in the DDC information block via the 12C bus. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function provides means for applications to send/receive data in the DDC information block via the 12C bus. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -252,7 +252,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the DDC info. </p>
-<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -306,7 +306,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the DDC info. </p>
-<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -360,7 +360,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the EDID data. </p>
-<p>This function retrieves the EDID data for a specififed display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the EDID data for a specififed display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -408,7 +408,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to write and read I2C. </p>
-<p>This function writes and reads I2C. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function writes and reads I2C. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -461,7 +461,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to retrieve the I2C API revision. </p>
-<p>This function retrieves the I2C API revision. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the I2C API revision. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -507,7 +507,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to write and read I2C via SMU.<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to write and read I2C via SMU.<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -584,7 +584,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to get Display DDC block access. </p>
-<p>This function provides means for applications to send/receive data in the DDC information block via the 12C bus. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function provides means for applications to send/receive data in the DDC information block via the 12C bus. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -639,7 +639,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to get the DDC info. </p>
-<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -686,7 +686,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to get the DDC info. </p>
-<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the display device config (DDC) information only if the device has the information. No assumption should be made that this call will cause the driver will do real time detection. The driver determines when DDC detection should take place. If a display is attached and it supports DDC, all available information should be returned and <a class="el" href="structADLDDCInfo.html#a15725d94cd5932f547d9c9e8402c7cc0" title="Indicates whether the attached display supports DDC. If this field is zero on return,...">ADLDDCInfo.ulSupportsDDC</a> should be set to 1. Any fields that are not supported by an attached DDC display should be zeroed on return. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -733,7 +733,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to get the EDID data. </p>
-<p>This function retrieves the EDID data for a specififed display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the EDID data for a specififed display. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -773,7 +773,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to write and read I2C. </p>
-<p>This function writes and reads I2C. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function writes and reads I2C. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -818,7 +818,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to retrieve the I2C API revision. </p>
-<p>This function retrieves the I2C API revision. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the I2C API revision. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -858,7 +858,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div><div class="memdoc">
 
 <p>Function to write and read I2C via SMU. </p>
-<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function writes and reads I2C via SMU. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -871,7 +871,7 @@ Function to write and read I2C via SMU.<p>This function writes and reads I2C via
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

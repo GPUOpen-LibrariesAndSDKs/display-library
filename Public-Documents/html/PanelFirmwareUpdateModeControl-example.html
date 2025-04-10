@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ADL (AMD Display Library) Public APIs: Globals</title>
+<title>ADL (AMD Display Library) Public APIs: PanelFirmwareUpdateModeControl</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -61,16 +61,33 @@ $(function() {
 </iframe>
 </div>
 
+<div class="header">
+  <div class="headertitle">
+<div class="title">PanelFirmwareUpdateModeControl</div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;
-
-<h3><a id="index_x"></a>- x -</h3><ul>
-<li>XScreenInfo
-: <a class="el" href="adl__structures_8h.html#a17f3ec5a49989d3ef7ec70a56fb7789c">adl_structures.h</a>
-</li>
+<!DOCTYPE html>
+<html>
+<body>
+<p><B>Description:</B> This sample provides the usage to control features of Edp Lowpower Feature, such as PSR, Replay and Fast Transport . To Allow Panel vendor to perform firmware update, we need to let these lowpower features behavior to be paue or disable. Then we can continue the firmware update behavior.</p>
+<B>Supported OS:</B> Windows
+</br></br>
+<b>Init and Destroy:</b> Initialize the library before using it and destroy it after the usage. Refer to InitADL() for initialization and clean-up is done inside main function only.
+</br></br>
+<b>Functionality:</b>
+<ul>
+<li>Implement "ADL2_Display_SetPanelFirmwareUpdateMode()" for set panel features as resume or pause.</li>
+<li>Implement "ADL2_Display_GetPanelFirmwareUpdateStatus()" to retrieve status .</li>
+<li>Successful return value indicates command is sending to source.</li>
+<li>Unsuccessful return value indicates that command is not sending properly.</li>
 </ul>
-</div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+</p>
+<b>Sample Path:</b> Sample\PanelFirmwareUpdateModeControl\
+</br>
+</body>
+</html>
+<div class="fragment"></div><!-- fragment --> </div><!-- contents -->
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

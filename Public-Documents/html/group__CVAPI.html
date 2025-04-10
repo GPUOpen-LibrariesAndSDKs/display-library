@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -147,7 +147,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to retrieve the settings of the CV dongle. </p>
-<p>This function retrieves the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -161,7 +161,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000028">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000024">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
@@ -199,7 +199,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to reset the CV settings to its default settings. </p>
-<p>This function resets the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function resets the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -210,7 +210,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000032">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000028">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
@@ -254,7 +254,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to set the current CV dongle settings. </p>
-<p>This function sets the current CV dongle settings to a specified setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function sets the current CV dongle settings to a specified setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -266,7 +266,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000030">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000026">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
@@ -316,7 +316,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to retrieve the settings of the CV dongle. </p>
-<p>This function retrieves the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -329,7 +329,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000029">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000025">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to reset the CV settings to its default settings. </p>
-<p>This function resets the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function resets the CV dongle settings. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -370,7 +370,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000033">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000029">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 
 </div>
 </div>
@@ -407,7 +407,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to set the current CV dongle settings. </p>
-<p>This function sets the current CV dongle settings to a specified setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function sets the current CV dongle settings to a specified setting. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -418,12 +418,12 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Call <a class="el" href="group__ADAPTERMAINAPI.html#gaf351de9a354ff73e33cf1ea3635cb50a" title="Function to save driver data.">ADL_Flush_Driver_Data()</a> after to persist settings on reboot. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000031">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000027">Deprecated:</a></b></dt><dd>Dropping support for component, composite, and S-Video connectors. </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

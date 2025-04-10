@@ -1,9 +1,23 @@
 # AMD Display Library (ADL) Documentation
-Prior to AMD Display Library (ADL), AMD provided several SDKs (PDL, DSP, CCC, COM) for external use under Windows, but none for Linux. The goal of ADL is to provide a single SDK for both operating systems and to eventually replace the other SDKs.
+Prior to AMD Display Library (ADL), AMD provided several SDKs (PDL, DSP, CCC, COM) for external use under Windows. The goal of ADL is to provide a single SDK to eventually replace the other SDKs.
 
 The majority of the APIs in ADL wrap the company’s private APIs thus allowing the library’s client to access information related to the graphics associated with the system. ADL is used strictly for exposing “Graphics Hardware” support. Other hardware (such as CPUs, Northbridge, etc…) or software subsystems (such as Radeon Software) will expose an interface via their own binaries, if they require one.
 
 ADL binaries are delivered as part of the Catalyst display Driver package while the documentation, definitions and sample code are distributed via a web-download as a single ZIP package. 
+
+---
+
+### ADL 18.1 - Release Notes
+* Deprecate ADL2_New_QueryPMLogData_Get
+* Upgraded samples:
+	* <a href="Overdrive8-example.html">Overdrive8</a>: Updated sample to illustrate how to use ADL2_Overdrive8_PMLog_ShareMemory_Read.
+* Added samples:
+	* <a href="PanelFirmwareUpdateModeControl-example.html">PanelFirmwareUpdateModeControl</a>: Added sample to illustrate how to control features of Edp Lowpower.
+
+---
+
+### ADL 18.0 - Release Notes
+* Introduced ADL_PMLOG_TEMPERATURE_INTAKE in ADL_PMLOG_SENSORS
 
 ---
 
@@ -86,7 +100,7 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 --- 
 
 ### What is ADL and How to use it
-* Plesae refer to Usage Document. See <a href="What is ADL and how to use it.doc">`What is ADL and how to use it.doc`</a>.
+* Please refer to Usage Document. See <a href="What is ADL and how to use it.doc">`What is ADL and how to use it.doc`</a>.
 
 --- 
 
@@ -104,10 +118,10 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 
 ---
 * Supported Driver:
-	Requires Radeon Software Adrenalin Edition 22.11.2 or later.
+	Requires Radeon Software Adrenalin Edition 25.3.1 or later.
 
 ---
 ### End User License Agreement
-* Plesae refer to EULA for terms and conditions of the ADL SDK. See <a href="ADL SDK EULA.pdf">`ADL SDK EULA.pdf`</a>.
+* Please refer to EULA for terms and conditions of the ADL SDK. See <a href="ADL SDK EULA.pdf">`ADL SDK EULA.pdf`</a>.
 
 

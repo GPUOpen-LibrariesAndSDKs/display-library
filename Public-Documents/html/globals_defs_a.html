@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -229,6 +229,9 @@ $(function() {
 </li>
 <li>ADL_BUSTYPE_PCIE_GEN4
 : <a class="el" href="group__DEFINES.html#gaede7fae03a066c24eec335ad7161912b">adl_defines.h</a>
+</li>
+<li>ADL_BUSTYPE_PCIE_GEN5
+: <a class="el" href="group__DEFINES.html#ga1223b14e7b81ffb4307eb6440ffc2a6a">adl_defines.h</a>
 </li>
 <li>ADL_COLOR_DEPTH_DEF
 : <a class="el" href="group__define__colordepth__constants.html#ga73b61d65c45d88be573ddaf5189a9470">adl_defines.h</a>
@@ -1493,6 +1496,9 @@ $(function() {
 <li>ADL_ERR_FEATURESYNC_NOT_STARTED
 : <a class="el" href="group__define__adl__results.html#gace0b11c13d0f2e7a10c928a6144e3e3a">adl_defines.h</a>
 </li>
+<li>ADL_ERR_GPU_IN_USE
+: <a class="el" href="group__define__adl__results.html#ga1b41bda6a9ebe763e02c368480f34218">adl_defines.h</a>
+</li>
 <li>ADL_ERR_INVALID_ADL_IDX
 : <a class="el" href="group__define__adl__results.html#gadfa1aff1b7ddf4163a4849ef04fa8132">adl_defines.h</a>
 </li>
@@ -1532,25 +1538,29 @@ $(function() {
 <li>ADL_ERR_RESOURCE_CONFLICT
 : <a class="el" href="group__define__adl__results.html#gae7fe06dc9f462312d7c234be0da2a04f">adl_defines.h</a>
 </li>
+<li>ADL_ERR_RPC
+: <a class="el" href="group__define__adl__results.html#ga5d8fd1573a9aecbf624a7a78e909de7c">adl_defines.h</a>
+</li>
+<li>ADL_ERR_SERVER_BUSY
+: <a class="el" href="group__define__adl__results.html#ga19e53351f01053af4d2a21e01c006ee3">adl_defines.h</a>
+</li>
 <li>ADL_ERR_SET_INCOMPLETE
 : <a class="el" href="group__define__adl__results.html#gae519d791a0f48c27b310fe222de644d8">adl_defines.h</a>
 </li>
 <li>ADL_EXTERNC
-: <a class="el" href="workstation_8h.html#a24a14773b8978b7ef0fb45451fcc495e">workstation.h</a>
+: <a class="el" href="powerxpress_8h.html#a24a14773b8978b7ef0fb45451fcc495e">powerxpress.h</a>
 , <a class="el" href="radeonusbled_8h.html#a24a14773b8978b7ef0fb45451fcc495e">radeonusbled.h</a>
-, <a class="el" href="displaysmanager_8h.html#a24a14773b8978b7ef0fb45451fcc495e">displaysmanager.h</a>
-, <a class="el" href="overdrive6_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive6.h</a>
-, <a class="el" href="adapter_8h.html#a24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
+, <a class="el" href="workstation_8h.html#a24a14773b8978b7ef0fb45451fcc495e">workstation.h</a>
+, <a class="el" href="overdriveN_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdriveN.h</a>
+, <a class="el" href="graphics_8h.html#a24a14773b8978b7ef0fb45451fcc495e">graphics.h</a>
 , <a class="el" href="appprofiles_8h.html#a24a14773b8978b7ef0fb45451fcc495e">appprofiles.h</a>
-, <a class="el" href="controller_8h.html#a24a14773b8978b7ef0fb45451fcc495e">controller.h</a>
+, <a class="el" href="adapter_8h.html#a24a14773b8978b7ef0fb45451fcc495e">adapter.h</a>
 , <a class="el" href="crossdisplay_8h.html#a24a14773b8978b7ef0fb45451fcc495e">crossdisplay.h</a>
 , <a class="el" href="display_8h.html#a24a14773b8978b7ef0fb45451fcc495e">display.h</a>
-, <a class="el" href="graphics_8h.html#a24a14773b8978b7ef0fb45451fcc495e">graphics.h</a>
-, <a class="el" href="lnx_8h.html#a24a14773b8978b7ef0fb45451fcc495e">lnx.h</a>
+, <a class="el" href="displaysmanager_8h.html#a24a14773b8978b7ef0fb45451fcc495e">displaysmanager.h</a>
 , <a class="el" href="overdrive5_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive5.h</a>
+, <a class="el" href="overdrive6_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive6.h</a>
 , <a class="el" href="overdrive8_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdrive8.h</a>
-, <a class="el" href="overdriveN_8h.html#a24a14773b8978b7ef0fb45451fcc495e">overdriveN.h</a>
-, <a class="el" href="powerxpress_8h.html#a24a14773b8978b7ef0fb45451fcc495e">powerxpress.h</a>
 </li>
 <li>ADL_FALSE
 : <a class="el" href="group__define__misc.html#gad032e621d4d5dccb5bdeb053fced69dd">adl_defines.h</a>
@@ -2019,6 +2029,9 @@ $(function() {
 </li>
 <li>ADL_MAX_RELATIVE_ADDRESS_LINK_COUNT
 : <a class="el" href="group__define__max__constants.html#ga0345874bd86af2343aa4c4b828d358b3">adl_defines.h</a>
+</li>
+<li>ADL_MAX_RPC_ENDPOINT
+: <a class="el" href="group__define__misc.html#ga3d72967aa9be44953b2c233bc97c3b64">adl_defines.h</a>
 </li>
 <li>ADL_MEMORYREQTYPE_GPURESERVEDVISIBLE
 : <a class="el" href="group__define__adl__validmemoryrequiredfields.html#gab4fba0716c25d15801f984871a2155d4">adl_defines.h</a>
@@ -2538,7 +2551,7 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

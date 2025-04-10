@@ -23,6 +23,24 @@ ADL2_SMARTDC_CAPS                                       ADL2_SmartDC_Caps = null
 ADL2_SMARTDC_STATUS_GET                                 ADL2_SmartDC_Status_Get = nullptr;
 ADL2_SMARTDC_STATUS_SET                                 ADL2_SmartDC_Status_Set = nullptr;
 
+ADL2_GPUCONNECT_CAPS                                    ADL2_GPUConnect_Caps = nullptr;
+ADL2_GPUCONNECT_GETADAPTERINFO                          ADL2_GPUConnect_GetAdapterInfo = nullptr;
+ADL2_GPUCONNECT_STATE_GET                               ADL2_GPUConnect_State_Get = nullptr;
+ADL2_GPUCONNECT_STATE_SET                               ADL2_GPUConnect_State_Set = nullptr;
+ADL2_GPUCONNECT_INUSEAPPLIST_GET                        ADL2_GPUConnect_InUseAppList_Get = nullptr;
+
+
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CAPS                    ADL2_SmartShiftEco_AutoLowPower_Caps = nullptr;
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_STATE_GET               ADL2_SmartShiftEco_AutoLowPower_State_Get = nullptr;
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_ENABLE_GET              ADL2_SmartShiftEco_AutoLowPower_Enable_Get = nullptr;
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_ENABLE_SET              ADL2_SmartShiftEco_AutoLowPower_Enable_Set = nullptr;
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CONFIG_GET              ADL2_SmartShiftEco_AutoLowPower_Config_Get = nullptr;
+ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CONFIG_SET              ADL2_SmartShiftEco_AutoLowPower_Config_Set = nullptr;
+
+ADL2_SMARTSHIFTECO_INACTIVE_STATE_GET                   ADL2_SmartShiftEco_InActive_State_Get = nullptr;
+
+
+
 // ADL module handle
 HINSTANCE hDLL = NULL;
 ADL_CONTEXT_HANDLE context_ = NULL;
@@ -68,11 +86,38 @@ int InitADL()
         ADL2_SmartDC_Status_Get = (ADL2_SMARTDC_STATUS_GET)GetProcAddress(hDLL, "ADL2_SmartDC_Status_Get");
         ADL2_SmartDC_Status_Set = (ADL2_SMARTDC_STATUS_SET)GetProcAddress(hDLL, "ADL2_SmartDC_Status_Set");
 
+        ADL2_GPUConnect_Caps = (ADL2_GPUCONNECT_CAPS)GetProcAddress(hDLL, "ADL2_GPUConnect_Caps");
+        ADL2_GPUConnect_GetAdapterInfo = (ADL2_GPUCONNECT_GETADAPTERINFO)GetProcAddress(hDLL, "ADL2_GPUConnect_GetAdapterInfo");
+        ADL2_GPUConnect_State_Get = (ADL2_GPUCONNECT_STATE_GET)GetProcAddress(hDLL, "ADL2_GPUConnect_State_Get");
+        ADL2_GPUConnect_State_Set = (ADL2_GPUCONNECT_STATE_SET)GetProcAddress(hDLL, "ADL2_GPUConnect_State_Set");
+        ADL2_GPUConnect_InUseAppList_Get = (ADL2_GPUCONNECT_INUSEAPPLIST_GET)GetProcAddress(hDLL, "ADL2_GPUConnect_InUseAppList_Get");
+
+        ADL2_SmartShiftEco_AutoLowPower_Caps = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CAPS)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_Caps");
+        ADL2_SmartShiftEco_AutoLowPower_State_Get = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_STATE_GET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_State_Get");
+        ADL2_SmartShiftEco_AutoLowPower_Enable_Get = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_ENABLE_GET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_Enable_Get");
+        ADL2_SmartShiftEco_AutoLowPower_Enable_Set = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_ENABLE_SET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_Enable_Set");
+        ADL2_SmartShiftEco_AutoLowPower_Config_Get = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CONFIG_GET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_Config_Get");
+        ADL2_SmartShiftEco_AutoLowPower_Config_Set = (ADL2_SMARTSHIFTECO_AUTOLOWPOWER_CONFIG_SET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_AutoLowPower_Config_Set");
+
+        ADL2_SmartShiftEco_InActive_State_Get = (ADL2_SMARTSHIFTECO_INACTIVE_STATE_GET)GetProcAddress(hDLL, "ADL2_SmartShiftEco_InActive_State_Get");
+
         if (nullptr == ADL2_Main_Control_Create ||
                 nullptr == ADL2_Main_Control_Destroy ||
                 nullptr == ADL2_SmartDC_Caps ||
                 nullptr == ADL2_SmartDC_Status_Get ||
-                nullptr == ADL2_SmartDC_Status_Set
+                nullptr == ADL2_SmartDC_Status_Set ||
+                nullptr == ADL2_GPUConnect_Caps ||
+                nullptr == ADL2_GPUConnect_GetAdapterInfo ||
+                nullptr == ADL2_GPUConnect_State_Get ||
+                nullptr == ADL2_GPUConnect_State_Set ||
+                nullptr == ADL2_GPUConnect_InUseAppList_Get ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_Caps ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_State_Get ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_Enable_Get ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_Enable_Set ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_Config_Get ||
+                nullptr == ADL2_SmartShiftEco_AutoLowPower_Config_Set ||
+                nullptr == ADL2_SmartShiftEco_InActive_State_Get
                 )
         {
             std::cout << "ADL's API is missing!" << std::endl;

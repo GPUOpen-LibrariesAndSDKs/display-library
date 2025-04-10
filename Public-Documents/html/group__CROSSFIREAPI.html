@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -102,7 +102,7 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group describes the CrossFire APIs. </p>
 <p>Function to retrieve CrossfireX capabilities of the system.</p>
-<p>This function is used to determine if the system is capable of doing CrossfireX, regardless if the system is setup properly. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function is used to determine if the system is capable of doing CrossfireX, regardless if the system is setup properly. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -201,7 +201,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to get current CrossfireX combination settings.<p>This function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to get current CrossfireX combination settings.<p>This function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -249,7 +249,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div><div class="memdoc">
 
 <p>Function to set CrossfireX combination settings. </p>
-<p>This function is used to enable or disable CrossfireX on a particular adapter (pointed to by iAdapterIndex), along with the indicated CrossfireX chain. The CrossfireX chain combination for the adapter must be one returned by <a class="el" href="group__CROSSFIREAPI.html#ga3f0059900beded7b7d79711027b68035" title="Function to retrieve CrossfireX capabilities of the system.">ADL_Adapter_Crossfire_Caps()</a>. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function is used to enable or disable CrossfireX on a particular adapter (pointed to by iAdapterIndex), along with the indicated CrossfireX chain. The CrossfireX chain combination for the adapter must be one returned by <a class="el" href="group__CROSSFIREAPI.html#ga3f0059900beded7b7d79711027b68035" title="Function to retrieve CrossfireX capabilities of the system.">ADL_Adapter_Crossfire_Caps()</a>. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -302,7 +302,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div><div class="memdoc">
 
 <p>Function to get current CrossfireX settings for both QUAD and Software crossfire. </p>
-<p>On QUAD Crossfire systems this function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. On Software Crossfire systems this function is used to query support and status of Crossfire. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>On QUAD Crossfire systems this function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. On Software Crossfire systems this function is used to query support and status of Crossfire. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -403,7 +403,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div><div class="memdoc">
 
 <p>Function to retrieve CrossfireX capabilities of the system. </p>
-<p>This function is used to determine if the system is capable of doing CrossfireX, regardless if the system is setup properly. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function is used to determine if the system is capable of doing CrossfireX, regardless if the system is setup properly. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter to query CrossfireX capabilities </td></tr>
@@ -449,7 +449,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
         </tr>
       </table>
 </div><div class="memdoc">
-Function to get current CrossfireX combination settings.<p>This function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to get current CrossfireX combination settings.<p>This function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index of the CrossfireX capable adapter to query the CrossfireX state and current information </td></tr>
@@ -489,7 +489,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div><div class="memdoc">
 
 <p>Function to set CrossfireX combination settings. </p>
-<p>This function is used to enable or disable CrossfireX on a particular adapter (pointed to by iAdapterIndex), along with the indicated CrossfireX chain. The CrossfireX chain combination for the adapter must be one returned by <a class="el" href="group__CROSSFIREAPI.html#ga3f0059900beded7b7d79711027b68035" title="Function to retrieve CrossfireX capabilities of the system.">ADL_Adapter_Crossfire_Caps()</a>. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function is used to enable or disable CrossfireX on a particular adapter (pointed to by iAdapterIndex), along with the indicated CrossfireX chain. The CrossfireX chain combination for the adapter must be one returned by <a class="el" href="group__CROSSFIREAPI.html#ga3f0059900beded7b7d79711027b68035" title="Function to retrieve CrossfireX capabilities of the system.">ADL_Adapter_Crossfire_Caps()</a>. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The adapter in which to enable or disable CrossfireX </td></tr>
@@ -534,7 +534,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div><div class="memdoc">
 
 <p>Function to get current CrossfireX settings for both QUAD and Software crossfire. </p>
-<p>On QUAD Crossfire systems this function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. On Software Crossfire systems this function is used to query support and status of Crossfire. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>On QUAD Crossfire systems this function is used to retrieve the current information about a particular CrossfireX combination. A CrossfireX combination includes the CrossfireX capable adapter and its CrossfireX chain (a list of other adapters that will work with the CrossfireX capable adapter). The possible CrossfireX chain combinations for an adapter is retrieved from the ADL_Adapter_Crossfire_Caps function. On Software Crossfire systems this function is used to query support and status of Crossfire. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index of the CrossfireX capable adapter to query the CrossfireX state and current information </td></tr>
@@ -548,7 +548,7 @@ Function to get current CrossfireX combination settings.<p>This function is used
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

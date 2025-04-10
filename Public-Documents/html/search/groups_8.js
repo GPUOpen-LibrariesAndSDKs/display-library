@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['memory_20type_6281',['Memory Type',['../group__define__adl__validmemoryrequiredfields.html',1,'']]],
-  ['miscellaneous_20constant_20definitions_6282',['Miscellaneous Constant Definitions',['../group__define__misc.html',1,'']]],
-  ['main_20group_20of_20apis_6283',['Main Group of APIs',['../group__MAINAPI.html',1,'']]]
+  ['os_20mode_20values_6315',['OS Mode Values',['../group__define__osmode.html',1,'']]],
+  ['overlay_20apis_6316',['Overlay APIs',['../group__OVERLAYAPI.html',1,'']]],
+  ['overscan_2funderscan_20apis_6317',['Overscan/Underscan APIs',['../group__UNDERSCANAPI.html',1,'']]]
 ];

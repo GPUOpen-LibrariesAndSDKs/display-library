@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['values_20used_20by_20adl_5fcv_5fdonglesettings_5fxxx_6300',['Values used by ADL_CV_DongleSettings_xxx',['../group__define__cv__dongle.html',1,'']]],
-  ['values_20used_20for_20ddcinfoflag_6301',['Values used for DDCInfoFlag',['../group__define__ddcinfoflag.html',1,'']]],
-  ['values_20for_20ulddcinfoflag_6302',['Values for ulDDCInfoFlag',['../group__define__edid__flags.html',1,'']]],
-  ['video_20custom_20mode_20flags_6303',['Video Custom Mode flags',['../group__define__video__custom__mode.html',1,'']]],
-  ['video_20related_20apis_6304',['Video Related APIs',['../group__VIDEOAPI.html',1,'']]],
-  ['viewport_20apis_6305',['ViewPort APIs',['../group__VIEWPORTAPI.html',1,'']]]
+  ['workstation_20capabilities_6337',['Workstation Capabilities',['../group__define__ws__caps.html',1,'']]],
+  ['wattman_20_28od_205_29_20related_20apis_6338',['Wattman (OD 5) related APIs',['../group__OVERDRIVE5API.html',1,'']]],
+  ['wattman_20_28od_206_29_20related_20apis_6339',['Wattman (OD 6) related APIs',['../group__OVERDRIVE6API.html',1,'']]],
+  ['wattman_20_28od_208_29_20related_20apis_6340',['Wattman (OD 8) related APIs',['../group__OVERDRIVE8API.html',1,'']]],
+  ['wattman_20_28od_20n_29_20related_20apis_6341',['Wattman (OD N) related APIs',['../group__OVERDRIVENAPI.html',1,'']]],
+  ['wattman_20related_20apis_6342',['Wattman Related APIs',['../group__WATTMANAPI.html',1,'']]],
+  ['workstation_20related_20apis_6343',['Workstation Related APIs',['../group__WORKSTATIONAPI.html',1,'']]]
 ];

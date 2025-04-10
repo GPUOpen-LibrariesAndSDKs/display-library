@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -496,7 +496,7 @@ Function to set the Auto Wattman status<p>This function sets the current status 
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000044">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000032">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -737,7 +737,7 @@ Function to retrieve the Events occured<p>This function retrieves the events cou
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000047">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000035">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -785,7 +785,7 @@ Function to retrieve the Events occured<p>This function retrieves the events cou
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000048">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000036">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -940,7 +940,7 @@ Function to retrieve the Events occured<p>This function retrieves the events cou
 </div><div class="memdoc">
 
 <p>Function to retrieve the memory timing . </p>
-<p>This function enables/disables memory timing for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function enables/disables memory timing for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -990,7 +990,7 @@ Function to retrieve the Events occured<p>This function retrieves the events cou
 </div><div class="memdoc">
 
 <p>Function to change memory timing levels. </p>
-<p>This function set GPU memory timing level for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function set GPU memory timing level for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1292,7 +1292,7 @@ Function to sets the OverdriveN SCLK Auto overclock state.<p>This function retri
 </div><div class="memdoc">
 
 <p>Function to get Fan curve info. </p>
-<p>This function to retrieve Fan curve for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function to retrieve Fan curve for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1354,7 +1354,7 @@ Function to sets the OverdriveN SCLK Auto overclock state.<p>This function retri
 </div><div class="memdoc">
 
 <p>Function to set fan curve (temperature and speed) </p>
-<p>This function to for set fan curve (temperature and speed) a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function to for set fan curve (temperature and speed) a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1413,7 +1413,7 @@ Function to sets the OverdriveN SCLK Auto overclock state.<p>This function retri
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000045">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000033">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -1461,7 +1461,7 @@ Function to sets the OverdriveN SCLK Auto overclock state.<p>This function retri
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000046">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000034">Deprecated:</a></b></dt><dd>This API has been deprecated. </dd></dl>
 
 </div>
 </div>
@@ -1755,7 +1755,7 @@ Function to retrieve the OverdriveN Throttle Notification state and its flags.<p
 </div><div class="memdoc">
 
 <p>Function to get zero RPM fan control info. </p>
-<p>This function to retrieve zero RPM fan control for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function to retrieve zero RPM fan control for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1803,7 +1803,7 @@ Function to retrieve the OverdriveN Throttle Notification state and its flags.<p
 </div><div class="memdoc">
 
 <p>Function to change Zero RPM control levels. </p>
-<p>This function set GPU Zero RPM cntrol level for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function set GPU Zero RPM cntrol level for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1817,7 +1817,7 @@ Function to retrieve the OverdriveN Throttle Notification state and its flags.<p
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

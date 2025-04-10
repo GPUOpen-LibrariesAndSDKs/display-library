@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -330,7 +330,7 @@ Functions</h2></td></tr>
 
 <p>Function to check if the GPU is accessible or not at the time of this call. </p>
 <p>Some GPUs enter into various power savings mode when not in use, and during this time, direct access to the GPU can result in failures. Access through proper channels (such as via ADL) always works because the software accounts for the GPU's accessibility. However, direct access outside of authorised mechanisms may fail. Use this API to find out if the GPU is currently accessible or not. If API returns GPU accessible, this status will be maintained for 2 seconds.</p>
-<dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -376,7 +376,7 @@ ADL local interface Function to restore all the ACE's INF registry defaults.<p>T
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 
 </div>
@@ -584,7 +584,7 @@ ADL local interface Function to restore all the ACE's INF registry defaults.<p>T
 
 <p>Retrieves all OS-known adapter information. </p>
 <p>This function retrieves the adapter information of all OS-known adapters in the system. OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -629,7 +629,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 <p>Retrieves all OS-known adapter information. </p>
 <p>This function retrieves the adapter information of all OS-known adapters in the system. OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -691,7 +691,7 @@ ADL local interface. Retrieves adapter information for given adapter or all OS-k
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
@@ -746,7 +746,7 @@ ADL local interface. Retrieves extended adapter information for given adapter or
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This API uses the memory allocation callback function provided by the user. </dd>
 <dd>
@@ -845,7 +845,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
 </div><div class="memdoc">
 
 <p>Function to get the ASICFamilyType from the adapter. </p>
-<p>This function retrieves the ASIC family types for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the ASIC family types for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -908,7 +908,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function valid, the return value is 1. Otherwise it is 0. </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
@@ -957,7 +957,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function retrieves the Big Software &amp; Red Stone support information for a specified adapter. <dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the Big Software &amp; Red Stone support information for a specified adapter. <dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -1004,7 +1004,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve adapter caps information.<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve adapter caps information.<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1057,7 +1057,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
@@ -1095,7 +1095,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
       </table>
 </div><div class="memdoc">
 <p>This function retrieves the Dedicated VRAM usage of given adapter<p>The function is used to get Dedicated VRAM usge by calling MS Counter.</p>
-<dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1146,7 +1146,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
         </tr>
       </table>
 </div><div class="memdoc">
-Function to Checks the feature if given GPU (identified by adapter id) supports or not.<p>Checks if given GPU (identified by adapter id) supports feature (iFeatureID) or not. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to Checks the feature if given GPU (identified by adapter id) supports or not.<p>Checks if given GPU (identified by adapter id) supports feature (iFeatureID) or not. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1191,7 +1191,7 @@ Function to Checks the feature if given GPU (identified by adapter id) supports 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve HBC Capability.<p>This function retrieves the HBC Capability for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve HBC Capability.<p>This function retrieves the HBC Capability for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>: Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1283,7 +1283,7 @@ Function to retrieve whether an adapter is Headless or not.<p>This function impl
 <p>Function to get the unique identifier of an adapter. </p>
 <p>This function retrieves the unique identifier of a specified adapter.<br  />
  The adapter ID is a unique value and will be used to determine what other controllers share the same adapter.<br  />
- The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1336,7 +1336,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-This function retrieves the creator who game support information for a specified adapter. <dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+This function retrieves the creator who game support information for a specified adapter. <dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -1394,7 +1394,7 @@ This function retrieves the creator who game support information for a specified
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve current LED support capability<p>This function retrieves current status of LED supported for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve current LED support capability<p>This function retrieves current status of LED supported for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1442,7 +1442,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve memory information from the adapter. Version 2<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux; 32bit and 64bit </dd></dl>
+Function to retrieve memory information from the adapter. Version 2<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1487,7 +1487,7 @@ Function to retrieve memory information from the adapter. Version 2<p>This funct
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve memory information from the adapter. Version 4<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux; 32bit and 64bit </dd></dl>
+Function to retrieve memory information from the adapter. Version 4<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1598,7 +1598,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 <p>Function to retrieve the number of OS-known adapters. </p>
 <p>This function retrieves the number of graphics adapters recognized by the OS (OS-known adapters). OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -1650,7 +1650,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;Specific logic is used to select appropriate clock for display in current configuration. </p>
-<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2066,7 +2066,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the current Force3DClock setting from the adapter. </p>
-<p>This function retrieves the adapter speed information for a specified adapter. Return valud can be <a class="el" href="group__define__adapterspeed.html#gabcb80873286dc7751cd606a1d65841dc">ADL_ADAPTER_SPEEDCAPS_SUPPORTED</a> or “0” </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the adapter speed information for a specified adapter. Return valud can be <a class="el" href="group__define__adapterspeed.html#gabcb80873286dc7751cd606a1d65841dc">ADL_ADAPTER_SPEEDCAPS_SUPPORTED</a> or "0" </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2120,7 +2120,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to get the current Speed setting from the adapter. </p>
-<p>This function retrieves the adapter speed information for a specified adapter. Return value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the adapter speed information for a specified adapter. Return value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2168,7 +2168,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 </div><div class="memdoc">
 
 <p>Function to set the current Speed setting from the adapter. </p>
-<p>This function set the adapter speed information for a specified adapter. Input value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function set the adapter speed information for a specified adapter. Input value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2225,7 +2225,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve true Hardware generated random number.<p>This function implements a lhEscape call to retrieve TRGN from hardware . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve true Hardware generated random number.<p>This function implements a lhEscape call to retrieve TRGN from hardware . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2268,7 +2268,7 @@ Function to retrieve true Hardware generated random number.<p>This function impl
 </div><div class="memdoc">
 
 <p>Retrieves adapter vendor id. </p>
-<p>This function retrieves the parsed hex vendor id </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the parsed hex vendor id </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2321,7 +2321,7 @@ Function to retrieve true Hardware generated random number.<p>This function impl
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux; 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
@@ -2358,7 +2358,7 @@ Function to retrieve true Hardware generated random number.<p>This function impl
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function retrieves the VRAM usage of given adapter <dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the VRAM usage of given adapter <dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2405,7 +2405,7 @@ Function to retrieve true Hardware generated random number.<p>This function impl
 </div><div class="memdoc">
 
 <p>Function to retrieve adapter caps information. </p>
-<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2456,7 +2456,7 @@ Function to retrieve true Hardware generated random number.<p>This function impl
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve the current value of given feature on a given adapter<p>provides the current value of the given feature </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve the current value of given feature on a given adapter<p>provides the current value of the given feature </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2507,7 +2507,7 @@ Function to retrieve the current value of given feature on a given adapter<p>pro
         </tr>
       </table>
 </div><div class="memdoc">
-Function sets the current value to driver of given adapter<p>sets the current value to the given adapter </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function sets the current value to driver of given adapter<p>sets the current value to the given adapter </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2548,7 +2548,7 @@ Function sets the current value to driver of given adapter<p>sets the current va
 </div><div class="memdoc">
 
 <p>Function to save driver data. </p>
-<p>This function saves all required data from driver to persist updated settings </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function saves all required data from driver to persist updated settings </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2896,7 +2896,7 @@ Function to get the Smart shift support.<p>This function retrieves the smart shi
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve current workattaion overdrive support capabilities<p>This function retrieves current Stress Test overdrivecapabilities for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve current workattaion overdrive support capabilities<p>This function retrieves current Stress Test overdrivecapabilities for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -2956,7 +2956,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve current workattaion overdrive support capabilities<p>This function retrieves current Throttle Notification overdrivecapabilities for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve current workattaion overdrive support capabilities<p>This function retrieves current Throttle Notification overdrivecapabilities for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -3001,7 +3001,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 <p>Function to check if the GPU is accessible or not at the time of this call. </p>
 <p>Some GPUs enter into various power savings mode when not in use, and during this time, direct access to the GPU can result in failures. Access through proper channels (such as via ADL) always works because the software accounts for the GPU's accessibility. However, direct access outside of authorised mechanisms may fail. Use this API to find out if the GPU is currently accessible or not. If API returns GPU accessible, this status will be maintained for 2 seconds.</p>
-<dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3186,7 +3186,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 <p>Retrieves all OS-known adapter information. </p>
 <p>This function retrieves the adapter information of all OS-known adapters in the system. OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iInputSize</td><td>The size of the lpInfo buffer. </td></tr>
@@ -3218,7 +3218,7 @@ Clients can use ADL2 version of the API to assure that there is no interference 
 
 <p>Retrieves all OS-known adapter information. </p>
 <p>This function retrieves the adapter information of all OS-known adapters in the system. OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that are no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">lppAdapterInfo</td><td>is pointer to the pointer of <a class="el" href="structAdapterInfo.html" title="Structure containing information about the graphics adapter.">AdapterInfo</a> array. Initialize to NULL before calling this API. ADL will allocate the necessary memory, using the user provided callback function. </td></tr>
@@ -3300,7 +3300,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
 </div><div class="memdoc">
 
 <p>Function to get the ASICFamilyType from the adapter. </p>
-<p>This function retrieves the ASIC family types for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the ASIC family types for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3355,7 +3355,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function valid, the return value is 1. Otherwise it is 0. <br  />
  </dd></dl>
 
@@ -3398,7 +3398,7 @@ Function to disable a list of logic adapters once.<p>This function disable multi
         </tr>
       </table>
 </div><div class="memdoc">
-Function to get the ASICFamilyType from the adapter. <p>This function retrieves the Big Software &amp; Red Stone support information for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to get the ASICFamilyType from the adapter. <p>This function retrieves the Big Software &amp; Red Stone support information for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3438,7 +3438,7 @@ Function to get the ASICFamilyType from the adapter. <p>This function retrieves 
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve adapter caps information.<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+Function to retrieve adapter caps information.<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3482,7 +3482,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 
 </div>
@@ -3516,7 +3516,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
 <p>Function to get the unique identifier of an adapter. </p>
 <p>This function retrieves the unique identifier of a specified adapter.<br  />
  The adapter ID is a unique value and will be used to determine what other controllers share the same adapter.<br  />
- The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3554,7 +3554,7 @@ ADL local interface. Function to retrieve chipset information.<p>This function r
         </tr>
       </table>
 </div><div class="memdoc">
-Function to retrieve memory information from the adapter. Version 2<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux; 32bit and 64bit </dd></dl>
+Function to retrieve memory information from the adapter. Version 2<p>This function retrieves the memory information for a specified graphics adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3632,7 +3632,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 
 <p>Function to retrieve the number of OS-known adapters. </p>
 <p>This function retrieves the number of graphics adapters recognized by the OS (OS-known adapters). OS-known adapters can include adapters that are physically present in the system (logical adapters) <br  />
- as well as ones that no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ as well as ones that no longer present in the system but are still recognized by the OS. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">lpNumAdapters</td><td>The pointer to the number of OS-known adapters. </td></tr>
@@ -3677,7 +3677,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to get the core and memory clock info of an adapter. &#160;This is the clock displayed on CCC information center. &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Specific logic is used to select appropriate clock for display in current configuration. </p>
-<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the core and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -3741,7 +3741,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to get the base, game, boost and memory clock info of an adapter. &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Specific logic is used to select appropriate clock for display in current configuration. </p>
-<p>This function retrieves the game, base, boost and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the game, base, boost and memory clock of an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -4099,7 +4099,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to get the current Force3DClock setting from the adapter. </p>
-<p>This function retrieves the adapter speed information for a specified adapter. Return valud can be <a class="el" href="group__define__adapterspeed.html#gabcb80873286dc7751cd606a1d65841dc">ADL_ADAPTER_SPEEDCAPS_SUPPORTED</a> or “0” </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the adapter speed information for a specified adapter. Return valud can be <a class="el" href="group__define__adapterspeed.html#gabcb80873286dc7751cd606a1d65841dc">ADL_ADAPTER_SPEEDCAPS_SUPPORTED</a> or "0" </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -4146,7 +4146,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to get the current Speed setting from the adapter. </p>
-<p>This function retrieves the adapter speed information for a specified adapter. Return value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function retrieves the adapter speed information for a specified adapter. Return value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -4187,7 +4187,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to set the current Speed setting from the adapter. </p>
-<p>This function set the adapter speed information for a specified adapter. Input value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function set the adapter speed information for a specified adapter. Input value is either <a class="el" href="group__define__adapterspeed.html#ga4eb02a6a17cbee5a68dc4e36d9b12463">ADL_CONTEXT_SPEED_UNFORCED</a> or <a class="el" href="group__define__adapterspeed.html#gae13e72cc8bbb36bbbcc6c2b54c1883c3">ADL_CONTEXT_SPEED_FORCEHIGH</a> </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -4234,7 +4234,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Supported Platforms: </dt><dd>Linux; 32bit and 64bit </dd></dl>
+<dl class="section user"><dt>Supported Platforms: </dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 
 </div>
@@ -4266,7 +4266,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to retrieve adapter caps information. </p>
-<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function implements a DI call to retrieve adapter capability information . </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -4295,7 +4295,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div><div class="memdoc">
 
 <p>Function to save driver data. </p>
-<p>This function saves all required data from driver to persist updated settings </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+<p>This function saves all required data from driver to persist updated settings </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The adapter index to be flushed. </td></tr>
@@ -4308,7 +4308,7 @@ Function to re-enumerate adapter modes. <p>This function re-enumerates adapter m
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

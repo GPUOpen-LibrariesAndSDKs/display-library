@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['tables_5614',['TABLES',['../structures_8h.html#a8c4fe178fcecd4fa8ab50ad5af413551',1,'structures.h']]]
+  ['sls_5fimagecroptype_5608',['SLS_ImageCropType',['../group__define__eyefinity__constants.html#gabe80b89eb151a8d24bd43fefc1c6d23a',1,'adl_defines.h']]],
+  ['strings_5609',['STRINGS',['../structures_8h.html#adec3241fd0eecdd8dd9eb6f8f0c2e4cb',1,'structures.h']]]
 ];

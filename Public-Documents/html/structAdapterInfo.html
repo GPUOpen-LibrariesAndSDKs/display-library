@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -73,7 +73,7 @@ $(function() {
 <p><code>#include &lt;<a class="el" href="adl__structures_8h_source.html">adl_structures.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-Common Members \n Structure members that are common for Linux and Windows(XP, Vista and above); 32bit and 64bit \n @{</h2></td></tr>
+Windows Members \n Structure members that are common for Windows 7, 10 and above; 32bit and 64bit \n @{</h2></td></tr>
 <tr class="memitem:a024707b0ef54f7bd7b588b2b27bd0524"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a024707b0ef54f7bd7b588b2b27bd0524">iSize</a></td></tr>
 <tr class="memdesc:a024707b0ef54f7bd7b588b2b27bd0524"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the structure.  <a href="structAdapterInfo.html#a024707b0ef54f7bd7b588b2b27bd0524">More...</a><br /></td></tr>
 <tr class="separator:a024707b0ef54f7bd7b588b2b27bd0524"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,14 +99,11 @@ Common Members \n Structure members that are common for Linux and Windows(XP, Vi
 <tr class="memdesc:a51f338aff61b15901a08aabdbd27e652"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adapter name.  <a href="structAdapterInfo.html#a51f338aff61b15901a08aabdbd27e652">More...</a><br /></td></tr>
 <tr class="separator:a51f338aff61b15901a08aabdbd27e652"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34a1ef073346fd4190fde1cdfc86cd71"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a34a1ef073346fd4190fde1cdfc86cd71">strDisplayName</a> [256]</td></tr>
-<tr class="memdesc:a34a1ef073346fd4190fde1cdfc86cd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display name. For example, "\\\\Display0" for Windows or ":0:0" for Linux.  <a href="structAdapterInfo.html#a34a1ef073346fd4190fde1cdfc86cd71">More...</a><br /></td></tr>
+<tr class="memdesc:a34a1ef073346fd4190fde1cdfc86cd71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display name. For example, "\\\\Display0" for Windows.  <a href="structAdapterInfo.html#a34a1ef073346fd4190fde1cdfc86cd71">More...</a><br /></td></tr>
 <tr class="separator:a34a1ef073346fd4190fde1cdfc86cd71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a537172385f2ceb837713fe5bf7e36156"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a537172385f2ceb837713fe5bf7e36156">iPresent</a></td></tr>
 <tr class="memdesc:a537172385f2ceb837713fe5bf7e36156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Present or not; 1 if present and 0 if not present.It the logical adapter is present, the display name such as \\.\Display1 can be found from OS.  <a href="structAdapterInfo.html#a537172385f2ceb837713fe5bf7e36156">More...</a><br /></td></tr>
 <tr class="separator:a537172385f2ceb837713fe5bf7e36156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-Windows Members \n Structure members that are common for Windows 7, 10 and above; 32bit and 64bit \n @{</h2></td></tr>
 <tr class="memitem:aca6933ffdfc3880e10ff571bbac8d2a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#aca6933ffdfc3880e10ff571bbac8d2a6">iExist</a></td></tr>
 <tr class="memdesc:aca6933ffdfc3880e10ff571bbac8d2a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exist or not; 1 is exist and 0 is not present.  <a href="structAdapterInfo.html#aca6933ffdfc3880e10ff571bbac8d2a6">More...</a><br /></td></tr>
 <tr class="separator:aca6933ffdfc3880e10ff571bbac8d2a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,17 +119,6 @@ Windows Members \n Structure members that are common for Windows 7, 10 and above
 <tr class="memitem:a8c66b0d400914c86579d213106411af5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a8c66b0d400914c86579d213106411af5">iOSDisplayIndex</a></td></tr>
 <tr class="memdesc:a8c66b0d400914c86579d213106411af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">It is generated from EnumDisplayDevices.  <a href="structAdapterInfo.html#a8c66b0d400914c86579d213106411af5">More...</a><br /></td></tr>
 <tr class="separator:a8c66b0d400914c86579d213106411af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-Linux Members \n Structure members that are common for Linux; 32bit and 64bit \n @{</h2></td></tr>
-<tr class="memitem:a6964bcc8f5ef061e5cb571f7a3e72e43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a6964bcc8f5ef061e5cb571f7a3e72e43">iXScreenNum</a></td></tr>
-<tr class="memdesc:a6964bcc8f5ef061e5cb571f7a3e72e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal X screen number from GPUMapInfo (DEPRICATED use <a class="el" href="structXScreenInfo.html" title="Structure containing information about the Linux X screen information.">XScreenInfo</a>)  <a href="structAdapterInfo.html#a6964bcc8f5ef061e5cb571f7a3e72e43">More...</a><br /></td></tr>
-<tr class="separator:a6964bcc8f5ef061e5cb571f7a3e72e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f189c26d8dad87a21f6d9e96d304e7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a1f189c26d8dad87a21f6d9e96d304e7a">iDrvIndex</a></td></tr>
-<tr class="memdesc:a1f189c26d8dad87a21f6d9e96d304e7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal driver index from GPUMapInfo.  <a href="structAdapterInfo.html#a1f189c26d8dad87a21f6d9e96d304e7a">More...</a><br /></td></tr>
-<tr class="separator:a1f189c26d8dad87a21f6d9e96d304e7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b2df80f90e8fd00828e3a4b28514a0b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAdapterInfo.html#a0b2df80f90e8fd00828e3a4b28514a0b">strXScreenConfigName</a> [256]</td></tr>
-<tr class="separator:a0b2df80f90e8fd00828e3a4b28514a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Structure containing information about the graphics adapter. </p>
@@ -183,22 +169,6 @@ Linux Members \n Structure members that are common for Linux; 32bit and 64bit \n
 </div><div class="memdoc">
 
 <p>The driver number associated with this adapter. </p>
-
-</div>
-</div>
-<a id="a1f189c26d8dad87a21f6d9e96d304e7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f189c26d8dad87a21f6d9e96d304e7a">&#9670;&nbsp;</a></span>iDrvIndex</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AdapterInfo::iDrvIndex</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Internal driver index from GPUMapInfo. </p>
 
 </div>
 </div>
@@ -298,22 +268,6 @@ Linux Members \n Structure members that are common for Linux; 32bit and 64bit \n
 
 </div>
 </div>
-<a id="a6964bcc8f5ef061e5cb571f7a3e72e43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6964bcc8f5ef061e5cb571f7a3e72e43">&#9670;&nbsp;</a></span>iXScreenNum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AdapterInfo::iXScreenNum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Internal X screen number from GPUMapInfo (DEPRICATED use <a class="el" href="structXScreenInfo.html" title="Structure containing information about the Linux X screen information.">XScreenInfo</a>) </p>
-
-</div>
-</div>
 <a id="a51f338aff61b15901a08aabdbd27e652"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a51f338aff61b15901a08aabdbd27e652">&#9670;&nbsp;</a></span>strAdapterName</h2>
 
@@ -342,7 +296,7 @@ Linux Members \n Structure members that are common for Linux; 32bit and 64bit \n
       </table>
 </div><div class="memdoc">
 
-<p>Display name. For example, "\\\\Display0" for Windows or ":0:0" for Linux. </p>
+<p>Display name. For example, "\\\\Display0" for Windows. </p>
 
 </div>
 </div>
@@ -410,26 +364,11 @@ Linux Members \n Structure members that are common for Linux; 32bit and 64bit \n
 
 </div>
 </div>
-<a id="a0b2df80f90e8fd00828e3a4b28514a0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b2df80f90e8fd00828e3a4b28514a0b">&#9670;&nbsp;</a></span>strXScreenConfigName</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char AdapterInfo::strXScreenConfigName[256]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000010">Deprecated:</a></b></dt><dd>Internal x config file screen identifier name. Use <a class="el" href="structXScreenInfo.html" title="Structure containing information about the Linux X screen information.">XScreenInfo</a> instead. </dd></dl>
-
-</div>
-</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="adl__structures_8h_source.html">adl_structures.h</a></li>
 </ul>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>

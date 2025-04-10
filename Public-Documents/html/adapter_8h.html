@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ADL (AMD Display Library) Public APIs
-   &#160;<span id="projectnumber">Version 17.1</span>
+   &#160;<span id="projectnumber">Version 18.1</span>
    </div>
   </td>
  </tr>
@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc.  
+<p>Copyright (c) 2008-2024 Advanced Micro Devices, Inc. All rights reserved.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="adl__structures_8h_source.html">adl_structures.h</a>&quot;</code><br />
 </div>
@@ -332,6 +332,9 @@ Functions</h2></td></tr>
 <tr class="separator:ga59f639dacb6d2c3e4cdb7461099adce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac3af32d4929dd1d21dc147bb36fcd99b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gac3af32d4929dd1d21dc147bb36fcd99b">ADL2_GcnAsicInfo_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, <a class="el" href="structADLGcnInfo.html">ADLGcnInfo</a> *gcnInfo)</td></tr>
 <tr class="separator:gac3af32d4929dd1d21dc147bb36fcd99b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2f8aa449670f118f8c460b68d3cb2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="adapter_8h.html#a3a2f8aa449670f118f8c460b68d3cb2a">ADL2_GfxIP_Version_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *lpVersion)</td></tr>
+<tr class="memdesc:a3a2f8aa449670f118f8c460b68d3cb2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the Gfx IP version.  <a href="adapter_8h.html#a3a2f8aa449670f118f8c460b68d3cb2a">More...</a><br /></td></tr>
+<tr class="separator:a3a2f8aa449670f118f8c460b68d3cb2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae3c8682eef0b670ed7822a9814eaa952"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#gae3c8682eef0b670ed7822a9814eaa952">ADL2_GPUVMPageSize_Info_Get</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int *iVMPageSizeSupport, int *iVMPageSizeType)</td></tr>
 <tr class="separator:gae3c8682eef0b670ed7822a9814eaa952"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1ef6ab5f2377c541d4c237df5795f70f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ADAPTERMAINAPI.html#ga1ef6ab5f2377c541d4c237df5795f70f">ADL2_GPUVMPageSize_Info_Set</a> (<a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> context, int <a class="el" href="group__GENARICAPI.html#ga8cc82c00bb9cba768c5b3803e9b09e6a">iAdapterIndex</a>, int iVMPageSizeType)</td></tr>
@@ -534,10 +537,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga090a0e4473f29346861c8e2c430a93e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Copyright (c) 2008 - 2022 Advanced Micro Devices, Inc. </p>
+<div class="textblock"><p>Copyright (c) 2008-2024 Advanced Micro Devices, Inc. All rights reserved. </p>
 <p>THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.</p>
-<p>Contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms.</p>
-<p>This file contains all adapter-related functions exposed by ADL for Linux and Windows(XP, Vista and above); 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders. </p>
+<p>Contains all adapter-related functions exposed by ADL for Windows 7, 10 and above; 32bit and 64bit platforms.</p>
+<p>This file contains all adapter-related functions exposed by ADL for Windows 7, 10 and above; 32bit and 64bit platforms. All functions in this file can be used as a reference to ensure the appropriate function pointers can be used by the appropriate runtime dynamic library loaders. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a24a14773b8978b7ef0fb45451fcc495e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24a14773b8978b7ef0fb45451fcc495e">&#9670;&nbsp;</a></span>ADL_EXTERNC</h2>
@@ -587,7 +590,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to retrieve clock information for an adapter. </p>
-<p>This function retrieves the clock information for a specified graphics adapter. Linux and Windows(XP, Vista and above); 32bit and 64bit </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This function retrieves the clock information for a specified graphics adapter. Windows 7, 10 and above; 32bit and 64bit </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -830,7 +833,7 @@ Functions</h2></td></tr>
 <p>Function to get the unique identifier of an adapter. Will be removed! Use <a class="el" href="group__ADAPTERMAINAPI.html#ga7b4fa2b595f9017137f3226db3d875e8" title="Function to get the unique identifier of an adapter.">ADL_Adapter_ID_Get()</a> </p>
 <p>This function retrieves the unique identifier of a specified adapter.<br  />
  The adapter ID is a unique value and will be used to determine what other controllers share the same adapter.<br  />
- The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
@@ -841,6 +844,53 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd>This API will be removed. Use the duplicate API <a class="el" href="group__ADAPTERMAINAPI.html#ga7b4fa2b595f9017137f3226db3d875e8" title="Function to get the unique identifier of an adapter.">ADL_Adapter_ID_Get()</a> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a3a2f8aa449670f118f8c460b68d3cb2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2f8aa449670f118f8c460b68d3cb2a">&#9670;&nbsp;</a></span>ADL2_GfxIP_Version_Get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ADL2_GfxIP_Version_Get </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>iAdapterIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>lpVersion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function to get the Gfx IP version. </p>
+<p>This function retrieves the Gfx IP version for a specified adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">context</td><td>Client's ADL context handle <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> obtained from <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">lpVersion</td><td>Gfx IP version </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <a class="el" href="group__define__adl__results.html#ga29dfbfcc4a3b9092febd107586668a75">ADL_OK</a>. Otherwise the return value is an ADL error code. <a class="el" href="group__define__adl__results.html">Result Codes</a> </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>Clients can use ADL2 version of the API to assure that there is no interference with other ADL clients that are running in the same process . Such clients have to call <a class="el" href="adl_8h.html#a4f2f1b006fa2c4d22089876fb09aece7">ADL2_Main_Control_Create</a> first to obtain <a class="el" href="adl__structures_8h.html#a81b5ad958ff0093538e67865860ced65">ADL_CONTEXT_HANDLE</a> instance that has to be passed to each subsequent ADL2 call and finally destroyed using <a class="el" href="adl_8h.html#af964ad5e099e958eb2856f238df19327">ADL2_Main_Control_Destroy</a>. </dd></dl>
 
 </div>
@@ -872,7 +922,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Function to retrieve clock information for an adapter. </p>
-<p>This function retrieves the clock information for a specified graphics adapter. Linux and Windows(XP, Vista and above); 32bit and 64bit </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This function retrieves the clock information for a specified graphics adapter. Windows 7, 10 and above; 32bit and 64bit </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">lpClockInfo</td><td>The pointer to the structure storing the retrieved core and memory clock information. </td></tr>
@@ -914,7 +964,7 @@ Functions</h2></td></tr>
 <p>Function to get the unique identifier of an adapter. Will be removed! Use <a class="el" href="group__ADAPTERMAINAPI.html#ga7b4fa2b595f9017137f3226db3d875e8" title="Function to get the unique identifier of an adapter.">ADL_Adapter_ID_Get()</a> </p>
 <p>This function retrieves the unique identifier of a specified adapter.<br  />
  The adapter ID is a unique value and will be used to determine what other controllers share the same adapter.<br  />
- The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Linux and Windows(XP, Vista and above); 32bit and 64bit </dd></dl>
+ The desktop will use this to find which HDCs are associated with an adapter. </p><dl class="section user"><dt>Supported Platforms:</dt><dd>Windows 7, 10 and above; 32bit and 64bit </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">iAdapterIndex</td><td>The ADL index handle of the desired adapter. </td></tr>
@@ -929,7 +979,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2020 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
+<hr size="1"><div  style="text-align: right;"><small>Copyright &copy 2009-2024 Advanced Micro Devices, Inc. All rights reserved.&nbsp;
 <a href="http://developer.amd.com"><img src="53863A_AMD_E_Blk_RGB.PNG" title="developer.amd.com" align="middle" border="0" height="10px"></a></small></div>
 </body>
 </html>
