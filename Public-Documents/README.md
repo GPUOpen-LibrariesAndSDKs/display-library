@@ -11,8 +11,6 @@ ADL binaries are delivered as part of the Catalyst display Driver package while 
 * Deprecate ADL2_New_QueryPMLogData_Get
 * Upgraded samples:
 	* <a href="Overdrive8-example.html">Overdrive8</a>: Updated sample to illustrate how to use ADL2_Overdrive8_PMLog_ShareMemory_Read.
-* Added samples:
-	* <a href="PanelFirmwareUpdateModeControl-example.html">PanelFirmwareUpdateModeControl</a>: Added sample to illustrate how to control features of Edp Lowpower.
 
 ---
 
